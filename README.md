@@ -11,14 +11,14 @@ Include a demo video of your game here (you don't have to wait until the end, yo
 
 ## Your Group
 
-Add a group photo here!
+<img src="https://github.com/user-attachments/assets/7ed7a239-6743-405e-ad80-5778d417fd5a" alt="Group 13 photo" width="300">
 
-- Group member 1, name, email, role
-- Group member 2, name, email, role
-- Group member 3, name, email, role
-- Group member 4, name, email, role
-- Group member 5, name, email, role
-- Group member 6, name, email, role
+- Member name, email, github id, role
+1. Ran Tian, jy24630@bristol.ac.uk, HaruTian4604
+2. Shrirang Lokhande, ju24635@bristol.ac.uk, ShrirangL
+3. Mahesh Nanavare, aw24545@bristol.ac.uk, MaheshNanavare
+4. Aya Saneh, vg24625@bristol.ac.uk, aya-codes
+5. Santiago Muriel, ld24352@bristol.ac.uk, smurielv
 
 ## Project Report
 
