@@ -23,7 +23,7 @@
 
 ---
 
-![group_photo_meeting3](./img/photo_meeting3-1.jpg)
+![group_photo_meeting3](./img/photo_meeting3-1.JPG)
 ![meeting_topics_whiteboard](./img/photo_meeting3-2.jpeg)
 
 ## 3. Discussion Details
