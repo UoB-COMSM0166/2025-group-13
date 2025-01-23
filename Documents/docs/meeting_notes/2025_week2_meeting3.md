@@ -31,8 +31,9 @@
 ## 3. Task Summary
 
 - Task 1: Use the Google Spreadsheet to assign roles and define responsibilities.
-- Task 2: Research collaboration tools and workflows in two teams.
-- Task 3: Suggest a house style for the game designs.
+- Task 2: Research collaboration tools and workflows.
+- Task 3: Research for similar games and game specific features and P5.js implementation in two teams.
+- Task 4: Suggest a house style for the game designs.
 
 ## 4. Discussion Details
 
