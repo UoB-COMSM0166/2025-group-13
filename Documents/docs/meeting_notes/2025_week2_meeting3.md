@@ -12,12 +12,12 @@
 - [2025 Week3 Meeting 3](#2025-week3-meeting-3)
 - [1. Meeting Information](#1-meeting-information)
 - [2. Agenda](#2-agenda)
-- [3. Discussion Details](#3-discussion-details)
+- [3. Task Summary](#3-task-summary)
+- [4. Discussion Details](#4-discussion-details)
   - [Topic 1: Game Selection and Research](#topic-1-game-selection-and-research)
   - [Topic 2: Role Assignment](#topic-2-role-assignment)
   - [Topic 3: Collaboration Tools and Workflow](#topic-3-collaboration-tools-and-workflow)
   - [Topic 4: Game Concept Refinement](#topic-4-game-concept-refinement)
-- [4. Additional Notes](#4-additional-notes)
 - [5. Next Meeting](#5-next-meeting)
   - [**Proposed Agenda**](#proposed-agenda)
 
@@ -26,7 +26,15 @@
 ![group_photo_meeting3](./img/photo_meeting3-1.JPG)
 ![meeting_topics_whiteboard](./img/photo_meeting3-2.jpeg)
 
-## 3. Discussion Details
+---
+
+## 3. Task Summary
+
+- Task 1: Use the Google Spreadsheet to assign roles and define responsibilities.
+- Task 2: Research collaboration tools and workflows in two teams.
+- Task 3: Suggest a house style for the game designs.
+
+## 4. Discussion Details
 
 ### Topic 1: Game Selection and Research
 - **Key Points Discussed**:
@@ -87,14 +95,6 @@
 
 - **Action Items**:
   1. [Everyone]: Research and suggest ideas for a house style.
-
----
-
-## 4. Additional Notes
-- **Task Summary**:
-  - Task 1: Use the Google Spreadsheet to assign roles and define responsibilities.
-  - Task 2: Research collaboration tools and workflows in two teams.
-  - Task 3: Suggest a house style for the game designs.
 
 ---
 
