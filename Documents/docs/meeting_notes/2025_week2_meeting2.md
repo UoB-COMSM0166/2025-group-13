@@ -26,6 +26,8 @@
 
 ---
 
+![group_photo_meeting2](./img/photo_meeting2-1.jpg)
+
 ## 3. Discussion Details
 ### Topic 1: Game Idea Discussion
 - **Key Points Discussed**:
