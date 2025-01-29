@@ -50,6 +50,7 @@
        - Scrum Master
   - Each member selected our desired roles, following the principle of pairing experienced members with those who want to learn.
   - Shift roles every 4 weeks.
+  - Document all team roles during the Sprint, including responsibilities: [Linked File](https://docs.google.com/document/d/1RDJP4sSj52yU6OLx7MaV0p_I9OOR0jNPY-BBSjgJWxA/edit?tab=t.0#heading=h.wupq9v2un0xl).
   - **Role Assignments (based on the whiteboard)**:
     - Shrirang: Developer, Tester & DevOps, Graphics
     - Aya: Graphics, Developer, Tester
@@ -94,9 +95,7 @@
 ## 4. Action Items
 1. **First Sprint Tasks**:
    - Refer to the course material: [First Sprint Tasks](https://uob.sharepoint.com/:p:/t/UnitTeams-COMSM0166-2024-25-TB-2-A-newstaffroom/EQC2UGq7-WNLu5gqOkJV7TEBDfHY9t0In9L3yPRT5_kqWg?e=Q8e8Ns&nav=eyJzSWQiOjMxOSwiY0lkIjoyMjY2MjQ0OTkzfQ).
-2. **Create a Single Document**:
-   - Document all team roles during the Sprint, including responsibilities.
-3. **Workshop Homework**:
+2. **Workshop Homework**:
    - Finalize the game idea: Write a one-paragraph description of the game concept.
    - Include paper prototype images or videos.
 
