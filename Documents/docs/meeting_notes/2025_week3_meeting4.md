@@ -24,9 +24,8 @@
 ### Topic 1: Sharing Personal Preferences
 - **Key Points Discussed**:
   1. Each team member shared our favorite game character and the superpower they wish to have.
+  2. Discussed personal **strengths, interests, contributions, and avoid**:
 ![group_photo_meeting4](./img/photo_meeting4-2.jpg)
-  1. Discussed personal **strengths, interests, contributions, and avoid**:
-![group_photo_meeting4](./img/photo_meeting4-3.jpg)
      - Strengths: Skills or expertise members feel confident in.
      - Interests: Roles or areas we are excited to explore.
      - Contributions: How we can add extra value to the project.
@@ -35,6 +34,7 @@
 ---
 
 ### Topic 2: Assigning Project Roles
+![group_photo_meeting4](./img/photo_meeting4-3.jpg)
 - **Key Points Discussed**:
   - Established two types of roles:
     1. **Critical Roles**:
