@@ -103,7 +103,7 @@
 ---
 
 ## 5. Next Meeting
-- **Date**: 2025-01-28
+- **Date**: 2025-02-02
 - **Time**: 12:00
 - **Location**: [Arts and Social Sciences Library(first floor) Group Study Room 3]
 - **Proposed Agenda**:
