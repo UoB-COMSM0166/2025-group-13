@@ -17,16 +17,16 @@
 6. Conduct paper prototype testing during the workshop.
 
 ---
-![group_photo_meeting4](./img/photo_meeting4-1.JPG)
+![group_photo_meeting4](./img/photo_meeting4-1.jpg)
 
 ## 3. Discussion Details
 
 ### Topic 1: Sharing Personal Preferences
 - **Key Points Discussed**:
   1. Each team member shared our favorite game character and the superpower they wish to have.
-![group_photo_meeting4](./img/photo_meeting4-2.JPG)
+![group_photo_meeting4](./img/photo_meeting4-2.jpg)
   1. Discussed personal **strengths, interests, contributions, and avoid**:
-![group_photo_meeting4](./img/photo_meeting4-3.JPG)
+![group_photo_meeting4](./img/photo_meeting4-3.jpg)
      - Strengths: Skills or expertise members feel confident in.
      - Interests: Roles or areas we are excited to explore.
      - Contributions: How we can add extra value to the project.
@@ -83,8 +83,8 @@
 ---
 
 ### Topic 5: Workshop Activities
-![group_photo_meeting4](./img/photo_meeting4-3.JPG)
-![group_photo_meeting4](./img/photo_meeting4-4.JPG)
+![group_photo_meeting4](./img/photo_meeting4-4.jpg)
+![group_photo_meeting4](./img/photo_meeting4-5.jpg)
 - Conducted **paper prototype testing**:
   - Shared the prototype with other teams and gathered feedback.
   - Reviewed prototypes from other teams for inspiration and improvement ideas.
