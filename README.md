@@ -13,12 +13,12 @@ Include a demo video of your game here (you don't have to wait until the end, yo
 
 <img src="https://github.com/user-attachments/assets/7ed7a239-6743-405e-ad80-5778d417fd5a" alt="Group 13 photo" width="300">
 
-- Member name, email, github id, role
-1. Ran Tian, jy24630@bristol.ac.uk, HaruTian4604
-2. Shrirang Lokhande, ju24635@bristol.ac.uk, ShrirangL
-3. Mahesh Nanavare, aw24545@bristol.ac.uk, MaheshNanavare
-4. Aya Saneh, vg24625@bristol.ac.uk, aya-codes
-5. Santiago Muriel, ld24352@bristol.ac.uk, smurielv
+- Member name, email, github id, role (first sprint)
+1. Ran Tian, jy24630@bristol.ac.uk, HaruTian4604, Developer
+2. Shrirang Lokhande, ju24635@bristol.ac.uk, ShrirangL, Developer
+3. Mahesh Nanavare, aw24545@bristol.ac.uk, MaheshNanavare, DevOps & Tester
+4. Aya Saneh, vg24625@bristol.ac.uk, aya-codes, Graphics & Designer
+5. Santiago Muriel, ld24352@bristol.ac.uk, smurielv, Project Manager
 
 ## Project Report
 
