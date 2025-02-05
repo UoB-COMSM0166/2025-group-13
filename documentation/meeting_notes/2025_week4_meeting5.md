@@ -25,9 +25,9 @@
 2. Git branches: Feature Branch Workflow
      We decided to work on separate branches for the different features instead of everyone trying to merge with main
      See the following resources shared by Santiago:
-        1. https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
-        2. https://gist.github.com/forest/19fc774dde34f77e2540
-        3. https://gist.github.com/vlandham/3b2b79c40bc7353ae95a
+     1. https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
+     2. https://gist.github.com/forest/19fc774dde34f77e2540
+     3. https://gist.github.com/vlandham/3b2b79c40bc7353ae95a
 3. Git organization: docs vs documentation
     Docs will be used for code and Documentation for all kinds of notes, minutes, etc.
    
@@ -37,19 +37,19 @@
 <img src="./img/photo_meeting5-2.jpeg" alt="Board Photo" width="400"/>
 
 - **Key Points Discussed**:
-  Identified the necessary features for the first sprint.
-  Goal: create a functioning, testable prototype.
-  Tasks:
-      Developers:
-        - User Control (movement) and World (blocks, ground)
-        - Camera Motion: Moving the visible screen when the character moves
-      Graphics and Design:
-        - Background and Ground: Static images
-      Testing:
-        - Design and implement a basic testing framework
-      Project Management:
-        - Structure for the project (git and timeline)
-        - Tech House-Style Rules
+     * Identified the necessary features for the first sprint.
+     * Goal: create a functioning, testable prototype.
+     * Tasks:
+          * Developers:
+             - User Control (movement) and World (blocks, ground)
+             - Camera Motion: Moving the visible screen when the character moves
+          * Graphics and Design:
+             - Background and Ground: Static images
+          * Testing:
+             - Design and implement a basic testing framework
+          * Project Management:
+             - Structure for the project (git and timeline)
+             - Tech House-Style Rules
 ---
 
 ### Topic 3: Movement of Character and Screen
