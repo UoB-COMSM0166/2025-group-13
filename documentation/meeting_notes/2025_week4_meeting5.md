@@ -74,10 +74,14 @@
 ---
 
 ## 4. Action Items
+
 <img src="./img/photo_meeting5-2.jpeg" alt="Board Photo" width="400"/>
+
 1. **First Sprint Tasks**:
    - Refer to Kanban and photo above.
+     
 <img src="./img/photo_meeting5-3.jpeg" alt="Slides Screenshot" width="400"/>
+
 2. **Workshop Homework**:
    - Add list of stakeholders, epics and user stories to repo
    - Write a reflection on what we learned about epics etc. and specially how that relates to our app. 
