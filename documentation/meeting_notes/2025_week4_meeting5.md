@@ -35,6 +35,7 @@
 
 ### Topic 2: Assigning Sprint Goals/Major Tasks
 <img src="./img/photo_meeting5-2.jpeg" alt="Board Photo" width="400"/>
+
 - **Key Points Discussed**:
   Identified the necessary features for the first sprint.
   Goal: create a functioning, testable prototype.
