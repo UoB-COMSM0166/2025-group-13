@@ -14,7 +14,7 @@
 3. Checking for aligned vision of how the game will look
 
 ---
-![group_photo_meeting5](./img/photo_meeting5-1.jpeg)
+<img src="./img/photo_meeting5-1.jpeg" alt="Group Photo" width="300"/>
 
 ## 3. Discussion Details
 
