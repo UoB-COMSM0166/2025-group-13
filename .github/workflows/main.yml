@@ -1,0 +1,23 @@
+name: Deploy p5.js to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Runs when you push to main
+
+permissions:
+  contents: write  # Needed for GitHub Pages deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Deploys to GitHub Pages branch
+          folder: .  # Change if your files are inside a subdirectory
