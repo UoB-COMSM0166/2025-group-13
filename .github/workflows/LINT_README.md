@@ -1,4 +1,4 @@
-## **GitHub Actions: Linting Workflow
+## **GitHub Actions: Linting Workflow**
 
 ### 🛠️ **Overview**  
 This repository uses **GitHub Actions** to automatically **lint and format JavaScript code** whenever changes are pushed to the `develop` branch. This ensures code consistency and prevents errors before merging.  
