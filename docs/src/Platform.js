@@ -1,14 +1,26 @@
 class Platform {
-  constructor(x, y, w, h) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
+  constructor(positionX, positionY, widthOrBrickNumber, height = null) {
+    if (height === null) {
+      this.width = widthOrBrickNumber * Brick.width;
+      this.height = Brick.height;
+    } else {
+      this.width = widthOrBrickNumber;
+      this.height = height;
+    }
+
+    this.x = positionX;
+    this.y = positionY;
+
+    this.top = this.y - this.height / 2;
+    this.bottom = this.y + this.height / 2;
+    this.left = this.x - this.width / 2;
+    this.right = this.x + this.width / 2;
   }
+
 
   display() {
     fill(100);
     rectMode(CENTER);  // Draw the rectangle with the center point
-    rect(this.x, this.y, this.w, this.h);
+    rect(this.x, this.y, this.width, this.height);
   }
 }
