@@ -37,15 +37,29 @@ class Player {
     checkCollisions(platformArray) {
         this.isOnGround = false;
         for (let platform of platformArray) {
-            let withinXRange = this.x + this.width / 2 > platform.x - platform.w / 2 &&
-                               this.x - this.width / 2 < platform.x + platform.w / 2;
+            let playerRight = this.x + this.width / 2;
+            let playerLeft = this.x - this.width / 2;
+            let platformLeft = platform.x - platform.w / 2;
+            let platformRight = platform.x + platform.w / 2;
+            let playerTop = this.y - this.height / 2;
+            let playerBottom = this.y + this.height / 2;
+            let platformTop = platform.y - platform.h / 2;
+            let platformBottom = platform.y + platform.h /2;
+
+            let withinXRange = playerRight > platformLeft && playerLeft < platformRight;
+            let withinYRange = playerBottom > platformTop && playerTop < platformBottom;
+
             if (withinXRange) {
-                let playerBottom = this.y + this.height / 2;
-                let platformTop = platform.y - platform.h / 2;
-                if (playerBottom >= platformTop && playerBottom - this.ySpeed <= platformTop) {
+
+                if (playerBottom >= platformTop && playerBottom < platformBottom /*&& playerBottom - this.ySpeed <= platformTop*/) {
                     this.y = platformTop - this.height / 2;
                     this.ySpeed = 0;
                     this.isOnGround = true;
+                }
+                else if(playerTop < platformBottom && playerTop > platformTop)
+                {
+                    this.y = platformBottom + this.height/2;
+                    this.ySpeed = 0;
                 }
             }
         }
