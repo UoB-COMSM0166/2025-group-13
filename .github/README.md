@@ -1,3 +1,3 @@
 ## Workflows Documentation
-- [Linting Workflow](.github/workflows/LINT_README.md)
-- [Deployment Workflow](.github/workflows/DEPLOY_README.md)
+- [Linting Workflow](workflows/LINT_README.md)
+- [Deployment Workflow](workflows/DEPLOY_README.md)
