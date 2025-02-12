@@ -1,0 +1,39 @@
+name: Lint and Format JavaScript
+
+on:
+  push:
+    branches:
+      - develop  # Runs only on the develop branch
+  pull_request:
+    branches:
+      - develop  # Runs on PRs targeting develop
+
+permissions:
+  contents: read  # No need for write access since there's no deployment
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          if [ -f package.json ]; then npm install; fi  # Installs dependencies if package.json exists
+
+      # Lint JavaScript using ESLint
+      - name: Run ESLint
+        run: |
+          if [ -f package.json ]; then npx eslint . --ext .js,.ts; fi
+
+      # Format JavaScript using Prettier
+      - name: Run Prettier
+        run: |
+          if [ -f package.json ]; then npx prettier --check .; fi
