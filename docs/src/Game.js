@@ -1,5 +1,6 @@
 // Game.js
 class Game {
+    // This method launch the game
     constructor() {
         this.map = new Map();
         this.groundHeight = 350; // Define ground height
