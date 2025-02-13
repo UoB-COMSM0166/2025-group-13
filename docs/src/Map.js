@@ -1,15 +1,15 @@
 class Map {
     constructor() {
-        this.platforms=[];
+        this.platforms = [];
 
     }
     setup() {
-        // Create some sample platforms
-        this.platforms.push(new Platform(width / 2, 375, width, 50));   // "Ground" platform
-      //float platforms
-      this.platforms.push(new Platform(100 + 50, 250 + 5, 100, 10));
-      this.platforms.push(new Platform(300 + 60, 200 + 5, 120, 10));
-      this.platforms.push(new Platform(450 + 40, 300 + 5, 80, 10));
+        // "Ground" platform
+        this.platforms.push(new Platform(width / 2, 375, width, Brick.height*2));
+        //float platforms
+        this.platforms.push(new Platform(120, 250, 3));
+        this.platforms.push(new Platform(230, 170, 5));
+        this.platforms.push(new Platform(450, 250, 7));
     }
     update() {
         // Draw all platforms
