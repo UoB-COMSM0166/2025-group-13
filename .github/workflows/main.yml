@@ -3,13 +3,13 @@ name: Lint, Format, and Deploy
 on:
   push:
     branches:
-      - main  # Runs only on the main branch
+      - main
   pull_request:
     branches:
-      - main  # Runs on PRs targeting main
+      - main
 
 permissions:
-  contents: write  # Needed for deployment
+  contents: write
 
 jobs:
   lint-and-format:
@@ -19,25 +19,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
+      - name: Install JSHint and JS Beautifier
         run: |
-          if [ -f package.json ]; then npm install; fi  # Install dependencies if package.json exists
+          sudo apt update
+          sudo apt install -y python3-pip
+          pip3 install jshint jsbeautifier
 
-      - name: Run ESLint
-        run: |
-          if [ -f package.json ]; then npx eslint . --ext .js,.ts; fi  # Lint JavaScript/TypeScript files
+      - name: Run JSHint (Linting)
+        run: jshint . --exclude=node_modules
 
-      - name: Run Prettier
-        run: |
-          if [ -f package.json ]; then npx prettier --check .; fi  # Check formatting
+      - name: Run JS Beautifier (Formatting)
+        run: js-beautify -r **/*.js
 
   deploy:
-    needs: lint-and-format  # Runs only if linting and formatting pass
+    needs: lint-and-format
     runs-on: ubuntu-latest
 
     steps:
@@ -47,5 +42,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Deploys to GitHub Pages branch
+          branch: gh-pages
           folder: .
