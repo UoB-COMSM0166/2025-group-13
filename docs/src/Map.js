@@ -7,8 +7,8 @@ class Map {
         // "Ground" platform
         this.platforms.push(new Platform(width / 2, 375, width, Brick.height*2));
         //float platforms
-        this.platforms.push(new Platform(120, 250, 3));
-        this.platforms.push(new Platform(230, 170, 5));
+        this.platforms.push(new Platform(120, 310, 3));
+        this.platforms.push(new Platform(350, 330, 5));
         this.platforms.push(new Platform(450, 250, 7));
     }
     update() {
