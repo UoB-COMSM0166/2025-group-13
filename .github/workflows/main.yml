@@ -1,46 +1,32 @@
-name: Lint, Format, and Deploy
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-permissions:
-  contents: write
+  release:
+    types: [created]
 
 jobs:
-  lint-and-format:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install JSHint and JS Beautifier
-        run: |
-          sudo apt update
-          sudo apt install -y python3-pip
-          pip3 install jshint jsbeautifier
-
-      - name: Run JSHint (Linting)
-        run: jshint . --exclude=node_modules
-
-      - name: Run JS Beautifier (Formatting)
-        run: js-beautify -r **/*.js
-
-  deploy:
-    needs: lint-and-format
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          branch: gh-pages
-          folder: .
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.group13access}}
