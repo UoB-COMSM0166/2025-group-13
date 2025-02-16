@@ -7,7 +7,7 @@ Link to your game [PLAY HERE](https://uob-comsm0166.github.io/2025-group-13/)
 
 Your game lives in the [/docs](/docs) folder, and is published using Github pages to the link above.
 
-Include a demo video of your game [here](https://github.com/UoB-COMSM0166/2025-group-13/blob/5fd5e8dea7876937aeb61c0e28dc6e685fdd505e/documentation/paper_prototype/dino_adventure_run.mp4) (Paper prototype video for now)
+Include a demo video of your game [here](https://github.com/UoB-COMSM0166/2025-group-13/blob/main/documentation/paper_prototype/dino_adventure_run.mp4) (Paper prototype video for now)
 
 ## Your Group
 
