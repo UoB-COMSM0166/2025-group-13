@@ -9,8 +9,8 @@ class Player {
         this.ySpeed = 0;
         this.maxSpeed = 4;
 
-        this.gravity = 0.6;
-        this.jumpStrength = 7;
+        this.gravity = 1.5;
+        this.jumpStrength = 10;
         this.isOnGround = false;
 
         this.updateBounds();
@@ -61,7 +61,8 @@ class Player {
                     this.checkVerticalCollisions(platform);
                 }
             }
-            if(this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
+            if((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
+                || (this.bottom === height))
                 this.isOnGround = true;
         }
     }
@@ -99,8 +100,8 @@ class Player {
     }
 
     keepWithinBounds() {
-        this.x = constrain(this.x, this.width / 2, width - this.width / 2);
-
+        //this.x = constrain(this.x, this.width / 2, width - this.width / 2);
+        this.x = constrain(this.x, this.width / 2, width/2);
         if (this.bottom > height) {
             this.y = height - this.height / 2;
             this.ySpeed = 0;
@@ -116,11 +117,16 @@ class Player {
     }
 
     move(direction) {
+        /*
         if (this.isOnGround) {
             this.xSpeed = direction * this.maxSpeed;
         } else {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
+        }
+        */
+        if((direction > 0 && this.x <= width / 2) || (direction < 0)) {
+            this.xSpeed = direction * this.maxSpeed;
         }
     }
 

@@ -14,8 +14,8 @@ class Game {
     update() {
         background(220);
 
-        this.map.update(); // display map
-
+        this.map.update(); // update map
+        this.map.display(); // display map
         this.player.update(this.map.platforms);
         this.player.display();
     }
