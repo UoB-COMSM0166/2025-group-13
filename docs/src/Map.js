@@ -1,12 +1,12 @@
 class Map {
     constructor() {
         this.platforms = [];
-        this.xSpeed = 0;
-        this.maxSpeed = 4;
+        this.xSpeed = 4;
     }
     setup() {
         // "Ground" platform
         this.platforms.push(new Platform(width / 2, 375, width*3, Brick.height*2));
+
         //float platforms
         this.platforms.push(new Platform(120, 310, 3));
         this.platforms.push(new Platform(350, 330, 5));
@@ -20,17 +20,18 @@ class Map {
         this.platforms.push(new Platform(width + width + 350, 330, 5));
         this.platforms.push(new Platform(width + width + 450, 250, 7));
 
+        // End wall
         this.platforms.push(new Platform(width + width + 600, height/2, 30, height));
     }
     update() {
-        // Draw all platforms
+        // Update all platforms
         for (let p of this.platforms) {
-            p.x -= this.xSpeed;
             p.updateBounds();
         }
     }
 
     display() {
+        // Display all platforms
         for (let p of this.platforms) {
             p.display();
         }
@@ -41,23 +42,24 @@ class Map {
         this.xSpeed = 0;
     }
 
-    setSpeed(direction)
+    moveAllPlatforms()
     {
-        if(game.player.x >= width / 2) {
-            this.xSpeed = direction * this.maxSpeed;
+        if(game.player.x === width / 2){
+            for (let p of this.platforms) {
+                p.x -= this.xSpeed;
+            }
         }
     }
 
     handleInput(isKeyDown) {
         if (isKeyDown) {
-            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.setSpeed(1);
-        } else {
-            if (keyCode === RIGHT_ARROW || keyCode === 68) {
-                this.stopMovement();
+            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+                this.moveAllPlatforms();
             }
         }
     }
 
+    /*
     draw() {
         // draw the map
         for (var row = 0; row < this.blocks.length; row++) {
@@ -69,5 +71,5 @@ class Map {
             }
         }
     }
-
+    */
 }

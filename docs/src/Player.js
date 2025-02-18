@@ -5,11 +5,11 @@ class Player {
         this.width = 30;
         this.height = 30;
 
-        this.xSpeed = 0;
-        this.ySpeed = 0;
+        //this.xSpeed = 0;  xspeed is not needed because the player does not face any horizontal acceleration
+        this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
         this.maxSpeed = 4;
 
-        this.gravity = 1.5;
+        this.gravity = 1;
         this.jumpStrength = 10;
         this.isOnGround = false;
 
@@ -18,7 +18,7 @@ class Player {
 
     update(platformArray) {
         this.applyGravity();
-        this.x += this.xSpeed;
+        //this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
@@ -45,7 +45,8 @@ class Player {
 
     checkCollisions(platformArray) {
         this.isOnGround = false;
-
+        // this method should be optimised to check only those platforms which 
+        // are visible inside left half of the game window.
         for (let platform of platformArray) {
             let withinXRange = this.right > platform.left && this.left < platform.right;
             let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
@@ -100,7 +101,6 @@ class Player {
     }
 
     keepWithinBounds() {
-        //this.x = constrain(this.x, this.width / 2, width - this.width / 2);
         this.x = constrain(this.x, this.width / 2, width/2);
         if (this.bottom > height) {
             this.y = height - this.height / 2;
@@ -125,8 +125,8 @@ class Player {
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
         */
-        if((direction > 0 && this.x <= width / 2) || (direction < 0)) {
-            this.xSpeed = direction * this.maxSpeed;
+        if((direction > 0 && this.x < width / 2) || (direction < 0)) {
+            this.x += direction * this.maxSpeed;
         }
     }
 
@@ -146,10 +146,6 @@ class Player {
             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.move(-1);
             if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.move(1);
             if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
-        } else {
-            if (keyCode === LEFT_ARROW || keyCode === 65 || keyCode === RIGHT_ARROW || keyCode === 68) {
-                this.stopMovement();
-            }
         }
     }
 }
