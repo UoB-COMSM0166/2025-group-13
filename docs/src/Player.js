@@ -1,7 +1,17 @@
 class Player {
+
+    preload() {
+        this.gif_walk = loadImage('src/assets/gif_walk.gif');
+        this.gif_walkBack = loadImage('src/assets/gif_walkBack.gif');
+        this.dino_static = loadImage('src/assets/dino_static.png');
+    }
+
     constructor(positionX, positionY) {
+        this.gif_walk = null;
+        this.dino_static = null;
+
         this.x = positionX;
-        this.y = positionY;
+        this.y = positionY + 5;
         this.width = 30;
         this.height = 30;
 
@@ -13,7 +23,27 @@ class Player {
         this.jumpStrength = 7;
         this.isOnGround = false;
 
+        this.isMoving = false;
+        this.isBackwards = false;
+
         this.updateBounds();
+    }
+
+    display() {
+        fill(255, 0, 0);
+        rectMode(CENTER);
+        //rect(this.x, this.y, this.width, this.height);
+        if (this.isMoving) {
+            if (this.isBackwards) {
+                image(this.gif_walkBack, this.x, this.y - this.height / 2);
+            }
+            else {
+                image(this.gif_walk, this.x, this.y - this.height / 2);
+            }
+        }
+        else {
+            image(this.dino_static, this.x, this.y - this.height / 2);
+        }
     }
 
     update(platformArray) {
@@ -25,6 +55,7 @@ class Player {
         this.keepWithinBounds();
 
         this.updateBounds();
+        this.display();
     }
 
     updateBounds() {
@@ -80,14 +111,15 @@ class Player {
         }
     }
 
-    display() {
-        fill(255, 0, 0);
-        rectMode(CENTER);
-        rect(this.x, this.y, this.width, this.height);
-    }
-
     move(direction) {
-        if (this.isOnGround) {
+        if (direction === -1) {
+            this.isBackwards = true;
+        }
+        else {
+            this.isBackwards = false;
+        }
+        this.isMoving = true;
+        if (this.isOnGround) {    
             this.xSpeed = direction * this.maxSpeed;
         } else {
             this.xSpeed += direction * 0.3;
@@ -96,6 +128,8 @@ class Player {
     }
 
     stopMovement() {
+        this.isMoving = false;
+        this.isBackwards = false;
         this.xSpeed = 0;
     }
 

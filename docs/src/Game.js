@@ -1,9 +1,16 @@
 // Game.js
 class Game {
+
+    preload() {
+        this.background_img = loadImage('src/assets/background_light.png');
+        this.player.preload();
+        this.map.preload();
+    }
+
     constructor() {
-        this.map = new Map();
-        this.groundHeight = 350; // Define ground height
+        this.groundHeight = 380;
         this.player = new Player(width / 2, this.groundHeight/2);
+        this.map = new Map();
     }
 
     setup() {
@@ -11,16 +18,20 @@ class Game {
         this.map.setup(); //init map
     }
 
-    update() {
-        background(220);
+    update() {        
+        this.player.display(); // display player
 
         this.map.update(); // display map
 
         this.player.update(this.map.platforms);
-        this.player.display();
     }
 
     draw() {
+        if (this.background_img) {
+            image(this.background_img, width/2, this.groundHeight/2, 600, 400);
+        } else {
+            background(220);
+        }
         this.update();
     }
 }

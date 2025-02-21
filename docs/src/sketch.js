@@ -1,8 +1,13 @@
 let game;
 
-function setup() {
+function preload() {
   game = new Game();
+  game.preload();
+}
+
+function setup() {
   game.setup();
+  imageMode(CENTER);
 }
 
 function draw() {
