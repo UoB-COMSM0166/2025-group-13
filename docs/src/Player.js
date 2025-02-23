@@ -14,6 +14,7 @@ class Player {
         this.isOnGround = false;
 
         //Added coyote time variable
+        //That is, when the player jumps to the edge of the platform, even if the action seems to have left the platform, as long as the player can press the jump button again within a very short time (usually a few milliseconds), the game system will "forgive" this moment and allow the player to continue jumping, avoiding failure due to minor mistakes.
         this.coyoteTimer = 0;
         this.maxCoyoteTime = 10; // 10-frame buffer
 
