@@ -1,6 +1,7 @@
 class Map {
-    constructor() {
+    constructor(texture = null) {
         this.platforms = [];
+        this.texture = texture;
 
     }
     setup() {
