@@ -1,7 +1,8 @@
 class Map {
-    constructor() {
+    constructor(texture = null) {
         this.platforms = [];
         this.xSpeed = 4;
+        this.texture = texture;
     }
     setup() {
         // "Ground" platform

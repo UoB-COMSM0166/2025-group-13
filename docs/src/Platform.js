@@ -1,5 +1,5 @@
 class Platform {
-  constructor(positionX, positionY, widthOrBrickNumber, height = null) {
+  constructor(positionX, positionY, widthOrBrickNumber, height = null, texture = null) {
     if (height === null) {
       this.width = widthOrBrickNumber * Brick.width;
       this.height = Brick.height;
@@ -7,6 +7,8 @@ class Platform {
       this.width = widthOrBrickNumber;
       this.height = height;
     }
+
+    this.texture = texture;
 
     this.x = positionX;
     this.y = positionY;
@@ -23,8 +25,12 @@ class Platform {
   }
 
   display() {
-    fill(100);
     rectMode(CENTER);  // Draw the rectangle with the center point
-    rect(this.x, this.y, this.width, this.height);
+    if (this.texture) {
+      image(this.texture, this.x, this.y, this.width, this.height);
+    } else {
+      fill(100);
+      rect(this.x, this.y, this.width, this.height);
+    }
   }
 }

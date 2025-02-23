@@ -1,4 +1,11 @@
 let game;
+let playerTexture, mapTexture;
+
+function preload() {
+  playerTexture = loadImage('./src/assets/player.png');
+  // mapTexture = loadImage('assets/map.png');
+  // platformTexture = loadImage('assets/platform.png');
+}
 
 function setup() {
   game = new Game();
