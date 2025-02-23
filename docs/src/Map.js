@@ -10,6 +10,8 @@ class Map {
         this.platforms.push(new Platform(120, 310, 3));
         this.platforms.push(new Platform(350, 330, 5));
         this.platforms.push(new Platform(450, 250, 7));
+        this.platforms.push(new Platform(450, 250, 30, 150));
+        this.platforms.push(new Platform(550, 150, 3));
     }
     update() {
         // Draw all platforms

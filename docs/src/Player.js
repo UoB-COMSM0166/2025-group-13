@@ -13,6 +13,10 @@ class Player {
         this.jumpStrength = 7;
         this.isOnGround = false;
 
+        //Added coyote time variable
+        this.coyoteTimer = 0;
+        this.maxCoyoteTime = 10; // 10-frame buffer
+
         this.updateBounds();
     }
 
@@ -23,6 +27,13 @@ class Player {
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.keepWithinBounds();
+
+        //Update timer for coyote time
+        if (this.isOnGround) {
+            this.coyoteTimer = this.maxCoyoteTime;
+        } else {
+            this.coyoteTimer = max(0, this.coyoteTimer - 1);
+        }
     }
 
     updateBounds() {
@@ -61,7 +72,8 @@ class Player {
                     this.checkVerticalCollisions(platform);
                 }
             }
-            if(this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
+            //Use tolerance to determine whether it is on the ground
+            if (abs(this.bottom - platform.top) < 1 && this.right > platform.left && this.left < platform.right)
                 this.isOnGround = true;
         }
     }
@@ -70,8 +82,8 @@ class Player {
         let withinXRange = this.right > platform.left && this.left < platform.right;
         let bottomCollision = this.bottom > platform.top && this.bottom < platform.bottom;
         let topCollision = this.top < platform.bottom && this.top > platform.top;
-        if(withinXRange) {
-            if (bottomCollision /* && this.bottom - this.ySpeed <= platform.top*/) {
+        if (withinXRange) {
+            if (bottomCollision) {
                 this.y = platform.top - this.height / 2;
                 this.ySpeed = 0;
             } else if (topCollision) {
@@ -85,13 +97,13 @@ class Player {
     checkHorizontalCollisions(platform) {
         let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
         let leftCollision = this.left < platform.right && this.left > platform.left;
-        let rightCollision = this.right > platform.left && this. right < platform.right;
-        if(withinYRange) {
+        let rightCollision = this.right > platform.left && this.right < platform.right;
+        if (withinYRange) {
             if (rightCollision) {
                 this.x = platform.left - this.width / 2;
                 this.xSpeed = 0;
             } else if (leftCollision) {
-                this.x = platform.right + this.height / 2;
+                this.x = platform.right + this.width / 2;
                 this.xSpeed = 0;
             }
         }
@@ -119,8 +131,9 @@ class Player {
         if (this.isOnGround) {
             this.xSpeed = direction * this.maxSpeed;
         } else {
-            this.xSpeed += direction * 0.3;
-            this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
+            //Enhanced aerial handling: increases acceleration and allows higher horizontal speeds to be reached
+            this.xSpeed += direction * 0.5;
+            this.xSpeed = constrain(this.xSpeed, -this.maxSpeed, this.maxSpeed);
         }
     }
 
@@ -129,9 +142,11 @@ class Player {
     }
 
     jump() {
-        if (this.isOnGround) {
+        // Allow jumping when on the ground or in coyote time
+        if (this.isOnGround || this.coyoteTimer > 0) {
             this.ySpeed = -this.jumpStrength;
             this.isOnGround = false;
+            this.coyoteTimer = 0;
         }
     }
 
