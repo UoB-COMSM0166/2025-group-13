@@ -1,9 +1,10 @@
 class Player {
-    constructor(positionX, positionY) {
+    constructor(positionX, positionY, texture = null) {
         this.x = positionX;
         this.y = positionY;
         this.width = 30;
         this.height = 30;
+        this.texture = texture;  //Storing Textures
 
         this.xSpeed = 0;
         this.ySpeed = 0;
@@ -81,9 +82,14 @@ class Player {
     }
 
     display() {
-        fill(255, 0, 0);
         rectMode(CENTER);
-        rect(this.x, this.y, this.width, this.height);
+        if (this.texture) {
+            imageMode(CENTER);
+            image(this.texture, this.x, this.y, this.width, this.height);
+        } else {
+            fill(255, 0, 0);
+            rect(this.x, this.y, this.width, this.height);
+        }
     }
 
     move(direction) {
