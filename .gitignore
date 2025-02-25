@@ -1,0 +1,14 @@
+# Node modules (dependencies)
+node_modules/
+
+# Prettier cache & settings (optional)
+.prettierignore
+.prettierrc.js
+
+# ESLint cache (if any)
+eslint.config.js
+
+# Build or temp files (if applicable)
+dist/
+build/
+.cache/
