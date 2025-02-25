@@ -1,12 +1,12 @@
-name: Lint, Format, and Deploy
+name: Lint, Format and Deploy
 
 on:
   push:
     branches:
-      - main
+      - workflow-updates
   pull_request:
     branches:
-      - main
+      - workflow-updates
 
 permissions:
   contents: write
@@ -19,17 +19,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install JSHint and JS Beautifier
-        run: |
-          sudo apt update
-          sudo apt install -y python3-pip
-          pip3 install jshint jsbeautifier
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-      - name: Run JSHint (Linting)
-        run: jshint . --exclude=node_modules
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run JS Beautifier (Formatting)
-        run: js-beautify -r **/*.js
+      - name: Run ESLint (Linting)
+        run: npx eslint . --max-warnings=0
+
+      - name: Run Prettier (Check Formatting)
+        run: npx prettier --check .
 
   deploy:
     needs: lint-and-format
@@ -39,8 +41,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Prepare Deployment Files
+        run: |
+          mkdir -p dist
+          cp -r index.html style.css docs/src dist/
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: .
+          folder: dist
