@@ -12,15 +12,20 @@ class Game {
     }
 
     update() {
-        background(220);
-
-        this.map.update(); // display map
-
-        this.player.update(this.map.platforms);
-        this.player.display();
+        this.map.update(); // update map
+        this.player.update(this.map.platforms); // update player
     }
 
     draw() {
-        this.update();
+        background(220);
+        this.map.display(); // display map
+        this.player.display(); // display player
+    }
+
+    handleInput(){
+        if(keyIsDown){
+            this.map.handleInput(true); // handle player input
+            this.player.handleInput(true); // handle map input
+        }
     }
 }
