@@ -47,6 +47,11 @@ jobs:
       - name: Prepare Deployment Files
         run: |
           mkdir -p dist
+          cp -r docs/index.html docs/style.css docs/src dist/
+
+      - name: Prepare Deployment Files
+        run: |
+          mkdir -p dist
           cp -r index.html style.css docs/src dist/
 
       - name: Deploy to GitHub Pages
