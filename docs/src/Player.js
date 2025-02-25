@@ -1,9 +1,10 @@
 class Player {
-    constructor(positionX, positionY) {
+    constructor(positionX, positionY, texture = null) {
         this.x = positionX;
         this.y = positionY;
         this.width = 30;
         this.height = 30;
+        this.texture = texture;  //Storing Textures
 
         //this.xSpeed = 0;  xspeed is not needed because the player does not face any horizontal acceleration
         this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
@@ -111,9 +112,14 @@ class Player {
     }
 
     display() {
-        fill(255, 0, 0);
         rectMode(CENTER);
-        rect(this.x, this.y, this.width, this.height);
+        if (this.texture) {
+            imageMode(CENTER);
+            image(this.texture, this.x, this.y, this.width, this.height);
+        } else {
+            fill(255, 0, 0);
+            rect(this.x, this.y, this.width, this.height);
+        }
     }
 
     move(direction) {
