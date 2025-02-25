@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure the latest commit is fetched
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -54,3 +56,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          clean: true  # Removes old files before deploying new ones
