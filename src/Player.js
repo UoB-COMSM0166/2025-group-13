@@ -1,0 +1,151 @@
+class Player {
+    constructor(positionX, positionY) {
+        this.x = positionX;
+        this.y = positionY;
+        this.width = 30;
+        this.height = 30;
+
+        //this.xSpeed = 0;  xspeed is not needed because the player does not face any horizontal acceleration
+        this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
+        this.maxSpeed = 4;
+
+        this.gravity = 1;
+        this.jumpStrength = 10;
+        this.isOnGround = false;
+
+        this.updateBounds();
+    }
+
+    update(platformArray) {
+        this.applyGravity();
+        //this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        this.updateBounds();
+        this.checkCollisions(platformArray);
+        this.keepWithinBounds();
+    }
+
+    updateBounds() {
+        this.bottom = this.y + this.height / 2;
+        this.top = this.y - this.height / 2;
+        this.left = this.x - this.width / 2;
+        this.right = this.x + this.width / 2;
+    }
+
+    applyGravity() {
+        if (!this.isOnGround) {
+            if (this.ySpeed < 0) {
+                this.ySpeed += this.gravity * 0.3;
+            } else {
+                this.ySpeed += this.gravity;
+            }
+        }
+        this.ySpeed = constrain(this.ySpeed, -this.jumpStrength, 10);
+    }
+
+    checkCollisions(platformArray) {
+        this.isOnGround = false;
+        // this method should be optimised to check only those platforms which 
+        // are visible inside left half of the game window.
+        for (let platform of platformArray) {
+            let withinXRange = this.right > platform.left && this.left < platform.right;
+            let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
+            let collision = withinXRange && withinYRange;
+            if (collision) {
+                let x_diff = Math.abs(Math.min(this.right, platform.right) - Math.max(this.left, platform.left));
+                let y_diff = Math.abs(Math.min(this.bottom, platform.bottom) - Math.max(this.top, platform.top));
+                if (x_diff > y_diff) {
+                    this.checkVerticalCollisions(platform);
+                    this.checkHorizontalCollisions(platform);
+                } else {
+                    this.checkHorizontalCollisions(platform);
+                    this.checkVerticalCollisions(platform);
+                }
+            }
+            if((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
+                || (this.bottom === height))
+                this.isOnGround = true;
+        }
+    }
+
+    checkVerticalCollisions(platform) {
+        let withinXRange = this.right > platform.left && this.left < platform.right;
+        let bottomCollision = this.bottom > platform.top && this.bottom < platform.bottom;
+        let topCollision = this.top < platform.bottom && this.top > platform.top;
+        if(withinXRange) {
+            if (bottomCollision /* && this.bottom - this.ySpeed <= platform.top*/) {
+                this.y = platform.top - this.height / 2;
+                this.ySpeed = 0;
+            } else if (topCollision) {
+                this.y = platform.bottom + this.height / 2;
+                this.ySpeed = 0;
+            }
+        }
+        this.updateBounds();
+    }
+
+    checkHorizontalCollisions(platform) {
+        let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
+        let leftCollision = this.left < platform.right && this.left > platform.left;
+        let rightCollision = this.right > platform.left && this. right < platform.right;
+        if(withinYRange) {
+            if (rightCollision) {
+                this.x = platform.left - this.width / 2;
+                this.xSpeed = 0;
+            } else if (leftCollision) {
+                this.x = platform.right + this.height / 2;
+                this.xSpeed = 0;
+            }
+        }
+        this.updateBounds();
+    }
+
+    keepWithinBounds() {
+        this.x = constrain(this.x, this.width / 2, width/2);
+        if (this.bottom > height) {
+            this.y = height - this.height / 2;
+            this.ySpeed = 0;
+            this.isOnGround = true;
+        }
+        this.updateBounds();
+    }
+
+    display() {
+        fill(255, 0, 0);
+        rectMode(CENTER);
+        rect(this.x, this.y, this.width, this.height);
+    }
+
+    move(direction) {
+        /*
+        if (this.isOnGround) {
+            this.xSpeed = direction * this.maxSpeed;
+        } else {
+            this.xSpeed += direction * 0.3;
+            this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
+        }
+        */
+        if((direction > 0 && this.x < width / 2) || (direction < 0)) {
+            this.x += direction * this.maxSpeed;
+        }
+    }
+
+    stopMovement() {
+        this.xSpeed = 0;
+    }
+
+    jump() {
+        if (this.isOnGround) {
+            this.ySpeed = -this.jumpStrength;
+            this.isOnGround = false;
+        }
+    }
+
+    handleInput(isKeyDown) {
+        if (isKeyDown) {
+            if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.move(-1);
+            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.move(1);
+            if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
+        }
+    }
+}
