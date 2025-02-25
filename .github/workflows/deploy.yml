@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Runs when you push to `main`
+  workflow_dispatch:  # Allows manual deployment trigger
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures the latest commit is pulled
+
+      - name: Prepare Deployment Files
+        run: |
+          mkdir -p dist
+          cp -r docs/index.html docs/style.css docs/src dist/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Deploys to GitHub Pages branch
+          folder: dist       # Uploads only the `dist/` folder
+          clean: true        # Removes old files before deploying

@@ -34,4 +34,11 @@ class Game {
         }
         this.update();
     }
+
+    handleInput(){
+        if(keyIsDown){
+            this.map.handleInput(true); // handle player input
+            this.player.handleInput(true); // handle map input
+        }
+    }
 }
