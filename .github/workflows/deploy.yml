@@ -3,10 +3,10 @@ name: Deploy p5.js to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this if your deployment branch is different
+      - main  # Also runs on `yml-patch`
       - yml-patch
 
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  workflow_dispatch:  # Allows manual triggering
 
 permissions:
   contents: read
@@ -29,11 +29,11 @@ jobs:
       - name: Install dependencies (if needed)
         run: npm install || true
 
+      # Prevent infinite loop by excluding 'build/' folder
       - name: Build project (if needed)
         run: |
           mkdir -p build
-          cp -r * build
-          rm -rf build/.git build/.github # Remove GitHub-related files to avoid conflicts
+          rsync -av --exclude='build' --exclude='.git' --exclude='.github' . build/
 
       - name: Remove old artifacts (if any)
         run: rm -rf github-pages
