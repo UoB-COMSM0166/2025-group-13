@@ -1,8 +1,32 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
+
+header {
+  text-align: center;
+  margin-top: 20px;
+  font: 100;
+  font-size: x-large;
+}
+
 canvas {
   display: block;
   margin: 0 auto;
+}
+
+#canvas-container {
+  width: 850px;          /* Set a specific width for your canvas container */
+  height: 500px;         /* Set a specific height for your canvas container */
+  margin: 40px auto;     /* Center the container horizontally and add vertical margin */
+  border: 5px solid #ccc; /* Optional: add a border for visualization */
+}
+
+#instructions {
+  text-align: center;
+  font: 100;
+  font-size: 24px;
+  color: #333;
+  margin-top: 2px;
 }

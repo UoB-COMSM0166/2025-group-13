@@ -1,4 +1,11 @@
 class Platform {
+
+  static preload() {
+    Platform.img_ground = loadImage('src/assets/ground.png');
+    Platform.img_smallPlatform = loadImage('src/assets/platform_small2.png');
+    Platform.img_largePlatform = loadImage('src/assets/platform_large2.png');
+  }
+
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
     if (height === null) {
       this.width = widthOrBrickNumber * Brick.width;
@@ -8,10 +15,14 @@ class Platform {
       this.height = height;
     }
 
+    this.isGround = this.width === 600; // Ground
+    this.largePlatform = this.width > 100 && this.width < 600; // Large platform
+
     this.x = positionX;
     this.y = positionY;
 
-    this.updateBounds();
+    //this.display();
+    //this.updateBounds();
   }
 
   updateBounds()
@@ -23,8 +34,19 @@ class Platform {
   }
 
   display() {
-    fill(100);
     rectMode(CENTER);  // Draw the rectangle with the center point
-    rect(this.x, this.y, this.width, this.height);
+    if (this.largePlatform) {
+      image(Platform.img_largePlatform, this.x, this.y, this.width, this.height);
+    }
+    else if (this.isGround) {
+      image(Platform.img_ground, this.x, this.y, this.width, this.height);
+    }
+    else if (!this.largePlatform && !this.isGround && Platform.img_smallPlatform) {
+      image(Platform.img_smallPlatform, this.x, this.y, this.width, this.height);
+    }
+    else {
+      fill(100);
+      rect(this.x, this.y, this.width, this.height);
+    }
   }
 }

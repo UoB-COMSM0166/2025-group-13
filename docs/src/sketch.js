@@ -1,48 +1,55 @@
-// Global variable to track the current screen/state.
-//let screenState = "homePage"; // pageScreen, lossScreen, levelCompleteScreen
-let screenState = "pageScreen";
+// Description: This file is the main entry point for the game. It creates the game object and the screen object.
+// It also handles the key events and the game loop.
+
+// Global variable to track the current screen state.
+let screenState = "homePage"; // gameScreen, pausePage, lossScreen, levelCompleteScreen, etc
+//let screenState = "gameScreen";
+// Global variable to maintain the screen and game objects
+let screenGame;
 let game;
 // Global variable to track the current state of the game.
 //let gameState = unstarted; // playing, levelComplete, died;
 
-function setup() {
-  screenSetup();
+function preload() {
+  screenGame = new GameScreen();
   game = new Game();
+  game.preload();
+}
+
+function setup() {
+  screenGame.setup();
   game.setup();
+  imageMode(CENTER);
 }
 
 function draw() {
   if (screenState === "homePage") {
-    drawHomeScreen();
+    screenGame.drawHomeScreen();
   }
-  else if(screenState === "pageScreen") {
+  else if(screenState === "gameScreen") {
     game.handleInput();
     game.update();
     game.draw();
   }
+  else if(screenState === "pausePage") {
+    screenGame.drawPauseGame();
+  }
 }
 
-function screenSetup() {
-  createCanvas(600, 400);
-  background(10);
-}
-
-function drawHomeScreen() {
-  textAlign(CENTER, CENTER);
-  textSize(32);
-  fill(0);
-  text("Welcome to the Game!", width / 2, height / 2 - 40);
-  textSize(20);
-  text("Click to Start", width / 2, height / 2);
-}
-/*
 function keyPressed() {
-  game.map.handleInput(true);
-  game.player.handleInput(true);
+  if((screenState === "homePage" || screenState === "pausePage") && key === ' ') {
+    screenState = "gameScreen"
+  }
+  else if(screenState === "gameScreen" && keyCode === ESCAPE) {
+    screenState = "pausePage";
+  }
+  //game.map.handleInput(true);
+  //game.player.handleInput(true);
 }
 
+/*
 function keyReleased() {
   game.map.handleInput(false);
   game.player.handleInput(false);
 }
- */
+*/

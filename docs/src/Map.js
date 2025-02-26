@@ -1,12 +1,16 @@
 class Map {
+    preload() {
+        Platform.preload();
+    }
     constructor() {
         this.platforms = [];
         this.xSpeed = 4;
     }
     setup() {
         // "Ground" platform
-        this.platforms.push(new Platform(width / 2, 375, width*3, Brick.height*2));
-
+        this.platforms.push(new Platform(width/2, 375, width, Brick.height*2));
+        this.platforms.push(new Platform(width + width/2, 375, width, Brick.height*2));
+        this.platforms.push(new Platform(width + width + width/2, 375, width, Brick.height*2));
         //float platforms
         this.platforms.push(new Platform(120, 310, 3));
         this.platforms.push(new Platform(350, 330, 5));
@@ -24,7 +28,7 @@ class Map {
         this.platforms.push(new Platform(width + width + 600, height/2, 30, height));
     }
     update() {
-        // Update all platforms
+        // Update positions for all platforms
         for (let p of this.platforms) {
             p.updateBounds();
         }
