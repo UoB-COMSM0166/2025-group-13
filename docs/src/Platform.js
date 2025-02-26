@@ -1,19 +1,23 @@
 class Platform {
 
   static preload() {
-    Platform.tileset = loadImage('src/assets/tile_grandTreePlatform.png');
+    Platform.tilesetImg = loadImage('src/assets/tile_grandTreePlatform.png');
+    Platform.lavaImg = loadImage('src/assets/tile_lava.gif');
   }
 
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
-    if (height === null) {
+    if (widthOrBrickNumber === "full") {
+      this.width = width;
+    }if (height === null) {
       this.width = widthOrBrickNumber * Brick.width;
       this.height = Brick.height;
     } else {
       this.width = widthOrBrickNumber;
       this.height = height;
     }
-
+    this.tileNumber = widthOrBrickNumber;
     this.isGround = this.width === 600; // Ground
+    this.isLava = this.width === "full"; // Lava
     this.isPlatform = this.width > 100 && this.width < 600; // Large platform
 
     this.x = positionX;
@@ -23,8 +27,7 @@ class Platform {
     this.updateBounds();
   }
 
-  updateBounds()
-  {
+  updateBounds() {
     this.top = this.y - this.height / 2;
     this.bottom = this.y + this.height / 2;
     this.left = this.x - this.width / 2;
@@ -33,14 +36,29 @@ class Platform {
 
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
+    let tileWidth = Brick.width;
+    let tileHeight = Brick.height;
+    let tilesX = Math.ceil(this.width / tileWidth);
+    let scaledTileWidth = this.width / tilesX;
+
     if (this.isGround) {
-      image(Platform.tileset, this.x, this.y, this.width, this.height);
+      let sx = 0, sy = 0, sw = 800, sh = 800;
+
+      for (let i = 0; i < tilesX; i++) {
+        let dx = this.left + i * scaledTileWidth+tileWidth/2;
+        let dy = this.y;
+
+        image(Platform.tilesetImg, dx, dy, scaledTileWidth, tileHeight, sx, sy, sw, sh);
+      }
     }
-    else if (this.isGround) {
-      image(Platform.img_ground, this.x, this.y, this.width, this.height);
-    }
-    else if (!this.isPlatform && !this.isGround && Platform.img_smallPlatform) {
-      image(Platform.img_smallPlatform, this.x, this.y, this.width, this.height);
+    else if (this.isLava) {
+      // console.log("it is lava");
+      for (let i = 0; i < tilesX; i++) {
+        let dx = this.left + i * scaledTileWidth+tileWidth/2;
+        let dy = this.y;
+
+        image(Platform.lavaImg, dx, dy, scaledTileWidth, tileHeight, sx, sy, sw, sh);
+      }
     }
     else {
       fill(100);
