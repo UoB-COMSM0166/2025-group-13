@@ -1,0 +1,49 @@
+name: Deploy p5.js to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Also runs on `yml-patch`
+      - yml-patch
+
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages  # FIX: Add this line
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies (if needed)
+        run: npm install || true
+
+      # Prevent infinite loop by excluding 'build/' folder
+      - name: Build project (if needed)
+        run: |
+          mkdir -p build
+          rsync -av --exclude='build' --exclude='.git' --exclude='.github' . build/
+
+      - name: Remove old artifacts (if any)
+        run: rm -rf github-pages
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
