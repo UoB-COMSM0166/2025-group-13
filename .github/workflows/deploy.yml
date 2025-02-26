@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Change this if your deployment branch is different
+      - yml-patch
 
   workflow_dispatch:  # Allows manual triggering of the workflow
 
@@ -33,6 +34,9 @@ jobs:
           mkdir -p build
           cp -r * build
           rm -rf build/.git build/.github # Remove GitHub-related files to avoid conflicts
+
+      - name: Remove old artifacts (if any)
+        run: rm -rf github-pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
