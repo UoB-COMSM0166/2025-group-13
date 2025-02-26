@@ -1,0 +1,44 @@
+name: Deploy p5.js to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Change this if your deployment branch is different
+
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies (if needed)
+        run: npm install || true
+
+      - name: Build project (if needed)
+        run: |
+          mkdir -p build
+          cp -r * build
+          rm -rf build/.git build/.github # Remove GitHub-related files to avoid conflicts
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
