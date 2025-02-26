@@ -155,7 +155,6 @@ class Player {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
-        */
         if((direction > 0 && this.x < width / 2) || (direction < 0)) {
             this.x += direction * this.maxSpeed;
         }

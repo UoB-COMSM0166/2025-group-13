@@ -8,21 +8,19 @@ class Game {
     }
 
     constructor() {
-        this.groundHeight = 380;
+        this.groundHeight = 350;
         this.player = new Player(width / 2, this.groundHeight/2);
         this.map = new Map();
     }
 
     setup() {
         createCanvas(600, 400);
+
         this.map.setup(); //init map
     }
 
     update() {        
-        this.player.display(); // display player
-
         this.map.update(); // display map
-
         this.player.update(this.map.platforms);
     }
 
@@ -32,6 +30,8 @@ class Game {
         } else {
             background(220);
         }
+        this.player.display(); // display player
+        this.map.display(); // display map
         this.update();
     }
 

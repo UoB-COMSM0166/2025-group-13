@@ -7,7 +7,6 @@ class Platform {
   }
 
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
-    
     if (height === null) {
       this.width = widthOrBrickNumber * Brick.width;
       this.height = Brick.height;
@@ -22,6 +21,7 @@ class Platform {
     this.x = positionX;
     this.y = positionY;
 
+    this.display();
     this.updateBounds();
   }
 
@@ -41,8 +41,12 @@ class Platform {
     else if (this.isGround) {
       image(Platform.img_ground, this.x, this.y, this.width, this.height);
     }
-    else if (!this.largePlatform && !this.isGround) {
+    else if (!this.largePlatform && !this.isGround && Platform.img_smallPlatform) {
       image(Platform.img_smallPlatform, this.x, this.y, this.width, this.height);
+    }
+    else {
+      fill(100);
+      rect(this.x, this.y, this.width, this.height);
     }
   }
 }
