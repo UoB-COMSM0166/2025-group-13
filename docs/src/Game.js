@@ -2,7 +2,7 @@
 class Game {
 
     preload() {
-        this.background_img = loadImage('src/assets/background_light.png');
+        this.background_img = loadImage('src/assets/bg_volcano.png');
         this.player.preload();
         this.map.preload();
     }
@@ -19,7 +19,7 @@ class Game {
         this.map.setup(); //init map
     }
 
-    update() {        
+    update() {
         this.map.update(); // display map
         this.player.update(this.map.platforms);
     }

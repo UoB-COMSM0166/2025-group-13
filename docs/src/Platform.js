@@ -1,9 +1,7 @@
 class Platform {
 
   static preload() {
-    Platform.img_ground = loadImage('src/assets/ground.png');
-    Platform.img_smallPlatform = loadImage('src/assets/platform_small2.png');
-    Platform.img_largePlatform = loadImage('src/assets/platform_large2.png');
+    Platform.tileset = loadImage('src/assets/tile_grandTreePlatform.png');
   }
 
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
@@ -16,7 +14,7 @@ class Platform {
     }
 
     this.isGround = this.width === 600; // Ground
-    this.largePlatform = this.width > 100 && this.width < 600; // Large platform
+    this.isPlatform = this.width > 100 && this.width < 600; // Large platform
 
     this.x = positionX;
     this.y = positionY;
@@ -35,13 +33,13 @@ class Platform {
 
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
-    if (this.largePlatform) {
-      image(Platform.img_largePlatform, this.x, this.y, this.width, this.height);
+    if (this.isGround) {
+      image(Platform.tileset, this.x, this.y, this.width, this.height);
     }
     else if (this.isGround) {
       image(Platform.img_ground, this.x, this.y, this.width, this.height);
     }
-    else if (!this.largePlatform && !this.isGround && Platform.img_smallPlatform) {
+    else if (!this.isPlatform && !this.isGround && Platform.img_smallPlatform) {
       image(Platform.img_smallPlatform, this.x, this.y, this.width, this.height);
     }
     else {
@@ -50,3 +48,4 @@ class Platform {
     }
   }
 }
+// image(tiles_image, this.pos.x - offset, this.pos.y - yOffset, this.size, this.size, this.img[0] * this.spriteSize, this.img[1] * this.spriteSize, this.spriteSize, this.spriteSize);
