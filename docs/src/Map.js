@@ -25,7 +25,7 @@ class Map {
         this.platforms.push(new Platform(width + width + 450, 250, 7));
 
         //lava behind ground
-        let lava = new Platform(width / 2, 175, "full", 30);  // 铺满整个屏幕
+        let lava = new Platform(width / 2, 175, "full", 30);
         this.platforms.push(lava);
         // End wall
         this.platforms.push(new Platform(width + width + 600, height / 2, 30, height));

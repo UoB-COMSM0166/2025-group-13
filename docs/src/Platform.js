@@ -2,13 +2,15 @@ class Platform {
 
   static preload() {
     Platform.tilesetImg = loadImage('src/assets/tile_grandTreePlatform.png');
-    Platform.lavaImg = loadImage('src/assets/tile_lava.gif');
+    // Platform.lavaImg = loadImage('src/assets/tile_lava.gif');
   }
 
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
+    this.tilesetImg = null;
+    // this.lavaImg = null;
     if (widthOrBrickNumber === "full") {
       this.width = width;
-    }if (height === null) {
+    } if (height === null) {
       this.width = widthOrBrickNumber * Brick.width;
       this.height = Brick.height;
     } else {
@@ -45,21 +47,13 @@ class Platform {
       let sx = 0, sy = 0, sw = 800, sh = 800;
 
       for (let i = 0; i < tilesX; i++) {
-        let dx = this.left + i * scaledTileWidth+tileWidth/2;
+        let dx = this.left + i * scaledTileWidth + tileWidth / 2;
         let dy = this.y;
 
         image(Platform.tilesetImg, dx, dy, scaledTileWidth, tileHeight, sx, sy, sw, sh);
       }
     }
-    else if (this.isLava) {
-      // console.log("it is lava");
-      for (let i = 0; i < tilesX; i++) {
-        let dx = this.left + i * scaledTileWidth+tileWidth/2;
-        let dy = this.y;
 
-        image(Platform.lavaImg, dx, dy, scaledTileWidth, tileHeight, sx, sy, sw, sh);
-      }
-    }
     else {
       fill(100);
       rect(this.x, this.y, this.width, this.height);
