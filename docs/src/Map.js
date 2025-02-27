@@ -10,13 +10,14 @@ class Map {
         //TODO: fix imageMode(CENTER), and all of these need to redo.
 
         let groundHeight = Brick.height;
-        let groundY = game.windowHeight - Brick.height;
+        let groundY = game.windowHeight - Brick.height/2;
         // tree
         //TODO: fix tree's collision
         let treeHeightOne=90;
         this.platforms.push(new Platform("TREE", 250, groundY-treeHeightOne, 30, treeHeightOne));
 
         // "Ground" platform
+        //TODO: ground height
         let groundGapTwo = Brick.width * 2;
         let groundGapSix = Brick.width * 6;
         let groundOneEndX = (game.windowWidth / 2 - groundGapSix / 2) + (game.windowWidth - groundGapSix) / 2;
