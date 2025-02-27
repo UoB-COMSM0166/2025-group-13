@@ -46,8 +46,8 @@ class Game {
         this.player.display();
 
         if (this.lavaImg) {
-            let tilesX = Math.ceil(this.windowWidth*2 / this.lavaTileWidth);
-            for (let i = 0; i < tilesX; i++){
+            let tilesX = Math.ceil(this.windowWidth * 2 / this.lavaTileWidth);
+            for (let i = 0; i < tilesX; i++) {
                 let dx = this.windowLeft + (i * this.lavaTileWidth) + this.lavaTileWidth / 2;
                 let dy = (this.windowBottom - this.lavaTileHeight / 2);
 
@@ -64,8 +64,8 @@ class Game {
 
     handleInput() {
         if (keyIsDown) {
-            this.map.handleInput(true); // handle player input
-            this.player.handleInput(true); // handle map input
+            this.map.handleInput(true); // handle map input
+            this.player.handleInput(true); // handle player input
         }
     }
 }

@@ -1,14 +1,12 @@
 class Player {
 
     preload() {
-        this.gif_walk = loadImage('src/assets/gif_walk.gif');
-        this.gif_walkBack = loadImage('src/assets/gif_walkBack.gif');
-        this.dino_static = loadImage('src/assets/dino_static.png');
+        this.imgDinoRed = loadImage('src/assets/item_dino_red.png');
     }
 
     constructor(positionX, positionY) {
-        this.gif_walk = null;
-        this.dino_static = null;
+        // this.dino_walk = null;
+        // this.dino_static = null;
 
         this.x = positionX;
         this.y = positionY + 5;
@@ -32,17 +30,66 @@ class Player {
     display() {
         fill(255, 0, 0);
         rectMode(CENTER);
-        //rect(this.x, this.y, this.width, this.height);
-        if (this.isMoving) {
-            if (this.isBackwards) {
-                image(this.gif_walkBack, this.x, this.y - this.height / 2);
+
+        let sx, sy, sw, sh;
+        let aspectRatio, scaledWidth, scaledHeight;
+
+        if (!this.isMoving) {
+            if (!this.isBackwards) {
+                sx = 450; sy = 13; sw = 60; sh = 100;
+            } else {
+                sx = 450; sy = 13; sw = 60; sh = 100;
             }
-            else {
-                image(this.gif_walk, this.x, this.y - this.height / 2);
+        } else {
+            if (!this.isBackwards) {
+                sx = 105; sy = 300; sw = 110; sh = 80;
+            } else {
+                sx = 105; sy = 300; sw = 110; sh = 80;
             }
         }
-        else {
-            image(this.dino_static, this.x, this.y - this.height / 2);
+
+        aspectRatio = sw / sh;
+        scaledWidth = this.height * aspectRatio;
+        scaledHeight = this.height;
+
+        // draw background rectangle
+        fill(200, 200, 255, 150);
+        noStroke();
+        rect(this.x, this.y, this.width, this.height);
+
+        if (this.isMoving && this.isBackwards) {
+            push();
+            translate(this.x, this.y);
+            scale(-1, 1);
+
+            image(
+                this.imgDinoRed,
+                0, 0,
+                scaledWidth, scaledHeight,
+                sx, sy, sw, sh
+            );
+
+            pop();
+        } else if (!this.isMoving && this.isBackwards) {
+            push();
+            translate(this.x, this.y);
+            scale(-1, 1);
+
+            image(
+                this.imgDinoRed,
+                0, 0,
+                scaledWidth, scaledHeight,
+                sx, sy, sw, sh
+            );
+
+            pop();
+        } else {
+            image(
+                this.imgDinoRed,
+                this.x, this.y,
+                scaledWidth, scaledHeight,
+                sx, sy, sw, sh
+            );
         }
     }
 
@@ -93,7 +140,7 @@ class Player {
                     this.checkVerticalCollisions(platform);
                 }
             }
-            if((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
+            if ((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
                 || (this.bottom === height))
                 this.isOnGround = true;
         }
@@ -103,7 +150,7 @@ class Player {
         let withinXRange = this.right > platform.left && this.left < platform.right;
         let bottomCollision = this.bottom > platform.top && this.bottom < platform.bottom;
         let topCollision = this.top < platform.bottom && this.top > platform.top;
-        if(withinXRange) {
+        if (withinXRange) {
             if (bottomCollision /* && this.bottom - this.ySpeed <= platform.top*/) {
                 this.y = platform.top - this.height / 2;
                 this.ySpeed = 0;
@@ -118,8 +165,8 @@ class Player {
     checkHorizontalCollisions(platform) {
         let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
         let leftCollision = this.left < platform.right && this.left > platform.left;
-        let rightCollision = this.right > platform.left && this. right < platform.right;
-        if(withinYRange) {
+        let rightCollision = this.right > platform.left && this.right < platform.right;
+        if (withinYRange) {
             if (rightCollision) {
                 this.x = platform.left - this.width / 2;
                 this.xSpeed = 0;
@@ -132,7 +179,7 @@ class Player {
     }
 
     keepWithinBounds() {
-        this.x = constrain(this.x, this.width / 2, width/2);
+        this.x = constrain(this.x, this.width / 2, width / 2);
         if (this.bottom > height) {
             this.y = height - this.height / 2;
             this.ySpeed = 0;
@@ -148,21 +195,21 @@ class Player {
         else {
             this.isBackwards = false;
         }
-        this.isMoving = true;
+        // this.isMoving = true;
         if (this.isOnGround) {
             this.xSpeed = direction * this.maxSpeed;
         } else {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
-        if((direction > 0 && this.x < width / 2) || (direction < 0)) {
+        if ((direction > 0 && this.x < width / 2) || (direction < 0)) {
             this.x += direction * this.maxSpeed;
         }
     }
 
     stopMovement() {
-        this.isMoving = false;
-        this.isBackwards = false;
+        // this.isMoving = false;
+        // this.isBackwards = false;
         this.xSpeed = 0;
     }
 
@@ -175,9 +222,19 @@ class Player {
 
     handleInput(isKeyDown) {
         if (isKeyDown) {
-            if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.move(-1);
-            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.move(1);
+            if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+                this.move(-1);
+                this.isMoving = true;
+                this.isBackwards = true;
+            }
+            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+                this.move(1);
+                this.isMoving = true;
+                this.isBackwards = false;
+            }
             if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
+        } else {
+            this.isMoving = false;
         }
     }
 }
