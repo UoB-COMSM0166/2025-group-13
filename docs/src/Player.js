@@ -53,7 +53,7 @@ class Player {
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.keepWithinBounds();
-        this.display();
+        // this.display();
     }
 
     updateBounds() {
@@ -76,7 +76,7 @@ class Player {
 
     checkCollisions(platformArray) {
         this.isOnGround = false;
-        // this method should be optimised to check only those platforms which 
+        // this method should be optimised to check only those platforms which
         // are visible inside left half of the game window.
         for (let platform of platformArray) {
             let withinXRange = this.right > platform.left && this.left < platform.right;

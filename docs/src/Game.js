@@ -12,10 +12,10 @@ class Game {
         this.windowHeight = 400;
         this.windowWidth = 600;
 
-        this.windowBottom = windowHeight;
+        this.windowBottom = this.windowHeight;
         this.windowLeft = 0;
 
-        this.lavaTileHeight = 50;
+        this.lavaTileHeight = 25;
         this.lavaTileWidth = 50;
 
         this.groundTop = this.windowHeight - this.lavaTileHeight;
@@ -36,24 +36,31 @@ class Game {
     }
 
     draw() {
+
         if (this.background_img) {
             image(this.background_img, width / 2, this.groundTop / 2, this.windowWidth, this.windowHeight);
         } else {
             background(220);
         }
 
+        this.player.display();
+
         if (this.lavaImg) {
-            let tilesX = Math.ceil(this.windowWidth / this.lavaTileWidth);
+            let tilesX = Math.ceil(this.windowWidth*2 / this.lavaTileWidth);
             for (let i = 0; i < tilesX; i++){
-                let dx = this.windowLeft + (i* this.lavaTileWidth / 2);
-                let dy = (this.windowBottom - this.lavaTileHeight*2);
-                image(this.lavaImg, dx, dy, this.lavaTileHeight, this.lavaTileWidth, 0, 0, this.lavaImg.width, this.lavaImg.height, CONTAIN)
+                let dx = this.windowLeft + (i * this.lavaTileWidth) + this.lavaTileWidth / 2;
+                let dy = (this.windowBottom - this.lavaTileHeight / 2);
+
+                image(this.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
             }
         }
-        this.player.display(); // display player
-        this.map.display(); // display map
+
+        this.map.display();
+
+
         this.update();
     }
+
 
     handleInput() {
         if (keyIsDown) {
