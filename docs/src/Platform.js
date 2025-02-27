@@ -2,12 +2,10 @@ class Platform {
 
   static preload() {
     Platform.tilesetImg = loadImage('src/assets/tile_grandTreePlatform.png');
-    // Platform.lavaImg = loadImage('src/assets/tile_lava.gif');
   }
 
   constructor(positionX, positionY, widthOrBrickNumber, height = null) {
     this.tilesetImg = null;
-    // this.lavaImg = null;
     if (widthOrBrickNumber === "full") {
       this.width = width;
     } if (height === null) {

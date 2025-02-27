@@ -7,10 +7,19 @@ class Map {
         this.xSpeed = 4;
     }
     setup() {
+        //TODO: fix imageMode(CENTER),and all of these need to redo.
+
         // "Ground" platform
-        // this.platforms.push(new Platform(width/2, 375, width, Brick.height*2));
-        this.platforms.push(new Platform(width + width / 2, 375, width, Brick.height * 2));
-        this.platforms.push(new Platform(width + width + width / 2, 375, width, Brick.height * 2));
+        let groundGapTwo = Brick.width * 2;
+        let groundGapSix = Brick.width * 6;
+        let groundHeight = game.windowHeight - game.groundTop;
+        let groundY = game.windowHeight - Brick.height;
+        let groundOneEndX = (game.windowWidth / 2 - groundGapSix / 2) + (game.windowWidth - groundGapSix) / 2;
+
+        this.platforms.push(new Platform((game.windowWidth / 2 - groundGapSix / 2), groundY, game.windowWidth - groundGapSix, groundHeight));
+        this.platforms.push(new Platform(groundOneEndX + game.windowWidth / 2 + groundGapTwo, groundY, game.windowWidth - groundGapTwo, groundHeight));
+        this.platforms.push(new Platform(game.windowWidth + game.windowWidth + game.windowWidth / 2, groundY, game.windowWidth, groundHeight));
+
         //float platforms
         this.platforms.push(new Platform(120, 310, 3));
         this.platforms.push(new Platform(350, 330, 5));
