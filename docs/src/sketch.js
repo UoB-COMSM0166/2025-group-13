@@ -19,7 +19,7 @@ function preload() {
 function setup() {
   screenGame.setup();
   game.setup();
-  imageMode(CENTER);
+  imageMode(CENTER);//Haru: I am so sorry about that, such a pain in the ass now
 }
 
 function draw() {
