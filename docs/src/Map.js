@@ -15,26 +15,39 @@ class Map {
         this.fire_height = 70;
     }
     setup() {
+        //TODO: fix imageMode(CENTER), and all of these need to redo.
+
+        let groundHeight = Brick.height;
+        let groundY = height - Brick.height/2;
+        // tree
+        //TODO: fix tree's collision
+        let treeHeightOne=90;
+        this.platforms.push(new Platform("TREE", 250, groundY-treeHeightOne, 30, treeHeightOne));
+
         // "Ground" platform
-        this.platforms.push(new Platform(width/2, 375, width, Brick.height*2));
-        this.platforms.push(new Platform(width + width/2, 375, width, Brick.height*2));
-        this.platforms.push(new Platform(width + width + width/2, 375, width, Brick.height*2));
+        let groundGapTwo = Brick.width * 2;
+        let groundGapSix = Brick.width * 6;
+        let groundOneEndX = (width / 2 - groundGapSix / 2) + (width - groundGapSix) / 2;
+
+        this.platforms.push(new Platform("GROUND", (width / 2 - groundGapSix / 2), groundY, width - groundGapSix, groundHeight));
+        this.platforms.push(new Platform("GROUND", groundOneEndX + width / 2 + groundGapTwo, groundY, width - groundGapTwo, groundHeight));
+        this.platforms.push(new Platform("GROUND", width + width + width / 2, groundY, width, groundHeight));
 
         //float platforms
-        this.platforms.push(new Platform(120, 310, 3));
-        this.platforms.push(new Platform(350, 330, 5));
-        this.platforms.push(new Platform(450, 250, 7));
+        this.platforms.push(new Platform("FLOAT", 120, 310, 3));
+        // this.platforms.push(new Platform("FLOAT", 350, 330, 5));
+        this.platforms.push(new Platform("FLOAT", 450, 250, 7));
 
-        this.platforms.push(new Platform(width + 120, 310, 3));
-        this.platforms.push(new Platform(width + 350, 330, 5));
-        this.platforms.push(new Platform(width + 450, 250, 7));
+        this.platforms.push(new Platform("FLOAT", width + 120, 310, 3));
+        this.platforms.push(new Platform("FLOAT", width + 350, 330, 5));
+        this.platforms.push(new Platform("FLOAT", width + 450, 250, 7));
 
-        this.platforms.push(new Platform(width + width + 120, 310, 3));
-        this.platforms.push(new Platform(width + width + 350, 330, 5));
-        this.platforms.push(new Platform(width + width + 450, 250, 7));
+        this.platforms.push(new Platform("FLOAT", width + width + 120, 310, 3));
+        this.platforms.push(new Platform("FLOAT", width + width + 350, 330, 5));
+        this.platforms.push(new Platform("FLOAT", width + width + 450, 250, 7));
 
         // End wall
-        this.platforms.push(new Platform(width + width + 600, height/2, 30, height));
+        this.platforms.push(new Platform("ENDSIGN", width + width + 600, height / 2, 30, height));
 
         // Food
         this.foods.push(new Food(120, 310 - this.food_height));
@@ -47,7 +60,9 @@ class Map {
 
         // Health level
         this.health = new Health();
+
     }
+
     update() {
         // Update positions for all platforms
         for (let platform of this.platforms) { 
@@ -76,8 +91,7 @@ class Map {
         this.health.display();
     }
 
-    stopMovement()
-    {
+    stopMovement() {
         this.xSpeed = 0;
     }
 

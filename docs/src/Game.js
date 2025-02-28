@@ -2,43 +2,69 @@
 class Game {
 
     preload() {
-        this.background_img = loadImage('src/assets/background_light.png');
+        this.background_img = loadImage('src/assets/bg_volcano.png');
+        this.lavaImg = loadImage('src/assets/tile_lava.gif');
         this.player.preload();
         this.map.preload();
     }
 
     constructor() {
-        this.groundHeight = 350;
-        this.player = new Player(width / 2, this.groundHeight/2);
+        // height = 400;
+        // width = 600;
+
+        this.windowBottom = height;
+        this.windowLeft = 0;
+
+        this.lavaTileHeight = 25;
+        this.lavaTileWidth = 50;
+
+        this.groundTop = height - this.lavaTileHeight;
+
+        this.player = new Player(width / 2, this.groundTop / 2);
         this.map = new Map();
     }
 
     setup() {
-        createCanvas(600, 400);
-
         this.map.setup(); //init map
     }
 
-    update() {        
+    update() {
         this.map.update(); // display map
         this.player.update(this.map.platforms);
     }
 
     draw() {
+
         if (this.background_img) {
-            image(this.background_img, width/2, this.groundHeight/2, 600, 400);
+            image(this.background_img, width/2, height/2, width, height);
         } else {
             background(220);
         }
-        this.player.display(); // display player
-        this.map.display(); // display map
+
+        this.player.display();
+
+        if (this.lavaImg) {
+            let tilesX = Math.ceil(width * 2 / this.lavaTileWidth);
+            for (let i = 0; i < tilesX; i++) {
+                let dx = this.windowLeft + (i * this.lavaTileWidth) + this.lavaTileWidth / 2;
+                // let dy = (this.windowBottom - this.lavaTileHeight / 2);
+                let dy = (height - this.lavaTileHeight / 2);
+
+                image(this.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+            }
+        }
+
+        this.map.display();
+
+
         this.update();
     }
 
-    handleInput(){
-        if(keyIsDown){
-            this.map.handleInput(true); // handle player input
-            this.player.handleInput(true); // handle map input
+
+    handleInput() {
+        if (keyIsDown) {
+            this.map.handleInput(true); // handle map input
+            this.player.handleInput(true); // handle player input
         }
     }
 }
