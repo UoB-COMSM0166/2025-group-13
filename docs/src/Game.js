@@ -25,8 +25,6 @@ class Game {
     }
 
     setup() {
-        createCanvas(this.windowWidth, this.windowHeight);
-
         this.map.setup(); //init map
     }
 
@@ -38,7 +36,7 @@ class Game {
     draw() {
 
         if (this.background_img) {
-            image(this.background_img, width / 2, this.groundTop / 2, this.windowWidth, this.windowHeight);
+            image(this.background_img, width/2, this.groundTop/2, width, height);
         } else {
             background(220);
         }

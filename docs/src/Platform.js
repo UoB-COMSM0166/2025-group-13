@@ -20,14 +20,10 @@ class Platform {
 
     this.x = positionX;
     this.y = positionY;
-
     this.top = 0;
     this.bottom = 0;
     this.left = 0;
     this.right = 0;
-
-    this.display();
-    this.updateBounds();
   }
 
   updateBounds() {
