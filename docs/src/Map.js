@@ -22,7 +22,7 @@ class Map {
         // tree
         //TODO: fix tree's collision
         let treeHeightOne=90;
-        this.platforms.push(new Platform("TREE", 250, groundY-treeHeightOne, 30, treeHeightOne));
+        this.platforms.push(new Platform("TREE", 250, height - groundHeight - treeHeightOne/2, 30, treeHeightOne));
 
         // "Ground" platform
         let groundGapTwo = Brick.width * 2;
