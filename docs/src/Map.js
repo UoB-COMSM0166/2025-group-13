@@ -1,10 +1,18 @@
 class Map {
+
     preload() {
         Platform.preload();
+        Health.preload();
+        Food.preload();
+        Fire.preload();
     }
     constructor() {
         this.platforms = [];
+        this.foods = [];
+        this.fires = [];
         this.xSpeed = 4;
+        this.food_height = 25;
+        this.fire_height = 70;
     }
     setup() {
         //TODO: fix imageMode(CENTER), and all of these need to redo.
@@ -41,32 +49,63 @@ class Map {
         // End wall
         this.platforms.push(new Platform("ENDSIGN", width + width + 600, height / 2, 30, height));
 
+        // Food
+        this.foods.push(new Food(120, 310 - this.food_height));
+        this.foods.push(new Food(450, 250 - this.food_height));
+        this.foods.push(new Food(width + 120, 310 - this.food_height));
+
+        // Fire
+        this.fires.push(new Fire(550, groundY-groundHeight));
+        this.fires.push(new Fire(width + 450, groundY-groundHeight));
+
+        // Health level
+        this.health = new Health();
+
     }
 
     update() {
         // Update positions for all platforms
-        for (let p of this.platforms) {
-            // console.log(p.platformType);
-            p.updateBounds();
+        for (let platform of this.platforms) { 
+            platform.updateBounds();
         }
+        for (let food of this.foods) { 
+            food.updateFood();
+        }
+        for (let fire of this.fires) { 
+            fire.updateFire();
+        }
+        this.health.updateHealth();
     }
 
     display() {
         // Display all platforms
-        for (let p of this.platforms) {
-            p.display();
-            // console.log("p.type = ", p.type);
+        for (let platform of this.platforms) {
+            platform.display();
         }
+        for (let food of this.foods) {
+            food.display();
+        }
+        for (let fire of this.fires) {
+            fire.display();
+        }
+        this.health.display();
     }
 
     stopMovement() {
         this.xSpeed = 0;
     }
 
-    moveAllPlatforms() {
-        if (game.player.x === width / 2) {
-            for (let p of this.platforms) {
-                p.x -= this.xSpeed;
+    moveAllPlatforms()
+    {
+        if(game.player.x === width / 2){
+            for (let platform of this.platforms) {
+                platform.x -= this.xSpeed;
+            }
+            for (let food of this.foods) {
+                food.x -= this.xSpeed;
+            }
+            for (let fire of this.fires) {
+                fire.x -= this.xSpeed;
             }
         }
     }
