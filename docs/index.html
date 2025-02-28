@@ -2,23 +2,26 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8" />
+  <title>Dino Escape Game</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <meta charset="utf-8" />
-
 </head>
 
 <body>
-  <main>
-  </main>
+  <header>
+    <h1>Dino Escape</h1>
+  </header>
+  <div id="canvas-container"></div>
+  <script src="src/GameScreen.js"></script>
   <script src="src/Game.js"></script>
   <script src="src/Brick.js"></script>
   <script src="src/Platform.js"></script>
   <script src="src/Map.js"></script>
   <script src="src/Player.js"></script>
   <script src="src/sketch.js"></script>
+  <p id="instructions">Use the arrow keys to move the dinosaur and jump over the obstacles.</p>
 </body>
 
 </html>

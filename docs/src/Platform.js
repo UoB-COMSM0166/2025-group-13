@@ -21,8 +21,8 @@ class Platform {
     this.x = positionX;
     this.y = positionY;
 
-    this.display();
-    this.updateBounds();
+    //this.display();
+    //this.updateBounds();
   }
 
   updateBounds()
