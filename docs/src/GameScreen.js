@@ -22,6 +22,8 @@ class GameScreen {
         textAlign(CENTER, CENTER);
         textSize(40);
         fill(0);
+        stroke('black');
+        strokeWeight(2);
         text("Welcome to the Dino Escape!", width / 2, height / 2 - 40);
         textSize(25);
         text("Press SPACE to Start", width / 2, height / 2 + 30);

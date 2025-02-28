@@ -36,6 +36,5 @@ class Health {
       rect(this.x, this.y, this.width, this.height, 2);
       fill('green');
       rect(this.x, this.y, this.percentage*this.width, this.height);
-
     }
 }

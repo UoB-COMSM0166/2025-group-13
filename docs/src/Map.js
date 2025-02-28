@@ -51,12 +51,12 @@ class Map {
 
         // Food
         this.foods.push(new Food(120, 310 - this.food_height));
-        this.foods.push(new Food(350, 330 - this.food_height));
+        this.foods.push(new Food(450, 250 - this.food_height));
         this.foods.push(new Food(width + 120, 310 - this.food_height));
 
         // Fire
-        this.fires.push(new Fire(550, 323));
-        this.fires.push(new Fire(width + 450, 323));
+        this.fires.push(new Fire(550, groundY-groundHeight));
+        this.fires.push(new Fire(width + 450, groundY-groundHeight));
 
         // Health level
         this.health = new Health();
