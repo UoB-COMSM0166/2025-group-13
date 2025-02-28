@@ -10,7 +10,7 @@ class Map {
         //TODO: fix imageMode(CENTER), and all of these need to redo.
 
         let groundHeight = Brick.height;
-        let groundY = game.windowHeight - Brick.height/2;
+        let groundY = height - Brick.height/2;
         // tree
         //TODO: fix tree's collision
         let treeHeightOne=90;
@@ -19,11 +19,11 @@ class Map {
         // "Ground" platform
         let groundGapTwo = Brick.width * 2;
         let groundGapSix = Brick.width * 6;
-        let groundOneEndX = (game.windowWidth / 2 - groundGapSix / 2) + (game.windowWidth - groundGapSix) / 2;
+        let groundOneEndX = (width / 2 - groundGapSix / 2) + (width - groundGapSix) / 2;
 
-        this.platforms.push(new Platform("GROUND", (game.windowWidth / 2 - groundGapSix / 2), groundY, game.windowWidth - groundGapSix, groundHeight));
-        this.platforms.push(new Platform("GROUND", groundOneEndX + game.windowWidth / 2 + groundGapTwo, groundY, game.windowWidth - groundGapTwo, groundHeight));
-        this.platforms.push(new Platform("GROUND", game.windowWidth + game.windowWidth + game.windowWidth / 2, groundY, game.windowWidth, groundHeight));
+        this.platforms.push(new Platform("GROUND", (width / 2 - groundGapSix / 2), groundY, width - groundGapSix, groundHeight));
+        this.platforms.push(new Platform("GROUND", groundOneEndX + width / 2 + groundGapTwo, groundY, width - groundGapTwo, groundHeight));
+        this.platforms.push(new Platform("GROUND", width + width + width / 2, groundY, width, groundHeight));
 
         //float platforms
         this.platforms.push(new Platform("FLOAT", 120, 310, 3));
