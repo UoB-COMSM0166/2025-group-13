@@ -9,16 +9,16 @@ class Game {
     }
 
     constructor() {
-        this.windowHeight = 400;
-        this.windowWidth = 600;
+        // height = 400;
+        // width = 600;
 
-        this.windowBottom = this.windowHeight;
+        this.windowBottom = height;
         this.windowLeft = 0;
 
         this.lavaTileHeight = 25;
         this.lavaTileWidth = 50;
 
-        this.groundTop = this.windowHeight - this.lavaTileHeight;
+        this.groundTop = height - this.lavaTileHeight;
 
         this.player = new Player(width / 2, this.groundTop / 2);
         this.map = new Map();
@@ -36,7 +36,7 @@ class Game {
     draw() {
 
         if (this.background_img) {
-            image(this.background_img, width/2, this.groundTop/2, width, height);
+            image(this.background_img, width/2, height/2, width, height);
         } else {
             background(220);
         }
@@ -44,10 +44,11 @@ class Game {
         this.player.display();
 
         if (this.lavaImg) {
-            let tilesX = Math.ceil(this.windowWidth * 2 / this.lavaTileWidth);
+            let tilesX = Math.ceil(width * 2 / this.lavaTileWidth);
             for (let i = 0; i < tilesX; i++) {
                 let dx = this.windowLeft + (i * this.lavaTileWidth) + this.lavaTileWidth / 2;
-                let dy = (this.windowBottom - this.lavaTileHeight / 2);
+                // let dy = (this.windowBottom - this.lavaTileHeight / 2);
+                let dy = (height - this.lavaTileHeight / 2);
 
                 image(this.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
             }
