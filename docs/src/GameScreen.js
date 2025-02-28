@@ -1,6 +1,6 @@
 // Global variables for screen width and heigth
-let SCREENWIDTH = 850;
-let SCREENHEIGHT = 500;
+const SCREENWIDTH = 850;
+const SCREENHEIGHT = 500;
 // Class Screen handles the general configuration of the screen
 // and draws the different types of screen when not playing. 
 class GameScreen {
