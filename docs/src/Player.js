@@ -1,5 +1,7 @@
 class Player {
 
+    static reachedCave = false;
+
     preload() {
         this.imgDinoRed = loadImage('src/assets/item_dino_red.png');
     }
@@ -93,12 +95,14 @@ class Player {
         }
     }
 
-    update(platformArray) {
+    update(platformArray, foodArray, fireArray, cave) {
         this.applyGravity();
         //this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
+        this.checkCollisionsFood(foodArray);
+        this.checkCollisionsFire(fireArray);
         this.keepWithinBounds();
         // this.display();
     }
@@ -143,6 +147,56 @@ class Player {
             if ((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
                 || (this.bottom === height))
                 this.isOnGround = true;
+        }
+    }
+
+    checkCollisionsFire(fireArray) {
+        // this method should be optimised to check only those foods which
+        // are visible inside left half of the game window.
+        let collisionDetected = false;
+        for (let fire of fireArray) {
+            let withinXRange = this.right > fire.left && this.left < fire.right;
+            let withinYRange = this.bottom > fire.top && this.top < fire.bottom;
+            let collision = withinXRange && withinYRange;
+        
+            if (collision) {
+                collisionDetected = true;
+                break; // Exit early to optimize performance
+            }
+        }
+        // Set reduction rate based on collision detection with any of the fires
+        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+    }
+
+    checkCollisionsFood(foodArray) {
+        // this method should be optimised to check only those foods which
+        // are visible inside left half of the game window.
+        for (let i = foodArray.length - 1; i >= 0; i--) {
+            let food = foodArray[i];
+            let withinXRange = this.right > food.left && this.left < food.right;
+            let withinYRange = this.bottom > food.top && this.top < food.bottom;
+            let collision = withinXRange && withinYRange;
+        
+            if (collision) {
+                if (Health.percentage > 0.8) { 
+                    Health.percentage = 1; 
+                } else { 
+                    Health.percentage += 0.2; 
+                }
+                foodArray.splice(i, 1); // Remove collided food
+            }
+        }
+    }
+
+    checkCollisionsCave(cave) {
+        // this method should be optimised to check only those foods which
+        // are visible inside left half of the game window.
+        let withinXRange = this.right > cave.left && this.left < cave.right;
+        let withinYRange = this.bottom > cave.top && this.top < cave.bottom;
+        let collision = withinXRange && withinYRange;
+    
+        if (collision) {
+            Player.reachedCave = true;
         }
     }
 
