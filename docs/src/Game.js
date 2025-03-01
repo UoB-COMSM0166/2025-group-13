@@ -72,7 +72,7 @@ class Game {
     }
 
     setup() {
-        this.map.setup(Game.level1Platforms, Game.level1Foods, Game.level1Fires); //init map
+        this.map.setup(Game.layouts[0]); //init map
     }
 
     update() {

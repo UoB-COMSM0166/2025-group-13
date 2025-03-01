@@ -14,8 +14,10 @@ class Map {
         this.food_height = 25;
         this.fire_height = 70;
     }
-    setup(platforms, foods, fires) {
-        
+    setup(layout) {
+        let platforms = layout[0];
+        let foods = layout[1];
+        let fires = layout[2];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
             this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4]));
