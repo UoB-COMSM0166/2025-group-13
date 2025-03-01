@@ -14,9 +14,24 @@ class Map {
         this.food_height = 25;
         this.fire_height = 70;
     }
-    setup() {
-        //TODO: fix imageMode(CENTER), and all of these need to redo.
+    setup(platforms, foods, fires) {
+        
+        for(let i = 0; i < platforms.length; i++) {
+            let platform = platforms[i];
+            this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4]));
+        }
 
+        for(let i = 0; i < foods.length; i++){
+            let food = foods[i];
+            this.foods.push(new Food(food[0], food[1]));
+        }
+
+        for(let i = 0; i < fires.length; i++){
+            let fire = fires[i];
+            this.fires.push(new Fire(fire[0], fire[1]));
+        }
+        //TODO: fix imageMode(CENTER), and all of these need to redo.
+        /*
         let groundHeight = Brick.height;
         let groundY = height - Brick.height/2;
         // tree
@@ -57,7 +72,7 @@ class Map {
         // Fire
         this.fires.push(new Fire(550, groundY-groundHeight));
         this.fires.push(new Fire(width + 450, groundY-groundHeight));
-
+        */
         // Health level
         this.health = new Health();
 

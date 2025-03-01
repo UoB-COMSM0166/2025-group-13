@@ -1,5 +1,26 @@
 // Game.js
 class Game {
+    static level1Platforms = 
+    [
+        ["TREE", 250, 425, 30, 90],
+        ["GROUND", 335, 485, 670, 30],
+        ["GROUND", 1155, 485, 670, 30],
+        ["GROUND", 2125, 485, 850, 30],
+        ["FLOAT", 120, 310, 90, 30],
+        ["FLOAT", 450, 280, 210, 30],
+        ["FLOAT", 970, 310, 90, 30],
+        ["FLOAT", 1200, 330, 150, 30],
+    ];
+    static level1Foods = 
+    [
+        [120, 280],
+    ];
+
+    static level1Fires =
+    [
+        [500, 450],
+    ]; 
+
 
     preload() {
         this.background_img = loadImage('src/assets/bg_volcano.png');
@@ -25,7 +46,7 @@ class Game {
     }
 
     setup() {
-        this.map.setup(); //init map
+        this.map.setup(Game.level1Platforms, Game.level1Foods, Game.level1Fires); //init map
     }
 
     update() {
