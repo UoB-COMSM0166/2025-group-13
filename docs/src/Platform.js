@@ -64,7 +64,7 @@ class Platform {
 
       for (let i = 0; i < tilesY; i++) {
         let dx = this.x;
-        let dy = this.y + i * scaledTileHeight;
+        let dy = this.top + scaledTileHeight/2 + (i * scaledTileHeight);
 
         image(this.tilesetImg, dx, dy, scaledTileWidth, scaledTileHeight, sx, sy, sw, sh);
 
