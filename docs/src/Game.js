@@ -72,12 +72,12 @@ class Game {
         for(let i = 0; i < Game.layouts.length; i++){
             this.maps.push(new Map());
         }
-        this.currentLevel = 1;
-        this.map = this.maps[this.currentLevel];
+        this.currentMap = 1;
+        this.map = this.maps[this.currentMap];
     }
 
     setup() {
-        this.map.setup(Game.layouts[this.currentLevel]); //init map
+        this.map.setup(Game.layouts[this.currentMap]); //init map
     }
 
     update() {
@@ -118,5 +118,11 @@ class Game {
             this.map.handleInput(true); // handle map input
             this.player.handleInput(true); // handle player input
         }
+    }
+
+    nextLevel()
+    {
+        this.currentMap = (this.currentMap + 1) % this.maps.length;
+        this.map = this.maps[this.currentMap];
     }
 }
