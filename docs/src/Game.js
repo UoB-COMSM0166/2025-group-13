@@ -21,6 +21,32 @@ class Game {
         [500, 450],
     ]; 
 
+    static level2Platforms = 
+    [
+        ["TREE", 250, 425, 30, 90],
+        ["GROUND", 335, 485, 670, 30],
+        ["GROUND", 1155, 485, 670, 30],
+        ["GROUND", 2125, 485, 850, 30],
+        ["FLOAT", 120, 310, 90, 30],
+        ["FLOAT", 450, 280, 210, 30],
+        ["FLOAT", 970, 310, 90, 30],
+        ["FLOAT", 1200, 330, 150, 30],
+    ];
+    static level2Foods = 
+    [
+        [120, 280],
+    ];
+
+    static level2Fires =
+    [
+        [500, 450],
+    ];
+
+    static layouts = 
+    [
+        [Game.level1Platforms, Game.level1Foods, Game.level1Fires], 
+        [Game.level2Platforms, Game.level2Foods, Game.level2Fires],
+    ];
 
     preload() {
         this.background_img = loadImage('src/assets/bg_volcano.png');
