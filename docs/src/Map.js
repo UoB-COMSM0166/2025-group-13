@@ -5,13 +5,11 @@ class Map {
         Health.preload();
         Food.preload();
         Fire.preload();
-        Cave.preload();
     }
     constructor() {
         this.platforms = [];
         this.foods = [];
         this.fires = [];
-        this.cave;
         this.xSpeed = 4;
         this.food_height = 25;
         this.fire_height = 70;
@@ -38,8 +36,6 @@ class Map {
         /*
         let groundHeight = Brick.height;
         let groundY = height - Brick.height/2;
-        // cave
-        this.cave = new Cave(width + width + 620, height - groundHeight - Cave.caveHeight/3);
         // tree
         //TODO: fix tree's collision
         let treeHeightOne=90;
@@ -77,10 +73,11 @@ class Map {
 
         // Fire
         this.fires.push(new Fire(550, groundY-groundHeight));
-        this.fires.push(new Fire(width + 480, groundY-groundHeight));
+        this.fires.push(new Fire(width + 450, groundY-groundHeight));
         */
         // Health level
         this.health = new Health();
+
     }
 
     update() {
@@ -94,7 +91,6 @@ class Map {
         for (let fire of this.fires) { 
             fire.updateFire();
         }
-        this.cave.updateCave();
         this.health.updateHealth();
     }
 
@@ -109,7 +105,6 @@ class Map {
         for (let fire of this.fires) {
             fire.display();
         }
-        this.cave.display();
         this.health.display();
     }
 
@@ -129,7 +124,6 @@ class Map {
             for (let fire of this.fires) {
                 fire.x -= this.xSpeed;
             }
-            this.cave.x -= this.xSpeed;;
         }
     }
 
