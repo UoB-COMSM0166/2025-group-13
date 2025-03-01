@@ -69,10 +69,11 @@ class Game {
 
         this.player = new Player(width / 2, this.groundTop / 2);
         this.map = new Map();
+        this.currentLevel = 0;
     }
 
     setup() {
-        this.map.setup(Game.layouts[0]); //init map
+        this.map.setup(Game.layouts[this.currentLevel]); //init map
     }
 
     update() {
