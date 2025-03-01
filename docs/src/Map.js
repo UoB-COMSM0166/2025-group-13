@@ -16,52 +16,28 @@ class Map {
         this.food_height = 25;
         this.fire_height = 70;
     }
-    setup() {
-        //TODO: fix imageMode(CENTER), and all of these need to redo.
+    setup(layout) {
+        let platforms = layout[0];
+        let foods = layout[1];
+        let fires = layout[2];
+        let cave = layout[3];
+        for(let i = 0; i < platforms.length; i++) {
+            let platform = platforms[i];
+            this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4]));
+        }
 
-        let groundHeight = Brick.height;
-        let groundY = height - Brick.height/2;
-        // cave
-        this.cave = new Cave(width + width + 620, height - groundHeight - Cave.caveHeight/3);
-        // tree
-        //TODO: fix tree's collision
-        let treeHeightOne=90;
-        this.platforms.push(new Platform("TREE", 250, height - groundHeight - treeHeightOne/2, 30, treeHeightOne));
+        for(let i = 0; i < foods.length; i++){
+            let food = foods[i];
+            this.foods.push(new Food(food[0], food[1]));
+        }
 
-        // "Ground" platform
-        let groundGapTwo = Brick.width * 2;
-        let groundGapSix = Brick.width * 6;
-        let groundOneEndX = (width / 2 - groundGapSix / 2) + (width - groundGapSix) / 2;
+        for(let i = 0; i < fires.length; i++){
+            let fire = fires[i];
+            this.fires.push(new Fire(fire[0], fire[1]));
+        }
 
-        this.platforms.push(new Platform("GROUND", (width / 2 - groundGapSix / 2), groundY, width - groundGapSix, groundHeight));
-        this.platforms.push(new Platform("GROUND", groundOneEndX + width / 2 + groundGapTwo, groundY, width - groundGapTwo, groundHeight));
-        this.platforms.push(new Platform("GROUND", width + width + width / 2, groundY, width, groundHeight));
-
-        //float platforms
-        this.platforms.push(new Platform("FLOAT", 120, 310, 3));
-        // this.platforms.push(new Platform("FLOAT", 350, 330, 5));
-        this.platforms.push(new Platform("FLOAT", 450, 250, 7));
-
-        this.platforms.push(new Platform("FLOAT", width + 120, 310, 3));
-        this.platforms.push(new Platform("FLOAT", width + 350, 330, 5));
-        this.platforms.push(new Platform("FLOAT", width + 450, 250, 7));
-
-        this.platforms.push(new Platform("FLOAT", width + width + 120, 310, 3));
-        this.platforms.push(new Platform("FLOAT", width + width + 350, 330, 5));
-        this.platforms.push(new Platform("FLOAT", width + width + 450, 250, 7));
-
-        // End wall
-        this.platforms.push(new Platform("ENDSIGN", width + width + 600, height / 2, 30, height));
-
-        // Food
-        this.foods.push(new Food(120, 310 - this.food_height));
-        this.foods.push(new Food(450, 250 - this.food_height));
-        this.foods.push(new Food(width + 120, 310 - this.food_height));
-
-        // Fire
-        this.fires.push(new Fire(550, groundY-groundHeight));
-        this.fires.push(new Fire(width + 480, groundY-groundHeight));
-
+        this.cave = new Cave(cave[0], cave[1]);
+ 
         // Health level
         this.health = new Health();
     }

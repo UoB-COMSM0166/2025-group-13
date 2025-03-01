@@ -21,11 +21,16 @@ class Game {
         this.groundTop = height - this.lavaTileHeight;
 
         this.player = new Player(width / 2, this.groundTop / 2);
-        this.map = new Map();
+        this.maps = [];
+        for(let i = 0; i < layouts.length; i++){
+            this.maps.push(new Map());
+        }
+        this.currentMap = 1;
+        this.map = this.maps[this.currentMap];
     }
 
     setup() {
-        this.map.setup(); //init map
+        this.map.setup(layouts[this.currentMap]); //init map
     }
 
     update() {
@@ -64,5 +69,11 @@ class Game {
             this.map.handleInput(true); // handle map input
             this.player.handleInput(true); // handle player input
         }
+    }
+
+    nextLevel()
+    {
+        this.currentMap = (this.currentMap + 1) % this.maps.length;
+        this.map = this.maps[this.currentMap];
     }
 }
