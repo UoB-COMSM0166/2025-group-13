@@ -1,5 +1,8 @@
 class Health {
 
+  static percentage = 1;
+  static reductionRate = 0.0004;
+
     static preload() {
       Health.img_heart = loadImage('src/assets/heart.png');
     }
@@ -11,8 +14,7 @@ class Health {
       this.x = 40;
       this.y = 15;
 
-      this.percentage = 1;
-      this.reductionRate = 0.0004;
+      //this.reductionRate = 0.0004;
   
       this.display();
       this.updateHealth();
@@ -20,8 +22,8 @@ class Health {
   
     updateHealth()
     {
-      if(this.percentage>0){
-        this.percentage = this.percentage - this.reductionRate;
+      if(Health.percentage>0){
+        Health.percentage = Health.percentage - Health.reductionRate;
       }
     }
   
@@ -35,6 +37,6 @@ class Health {
       fill('orange')
       rect(this.x, this.y, this.width, this.height, 2);
       fill('green');
-      rect(this.x, this.y, this.percentage*this.width, this.height);
+      rect(this.x, this.y, Health.percentage*this.width, this.height);
     }
 }
