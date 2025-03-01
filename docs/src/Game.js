@@ -68,8 +68,12 @@ class Game {
         this.groundTop = height - this.lavaTileHeight;
 
         this.player = new Player(width / 2, this.groundTop / 2);
-        this.map = new Map();
-        this.currentLevel = 0;
+        this.maps = [];
+        for(let i = 0; i < Game.layouts.length; i++){
+            this.maps.push(new Map());
+        }
+        this.currentLevel = 1;
+        this.map = this.maps[this.currentLevel];
     }
 
     setup() {
