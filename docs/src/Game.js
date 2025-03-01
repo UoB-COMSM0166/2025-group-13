@@ -30,7 +30,7 @@ class Game {
 
     update() {
         this.map.update(); // display map
-        this.player.update(this.map.platforms);
+        this.player.update(this.map.platforms, this.map.foods, this.map.fires, this.map.cave);
     }
 
     draw() {
@@ -40,8 +40,6 @@ class Game {
         } else {
             background(220);
         }
-
-        this.player.display();
 
         if (this.lavaImg) {
             let tilesX = Math.ceil(width * 2 / this.lavaTileWidth);
@@ -55,7 +53,7 @@ class Game {
         }
 
         this.map.display();
-
+        this.player.display();
 
         this.update();
     }
