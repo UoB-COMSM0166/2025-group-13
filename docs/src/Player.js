@@ -1,12 +1,8 @@
 class Player {
-
-    static reachedCave = false;
-
-    preload() {
-        this.imgDinoRed = loadImage('src/assets/item_dino_red.png');
-    }
-
-    constructor(positionX, positionY) {
+    constructor(positionX, positionY, assetManager) {
+        this.assetManager = assetManager;
+        // Variable to keep track of whether the player has reached end of level (collision with the cave)
+        this.reachedCave = false;
         // this.dino_walk = null;
         // this.dino_static = null;
 
@@ -54,10 +50,10 @@ class Player {
         scaledWidth = this.height * aspectRatio;
         scaledHeight = this.height;
 
-        // draw background rectangle
-        fill(200, 200, 255, 150);
+        // draw background rectangle for testing
+        /*fill(200, 200, 255, 150);
         noStroke();
-        rect(this.x, this.y, this.width, this.height);
+        rect(this.x, this.y, this.width, this.height);*/
 
         if (this.isMoving && this.isBackwards) {
             push();
@@ -65,7 +61,7 @@ class Player {
             scale(-1, 1);
 
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 0, 0,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -78,7 +74,7 @@ class Player {
             scale(-1, 1);
 
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 0, 0,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -87,7 +83,7 @@ class Player {
             pop();
         } else {
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 this.x, this.y,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -103,6 +99,7 @@ class Player {
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
         this.checkCollisionsFire(fireArray);
+        this.checkCollisionsCave(cave);
         this.keepWithinBounds();
         // this.display();
     }
@@ -196,7 +193,9 @@ class Player {
         let collision = withinXRange && withinYRange;
     
         if (collision) {
-            Player.reachedCave = true;
+            this.reachedCave = true;
+            // Check if the player has reached the cave
+            console.log("Player reached the cave");
         }
     }
 

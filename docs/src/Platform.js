@@ -1,12 +1,7 @@
 class Platform {
-
-  static preload() {
-    Platform.tilesetImg = loadImage('src/assets/tile_grandTreePlatform.png');
-  }
-
-  constructor( type = null,positionX, positionY, widthOrBrickNumber, height = null) {
+  constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager) {
+    this.assetManager = assetManager;
     this.platformType = type;
-    this.tilesetImg = Platform.tilesetImg;
     if (widthOrBrickNumber === "full") {
       this.width = game.windowWidth;
     } if (height === null) {
@@ -48,7 +43,7 @@ class Platform {
         let dx = this.left + i * scaledTileWidth + Brick.width / 2;
         let dy = this.y;
 
-        image(this.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+        image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
       }
     } else if (this.platformType === "FLOAT") {
       let sx = 1450, sy = 0, sw = 730, sh = 800;
@@ -57,7 +52,7 @@ class Platform {
         let dx = this.left + i * scaledTileWidth + Brick.width / 2;
         let dy = this.y;
 
-        image(this.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+        image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
       }
     }else if (this.platformType === "TREE") {
       let sx = 770, sy = 0, sw = 700, sh = 810;
@@ -66,7 +61,7 @@ class Platform {
         let dx = this.x;
         let dy = this.top + scaledTileHeight/2 + (i * scaledTileHeight);
 
-        image(this.tilesetImg, dx, dy, scaledTileWidth, scaledTileHeight, sx, sy, sw, sh);
+        image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, scaledTileHeight, sx, sy, sw, sh);
 
       }
     }else {

@@ -1,11 +1,6 @@
-class Fire {
-  
-      static preload() {
-        Fire.img = loadImage('src/assets/fire.png');
-        Fire.gif = loadImage('src/assets/fire.gif');
-      }
-    
-      constructor(positionX, positionY) {
+class Fire {    
+      constructor(positionX, positionY, assetManager) {
+        this.assetManager = assetManager;
         this.width = 70;
         this.height = 70;
     
@@ -26,6 +21,6 @@ class Fire {
     
       display() {
         rectMode(CENTER);  // Draw the rectangle with the center point
-        image(Fire.img, this.x, this.y, this.width, this.height);
+        image(this.assetManager.fireImg, this.x, this.y, this.width, this.height);
       }
     }
