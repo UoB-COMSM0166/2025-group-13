@@ -27,6 +27,8 @@ class Game {
         }
         this.currentMap = 1;
         this.map = this.maps[this.currentMap];
+
+        this.stopMapMovement = false;
     }
 
     setup() {

@@ -21,6 +21,10 @@ class Cave {
         this.bottom = this.y + this.height / 2;
         this.left = this.x - this.width / 2;
         this.right = this.x + this.width / 2;
+
+        if(this.right < width){
+          game.stopMapMovement = true;
+        }
       }
     
       display() {

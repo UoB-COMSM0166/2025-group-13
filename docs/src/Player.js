@@ -233,7 +233,7 @@ class Player {
     }
 
     keepWithinBounds() {
-        this.x = constrain(this.x, this.width / 2, width / 2);
+        this.x = constrain(this.x, this.width / 2, min(game.map.cave.x, width - this.width / 2));
         if (this.bottom > height) {
             this.y = height - this.height / 2;
             this.ySpeed = 0;
@@ -256,7 +256,7 @@ class Player {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
-        if ((direction > 0 && this.x < width / 2) || (direction < 0)) {
+        if (game.stopMapMovement || (game.stopMapMovement === false && direction > 0 && this.x < width / 2) || (direction < 0)) {
             this.x += direction * this.maxSpeed;
         }
     }
