@@ -1,13 +1,6 @@
 class Map {
-
-    preload() {
-        Platform.preload();
-        Health.preload();
-        Food.preload();
-        Fire.preload();
-        Cave.preload();
-    }
-    constructor() {
+    constructor(assetManager) {
+        this.assetManager = assetManager;
         this.platforms = [];
         this.foods = [];
         this.fires = [];
@@ -16,6 +9,7 @@ class Map {
         this.food_height = 25;
         this.fire_height = 70;
     }
+
     setup(layout) {
         let platforms = layout[0];
         let foods = layout[1];
@@ -23,23 +17,20 @@ class Map {
         let cave = layout[3];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
-            this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4]));
+            this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4], this.assetManager));
         }
 
         for(let i = 0; i < foods.length; i++){
             let food = foods[i];
-            this.foods.push(new Food(food[0], food[1]));
+            this.foods.push(new Food(food[0], food[1], this.assetManager));
         }
 
         for(let i = 0; i < fires.length; i++){
             let fire = fires[i];
-            this.fires.push(new Fire(fire[0], fire[1]));
+            this.fires.push(new Fire(fire[0], fire[1], this.assetManager));
         }
 
-        this.cave = new Cave(cave[0], cave[1]);
- 
-        // Health level
-        this.health = new Health();
+        this.cave = new Cave(cave[0], cave[1], this.assetManager);
     }
 
     update() {
@@ -54,7 +45,6 @@ class Map {
             fire.updateFire();
         }
         this.cave.updateCave();
-        this.health.updateHealth();
     }
 
     display() {
@@ -69,7 +59,6 @@ class Map {
             fire.display();
         }
         this.cave.display();
-        this.health.display();
     }
 
     stopMovement() {

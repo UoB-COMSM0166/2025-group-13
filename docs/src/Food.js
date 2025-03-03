@@ -1,13 +1,9 @@
 class Food {
-
-  //static food_height = 20;
-  //static food_width = 20;
-
-    static preload() {
-      Food.img = loadImage('src/assets/food.png');
-    }
+    //static food_height = 20;
+    //static food_width = 20;
   
-    constructor(positionX, positionY) {
+    constructor(positionX, positionY, assetManager) {
+      this.assetManager = assetManager;
       this.width = 20;
       this.height = 20;
   
@@ -28,6 +24,6 @@ class Food {
   
     display() {
       rectMode(CENTER);  // Draw the rectangle with the center point
-      image(Food.img, this.x, this.y, this.width, this.height);
+      image(this.assetManager.foodImg, this.x, this.y, this.width, this.height);
     }
   }
