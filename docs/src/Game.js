@@ -1,6 +1,7 @@
 // Class Game handles the main game logic and delegate jobs through each independent objects
 class Game {
-    constructor(assetManager) {
+    constructor(gameLevel, assetManager) {
+        this.currentLevel = gameLevel;
         this.assetManager = assetManager;
         this.windowBottom = height;
         this.windowLeft = 0;
@@ -16,7 +17,7 @@ class Game {
         }
 
         // Set the current map
-        this.currentMap = 0;
+        this.currentMap = gameLevel -1;
         this.map = this.maps[this.currentMap];
 
         // Create new health of the player
@@ -57,6 +58,11 @@ class Game {
         this.map.display();
         this.player.display();
         this.health.display();
+
+        // Display the actual level
+        textSize(20);
+        fill(0);
+        text("Level " + (this.currentLevel), width-50, 25);
 
         this.update();
     }
