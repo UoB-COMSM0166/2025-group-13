@@ -1,12 +1,10 @@
 class Player {
-
-    static reachedCave = false;
-
-    preload() {
-        this.imgDinoRed = loadImage('src/assets/item_dino_red.png');
-    }
-
-    constructor(positionX, positionY) {
+    constructor(positionX, positionY, playerHealth, assetManager) {
+        this.assetManager = assetManager;
+        // 
+        this.playerHealth = playerHealth;
+        // Variable to keep track of whether the player has reached end of level (collision with the cave)
+        this.reachedCave = false;
         // this.dino_walk = null;
         // this.dino_static = null;
 
@@ -54,10 +52,10 @@ class Player {
         scaledWidth = this.height * aspectRatio;
         scaledHeight = this.height;
 
-        // draw background rectangle
-        fill(200, 200, 255, 150);
+        // draw background rectangle for testing
+        /*fill(200, 200, 255, 150);
         noStroke();
-        rect(this.x, this.y, this.width, this.height);
+        rect(this.x, this.y, this.width, this.height);*/
 
         if (this.isMoving && this.isBackwards) {
             push();
@@ -65,7 +63,7 @@ class Player {
             scale(-1, 1);
 
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 0, 0,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -78,7 +76,7 @@ class Player {
             scale(-1, 1);
 
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 0, 0,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -87,7 +85,7 @@ class Player {
             pop();
         } else {
             image(
-                this.imgDinoRed,
+                this.assetManager.imgDinoRed,
                 this.x, this.y,
                 scaledWidth, scaledHeight,
                 sx, sy, sw, sh
@@ -103,6 +101,7 @@ class Player {
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
         this.checkCollisionsFire(fireArray);
+        this.checkCollisionsCave(cave);
         this.keepWithinBounds();
         // this.display();
     }
@@ -166,6 +165,7 @@ class Player {
         }
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 
     checkCollisionsFood(foodArray) {
@@ -178,10 +178,11 @@ class Player {
             let collision = withinXRange && withinYRange;
         
             if (collision) {
-                if (Health.percentage > 0.8) { 
-                    Health.percentage = 1; 
+                let actualHealth = this.playerHealth.getHealth();
+                if (actualHealth > 0.8) { 
+                    this.playerHealth.setHealth(1); 
                 } else { 
-                    Health.percentage += 0.2; 
+                    this.playerHealth.setHealth(actualHealth + 0.2); 
                 }
                 foodArray.splice(i, 1); // Remove collided food
             }
@@ -196,7 +197,9 @@ class Player {
         let collision = withinXRange && withinYRange;
     
         if (collision) {
-            Player.reachedCave = true;
+            this.reachedCave = true;
+            // Check if the player has reached the cave
+            //console.log("Player reached the cave");
         }
     }
 
