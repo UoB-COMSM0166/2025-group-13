@@ -9,6 +9,7 @@ let screenGame;
 let game;
 // Global variable to store the level of the game
 let gameLevel = 1;
+let maxLevels = 2;
 
 // Preload all assets using the assetManager
 function preload() {
@@ -37,7 +38,15 @@ function draw() {
     game.update();
     game.draw();
     if(game.isGameOver()) gameState = "gameOver";
-    if(game.isLevelComplete()) gameState = "levelComplete";
+    if(game.isLevelComplete()) {
+      if(gameLevel < maxLevels) {
+        gameLevel++;
+        gameState = "levelComplete";
+      }
+      else {
+        gameState = "gameEnd";
+      }
+    }
   }
   else if(gameState === "pausePage") {
     screenGame.drawPauseGame();
@@ -48,6 +57,7 @@ function draw() {
   else if(gameState === "levelComplete") {
     screenGame.drawLevelComplete();
   }
+  else screenGame.drawEndGame();
 }
 
 function keyPressed() {
@@ -57,9 +67,15 @@ function keyPressed() {
   else if(gameState === "gameScreen" && keyCode === ESCAPE) {
     gameState = "pausePage";
   }
-  else if ((gameState === "gameOver" && key === ' ') || 
+  else if (((gameState === "gameOver" || gameState === "gameEnd") && key === ' ') || 
           (gameState === "levelComplete" && keyCode === ESCAPE)) {
+    // Restart levels
+    gameLevel = 1;
     newGame();
     gameState = "homePage";
+  }
+  else if (gameState === "levelComplete" && key === ' ') {
+    newGame();
+    gameState = "gameScreen";
   }
 }

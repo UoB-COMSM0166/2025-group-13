@@ -72,4 +72,17 @@ class GameScreen {
         text("Press SPACE to start next level \n Or press ESCAPE to return to the home page", width / 2, height / 2 + 30);
         textSize(25);
     }
+
+    drawEndGame() {
+        image(this.assetManager.levelCompleteBackground, width/2, height/2, width, height);
+        textAlign(CENTER, CENTER);
+        textSize(40);
+        fill(0);
+        stroke('white');
+        strokeWeight(2);
+        //text("Level Complete", width / 2, height / 2 - 40);
+        textSize(25);
+        text("Press SPACE to return to the home page", width / 2, height / 2 + 30);
+        textSize(25);
+    }
 }
