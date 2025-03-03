@@ -101,6 +101,7 @@ class Player {
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
         this.checkCollisionsFire(fireArray);
+        this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
         // this.display();
@@ -166,6 +167,14 @@ class Player {
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
         //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
+    }
+
+    checkCollisionsLava() {
+        let collision = this.bottom > (height-Brick.height);
+        if (collision) {
+            // Set reduction rate based on collision detection with lava
+            Health.reductionRate = 0.4;
+        }
     }
 
     checkCollisionsFood(foodArray) {

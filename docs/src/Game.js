@@ -41,7 +41,16 @@ class Game {
 
     draw() {
         if (this.assetManager.gamePageBackground) {
-            image(this.assetManager.gamePageBackground, width/2, height/2, width, height);
+            switch(this.currentMap)
+            {
+                case 0:
+                    image(this.assetManager.gamePageBackground, width/2, height/2, width, height);
+                    break;
+                case 1:
+                    image(this.assetManager.gamePageIceBackground, width/2, height/2, width, height);
+                    break;
+            }
+
         } else {
             background(220);
         }
@@ -53,7 +62,15 @@ class Game {
                 // let dy = (this.windowBottom - this.lavaTileHeight / 2);
                 let dy = (height - this.lavaTileHeight / 2);
 
-                image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                switch(this.currentMap){
+                    case 0:
+                        image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                        break;
+                    case 1:
+                        image(this.assetManager.iceLakeImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                        break;
+                }
+                
             }
         }
 

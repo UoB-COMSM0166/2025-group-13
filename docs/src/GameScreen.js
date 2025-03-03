@@ -47,7 +47,15 @@ class GameScreen {
     drawGameOver() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
-        image(this.assetManager.gameOverBackground, width/2, height/2, width, height);
+        switch(game.currentMap){
+            case 0:
+                image(this.assetManager.gameOverBackground, width/2, height/2, width, height);
+                break;
+            case 1:
+                image(this.assetManager.gameOverByIce, width/2, height/2, width, height);
+                break;
+        }
+        
         textAlign(CENTER, CENTER);
         textSize(40);
         fill(0);
