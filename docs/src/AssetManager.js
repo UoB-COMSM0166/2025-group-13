@@ -14,7 +14,7 @@ class AssetManager {
         this.foodImg = loadImage('assets/items/food.png');
         this.fireImg = loadImage('assets/items/fire.png');
         this.iceSpikeImg = loadImage('assets/items/ice_spike.png');
-        this.fireGif = loadImage('assets/items/fire.gif');
+        //this.fireGif = loadImage('assets/items/fire.gif');
         this.caveImg = loadImage('assets/items/cave.png');
     }
 
