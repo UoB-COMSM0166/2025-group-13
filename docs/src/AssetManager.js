@@ -2,6 +2,8 @@ class AssetManager {
     preload() {
         this.homePageBackground = loadImage('assets/background/homePage.png');
         this.gamePageBackground = loadImage('assets/background/bg_volcano.png');
+        this.gameOverBackground = loadImage('assets/background/screen_dead.png');
+        this.levelCompleteBackground = loadImage('assets/background/screen_win.png');
         this.lavaImg = loadImage('assets/items/tile_lava.gif');
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         this.img_heart = loadImage('assets/items/heart.png');

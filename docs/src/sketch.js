@@ -7,6 +7,8 @@ let gameState = "homePage"; // gameScreen, pausePage, lossScreen, levelCompleteS
 let assetManager;
 let screenGame;
 let game;
+// Global variable to store the level of the game
+let gameLevel = 1;
 
 // Preload all assets using the assetManager
 function preload() {
@@ -22,7 +24,7 @@ function setup() {
 }
 
 function newGame() {
-  game = new Game(assetManager);
+  game = new Game(gameLevel, assetManager);
   game.setup();
 }
 

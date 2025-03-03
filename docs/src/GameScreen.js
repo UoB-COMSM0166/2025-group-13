@@ -46,26 +46,28 @@ class GameScreen {
 
     drawGameOver() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
-        background(128, 128, 128, 200); // mid-tone grey semi-transparent
+        //background(128, 128, 128, 200); // mid-tone grey semi-transparent
+        image(this.assetManager.gameOverBackground, width/2, height/2, width, height);
         textAlign(CENTER, CENTER);
         textSize(40);
         fill(0);
-        stroke('red');
+        stroke('white');
         strokeWeight(2);
-        text("Game Over", width / 2, height / 2 - 40);
+        //text("Game Over", width / 2, height / 2 - 40);
         textSize(25);
         text("Press SPACE to play again", width / 2, height / 2 + 30);
     }
 
     drawLevelComplete() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
-        background(128, 128, 128, 200); // mid-tone grey semi-transparent
+        //background(128, 128, 128, 200); // mid-tone grey semi-transparent
+        image(this.assetManager.levelCompleteBackground, width/2, height/2, width, height);
         textAlign(CENTER, CENTER);
         textSize(40);
         fill(0);
-        stroke('green');
+        stroke('white');
         strokeWeight(2);
-        text("Level Complete", width / 2, height / 2 - 40);
+        //text("Level Complete", width / 2, height / 2 - 40);
         textSize(25);
         text("Press SPACE to start next level \n Or press ESCAPE to return to the home page", width / 2, height / 2 + 30);
         textSize(25);
