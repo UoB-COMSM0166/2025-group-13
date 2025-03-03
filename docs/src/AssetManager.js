@@ -13,7 +13,8 @@ class AssetManager {
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
         this.foodImg = loadImage('assets/items/food.png');
         this.fireImg = loadImage('assets/items/fire.png');
-        this.fireGif = loadImage('assets/items/fire.gif');
+        this.iceSpikeImg = loadImage('assets/items/ice_spike.png');
+        //this.fireGif = loadImage('assets/items/fire.gif');
         this.caveImg = loadImage('assets/items/cave.png');
     }
 

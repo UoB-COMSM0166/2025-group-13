@@ -21,6 +21,13 @@ class Fire {
     
       display() {
         rectMode(CENTER);  // Draw the rectangle with the center point
-        image(this.assetManager.fireImg, this.x, this.y, this.width, this.height);
+        switch(game.currentMap){
+          case 0:
+            image(this.assetManager.fireImg, this.x, this.y, this.width, this.height);
+            break;
+          case 1:
+            image(this.assetManager.iceSpikeImg, this.x, this.y, this.width, this.height);
+            break;
+        }
       }
     }

@@ -80,7 +80,17 @@ class Game {
 
         // Display the actual level
         textSize(20);
-        fill(0);
+        switch(this.currentMap)
+        {
+            case 0:
+                fill(0);
+                stroke('red');
+                break;
+            case 1:
+                fill(255);
+                stroke('blue');
+                break;
+        }
         text("Level " + (this.currentLevel), width-50, 25);
 
         this.update();
