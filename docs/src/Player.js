@@ -1,6 +1,8 @@
 class Player {
-    constructor(positionX, positionY, assetManager) {
+    constructor(positionX, positionY, playerHealth, assetManager) {
         this.assetManager = assetManager;
+        // 
+        this.playerHealth = playerHealth;
         // Variable to keep track of whether the player has reached end of level (collision with the cave)
         this.reachedCave = false;
         // this.dino_walk = null;
@@ -163,6 +165,7 @@ class Player {
         }
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 
     checkCollisionsFood(foodArray) {
@@ -175,10 +178,11 @@ class Player {
             let collision = withinXRange && withinYRange;
         
             if (collision) {
-                if (Health.percentage > 0.8) { 
-                    Health.percentage = 1; 
+                let actualHealth = this.playerHealth.getHealth();
+                if (actualHealth > 0.8) { 
+                    this.playerHealth.setHealth(1); 
                 } else { 
-                    Health.percentage += 0.2; 
+                    this.playerHealth.setHealth(actualHealth + 0.2); 
                 }
                 foodArray.splice(i, 1); // Remove collided food
             }
@@ -195,7 +199,7 @@ class Player {
         if (collision) {
             this.reachedCave = true;
             // Check if the player has reached the cave
-            console.log("Player reached the cave");
+            //console.log("Player reached the cave");
         }
     }
 

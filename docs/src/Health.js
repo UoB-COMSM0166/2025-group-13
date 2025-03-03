@@ -33,7 +33,15 @@ class Health {
       rect(this.x, this.y, this.percentage*this.width, this.height);
     }
 
-    getHealth(){
+    getHealth() {
       return this.percentage;
     }
+
+    setHealth(percentage) {
+      this.percentage = percentage;
+    }
+
+    /*updateReductionRate(newRate) { 
+      Health.reductionRate = newRate;
+    }*/
 }

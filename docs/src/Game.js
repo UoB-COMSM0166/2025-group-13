@@ -19,11 +19,11 @@ class Game {
         this.currentMap = 0;
         this.map = this.maps[this.currentMap];
 
+        // Create new health of the player
+        this.health = new Health(assetManager);    
         // Create new player
         //this.player = new Player(width / 2, this.groundTop / 2,  assetManager); 
-        this.player = new Player(0, this.groundTop,  assetManager); 
-        // Create new health of the player
-        this.health = new Health(assetManager);       
+        this.player = new Player(0, this.groundTop,  this.health, assetManager); 
     }
 
     setup() {
