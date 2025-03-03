@@ -4,27 +4,28 @@ class Player {
 
     preload() {
         this.imgDinoRed = loadImage('src/assets/item_dino_red.png');
+        // this.imgDinoRed = loadImage('src/assets/bg_volcano.png');
     }
 
     constructor(positionX, positionY) {
-        // this.dino_walk = null;
-        // this.dino_static = null;
 
         this.x = positionX;
         this.y = positionY + 5;
         this.width = 30;
         this.height = 30;
 
-        //this.xSpeed = 0;  xspeed is not needed because the player does not face any horizontal acceleration
+        this.xSpeed = 0;  //xspeed is needed because need it for attach static
         this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
         this.maxSpeed = 4;
 
         this.gravity = 1;
         this.jumpStrength = 10;
-        this.isOnGround = false;
+        this.isOnGround = false;//Haru: why?
 
-        this.isMoving = false;
-        this.isBackwards = false;
+        this.isFacingRight = true;
+        this.isStatic = true;
+        // this.isRun = false;
+        // this.isJump = false;
 
         this.updateBounds();
     }
@@ -36,18 +37,11 @@ class Player {
         let sx, sy, sw, sh;
         let aspectRatio, scaledWidth, scaledHeight;
 
-        if (!this.isMoving) {
-            if (!this.isBackwards) {
-                sx = 450; sy = 13; sw = 60; sh = 100;
-            } else {
-                sx = 450; sy = 13; sw = 60; sh = 100;
-            }
+        if (this.isStatic) {
+            sx = 200; sy = 150; sw = 300; sh = 300;
         } else {
-            if (!this.isBackwards) {
-                sx = 105; sy = 300; sw = 110; sh = 80;
-            } else {
-                sx = 105; sy = 300; sw = 110; sh = 80;
-            }
+            //is run
+            sx = 450; sy = 50; sw = 300; sh = 300;
         }
 
         aspectRatio = sw / sh;
@@ -59,32 +53,54 @@ class Player {
         noStroke();
         rect(this.x, this.y, this.width, this.height);
 
-        if (this.isMoving && this.isBackwards) {
-            push();
-            translate(this.x, this.y);
-            scale(-1, 1);
-
-            image(
-                this.imgDinoRed,
-                0, 0,
-                scaledWidth, scaledHeight,
-                sx, sy, sw, sh
-            );
-
-            pop();
-        } else if (!this.isMoving && this.isBackwards) {
-            push();
-            translate(this.x, this.y);
-            scale(-1, 1);
-
-            image(
-                this.imgDinoRed,
-                0, 0,
-                scaledWidth, scaledHeight,
-                sx, sy, sw, sh
-            );
-
-            pop();
+        if (this.isFacingRight) {
+            // console.log(">>>>> Player.isForward = true");
+            if (this.isStatic) {
+                console.log(">>>>> Player.isStatic = true");
+                image(
+                    this.imgDinoRed,
+                    0, 0,
+                    scaledWidth, scaledHeight,
+                    sx, sy, sw, sh
+                );
+            } else {
+                //is run
+                console.log(">>>>> Player.isStatic = false");
+                image(
+                    this.imgDinoRed,
+                    0, 0,
+                    scaledWidth, scaledHeight,
+                    sx, sy, sw, sh
+                );
+            }
+        } else if (!this.isFacingRight) {
+            // console.log("Player.isForward = false <<<<<");
+            if (this.isStatic) {
+                console.log("Player.isStatic = true <<<<<");
+                push();
+                translate(this.x, this.y);
+                scale(-1, 1);
+                image(
+                    this.imgDinoRed,
+                    0, 0,
+                    scaledWidth, scaledHeight,
+                    sx, sy, sw, sh
+                );
+                pop();
+            } else {
+                console.log("Player.isStatic = false <<<<<");
+                //is run
+                push();
+                translate(this.x, this.y);
+                scale(-1, 1);
+                image(
+                    this.imgDinoRed,
+                    0, 0,
+                    scaledWidth, scaledHeight,
+                    sx, sy, sw, sh
+                );
+                pop();
+            }
         } else {
             image(
                 this.imgDinoRed,
@@ -158,7 +174,7 @@ class Player {
             let withinXRange = this.right > fire.left && this.left < fire.right;
             let withinYRange = this.bottom > fire.top && this.top < fire.bottom;
             let collision = withinXRange && withinYRange;
-        
+
             if (collision) {
                 collisionDetected = true;
                 break; // Exit early to optimize performance
@@ -176,12 +192,12 @@ class Player {
             let withinXRange = this.right > food.left && this.left < food.right;
             let withinYRange = this.bottom > food.top && this.top < food.bottom;
             let collision = withinXRange && withinYRange;
-        
+
             if (collision) {
-                if (Health.percentage > 0.8) { 
-                    Health.percentage = 1; 
-                } else { 
-                    Health.percentage += 0.2; 
+                if (Health.percentage > 0.8) {
+                    Health.percentage = 1;
+                } else {
+                    Health.percentage += 0.2;
                 }
                 foodArray.splice(i, 1); // Remove collided food
             }
@@ -194,7 +210,7 @@ class Player {
         let withinXRange = this.right > cave.left && this.left < cave.right;
         let withinYRange = this.bottom > cave.top && this.top < cave.bottom;
         let collision = withinXRange && withinYRange;
-    
+
         if (collision) {
             Player.reachedCave = true;
         }
@@ -208,6 +224,7 @@ class Player {
             if (bottomCollision /* && this.bottom - this.ySpeed <= platform.top*/) {
                 this.y = platform.top - this.height / 2;
                 this.ySpeed = 0;
+                this.isStatic = true;
             } else if (topCollision) {
                 this.y = platform.bottom + this.height / 2;
                 this.ySpeed = 0;
@@ -244,51 +261,54 @@ class Player {
 
     move(direction) {
         if (direction === -1) {
-            this.isBackwards = true;
+            this.isFacingRight = false;
+        } else {
+            this.isFacingRight = true;
         }
-        else {
-            this.isBackwards = false;
-        }
-        // this.isMoving = true;
+
         if (this.isOnGround) {
             this.xSpeed = direction * this.maxSpeed;
         } else {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
+
         if ((direction > 0 && this.x < width / 2) || (direction < 0)) {
             this.x += direction * this.maxSpeed;
         }
     }
 
-    stopMovement() {
-        // this.isMoving = false;
-        // this.isBackwards = false;
-        this.xSpeed = 0;
-    }
 
     jump() {
+        this.isStatic = false;
         if (this.isOnGround) {
             this.ySpeed = -this.jumpStrength;
             this.isOnGround = false;
         }
     }
 
+    stopMovement() {
+        console.log("stopMovement() is working!")
+        this.isStatic = true;
+        this.xSpeed = 0;
+    }
+
     handleInput(isKeyDown) {
         if (isKeyDown) {
             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
                 this.move(-1);
-                this.isMoving = true;
-                this.isBackwards = true;
+                this.isFacingRight = false;
+                // this.isStatic = false;
             }
             if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
                 this.move(1);
-                this.isMoving = true;
-                this.isBackwards = false;
+                this.isFacingRight = true;
             }
-            if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
+            if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) {
+                this.jump();
+            }
         } else {
-            this.isMoving = false;
+            this.stopMovement();
         }
     }
 }

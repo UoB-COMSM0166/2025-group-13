@@ -68,6 +68,8 @@ class Game {
         if (keyIsDown) {
             this.map.handleInput(true); // handle map input
             this.player.handleInput(true); // handle player input
+        }else{
+            this.player.handleInput(false); // handle player input
         }
     }
 
