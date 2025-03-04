@@ -6,8 +6,8 @@ class Health {
       this.assetManager = assetManager;
       // Initialize the health bar
       this.percentage = Health.initialPercentage;
-      this.width = 4 * Brick.width;
-      this.height = Brick.height/3;
+      this.width = 5 * Brick.width;
+      this.height = Brick.height/2;
 
       this.x = 40;
       this.y = 15;
@@ -21,7 +21,7 @@ class Health {
     }
   
     display() {
-      image(this.assetManager.img_heart, 20, 20, 25, 25);
+      image(this.assetManager.img_heart, 20, 22, 30, 30);
       // Draw the rectangle with the top right corner point
       rectMode(CORNER);
       // A CSS named color.

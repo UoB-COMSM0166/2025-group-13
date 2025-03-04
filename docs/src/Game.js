@@ -83,7 +83,7 @@ class Game {
         switch(this.currentMap)
         {
             case 0:
-                fill(0);
+                fill('orange');
                 stroke('red');
                 break;
             case 1:
