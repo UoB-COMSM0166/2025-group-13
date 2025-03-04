@@ -1,8 +1,8 @@
 class Fire {
   constructor(positionX, positionY, assetManager) {
     this.assetManager = assetManager;
-    this.width = 50;
-    this.height = 60;
+    this.width = 40;
+    this.height = 48;
 
     this.x = positionX;
     this.y = positionY;
@@ -22,7 +22,6 @@ class Fire {
 
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
-    // image(this.assetManager.fireImg, this.x, this.y, this.width, this.height);
 
     // draw background rectangle for testing
     // fill(200, 200, 255, 150);
@@ -35,6 +34,7 @@ class Fire {
     aspectRatio = sw / sh;
     scaledWidth = this.height * aspectRatio;
     scaledHeight = this.height;
+    //nomal stable fire
     // image(
     //   this.assetManager.healthRataledItems,
     //   this.x, this.y - 10,
@@ -42,11 +42,11 @@ class Fire {
     //   sx, sy, sw, sh
     // );
 
-   //Fire animation
+    //Fire animation
     let shearAmount = sin(frameCount * 0.1) * 0.1;
 
     push();
-    translate(this.x, this.bottom - this.stableHeight); //steable fire bottem
+    translate(this.x, this.y + this.stableHeight); //steable fire bottem
     shearX(shearAmount);
 
     // Breathing flash
@@ -55,7 +55,7 @@ class Fire {
 
     image(
       this.assetManager.healthRataledItems,
-      0, this.height / 2 - scaledHeight + 5,
+      0, -this.stableHeight,
       scaledWidth, scaledHeight,
       sx, sy, sw, sh
     );

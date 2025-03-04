@@ -49,6 +49,7 @@ class Map {
 
     display() {
         // Display all platforms
+        this.cave.display();
         for (let platform of this.platforms) {
             platform.display();
         }
@@ -58,7 +59,6 @@ class Map {
         for (let fire of this.fires) {
             fire.display();
         }
-        this.cave.display();
     }
 
     stopMovement() {
