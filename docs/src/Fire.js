@@ -7,6 +7,8 @@ class Fire {
     this.x = positionX;
     this.y = positionY;
 
+    this.stableHeight = 15; // Fire animation requirements: Fixed the height of the bottom of the flame
+
     this.display();
     this.updateFire();
   }
@@ -33,11 +35,33 @@ class Fire {
     aspectRatio = sw / sh;
     scaledWidth = this.height * aspectRatio;
     scaledHeight = this.height;
+    // image(
+    //   this.assetManager.healthRataledItems,
+    //   this.x, this.y - 10,
+    //   scaledWidth, scaledHeight,
+    //   sx, sy, sw, sh
+    // );
+
+   //Fire animation
+    let shearAmount = sin(frameCount * 0.1) * 0.1;
+
+    push();
+    translate(this.x, this.bottom - this.stableHeight); //steable fire bottem
+    shearX(shearAmount);
+
+    // Breathing flash
+    let alpha = map(sin(frameCount * 0.05), -1, 1, 150, 255);
+    tint(255, alpha);
+
     image(
       this.assetManager.healthRataledItems,
-      this.x, this.y - 10,
+      0, this.height / 2 - scaledHeight + 5,
       scaledWidth, scaledHeight,
       sx, sy, sw, sh
     );
+
+    noTint();
+    pop();
+
   }
 }
