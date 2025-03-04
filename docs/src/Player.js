@@ -101,6 +101,7 @@ class Player {
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
         this.checkCollisionsFire(fireArray);
+        this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
         // this.display();
@@ -166,6 +167,14 @@ class Player {
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
         //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
+    }
+
+    checkCollisionsLava() {
+        let collision = this.bottom > (height-Brick.height);
+        if (collision) {
+            // Set reduction rate based on collision detection with lava
+            Health.reductionRate = 0.4;
+        }
     }
 
     checkCollisionsFood(foodArray) {
@@ -236,7 +245,7 @@ class Player {
     }
 
     keepWithinBounds() {
-        this.x = constrain(this.x, this.width / 2, width / 2);
+        this.x = constrain(this.x, this.width / 2, min(game.map.cave.x, width - this.width / 2));
         if (this.bottom > height) {
             this.y = height - this.height / 2;
             this.ySpeed = 0;
@@ -259,7 +268,7 @@ class Player {
             this.xSpeed += direction * 0.3;
             this.xSpeed = constrain(this.xSpeed, -this.maxSpeed * 0.5, this.maxSpeed * 0.5);
         }
-        if ((direction > 0 && this.x < width / 2) || (direction < 0)) {
+        if (game.stopMapMovement || (game.stopMapMovement === false && direction > 0 && this.x < width / 2) || (direction < 0)) {
             this.x += direction * this.maxSpeed;
         }
     }

@@ -25,9 +25,17 @@ class Health {
       // Draw the rectangle with the top right corner point
       rectMode(CORNER);
       // A CSS named color.
+      switch(game.currentMap)
+      {
+          case 0:
+              fill('rgba(255, 165, 0, 0.2)'); // Orange with 80% transparency
+              break;
+          case 1:
+              fill('rgba(0, 0, 255, 0.2)'); // Blue with 80% transparency
+              break;
+      }
       stroke('red');
       strokeWeight(2);
-      fill('orange')
       rect(this.x, this.y, this.width, this.height, 2);
       fill('green');
       rect(this.x, this.y, this.percentage*this.width, this.height);

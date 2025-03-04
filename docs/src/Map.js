@@ -67,7 +67,7 @@ class Map {
 
     moveAllPlatforms()
     {
-        if(game.player.x === width / 2){
+        if(game.player.x >= width / 2 && game.stopMapMovement === false){
             for (let platform of this.platforms) {
                 platform.x -= this.xSpeed;
             }
@@ -77,7 +77,7 @@ class Map {
             for (let fire of this.fires) {
                 fire.x -= this.xSpeed;
             }
-            this.cave.x -= this.xSpeed;;
+            this.cave.x -= this.xSpeed;
         }
     }
 

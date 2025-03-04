@@ -25,6 +25,8 @@ class Game {
         // Create new player
         //this.player = new Player(width / 2, this.groundTop / 2,  assetManager); 
         this.player = new Player(0, this.groundTop,  this.health, assetManager); 
+
+        this.stopMapMovement = false;
     }
 
     setup() {
@@ -39,7 +41,16 @@ class Game {
 
     draw() {
         if (this.assetManager.gamePageBackground) {
-            image(this.assetManager.gamePageBackground, width/2, height/2, width, height);
+            switch(this.currentMap)
+            {
+                case 0:
+                    image(this.assetManager.gamePageBackground, width/2, height/2, width, height);
+                    break;
+                case 1:
+                    image(this.assetManager.gamePageIceBackground, width/2, height/2, width, height);
+                    break;
+            }
+
         } else {
             background(220);
         }
@@ -51,7 +62,15 @@ class Game {
                 // let dy = (this.windowBottom - this.lavaTileHeight / 2);
                 let dy = (height - this.lavaTileHeight / 2);
 
-                image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                switch(this.currentMap){
+                    case 0:
+                        image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                        break;
+                    case 1:
+                        image(this.assetManager.iceLakeImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                        break;
+                }
+                
             }
         }
 
@@ -61,8 +80,28 @@ class Game {
 
         // Display the actual level
         textSize(20);
-        fill(0);
+        switch(this.currentMap)
+        {
+            case 0:
+                fill(0);
+                stroke('red');
+                break;
+            case 1:
+                fill(255);
+                stroke('blue');
+                break;
+        }
         text("Level " + (this.currentLevel), width-50, 25);
+        textSize(30);
+        //noFill();
+        switch(game.currentMap){
+            case 0:
+              text("Lava Rush", width/2, 25);
+              break;
+            case 1:
+              text("Icy Endgame", width/2, 25)
+              break;
+          }
 
         this.update();
     }
