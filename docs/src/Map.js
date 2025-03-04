@@ -35,13 +35,13 @@ class Map {
 
     update() {
         // Update positions for all platforms
-        for (let platform of this.platforms) { 
+        for (let platform of this.platforms) {
             platform.updateBounds();
         }
-        for (let food of this.foods) { 
+        for (let food of this.foods) {
             food.updateFood();
         }
-        for (let fire of this.fires) { 
+        for (let fire of this.fires) {
             fire.updateFire();
         }
         this.cave.updateCave();

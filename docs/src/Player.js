@@ -57,9 +57,9 @@ class Player {
         scaledHeight = this.height;
 
         // draw background rectangle for testing
-        fill(200, 200, 255, 150);
-        noStroke();
-        rect(this.x, this.y, this.width, this.height);
+        // fill(200, 200, 255, 150);
+        // noStroke();
+        // rect(this.x, this.y, this.width, this.height);
 
         if (this.isMoving && this.isBackwards) {
             push();
