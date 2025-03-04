@@ -64,6 +64,12 @@ class GameScreen {
         text("Press SPACE to Start", boxX, boxY);
     }
     
+    drawInstructions() {
+        imageMode(CENTER); // Ensure the background image is centered
+        //TODO: Update the 
+        image(this.assetManager.homePageBackground, width / 2, height / 2, width, height); // Delete this line
+        //image(this.assetManager.instructionsPage, width / 2, height / 2, width, height);
+    }
     
     drawPauseGame() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
@@ -99,7 +105,7 @@ class GameScreen {
         textSize(25);
 
         // Box dimensions and position
-        let boxWidth = 450;
+        let boxWidth = 600;
         let boxHeight = 70;
         let boxX = width / 2 - boxWidth / 2;
         let boxY = height - 80;
@@ -112,7 +118,7 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         textSize(30);
         fill(255);
-        text("Press SPACE to play again", width / 2, height-40);
+        text("Press SPACE to play again\n Press ESCAPE to return to the home page", width / 2, height-40);
     }
 
     drawLevelComplete() {
