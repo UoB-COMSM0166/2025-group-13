@@ -92,6 +92,16 @@ class Game {
                 break;
         }
         text("Level " + (this.currentLevel), width-50, 25);
+        textSize(30);
+        //noFill();
+        switch(game.currentMap){
+            case 0:
+              text("Lava Rush", width/2, 25);
+              break;
+            case 1:
+              text("Icy Endgame", width/2, 25)
+              break;
+          }
 
         this.update();
     }
