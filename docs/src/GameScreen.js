@@ -98,8 +98,8 @@ class GameScreen {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         background(128, 128, 128, 2); // mid-tone grey very-transparent
         textAlign(CENTER, CENTER);
-        textSize(40);
-        fill(0);
+        textSize(50);
+        fill('white');
         stroke('black');
         strokeWeight(2);
         text("Game Paused", width / 2, height / 2 - 40);
@@ -190,13 +190,13 @@ class GameScreen {
         
         // "Extinction Averted!" Styled Text at the Top
         textSize(50);
-        textFont("Georgia");
+        textFont("Courier New");
 
         // Glow Effect: Outer Stroke
         stroke(255, 223, 0); // Golden glow
-        strokeWeight(6);
+        strokeWeight(3);
         noFill(); // Transparent fill
-        text("Extinction Averted !!!", width / 2, 100);
+        text("Extinction Averted !!!", width / 2, 40);
         strokeWeight(0);
     
         // Box dimensions and position
@@ -213,6 +213,7 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         textSize(30);
         fill(255);
+        textFont("Georgia");
         text("Press SPACE to return to the home page", width/2, height-50);
     }
 }
