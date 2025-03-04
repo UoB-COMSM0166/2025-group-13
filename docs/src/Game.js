@@ -24,7 +24,7 @@ class Game {
         this.health = new Health(assetManager);    
         // Create new player
         //this.player = new Player(width / 2, this.groundTop / 2,  assetManager); 
-        this.player = new Player(0, this.groundTop,  this.health, assetManager); 
+        this.player = new Player(0, height/2,  this.health, assetManager);
 
         this.stopMapMovement = false;
     }
