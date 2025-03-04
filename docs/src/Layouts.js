@@ -6,7 +6,7 @@ let level1Platforms =
 ];
 let level1Foods =
 [
-    [120, 280],[1000,460],[1100, 305],
+    [120, 275],[1000,460],[1100, 305],
 ];
 
 let level1Fires =
