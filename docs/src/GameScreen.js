@@ -67,8 +67,31 @@ class GameScreen {
     drawInstructions() {
         imageMode(CENTER); // Ensure the background image is centered
         //TODO: Update the 
-        image(this.assetManager.homePageBackground, width / 2, height / 2, width, height); // Delete this line
-        //image(this.assetManager.instructionsPage, width / 2, height / 2, width, height);
+        //image(this.assetManager.homePageBackground, width / 2, height / 2, width, height); // Delete this line
+        image(this.assetManager.instructionsPage, width / 2, height / 2, width, height);
+
+        textAlign(CENTER, CENTER);
+        textSize(40);
+        fill(0);
+        stroke('white');
+        strokeWeight(2);
+        textSize(25);
+
+        // Box dimensions and position
+        let boxWidth = 400;
+        let boxHeight = 70;
+        let boxX = width/2;
+        let boxY = 200;
+    
+        // Draw semi-transparent background behind instructions
+        fill(0, 0, 0, 180); // Darker transparency for better contrast
+        noStroke();
+        rect(boxX, boxY, boxWidth, boxHeight, 20); // Rounded edges
+    
+        // Draw instruction text (centered inside the box)
+        textSize(30);
+        fill(255);
+        text("Press SPACE to play", boxX, boxY);
     }
     
     drawPauseGame() {
