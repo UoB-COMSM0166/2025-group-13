@@ -6,11 +6,13 @@ let level1Platforms =
 ];
 let level1Foods =
 [
-    [120, 275],[1000,460],[1100, 305],
+    //on ground(y = 460)
+    ["MEAT",450, 460],["APPLE",250,370],["MEAT",1000,460],["MEAT",1100, 305],
 ];
 
 let level1Fires =
 [
+    //on ground(y = 445)
     [500, 445],[1100, 445],
 ];
 

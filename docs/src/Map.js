@@ -22,7 +22,7 @@ class Map {
 
         for(let i = 0; i < foods.length; i++){
             let food = foods[i];
-            this.foods.push(new Food(food[0], food[1], this.assetManager));
+            this.foods.push(new Food(food[0], food[1], food[2], this.assetManager));
         }
 
         for(let i = 0; i < fires.length; i++){

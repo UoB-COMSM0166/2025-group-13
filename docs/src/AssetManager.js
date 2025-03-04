@@ -13,10 +13,6 @@ class AssetManager {
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         //items image
         this.healthRataledItems = loadImage('assets/items/item_healthRelated.png');
-        this.img_heart = loadImage('assets/items/heart.png');
-        this.foodImg = loadImage('assets/items/food.png');
-        this.fireImg = loadImage('assets/items/fire.png');
-        this.fireGif = loadImage('assets/items/fire.gif');
     }
 
     constructor() {
