@@ -37,7 +37,7 @@ class Health {
       stroke('red');
       strokeWeight(2);
       rect(this.x, this.y, this.width, this.height, 2);
-      fill('green');
+      fill('limegreen');
       rect(this.x, this.y, this.percentage*this.width, this.height);
     }
 
