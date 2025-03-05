@@ -170,7 +170,7 @@ class Player {
     }
 
     checkCollisionsLava() {
-        let collision = this.bottom > (height-Brick.height);
+        let collision = this.bottom > (height-Brick.height/2);
         if (collision) {
             // Set reduction rate based on collision detection with lava
             Health.reductionRate = 0.4;

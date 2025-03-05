@@ -41,9 +41,10 @@ class GameScreen {
         textAlign(CENTER, CENTER);
         
         // Title text with shadow effect
+        textFont('Comic Sans MS');
         textSize(30);
         stroke(0);
-        strokeWeight(4);
+        strokeWeight(3);
         fill(255, 215, 0); // Golden text
         text("Outrun the Apocalypse!", width / 4, height / 2 - 150);
     
@@ -64,13 +65,42 @@ class GameScreen {
         text("Press SPACE to Start", boxX, boxY);
     }
     
+    drawInstructions() {
+        imageMode(CENTER); // Ensure the background image is centered
+        //TODO: Update the 
+        //image(this.assetManager.homePageBackground, width / 2, height / 2, width, height); // Delete this line
+        image(this.assetManager.instructionsPage, width / 2, height / 2, width, height);
+
+        textAlign(CENTER, CENTER);
+        textSize(40);
+        fill(0);
+        stroke('white');
+        strokeWeight(2);
+        textSize(25);
+
+        // Box dimensions and position
+        let boxWidth = 400;
+        let boxHeight = 70;
+        let boxX = width/2;
+        let boxY = 200;
+    
+        // Draw semi-transparent background behind instructions
+        fill(0, 0, 0, 180); // Darker transparency for better contrast
+        noStroke();
+        rect(boxX, boxY, boxWidth, boxHeight, 20); // Rounded edges
+    
+        // Draw instruction text (centered inside the box)
+        textSize(30);
+        fill(255);
+        text("Press SPACE to play", boxX, boxY);
+    }
     
     drawPauseGame() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         background(128, 128, 128, 2); // mid-tone grey very-transparent
         textAlign(CENTER, CENTER);
-        textSize(40);
-        fill(0);
+        textSize(50);
+        fill('white');
         stroke('black');
         strokeWeight(2);
         text("Game Paused", width / 2, height / 2 - 40);
@@ -96,13 +126,13 @@ class GameScreen {
         stroke('white');
         strokeWeight(2);
         //text("Game Over", width / 2, height / 2 - 40);
-        textSize(25);
+        textSize(20);
 
         // Box dimensions and position
         let boxWidth = 450;
-        let boxHeight = 70;
+        let boxHeight = 60;
         let boxX = width / 2 - boxWidth / 2;
-        let boxY = height - 80;
+        let boxY = height - 60;
     
         // Draw semi-transparent background behind instructions
         fill(0, 0, 0, 180); // Darker transparency for better contrast
@@ -110,9 +140,9 @@ class GameScreen {
         rect(boxX, boxY, boxWidth, boxHeight, 20); // Rounded edges
     
         // Draw instruction text (centered inside the box)
-        textSize(30);
+        textSize(25);
         fill(255);
-        text("Press SPACE to play again", width / 2, height-40);
+        text("Press SPACE to play again\n Press ESCAPE for home page", width / 2, height-30);
     }
 
     drawLevelComplete() {
@@ -151,7 +181,7 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         textSize(30);
         fill(255);
-        text("Press SPACE to start next level \n Press ESCAPE to return to the home page", width / 2, height-40);
+        text("Press SPACE to start next level \n Press ESCAPE for home page", width / 2, height-40);
         textSize(25);
     }
 
@@ -161,13 +191,13 @@ class GameScreen {
         
         // "Extinction Averted!" Styled Text at the Top
         textSize(50);
-        textFont("Georgia");
+        textFont("Courier New");
 
         // Glow Effect: Outer Stroke
         stroke(255, 223, 0); // Golden glow
-        strokeWeight(6);
+        strokeWeight(3);
         noFill(); // Transparent fill
-        text("Extinction Averted !!!", width / 2, 100);
+        text("Extinction Averted !!!", width / 2, 40);
         strokeWeight(0);
     
         // Box dimensions and position
@@ -182,8 +212,9 @@ class GameScreen {
         rect(boxX, boxY, boxWidth, boxHeight, 20); // Rounded edges
     
         // Draw instruction text (centered inside the box)
-        textSize(30);
+        textSize(25);
         fill(255);
-        text("Press SPACE to return to the home page", width/2, height-50);
+        textFont('Comic Sans MS');
+        text("Press SPACE for home page", width/2, height-50);
     }
 }
