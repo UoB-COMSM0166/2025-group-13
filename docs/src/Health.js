@@ -6,17 +6,11 @@ class Health {
     this.assetManager = assetManager;
     // Initialize the health bar
     this.percentage = Health.initialPercentage;
-    this.width = 4 * Brick.width;
-    this.height = Brick.height / 3;
+    this.width = 5 * Brick.width;
+    this.height = Brick.height / 2;
 
     this.x = 40;
     this.y = 15;
-  }
-
-  updateHealth() {
-    if (this.percentage > 0) {
-      this.percentage = this.percentage - Health.reductionRate;
-    }
   }
 
   display() {
@@ -35,18 +29,31 @@ class Health {
     sx = (520 * 2); sy = 0; sw = 520; sh = 522;
     image(
       this.assetManager.healthRataledItems,
-      this.x - heartWidth/2-5, this.y + heartHeight / 2-2,
+      this.x - heartWidth / 2 - 5, this.y + heartHeight / 2 - 2,
       heartWidth, heartHeight,
       sx, sy, sw, sh
     );
 
     // A CSS named color.
+    switch (game.currentMap) {
+      case 0:
+        fill('rgba(255, 165, 0, 0.2)'); // Orange with 80% transparency
+        break;
+      case 1:
+        fill('rgba(0, 0, 255, 0.2)'); // Blue with 80% transparency
+        break;
+    }
     stroke('red');
     strokeWeight(2);
-    fill('orange')
     rect(this.x, this.y, this.width, this.height, 2);
-    fill('green');
+    fill('limegreen');
     rect(this.x, this.y, this.percentage * this.width, this.height);
+  }
+
+  updateHealth() {
+    if (this.percentage > 0) {
+      this.percentage = this.percentage - Health.reductionRate;
+    }
   }
 
   getHealth() {
