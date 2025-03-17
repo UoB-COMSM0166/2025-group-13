@@ -26,7 +26,7 @@ body {
 #p5_loading{
   /* position: absolute !important; */
   left: 50%;
-  top: 50%;
+  top: 380px;
   transform: translate(-50%, -50%);
   display: block;  /* 确保它是可见的 */
   /* background: rgba(0, 0, 0, 0.7); */
