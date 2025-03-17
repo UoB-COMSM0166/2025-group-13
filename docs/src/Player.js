@@ -24,12 +24,32 @@ class Player {
         this.isMoving = false;
         this.isBackwards = false;
 
+        this.isHurt = false;
+        this.hurtStartTime = 0;
+
         this.updateBounds();
     }
 
     display() {
         fill(255, 0, 0);
         rectMode(CENTER);
+
+        let xOffset = 0; // **抖动偏移量**
+
+        // **受伤特效**
+        if (this.isHurt) {
+            let elapsed = millis() - this.hurtStartTime;
+
+            xOffset = random(-3, 3); // **角色轻微抖动**
+
+            if (elapsed < 1000) { // **受伤状态持续 1 秒**
+                let alpha = (elapsed % 200 < 100) ? 0 : 255; // **100ms 透明，100ms 显示**
+                tint(255, 0, 0, alpha); // **红色闪烁**
+            }
+        } else {
+            tint(255); // **正常状态**
+        }
+
 
         let sx, sy, sw, sh;
         let aspectRatio, scaledWidth, scaledHeight;
@@ -95,6 +115,8 @@ class Player {
                 sx, sy, sw, sh
             );
         }
+
+        noTint(); // **清除 tint**
     }
 
     update(platformArray, foodArray, fireArray, cave) {
@@ -165,8 +187,14 @@ class Player {
 
             if (collision) {
                 collisionDetected = true;
+                this.isHurt = true;
+                this.hurtStartTime = millis();
                 break; // Exit early to optimize performance
             }
+        }
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
         }
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
@@ -174,7 +202,7 @@ class Player {
     }
 
     checkCollisionsLava() {
-        let collision = this.bottom > (height-Brick.height/2);
+        let collision = this.bottom > (height - Brick.height / 2);
         if (collision) {
             // Set reduction rate based on collision detection with lava
             Health.reductionRate = 0.4;

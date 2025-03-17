@@ -68,9 +68,11 @@ function keyPressed() {
     gameState = "gameInstructions";
   }
   else if((gameState === "gameInstructions" || gameState === "pausePage") && key === ' ') {
+    // console.log("Resuming game...");
     gameState = "gameScreen";
   }
-  else if(gameState === "gameScreen" && keyCode === ESCAPE) {
+  else if(gameState === "gameScreen" && (keyCode === ESCAPE || keyCode === 81)) {
+    // console.log("Game Paused");
     gameState = "pausePage";
   }
   else if(gameState === "gameOver" && key === ' ') {
@@ -78,8 +80,8 @@ function keyPressed() {
     newGame();
     gameState = "gameScreen";
   }
-  else if ((gameState === "gameEnd" && key === ' ') || 
-          ((gameState === "gameOver" || gameState === "levelComplete") && keyCode === ESCAPE)) {
+  else if ((gameState === "gameEnd" && key === ' ') ||
+          ((gameState === "gameOver" || gameState === "levelComplete") && (keyCode === ESCAPE || keyCode === 81))) {
     // Restart from first level
     gameLevel = 1;
     newGame();

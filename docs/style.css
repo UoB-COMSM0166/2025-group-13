@@ -4,9 +4,17 @@ html {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: 'DinoEscapeMainPixelFont';  /* 你自定义的字体名称 */
+  src: url('assets/fonts/PixelEmulator.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* General Styles */
 body {
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif; */
+  font-family: 'DinoEscapeMainPixelFont', cursive;
   background-color: #111;
   color: white;
   text-align: center;
@@ -30,7 +38,7 @@ h1 {
   color: white;
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-family: 'Press Start 2P', cursive; /* Retro gaming font */
+  /* font-family: 'Press Start 2P', cursive; Retro gaming font */
 }
 
 /* Instructions Styling */
