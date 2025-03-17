@@ -1,7 +1,7 @@
 class AssetManager {
     preload() {
         // cover image
-        this.homePageBackground = loadImage('assets/background/screen_cover.pngn');
+        this.homePageBackground = loadImage('assets/background/screen_cover.png');
         this.gamePageIceBackground = loadImage('assets/background/bg_lv2.png');
         this.gameOverBackground = loadImage('assets/background/screen_lv1Dead.png');
         this.gameOverByIce = loadImage('assets/background/screen_lv2Dead.png');
