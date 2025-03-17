@@ -24,8 +24,15 @@ body {
 }
 
 #p5_loading{
-  position: relative !important;
-  display: contents;
+  /* position: absolute !important; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;  /* 确保它是可见的 */
+  /* background: rgba(0, 0, 0, 0.7); */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* Game Header Styling */
