@@ -4,7 +4,7 @@ class AssetManager {
         this.homePageBackground = loadImage('assets/background/screen_cover.png');
         this.gamePageIceBackground = loadImage('assets/background/bg_ice.png');
         this.gameOverBackground = loadImage('assets/background/screen_lv1Dead.png');
-        this.gameOverByIce = loadImage('assets/background/screen_frozen.jpg');
+        this.gameOverByIce = loadImage('assets/background/screen_lv2Dead.png');
         this.levelCompleteBackground = loadImage('assets/background/screen_lv1ToLv2.png');
         this.gameWon = loadImage('assets/background/screen_lv1Win.png');
         this.instructionsPage = loadImage('assets/background/instructions.png');

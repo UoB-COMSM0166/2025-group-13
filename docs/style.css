@@ -23,6 +23,11 @@ body {
   padding: 0;
 }
 
+#p5_loading{
+  position: relative !important;
+  display: contents;
+}
+
 /* Game Header Styling */
 header {
   /* background: linear-gradient(to right, #ff4500, #ffcc00); */
