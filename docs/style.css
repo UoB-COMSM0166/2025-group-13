@@ -5,7 +5,8 @@ html {
 }
 
 @font-face {
-  font-family: 'DinoEscapeMainPixelFont';  /* 你自定义的字体名称 */
+  font-family: 'DinoEscapeMainPixelFont';
+  /* 你自定义的字体名称 */
   src: url('assets/fonts/PixelEmulator.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -24,11 +25,11 @@ body {
 
 /* Game Header Styling */
 header {
-  background: linear-gradient(to right, #ff4500, #ffcc00);
+  /* background: linear-gradient(to right, #ff4500, #ffcc00); */
   padding: 15px;
-  box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5);
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  border-bottom: 5px solid #ffcc00;
+  /* box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5); */
+  /* text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); */
+  /* border-bottom: 5px solid #ffcc00; */
 }
 
 h1 {
@@ -43,22 +44,22 @@ h1 {
 
 /* Instructions Styling */
 #instructions {
-  background: rgba(0, 0, 0, 0.7);
+  width: 850px;
+  /* background: rgba(0, 0, 0, 0.7); */
   padding: 15px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin: 20px auto;
-  width: 820px;
   font-size: 18px;
   font-weight: bold;
   color: #ffcc00;
-  box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
-  border: 3px dashed #ffcc00;
+  /* box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3); */
+  /* transition: transform 0.3s ease-in-out; */
+  border: 2px dashed #ffcc00;
 }
 
-#instructions:hover {
+/* #instructions:hover {
   transform: scale(1.05);
-}
+} */
 
 #canvas-container {
   width: 850px;
@@ -69,17 +70,70 @@ h1 {
   align-items: center;
   margin: 30px auto;
   padding: 0;
-  border: 5px solid #ffcc00; /* Adds the golden border */
-  border-radius: 15px; /* Rounded edges for the container */
-  background: radial-gradient(circle, rgba(255, 69, 0, 0.7) 20%, rgba(255, 255, 0, 0.3) 80%);
-  box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5);
-  overflow: hidden; /* Ensures no overflow */
+  /* font-family: 'Press Start 2P', sans-serif; */
+  font-size: 32px;
+  text-align: center;
+  color: #fff;
+  border-radius: 30px;
+  /* text-transform: uppercase; */
+  /* image-rendering: pixelated; */
+  /* text-shadow: 3px 3px 0px black; */
+  /* border: 5px solid #ffcc00; */
+
+  /* background: radial-gradient(circle, rgba(255, 69, 0, 0.7) 20%, rgba(255, 255, 0, 0.3) 80%); */
+  /* padding: 20px; */
+  /* border-radius: 4px; */
+  /* box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5); */
+  overflow: hidden;
 }
 
 /* Canvas Styling */
 canvas {
-  display: block; /* Prevents unwanted spacing */
+  display: block;
+  /* Prevents unwanted spacing */
   width: 100%;
   height: 100%;
-  border-radius: 15px; /* Makes the canvas itself rounded */
+  border-radius: 15px;
+  /* Makes the canvas itself rounded */
+}
+
+.keycap {
+  font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", monospace;
+  color: #333;
+  display: inline-block;
+  padding: 4px 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background: #eee;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.mirror {
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+.pixcle-style-continer {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+
+  background: linear-gradient(to bottom, #ff7b00 0%, #ff7b00 20%,
+      #ff9900 20%, #ff9900 40%,
+      #ffcc00 40%, #ffcc00 60%,
+      #ffdd44 60%, #ffdd44 80%,
+      #ffee88 80%, #ffee88 100%);
+
+  padding: 20px;
+
+  border: 6px solid #ffcc00;
+  box-shadow: 4px 4px 0px #cc6600, 8px 8px 0px #993300;
+  /* border-radius: 15px; */
+
+  image-rendering: pixelated;
+  text-shadow: 3px 3px 0px black;
 }
