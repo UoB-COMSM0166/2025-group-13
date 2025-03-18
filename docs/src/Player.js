@@ -34,21 +34,19 @@ class Player {
         fill(255, 0, 0);
         rectMode(CENTER);
 
-        let xOffset = 0;
 
         if (this.isHurt) {
             let elapsed = millis() - this.hurtStartTime;
 
-            xOffset = random(-3, 3);
 
             if (elapsed < 1000) {
-                let alpha = (elapsed % 200 < 100) ? 0 : 255;
+                let alpha = map(sin(elapsed * 0.02), -1, 1, 100, 255);
                 tint(255, 0, 0, alpha);
             }
         } else {
             tint(255);
+            // noTint();
         }
-
 
         let sx, sy, sw, sh;
         let aspectRatio, scaledWidth, scaledHeight;
@@ -185,9 +183,11 @@ class Player {
             let collision = withinXRange && withinYRange;
 
             if (collision) {
-                collisionDetected = true;
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                }
                 this.isHurt = true;
-                this.hurtStartTime = millis();
                 break; // Exit early to optimize performance
             }
         }
