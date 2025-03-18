@@ -44,7 +44,6 @@ let level2Fires =
     //on ground(y = 475)
     [670, 475],[1650, 475], [3320, 475]
 ];
-
 let level2Cave = [4070, 420];
 
 let layouts =

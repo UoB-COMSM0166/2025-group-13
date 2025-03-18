@@ -34,20 +34,19 @@ class Player {
         fill(255, 0, 0);
         rectMode(CENTER);
 
-        let xOffset = 0; // **抖动偏移量**
+        let xOffset = 0;
 
-        // **受伤特效**
         if (this.isHurt) {
             let elapsed = millis() - this.hurtStartTime;
 
-            xOffset = random(-3, 3); // **角色轻微抖动**
+            xOffset = random(-3, 3);
 
-            if (elapsed < 1000) { // **受伤状态持续 1 秒**
-                let alpha = (elapsed % 200 < 100) ? 0 : 255; // **100ms 透明，100ms 显示**
-                tint(255, 0, 0, alpha); // **红色闪烁**
+            if (elapsed < 1000) {
+                let alpha = (elapsed % 200 < 100) ? 0 : 255;
+                tint(255, 0, 0, alpha);
             }
         } else {
-            tint(255); // **正常状态**
+            tint(255);
         }
 
 
@@ -116,7 +115,7 @@ class Player {
             );
         }
 
-        noTint(); // **清除 tint**
+        noTint();
     }
 
     update(platformArray, foodArray, fireArray, cave) {

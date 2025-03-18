@@ -21,10 +21,10 @@ class Game {
         this.map = this.maps[this.currentMap];
 
         // Create new health of the player
-        this.health = new Health(assetManager);    
+        this.health = new Health(assetManager);
         // Create new player
-        //this.player = new Player(width / 2, this.groundTop / 2,  assetManager); 
-        this.player = new Player(0, height/2,  this.health, assetManager); 
+        //this.player = new Player(width / 2, this.groundTop / 2,  assetManager);
+        this.player = new Player(0, height/2,  this.health, assetManager);
 
         this.stopMapMovement = false;
     }
@@ -70,7 +70,7 @@ class Game {
                         image(this.assetManager.iceLakeImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
                 }
-                
+
             }
         }
 
@@ -133,6 +133,5 @@ class Game {
         }
         else return false;
     }
-    
-}
 
+}

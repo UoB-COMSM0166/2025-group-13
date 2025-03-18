@@ -105,9 +105,9 @@ class GameScreen {
         let boxX = width / 2;
         let boxY = height - 130;
 
-        fill(0, 0, 0, 180);
-        noStroke();
-        rect(boxX-72, boxY+18, 90, 30, 0);
+        // fill(0, 0, 0, 180);
+        // noStroke();
+        // rect(boxX-72, boxY+18, 90, 30, 0);
 
         textSize(18);
         fill(255);
