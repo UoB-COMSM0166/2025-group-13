@@ -1,28 +1,30 @@
 // Level1
-let level1Platforms = 
+let level1Platforms =
 [
     ["GROUND", 335, 485, 780, 30],["GROUND", 1055, 485, 670, 30],["GROUND", 2125, 485, 850, 30],
     ["FLOAT", 120, 300, 90, 30],["TREE", 250, 425, 30, 90],["FLOAT", 400, 410, 90, 30],["FLOAT", 900, 420, 90, 30],["FLOAT", 1050, 330, 150, 30],["FLOAT", 1540, 400, 210, 30],["TREE", 2000, 415, 30, 120],
 ];
-let level1Foods = 
+let level1Foods =
 [
     //on ground(y = 460)
-    [450, 460],[250,370],[1000,460],[1100, 305],[2000,345],
+    //apple height related to tree height
+    ["MEAT",450, 460],["APPLE",250,370],["MEAT",1000,460],["MEAT",1100, 305],["APPLE",2000,345],
 ];
 
 let level1Fires =
 [
     //on ground(y = 445)
     [500, 445],[1100, 445],[1850, 445]
-]; 
+];
 
 let level1Cave = [2200, 425];
+
 // Level2
-let level2Platforms = 
+let level2Platforms =
 [
     ["GROUND", 100, 485, 200, 30],["GROUND", 670, 485, 350, 30],["GROUND", 1700, 485, 500, 30],["GROUND", 2180, 485, 150, 30],
     ["GROUND", 2650, 485, 165, 30],["GROUND", 3330, 485, 190, 30],["GROUND", 3900, 485, 480, 30],
-    
+
     ["FLOAT", 290, 380, 150, 30], ["FLOAT", 470, 315, 150, 30],["FLOAT", 975, 50, 150, 30],["FLOAT", 975, 382, 150, 30],
     ["FLOAT", 1150, 320, 150, 30], ["FLOAT", 1150, 150, 150, 30],["FLOAT", 1330, 250, 150, 30],["FLOAT", 1550, 320, 150, 30],
     ["FLOAT", 1863, 218, 150, 30], ["FLOAT", 2020, 120, 150, 30],["FLOAT", 2240, 190, 150, 30],["FLOAT", 2318, 350, 150, 30],
@@ -31,9 +33,10 @@ let level2Platforms =
 
     ["TREE", 786, 400, 30, 150], ["TREE", 1760, 380, 30, 180],["TREE", 2695, 400, 30, 150],["TREE", 3367, 320, 30, 300],
 ];
-let level2Foods = 
+let level2Foods =
 [
-    [520, 285],[500, 450],[784, 305],[920, 15],[1272, 220],[1820, 450],[2023, 90],[2120, 440],[2690, 295],[3370, 140],[3665, 450],
+        //on ground(y = 460)
+    ["MEAT",520, 460],["APPLE",786, 315],["MEAT",910, 27],["APPLE",1760, 250],["MEAT",2023, 90],["MEAT",2120, 440],["APPLE",2695, 375],["APPLE",3367, 290],["APPLE",3665, 450],
 ];
 
 let level2Fires =
@@ -41,11 +44,10 @@ let level2Fires =
     //on ground(y = 475)
     [670, 475],[1650, 475], [3320, 475]
 ];
-
 let level2Cave = [4070, 420];
 
-let layouts = 
+let layouts =
 [
-    [level1Platforms, level1Foods, level1Fires, level1Cave], 
+    [level1Platforms, level1Foods, level1Fires, level1Cave],
     [level2Platforms, level2Foods, level2Fires, level2Cave],
 ];

@@ -22,7 +22,7 @@ class Map {
 
         for(let i = 0; i < foods.length; i++){
             let food = foods[i];
-            this.foods.push(new Food(food[0], food[1], this.assetManager));
+            this.foods.push(new Food(food[0], food[1], food[2], this.assetManager));
         }
 
         for(let i = 0; i < fires.length; i++){
@@ -35,13 +35,13 @@ class Map {
 
     update() {
         // Update positions for all platforms
-        for (let platform of this.platforms) { 
+        for (let platform of this.platforms) {
             platform.updateBounds();
         }
-        for (let food of this.foods) { 
+        for (let food of this.foods) {
             food.updateFood();
         }
-        for (let fire of this.fires) { 
+        for (let fire of this.fires) {
             fire.updateFire();
         }
         this.cave.updateCave();
@@ -49,6 +49,7 @@ class Map {
 
     display() {
         // Display all platforms
+        this.cave.display();
         for (let platform of this.platforms) {
             platform.display();
         }
@@ -58,7 +59,6 @@ class Map {
         for (let fire of this.fires) {
             fire.display();
         }
-        this.cave.display();
     }
 
     stopMovement() {
