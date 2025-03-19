@@ -106,11 +106,13 @@ class Game {
     }
 
 
-    handleInput() {
-        if (keyIsDown) {
+    handleInput(triggerJump, moveLeft, moveRight) {
+        /*if (keyIsDown) {
             this.map.handleInput(true); // handle map input
             this.player.handleInput(true); // handle player input
-        }
+        }*/
+        this.map.handleInput(moveRight);
+        this.player.handleInput(moveLeft, moveRight, triggerJump);
     }
 
     isGameOver() {

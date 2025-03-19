@@ -81,11 +81,17 @@ class Map {
         }
     }
 
-    handleInput(isKeyDown) {
+    /*handleInput(isKeyDown) {
         if (isKeyDown) {
             if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
                 this.moveAllPlatforms();
             }
+        }
+    }*/
+
+    handleInput(moveRight) {
+        if(moveRight) {
+                this.moveAllPlatforms();
         }
     }
 

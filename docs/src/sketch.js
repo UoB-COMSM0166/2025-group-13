@@ -11,6 +11,9 @@ let inputHandler;
 // Global variable to store the level of the game
 let gameLevel = 1;
 let maxLevels = 2;
+// Global variables to store the triggers of actions that changes screens
+let triggerJump = false;
+let triggerESC = false;
 
 // Preload all assets using the assetManager
 function preload() {
@@ -24,7 +27,7 @@ function setup() {
   newGame();
   imageMode(CENTER);//Haru: I am so sorry about that, such a pain in the ass now
   inputHandler = new InputHandler();
-  inputHandler.init();
+  inputHandler.setup();
 }
 
 function newGame() {
@@ -34,7 +37,9 @@ function newGame() {
 
 function draw() {
   // Start by reseting all inputs to false (maybe this is not the best approach)
-  //inputHandler.reset();
+  triggerJump = inputHandler.getAndResetJump();
+  moveRight = inputHandler.getMoveRight();
+  moveLeft = inputHandler.getMoveLeft();
   // Check the game state and draw the corresponding screen
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
@@ -43,7 +48,7 @@ function draw() {
     screenGame.drawInstructions();
   }
   else if(gameState === "gameScreen") {
-    game.handleInput();
+    game.handleInput(triggerJump, moveLeft, moveRight);
     game.update();
     game.draw();
     if(game.isGameOver()) gameState = "gameOver";
@@ -67,17 +72,56 @@ function draw() {
     screenGame.drawLevelComplete();
   }
   else screenGame.drawEndGame();
+  
+  // Check if we need to change the screen
+  changeScreen();
+}
 
-  // Update the inputHandler
-  inputHandler.update();
-  //console.log("Inputs: " + inputHandler.moveLeft + " " + inputHandler.moveRight + " " + 
-    //inputHandler.jump + " " + inputHandler.pause + " " + inputHandler.nextScreen);
-  // See if we need to change the screen
-  //if(inputHandler.nextScreen) {
-  //  changeScreen();
+function changeScreen() {
+  if(inputHandler.moveLeft) {
+    console.log("Move left");
+  }
+  if(inputHandler.moveRight) {
+    console.log("Move right");
+ }
+  if(triggerJump) {
+    console.log("Jump");
+  }
+  if(inputHandler.escape) {
+    console.log("ESCAPE");
+  }
+  if(gameState === "homePage" && triggerJump) {
+    gameState = "gameInstructions";
+  }
+  else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
+    // console.log("Resuming game...");
+    gameState = "gameScreen";
+  }
+  else if(gameState === "gameScreen" && inputHandler.escape) {
+    // console.log("Game Paused");
+    gameState = "pausePage";
+  }
+  else if(gameState === "gameOver" && triggerJump) {
+    // Restart from actual level
+    newGame();
+    gameState = "gameScreen";
+  }
+  else if ((gameState === "gameEnd" && triggerJump) ||
+          ((gameState === "gameOver" || gameState === "levelComplete") && inputHandler.escape)) {
+    // Restart from first level
+    gameLevel = 1;
+    newGame();
+    gameState = "homePage";
+  }
+  else if (gameState === "levelComplete" && triggerJump) {
+    newGame();
+    gameState = "gameScreen";
+  }
 }
 
 function keyPressed() {
+  inputHandler.keyPressed();
+  /*
   if(gameState === "homePage" && key === ' ') {
     gameState = "gameInstructions";
   }
@@ -105,4 +149,9 @@ function keyPressed() {
     newGame();
     gameState = "gameScreen";
   }
+  */
+}
+
+function keyReleased() {
+  inputHandler.keyReleased();
 }

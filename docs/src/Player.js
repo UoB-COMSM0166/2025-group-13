@@ -317,7 +317,7 @@ class Player {
         }
     }
 
-    handleInput(isKeyDown) {
+    /*handleInput(isKeyDown) {
         if (isKeyDown) {
             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
                 this.move(-1);
@@ -330,6 +330,24 @@ class Player {
                 this.isBackwards = false;
             }
             if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
+        } else {
+            this.isMoving = false;
+        }
+    }*/
+
+    handleInput(moveLeft, moveRight, triggerJump) {
+        if(moveLeft || moveRight || triggerJump) {
+            if (moveLeft) {
+                this.move(-1);
+                this.isMoving = true;
+                this.isBackwards = true;
+            }
+            if (moveRight) {
+                this.move(1);
+                this.isMoving = true;
+                this.isBackwards = false;
+            }
+            if (triggerJump) this.jump();
         } else {
             this.isMoving = false;
         }
