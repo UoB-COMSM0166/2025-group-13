@@ -2,6 +2,7 @@
 // It also handles the key events and the game loop.
 
 // Global variable to track the current state of the game.
+
 let gameState = "homePage"; // gameScreen, pausePage, lossScreen, levelCompleteScreen, etc.
 // Global variable to maintain the assetManager, screen and game objects
 let assetManager;
@@ -79,6 +80,9 @@ function keyPressed() {
     // Restart from actual level
     newGame();
     gameState = "gameScreen";
+  }
+  else if((gameState === "gameScreen" || gameState === "gameInstructions") && (key === ' ' || key === 'W' || key === 'w' || key === "ArrowUp")){
+    game.playerJump();
   }
   else if ((gameState === "gameEnd" && key === ' ') ||
           ((gameState === "gameOver" || gameState === "levelComplete") && (keyCode === ESCAPE || keyCode === 81))) {

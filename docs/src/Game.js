@@ -134,4 +134,8 @@ class Game {
         else return false;
     }
 
+    playerJump(){
+        this.player.jump();
+    }
+
 }

@@ -329,7 +329,7 @@ class Player {
                 this.isMoving = true;
                 this.isBackwards = false;
             }
-            if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
+            //if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
         } else {
             this.isMoving = false;
         }
