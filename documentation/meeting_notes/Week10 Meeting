@@ -1,0 +1,37 @@
+18/3 Meeting
+
+Remaining tasks:
+Video - Start after term
+Fine tune this week
+Identify challenges today, implement till end of term
+Report done by one person
+Demo preparation - after submitting report
+
+Dates:
+Exam - April 29
+Report - May 8
+Demo - May 15
+
+Possible challenges:
+Collisions
+Accessibility
+Mobile
+Leaderboard
+Enemies
+Moving platforms
+Changing characters
+Falling debris/asteroids
+Avalanche/lava
+
+What to fine-tune according to Copilot summary:
+1.  Improve Visual Consistency and Animation:
+- Ensure consistency in the art style across all elements (e.g., fire, platforms, backgrounds) to maintain a cohesive visual experience 
+- Add running animations for the main character to replace the sliding animation, and ensure all animations (e.g., flames, dino movements) are consistent and noticeable.
+
+ 2. Adjust Jumping Mechanics and Gravity:
+- Modify the jumping mechanics to make them more intuitive and realistic. Consider implementing a parabolic jump and adjusting the gravity to make the jump and fall speeds feel more natural.
+- Ensure the jump can only be executed once until the key is released and pressed again, as this is the standard expectation.
+
+3. Enhance User Feedback and Health Indicators:
+- Make it clearer when the player is losing health by adding visual and audio cues, such as flashing the screen red or adding a glow effect around the health bar.
+- Improve the visibility and understanding of health-related elements, such as indicating that ice spikes cause damage and making the health bar more noticeable when it decreases.
