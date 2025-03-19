@@ -3,10 +3,11 @@
 
 // Global variable to track the current state of the game.
 let gameState = "homePage"; // gameScreen, pausePage, lossScreen, levelCompleteScreen, etc.
-// Global variable to maintain the assetManager, screen and game objects
+// Global variable to maintain the assetManager, screen, game and input handler objects
 let assetManager;
 let screenGame;
 let game;
+let inputHandler;
 // Global variable to store the level of the game
 let gameLevel = 1;
 let maxLevels = 2;
@@ -22,6 +23,8 @@ function setup() {
   screenGame.setup();
   newGame();
   imageMode(CENTER);//Haru: I am so sorry about that, such a pain in the ass now
+  inputHandler = new InputHandler();
+  inputHandler.init();
 }
 
 function newGame() {
@@ -30,6 +33,9 @@ function newGame() {
 }
 
 function draw() {
+  // Start by reseting all inputs to false (maybe this is not the best approach)
+  //inputHandler.reset();
+  // Check the game state and draw the corresponding screen
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
   }
@@ -61,6 +67,14 @@ function draw() {
     screenGame.drawLevelComplete();
   }
   else screenGame.drawEndGame();
+
+  // Update the inputHandler
+  inputHandler.update();
+  //console.log("Inputs: " + inputHandler.moveLeft + " " + inputHandler.moveRight + " " + 
+    //inputHandler.jump + " " + inputHandler.pause + " " + inputHandler.nextScreen);
+  // See if we need to change the screen
+  //if(inputHandler.nextScreen) {
+  //  changeScreen();
 }
 
 function keyPressed() {

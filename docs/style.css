@@ -149,3 +149,26 @@ canvas {
   image-rendering: pixelated;
   text-shadow: 3px 3px 0px black;
 }
+
+/* Position buttons absolutely within the container */
+.control-btn {
+  position: absolute;
+  z-index: 10; /* Ensure buttons are on top of the canvas */
+  /*padding: 5px 10px;
+  font-size: 16px;*/
+}
+
+#left-btn {
+  bottom: 20px;
+  left: 20px;
+}
+
+#right-btn {
+  bottom: 20px;
+  left: 100px;
+}
+
+#jump-btn {
+  bottom: 20px;
+  right: 20px;
+}
