@@ -33,6 +33,9 @@ function draw() {
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
   }
+  else if (gameState === "gameInstructions") {
+    screenGame.drawInstructions();
+  }
   else if(gameState === "gameScreen") {
     game.handleInput();
     game.update();
@@ -61,15 +64,25 @@ function draw() {
 }
 
 function keyPressed() {
-  if((gameState === "homePage" || gameState === "pausePage") && key === ' ') {
-    gameState = "gameScreen"
+  if(gameState === "homePage" && key === ' ') {
+    gameState = "gameInstructions";
   }
-  else if(gameState === "gameScreen" && keyCode === ESCAPE) {
+  else if((gameState === "gameInstructions" || gameState === "pausePage") && key === ' ') {
+    // console.log("Resuming game...");
+    gameState = "gameScreen";
+  }
+  else if(gameState === "gameScreen" && (keyCode === ESCAPE || keyCode === 81)) {
+    // console.log("Game Paused");
     gameState = "pausePage";
   }
-  else if (((gameState === "gameOver" || gameState === "gameEnd") && key === ' ') || 
-          (gameState === "levelComplete" && keyCode === ESCAPE)) {
-    // Restart levels
+  else if(gameState === "gameOver" && key === ' ') {
+    // Restart from actual level
+    newGame();
+    gameState = "gameScreen";
+  }
+  else if ((gameState === "gameEnd" && key === ' ') ||
+          ((gameState === "gameOver" || gameState === "levelComplete") && (keyCode === ESCAPE || keyCode === 81))) {
+    // Restart from first level
     gameLevel = 1;
     newGame();
     gameState = "homePage";

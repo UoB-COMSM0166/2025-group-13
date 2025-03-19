@@ -1,19 +1,19 @@
 class Player {
     constructor(positionX, positionY, playerHealth, assetManager) {
         this.assetManager = assetManager;
-        // 
+        //
         this.playerHealth = playerHealth;
         // Variable to keep track of whether the player has reached end of level (collision with the cave)
         this.reachedCave = false;
-        // this.dino_walk = null;
-        // this.dino_static = null;
+        this.dino_walk = null;
+        this.dino_static = null;
 
         this.x = positionX;
         this.y = positionY + 5;
         this.width = 30;
         this.height = 30;
 
-        //this.xSpeed = 0;  xspeed is not needed because the player does not face any horizontal acceleration
+        this.xSpeed = 0;
         this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
         this.maxSpeed = 4;
 
@@ -24,6 +24,9 @@ class Player {
         this.isMoving = false;
         this.isBackwards = false;
 
+        this.isHurt = false;
+        this.hurtStartTime = 0;
+
         this.updateBounds();
     }
 
@@ -31,20 +34,38 @@ class Player {
         fill(255, 0, 0);
         rectMode(CENTER);
 
+
+        if (this.isHurt) {
+            let elapsed = millis() - this.hurtStartTime;
+
+
+            if (elapsed < 1000) {
+                let alpha = map(sin(elapsed * 0.02), -1, 1, 100, 255);
+                tint(255, 0, 0, alpha);
+            }
+        } else {
+            tint(255);
+            // noTint();
+        }
+
         let sx, sy, sw, sh;
         let aspectRatio, scaledWidth, scaledHeight;
 
         if (!this.isMoving) {
             if (!this.isBackwards) {
-                sx = 450; sy = 13; sw = 60; sh = 100;
+                //static && forward
+                sx = 60; sy = 120; sw = 205; sh = 220;
             } else {
-                sx = 450; sy = 13; sw = 60; sh = 100;
+                //static && backward
+                sx = 60; sy = 120; sw = 205; sh = 220;
             }
         } else {
             if (!this.isBackwards) {
-                sx = 105; sy = 300; sw = 110; sh = 80;
+                //moving && forward
+                sx = 725; sy = 120; sw = 255; sh = 220;
             } else {
-                sx = 105; sy = 300; sw = 110; sh = 80;
+                //moving && backward
+                sx = 725; sy = 120; sw = 255; sh = 220;
             }
         }
 
@@ -53,9 +74,9 @@ class Player {
         scaledHeight = this.height;
 
         // draw background rectangle for testing
-        /*fill(200, 200, 255, 150);
-        noStroke();
-        rect(this.x, this.y, this.width, this.height);*/
+        // fill(200, 200, 255, 150);
+        // noStroke();
+        // rect(this.x, this.y, this.width, this.height);
 
         if (this.isMoving && this.isBackwards) {
             push();
@@ -91,11 +112,13 @@ class Player {
                 sx, sy, sw, sh
             );
         }
+
+        noTint();
     }
 
     update(platformArray, foodArray, fireArray, cave) {
         this.applyGravity();
-        //this.x += this.xSpeed;
+        // this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
@@ -158,11 +181,19 @@ class Player {
             let withinXRange = this.right > fire.left && this.left < fire.right;
             let withinYRange = this.bottom > fire.top && this.top < fire.bottom;
             let collision = withinXRange && withinYRange;
-        
+
             if (collision) {
-                collisionDetected = true;
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                }
+                this.isHurt = true;
                 break; // Exit early to optimize performance
             }
+        }
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
         }
         // Set reduction rate based on collision detection with any of the fires
         Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
@@ -170,7 +201,7 @@ class Player {
     }
 
     checkCollisionsLava() {
-        let collision = this.bottom > (height-Brick.height/2);
+        let collision = this.bottom > (height - Brick.height / 2);
         if (collision) {
             // Set reduction rate based on collision detection with lava
             Health.reductionRate = 0.4;
@@ -185,13 +216,13 @@ class Player {
             let withinXRange = this.right > food.left && this.left < food.right;
             let withinYRange = this.bottom > food.top && this.top < food.bottom;
             let collision = withinXRange && withinYRange;
-        
+
             if (collision) {
                 let actualHealth = this.playerHealth.getHealth();
-                if (actualHealth > 0.8) { 
-                    this.playerHealth.setHealth(1); 
-                } else { 
-                    this.playerHealth.setHealth(actualHealth + 0.2); 
+                if (actualHealth > 0.8) {
+                    this.playerHealth.setHealth(1);
+                } else {
+                    this.playerHealth.setHealth(actualHealth + 0.2);
                 }
                 foodArray.splice(i, 1); // Remove collided food
             }
@@ -204,7 +235,7 @@ class Player {
         let withinXRange = this.right > cave.left && this.left < cave.right;
         let withinYRange = this.bottom > cave.top && this.top < cave.bottom;
         let collision = withinXRange && withinYRange;
-    
+
         if (collision) {
             this.reachedCave = true;
             // Check if the player has reached the cave
@@ -261,7 +292,7 @@ class Player {
         else {
             this.isBackwards = false;
         }
-        // this.isMoving = true;
+        this.isMoving = true;
         if (this.isOnGround) {
             this.xSpeed = direction * this.maxSpeed;
         } else {
@@ -274,8 +305,8 @@ class Player {
     }
 
     stopMovement() {
-        // this.isMoving = false;
-        // this.isBackwards = false;
+        this.isMoving = false;
+        this.isBackwards = false;
         this.xSpeed = 0;
     }
 
