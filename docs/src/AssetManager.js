@@ -18,7 +18,7 @@ class AssetManager {
         //player image
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         ////items image
-        this.healthRataledItems = loadImage('assets/items/item_healthRelated.png');
+        this.healthRelatedItems = loadImage('assets/items/item_healthRelated.png');
     }
 
     constructor() {

@@ -11,10 +11,10 @@ let level1Foods =
     ["MEAT",450, 460],["APPLE",250,370],["MEAT",1000,460],["MEAT",1100, 305],["APPLE",2000,345],
 ];
 
-let level1Fires =
+let level1GroundDamage =
 [
     //on ground(y = 445)
-    [500, 445],[1100, 445],[1850, 445]
+    ["FIRE",500, 445],["FIRE",1100, 445],["FIRE",1850, 445]
 ];
 
 let level1Cave = [2200, 425];
@@ -39,15 +39,15 @@ let level2Foods =
     ["MEAT",520, 460],["APPLE",786, 315],["MEAT",910, 27],["APPLE",1760, 250],["MEAT",2023, 90],["MEAT",2120, 440],["APPLE",2695, 375],["APPLE",3367, 290],["APPLE",3665, 450],
 ];
 
-let level2Fires =
+let level2GroundDamage =
 [
     //on ground(y = 475)
-    [670, 475],[1650, 475], [3320, 475]
+    ["ICESPIKE",670, 475],["ICESPIKE",1650, 475], ["ICESPIKE",3320, 475]
 ];
 let level2Cave = [4070, 420];
 
 let layouts =
 [
-    [level1Platforms, level1Foods, level1Fires, level1Cave],
-    [level2Platforms, level2Foods, level2Fires, level2Cave],
+    [level1Platforms, level1Foods, level1GroundDamage, level1Cave],
+    [level2Platforms, level2Foods, level2GroundDamage, level2Cave],
 ];

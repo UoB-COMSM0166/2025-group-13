@@ -3,17 +3,17 @@ class Map {
         this.assetManager = assetManager;
         this.platforms = [];
         this.foods = [];
-        this.fires = [];
+        this.groundDamanges = [];
         this.cave;
         this.xSpeed = 4;
         this.food_height = 25;
-        this.fire_height = 70;
+        this.groundDamange_height = 70;
     }
 
     setup(layout) {
         let platforms = layout[0];
         let foods = layout[1];
-        let fires = layout[2];
+        let groundDamanges = layout[2];
         let cave = layout[3];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
@@ -25,9 +25,9 @@ class Map {
             this.foods.push(new Food(food[0], food[1], food[2], this.assetManager));
         }
 
-        for(let i = 0; i < fires.length; i++){
-            let fire = fires[i];
-            this.fires.push(new Fire(fire[0], fire[1], this.assetManager));
+        for(let i = 0; i < groundDamanges.length; i++){
+            let groundDamange = groundDamanges[i];
+            this.groundDamanges.push(new GroundDamage(groundDamange[0], groundDamange[1],groundDamange[2], this.assetManager));
         }
 
         this.cave = new Cave(cave[0], cave[1], this.assetManager);
@@ -41,8 +41,8 @@ class Map {
         for (let food of this.foods) {
             food.updateFood();
         }
-        for (let fire of this.fires) {
-            fire.updateFire();
+        for (let groundDamange of this.groundDamanges) {
+            groundDamange.updateGroundDamage();
         }
         this.cave.updateCave();
     }
@@ -56,8 +56,8 @@ class Map {
         for (let food of this.foods) {
             food.display();
         }
-        for (let fire of this.fires) {
-            fire.display();
+        for (let groundDamange of this.groundDamanges) {
+            groundDamange.display();
         }
     }
 
@@ -74,8 +74,8 @@ class Map {
             for (let food of this.foods) {
                 food.x -= this.xSpeed;
             }
-            for (let fire of this.fires) {
-                fire.x -= this.xSpeed;
+            for (let groundDamange of this.groundDamanges) {
+                groundDamange.x -= this.xSpeed;
             }
             this.cave.x -= this.xSpeed;
         }
