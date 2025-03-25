@@ -74,9 +74,11 @@ Although some team members already knew each other, for others it was the first 
 
 #### Team profiling
 Once we managed to ‘team up’, we did a team profiling session. Words more, words less, we spent time listening and understanding each other's interests, superpowers and areas of opportunity. 
+
 <img src="documentation/meeting_notes/img/photo_meeting4-2.jpg" alt="Team profiling activity" width="650">
 
 On the other hand, we defined (after a little research) which roles would be necessary to realise a successful project. Then, with those two elements in mind, everyone proposed their order of priority for at least three of the five main roles (we mention below which roles we identified and why there are some main roles and not others). The decision had to be the result of the intersection between what we need, what I am good at, what I like to do and what I want to learn. In the first iteration of the exercise we managed to get everyone to take on their top priority role, achieving great satisfaction among the team, as no one felt they ‘had to take on that role’.
+
 <img src="documentation/meeting_notes/img/photo_meeting4-3.jpg" alt="Team profiling activity" width="650">
 
 In addition, we decided to start with these roles, but to establish possible role changes after the first weeks of work in order to learn from different topics, generate a better distribution of knowledge and enrich the process with different perspectives.
