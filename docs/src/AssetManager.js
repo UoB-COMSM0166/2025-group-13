@@ -15,6 +15,7 @@ class AssetManager {
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
         this.caveImg = loadImage('assets/items/item_cave.png');
         this.iceSpikeImg = loadImage('assets/items/ice_spike.png');
+        this.enemyImg = loadImage('assets/items/enemy.png');
         //player image
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         ////items image

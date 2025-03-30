@@ -116,14 +116,15 @@ class Player {
         noTint();
     }
 
-    update(platformArray, foodArray, groundDamangeArray, cave) {
+    update(platformArray, foodArray, groundDamageArray, groundEnemyArray, cave) {
         this.applyGravity();
         // this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
-        this.checkCollisionsGroundDamange(groundDamangeArray);
+        this.checkCollisionsGroundDamage(groundDamageArray);
+        this.checkCollisionsGroundEnemy(groundEnemyArray);
         this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
@@ -173,32 +174,57 @@ class Player {
         }
     }
 
-    checkCollisionsGroundDamange(groundDamangeArray) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
-        let collisionDetected = false;
-        for (let groundDamange of groundDamangeArray) {
-            let withinXRange = this.right > groundDamange.left && this.left < groundDamange.right;
-            let withinYRange = this.bottom > groundDamange.top && this.top < groundDamange.bottom;
+    checkCollisionsGroundDamage(groundDamageArray) {
+        let collisionWithGroundDetected = false;
+        for (let groundDamage of groundDamageArray) {
+            let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
+            let withinYRange = this.bottom > groundDamage.top && this.top < groundDamage.bottom;
             let collision = withinXRange && withinYRange;
-
+    
             if (collision) {
+                collisionWithGroundDetected = true; // Now correctly updating
                 if (!this.isHurt) {
                     this.isHurt = true;
-                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                    this.hurtStartTime = millis(); 
                 }
-                this.isHurt = true;
-                break; // Exit early to optimize performance
+                break; // Exit early for performance
             }
         }
+    
         // The injured state lasts for 1 second before recovering
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-        // Set reduction rate based on collision detection with any of the fires
-        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
-        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
-    }
+    
+        // Correctly update reduction rate based on actual collision
+        Health.reductionRate = collisionWithGroundDetected ? 0.002 : 0.0004;
+    }    
+
+    checkCollisionsGroundEnemy(groundEnemyArray) {
+        let collisionWithEnemyDetected = false;
+        for (let groundEnemy of groundEnemyArray) {
+            let withinXRange = this.right > groundEnemy.left && this.left < groundEnemy.right;
+            let withinYRange = this.bottom > groundEnemy.top && this.top < groundEnemy.bottom;
+            let collision = withinXRange && withinYRange;
+    
+            if (collision) {
+                collisionWithEnemyDetected = true; // Now correctly updating
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis();
+                }
+                break; // Exit early for performance
+            }
+        }
+    
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
+        }
+    
+        // Correctly update reduction rate based on actual collision
+        Health.reductionRate = collisionWithEnemyDetected ? 0.002 : 0.0004;
+    }    
 
     checkCollisionsLava() {
         let collision = this.bottom > (height - Brick.height / 2);

@@ -3,18 +3,21 @@ class Map {
         this.assetManager = assetManager;
         this.platforms = [];
         this.foods = [];
-        this.groundDamanges = [];
+        this.groundDamages = [];
+        this.groundEnemies = [];
         this.cave;
         this.xSpeed = 4;
         this.food_height = 25;
         this.groundDamange_height = 70;
+        this.groundEnemy_height = 70;
     }
 
     setup(layout) {
         let platforms = layout[0];
         let foods = layout[1];
-        let groundDamanges = layout[2];
-        let cave = layout[3];
+        let groundDamages = layout[2];
+        let groundEnemies = layout[3];
+        let cave = layout[4];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
             this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4], this.assetManager));
@@ -25,9 +28,14 @@ class Map {
             this.foods.push(new Food(food[0], food[1], food[2], this.assetManager));
         }
 
-        for(let i = 0; i < groundDamanges.length; i++){
-            let groundDamange = groundDamanges[i];
-            this.groundDamanges.push(new GroundDamage(groundDamange[0], groundDamange[1],groundDamange[2], this.assetManager));
+        for(let i = 0; i < groundDamages.length; i++){
+            let groundDamage = groundDamages[i];
+            this.groundDamages.push(new GroundDamage(groundDamage[0], groundDamage[1], groundDamage[2], this.assetManager));
+        }
+
+        for(let i = 0; i < groundEnemies.length; i++){
+            let groundEnemy = groundEnemies[i];
+            this.groundEnemies.push(new GroundEnemy(groundEnemy[0], groundEnemy[1], groundEnemy[2], this.assetManager));
         }
 
         this.cave = new Cave(cave[0], cave[1], this.assetManager);
@@ -41,8 +49,11 @@ class Map {
         for (let food of this.foods) {
             food.updateFood();
         }
-        for (let groundDamange of this.groundDamanges) {
-            groundDamange.updateGroundDamage();
+        for (let groundDamage of this.groundDamages) {
+            groundDamage.updateGroundDamage();
+        }
+        for (let groundEnemy of this.groundEnemies) {
+            groundEnemy.updateGroundEnemy();
         }
         this.cave.updateCave();
     }
@@ -56,8 +67,11 @@ class Map {
         for (let food of this.foods) {
             food.display();
         }
-        for (let groundDamange of this.groundDamanges) {
-            groundDamange.display();
+        for (let groundDamage of this.groundDamages) {
+            groundDamage.display();
+        }
+        for (let groundEnemy of this.groundEnemies) {
+            groundEnemy.display();
         }
     }
 
@@ -74,8 +88,11 @@ class Map {
             for (let food of this.foods) {
                 food.x -= this.xSpeed;
             }
-            for (let groundDamange of this.groundDamanges) {
-                groundDamange.x -= this.xSpeed;
+            for (let groundDamage of this.groundDamages) {
+                groundDamage.x -= this.xSpeed;
+            }
+            for (let groundEnemy of this.groundEnemies) {
+                groundEnemy.originX -= this.xSpeed;
             }
             this.cave.x -= this.xSpeed;
         }
