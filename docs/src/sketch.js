@@ -78,18 +78,6 @@ function draw() {
 }
 
 function changeScreen() {
-  if(inputHandler.moveLeft) {
-    console.log("Move left");
-  }
-  if(inputHandler.moveRight) {
-    console.log("Move right");
- }
-  if(triggerJump) {
-    console.log("Jump");
-  }
-  if(inputHandler.escape) {
-    console.log("ESCAPE");
-  }
   if(gameState === "homePage" && triggerJump) {
     gameState = "gameInstructions";
   }
@@ -121,37 +109,12 @@ function changeScreen() {
 
 function keyPressed() {
   inputHandler.keyPressed();
-  /*
-  if(gameState === "homePage" && key === ' ') {
-    gameState = "gameInstructions";
-  }
-  else if((gameState === "gameInstructions" || gameState === "pausePage") && key === ' ') {
-    // console.log("Resuming game...");
-    gameState = "gameScreen";
-  }
-  else if(gameState === "gameScreen" && (keyCode === ESCAPE || keyCode === 81)) {
-    // console.log("Game Paused");
-    gameState = "pausePage";
-  }
-  else if(gameState === "gameOver" && key === ' ') {
-    // Restart from actual level
-    newGame();
-    gameState = "gameScreen";
-  }
-  else if ((gameState === "gameEnd" && key === ' ') ||
-          ((gameState === "gameOver" || gameState === "levelComplete") && (keyCode === ESCAPE || keyCode === 81))) {
-    // Restart from first level
-    gameLevel = 1;
-    newGame();
-    gameState = "homePage";
-  }
-  else if (gameState === "levelComplete" && key === ' ') {
-    newGame();
-    gameState = "gameScreen";
-  }
-  */
 }
 
 function keyReleased() {
   inputHandler.keyReleased();
+}
+
+function windowResized() {
+  screenGame.windowResized();
 }

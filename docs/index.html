@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dino Escape Game</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
@@ -16,13 +17,13 @@
 </head>
 
 <body>
-  <header class="pixcle-style-continer">
+  <header id="page-header" class="pixcle-style-continer">
     <h1>Dino Escape</h1>
   </header>
-  <div id="canvas-container" class="pixcle-style-continer">
-    <button id="left-btn" class="control-btn"><span class="keycap">⬅</span></button>
-    <button id="right-btn" class="control-btn"><span class="keycap mirror">⬅</span></button>
-    <button id="jump-btn" class="control-btn"><span class="keycap">⬆</span></button>
+  <div id="canvas-container" class="pixcle-style-continer"> <!-- class="pixcle-style-continer" -->
+    <button id="left-btn" class="control-btn">⇦</button>
+    <button id="right-btn" class="control-btn">⇨</button>
+    <button id="jump-btn" class="control-btn">⇧</button>
   </div>
   <script src="src/AssetManager.js"></script>
   <script src="src/InputHandler.js"></script>

@@ -35,6 +35,18 @@ body {
   border-radius: 5px;
 }
 
+/* Default: assume mobile-first layout */
+#page-header {
+  display: none;
+}
+
+/* For larger screens (tablets and desktops) */
+@media (min-height: 650px) {
+  #page-header {
+    display: block;
+  }
+}
+
 /* Game Header Styling */
 header {
   /* background: linear-gradient(to right, #ff4500, #ffcc00); */
@@ -74,19 +86,17 @@ h1 {
 } */
 
 #canvas-container {
-  width: 850px;
-  height: 500px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px auto;
+  max-width: 1200px;
+  max-height: 750px;
+  width: 98%; /* Allow the container to fill available width */
+  height: 98vh; /* Full viewport height */
+  margin: 0 auto; /* Center the container horizontally */
   padding: 0;
+  border-radius: 0px;
   /* font-family: 'Press Start 2P', sans-serif; */
   font-size: 32px;
   text-align: center;
   color: #fff;
-  border-radius: 30px;
   /* text-transform: uppercase; */
   /* image-rendering: pixelated; */
   /* text-shadow: 3px 3px 0px black; */
@@ -99,14 +109,20 @@ h1 {
   overflow: hidden;
 }
 
-/* Canvas Styling */
-canvas {
-  display: block;
-  /* Prevents unwanted spacing */
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  /* Makes the canvas itself rounded */
+canvas{
+  display: block; /*Removes extra spacing. */
+}
+
+/* For larger screens, you might set a max-width for the canvas container */
+@media (min-height: 650px) {
+  #canvas-container {
+    margin: 25px auto;
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .keycap {
@@ -154,8 +170,31 @@ canvas {
 .control-btn {
   position: absolute;
   z-index: 10; /* Ensure buttons are on top of the canvas */
-  /*padding: 5px 10px;
-  font-size: 16px;*/
+
+  /* Size and shape */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Makes the button round */
+
+  /* Background and transparency */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  border: none;
+
+  /* Text styling */
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+
+  /* Center text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Transition for visual feedback */
+  transition: background-color 0.2s, transform 0.1s;
+
+  /* Remove default outline */
+  outline: none;
 }
 
 #left-btn {
@@ -171,4 +210,19 @@ canvas {
 #jump-btn {
   bottom: 20px;
   right: 20px;
+}
+
+/* Visual feedback when the button is pressed */
+.touch-btn:active {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(0.95);
+}
+
+/* For mobile devices, you might want to increase the touch target */
+@media (max-width: 768px) {
+  .touch-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+  }
 }

@@ -1,7 +1,7 @@
 // Class Screen handles the general configuration of the screen and draws them.
 // Set the screen width and heigth
-const SCREENWIDTH = 850;
-const SCREENHEIGHT = 500;
+const MAX_SCREEN_WIDTH = 950;
+const MAX_SCREEN_HEIGHT = 500;
 
 let titleGlow = 0;
 let glowDirection = 1;
@@ -9,14 +9,30 @@ let glowDirection = 1;
 class GameScreen {
     constructor(assetManager) {
         this.assetManager = assetManager;
-        this.screenWidth = SCREENWIDTH;
-        this.screenHeight = SCREENHEIGHT;
     }
 
     setup() {
+        // Get the canvas container element
+        const canvasContainer = document.getElementById('canvas-container');
+        let rect = canvasContainer.getBoundingClientRect();
+        // Calculate canvas width and height: the minimum of your maximum size or the container's current width/height.
+        //this.screenWidth = Math.min(MAX_SCREEN_WIDTH, rect.width * dpr); // container.offsetWidth, windowWidth, 
+        //this.screenHeight = Math.min(MAX_SCREEN_HEIGHT, rect.height * dpr); // container.offsetHeight, windowHeight
+        this.screenWidth = rect.width; // rect.width * dp 
+        this.screenHeight = rect.height; // rect.height * dpr
+        console.log("Screen Width: " + this.screenWidth);
+        console.log("Screen Height: " + this.screenHeight);
+        // Create the canvas with the calculated width and height
         let canvas = createCanvas(this.screenWidth, this.screenHeight);
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
+    }
+
+    windowResized() {
+        const canvasContainer = document.getElementById('canvas-container');
+        let rect = canvasContainer.getBoundingClientRect();
+        //let dpr = window.devicePixelRatio || 1; // Default to 1 if DPR is not available
+        resizeCanvas(rect.width, rect.height);
     }
 
     drawHomeScreen() {

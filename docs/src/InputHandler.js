@@ -60,26 +60,26 @@ class InputHandler {
         });
         */
         // For actual mobile touch events:
-        document.getElementById('left-btn').addEventListener('touchstart', (e) => {
+        document.getElementById('left-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             this.moveLeft = true;
         });
-        document.getElementById('left-btn').addEventListener('touchend', (e) => {
+        document.getElementById('left-btn').addEventListener('pointerup', (e) => {
             e.preventDefault();
             this.moveLeft = false;
         });
-        document.getElementById('right-btn').addEventListener('touchstart', (e) => {
+        document.getElementById('right-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             this.moveRight = true;
         });
-        document.getElementById('right-btn').addEventListener('touchend', (e) => {
+        document.getElementById('right-btn').addEventListener('pointerup', (e) => {
             e.preventDefault();
             this.moveRight = false;
         });
         document.getElementById('jump-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             if(this.jumpReady) {
-                console.log("Jump button touched!");
+                //console.log("Jump button touched!");
                 this.jumpReady = false;
                 this.jump = true;
             }
@@ -89,7 +89,7 @@ class InputHandler {
         });  
         document.getElementById('jump-btn').addEventListener('pointerup', (e) => {
             e.preventDefault();
-            console.log("Jump button touch end!");
+            //console.log("Jump button touch end!");
             this.jumpReady = true;
             this.jump = false;
         });

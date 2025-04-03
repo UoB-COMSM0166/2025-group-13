@@ -6,6 +6,7 @@ class Game {
         this.windowBottom = height;
         this.windowLeft = 0;
 
+        //this.lavaTileHeight = 25;
         this.lavaTileHeight = 25;
         this.lavaTileWidth = 50;
 
