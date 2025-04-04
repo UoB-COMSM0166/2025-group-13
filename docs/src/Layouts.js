@@ -1,3 +1,4 @@
+// This file contains the layout of the game levels, including platforms, foods, fires, and caves.
 // Level1
 let level1Platforms =
     [

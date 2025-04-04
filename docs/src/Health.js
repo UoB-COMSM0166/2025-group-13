@@ -9,8 +9,8 @@ class Health {
     this.width = 5 * Brick.width;
     this.height = Brick.height / 2;
 
-    this.x = 40;
-    this.y = 15;
+    this.x = 50;
+    this.y = 25;
   }
 
   display() {
@@ -24,8 +24,8 @@ class Health {
     // rect(this.x, this.y, this.width, this.height);
 
     let sx, sy, sw, sh;
-    let heartHeight = 20;
-    let heartWidth = 20;
+    let heartHeight = 30;
+    let heartWidth = 30;
     sx = (520 * 2); sy = 0; sw = 520; sh = 522;
     image(
       this.assetManager.healthRelatedItems,

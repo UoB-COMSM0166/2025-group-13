@@ -1,22 +1,60 @@
 // Class Screen handles the general configuration of the screen and draws them.
 // Set the screen width and heigth
-const SCREENWIDTH = 850;
-const SCREENHEIGHT = 500;
-
+//const MAX_SCREEN_WIDTH = 950;
+//const MAX_SCREEN_HEIGHT = 500;
+let baseWidth = 850;
+let baseHeight = 500;
+let screenWidth;
+let screenHeight;
+let scaleFactorX;
+let scaleFactorY;
+// Get the canvas container element
+const canvasContainer = document.getElementById('canvas-container');
 let titleGlow = 0;
 let glowDirection = 1;
 
 class GameScreen {
     constructor(assetManager) {
         this.assetManager = assetManager;
-        this.screenWidth = SCREENWIDTH;
-        this.screenHeight = SCREENHEIGHT;
     }
 
     setup() {
-        let canvas = createCanvas(this.screenWidth, this.screenHeight);
+        // Create the canvas with the calculated width and height
+        let canvas = createCanvas(baseWidth, baseHeight);
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
+        // Resize screen and scale the canvas based on the scale factors
+        this.windowResized();
+    }
+
+    updateScaleFactors() {
+        scaleFactorX = screenWidth / baseWidth;
+        scaleFactorY = screenHeight / baseHeight;
+        console.log("Scale Factor X: " + scaleFactorX);
+        console.log("Scale Factor Y: " + scaleFactorY);
+    }
+
+    scaleCanvas() {
+        this.updateScaleFactors();
+        // Scale the canvas based on the scale factors
+        scale(scaleFactorX, scaleFactorY);
+        // Set the origin to the top-left corner of the canvas
+        translate(-width / 2, -height / 2);
+    }
+
+    windowResized() {
+        let canvasRect = canvasContainer.getBoundingClientRect();
+        // Calculate canvas width and height: the minimum of your maximum size or the container's current width/height.
+        //this.screenWidth = Math.min(MAX_SCREEN_WIDTH, rect.width * dpr); // container.offsetWidth, windowWidth, 
+        //this.screenHeight = Math.min(MAX_SCREEN_HEIGHT, rect.height * dpr); // container.offsetHeight, windowHeight
+        screenWidth = canvasRect.width; // rect.width * dp 
+        screenHeight = canvasRect.height; // rect.height * dpr
+        console.log("Resized Screen Width: " + screenWidth);
+        console.log("Resized Screen Height: " + screenHeight);
+        //let dpr = window.devicePixelRatio || 1; // Default to 1 if DPR is not available
+        resizeCanvas(canvasRect.width, canvasRect.height);
+        // Scale the canvas based on the scale factors
+        this.scaleCanvas();
     }
 
     drawHomeScreen() {

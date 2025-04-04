@@ -15,10 +15,11 @@ class Platform {
 
     this.x = positionX;
     this.y = positionY;
+    //this.y = 750;
     this.top = 0;
     this.bottom = 0;
     this.left = 0;
-    this.right = 0;
+    this.right = 0; 
   }
 
   updateBounds() {
@@ -42,6 +43,7 @@ class Platform {
       for (let i = 0; i < tilesX; i++) {
         let dx = this.left + i * scaledTileWidth + Brick.width / 2;
         let dy = this.y;
+        //let dy = height - Brick.height / 2; 
 
         image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
       }

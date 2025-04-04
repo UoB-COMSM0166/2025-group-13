@@ -6,10 +6,12 @@ class Game {
         this.windowBottom = height;
         this.windowLeft = 0;
 
+        //this.lavaTileHeight = 25;
         this.lavaTileHeight = 25;
         this.lavaTileWidth = 50;
 
-        this.groundTop = height - this.lavaTileHeight;
+        //this.groundTop = height - this.lavaTileHeight;
+        this.groundTop = height - 50;
 
         this.maps = [];
         for(let i = 0; i < layouts.length; i++){
@@ -23,8 +25,8 @@ class Game {
         // Create new health of the player
         this.health = new Health(assetManager);
         // Create new player
-        //this.player = new Player(width / 2, this.groundTop / 2,  assetManager);
-        this.player = new Player(0, height/2,  this.health, assetManager);
+        //this.player = new Player(2, this.groundTop, this.health, assetManager);
+        this.player = new Player(0, height/2, this.health, assetManager);
 
         this.stopMapMovement = false;
     }
@@ -91,7 +93,7 @@ class Game {
                 stroke('blue');
                 break;
         }
-        text("Level " + (this.currentLevel), width-50, 25);
+        text("Level " + (this.currentLevel), width-75, 25);
         textSize(30);
         switch(game.currentMap){
             case 0:
@@ -106,11 +108,13 @@ class Game {
     }
 
 
-    handleInput() {
-        if (keyIsDown) {
+    handleInput(triggerJump, moveLeft, moveRight) {
+        /*if (keyIsDown) {
             this.map.handleInput(true); // handle map input
             this.player.handleInput(true); // handle player input
-        }
+        }*/
+        this.map.handleInput(moveRight);
+        this.player.handleInput(moveLeft, moveRight, triggerJump);
     }
 
     isGameOver() {
