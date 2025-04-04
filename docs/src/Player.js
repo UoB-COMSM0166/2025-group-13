@@ -116,14 +116,14 @@ class Player {
         noTint();
     }
 
-    update(platformArray, foodArray, fireArray, cave) {
+    update(platformArray, foodArray, groundDamangeArray, cave) {
         this.applyGravity();
         // this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
-        this.checkCollisionsFire(fireArray);
+        this.checkCollisionsGroundDamange(groundDamangeArray);
         this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
@@ -173,13 +173,13 @@ class Player {
         }
     }
 
-    checkCollisionsFire(fireArray) {
+    checkCollisionsGroundDamange(groundDamangeArray) {
         // this method should be optimised to check only those foods which
         // are visible inside left half of the game window.
         let collisionDetected = false;
-        for (let fire of fireArray) {
-            let withinXRange = this.right > fire.left && this.left < fire.right;
-            let withinYRange = this.bottom > fire.top && this.top < fire.bottom;
+        for (let groundDamange of groundDamangeArray) {
+            let withinXRange = this.right > groundDamange.left && this.left < groundDamange.right;
+            let withinYRange = this.bottom > groundDamange.top && this.top < groundDamange.bottom;
             let collision = withinXRange && withinYRange;
 
             if (collision) {

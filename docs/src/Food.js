@@ -48,7 +48,7 @@ class Food {
     // rect(this.x, this.y, this.width, this.height);
 
     image(
-      this.assetManager.healthRataledItems,
+      this.assetManager.healthRelatedItems,
       this.x, this.y,
       scaledWidth, scaledHeight,
       sx, sy, sw, sh

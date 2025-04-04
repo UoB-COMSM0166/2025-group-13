@@ -28,7 +28,7 @@ class Health {
     let heartWidth = 30;
     sx = (520 * 2); sy = 0; sw = 520; sh = 522;
     image(
-      this.assetManager.healthRataledItems,
+      this.assetManager.healthRelatedItems,
       this.x - heartWidth / 2 - 5, this.y + heartHeight / 2 - 2,
       heartWidth, heartHeight,
       sx, sy, sw, sh
