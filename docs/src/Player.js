@@ -9,7 +9,8 @@ class Player {
         this.dino_static = null;
 
         this.x = positionX;
-        this.y = positionY + 5;
+        this.y = positionY +  25 ;
+        //this.y = height - 100;
         this.width = 30;
         this.height = 30;
 
@@ -33,7 +34,6 @@ class Player {
     display() {
         fill(255, 0, 0);
         rectMode(CENTER);
-
 
         if (this.isHurt) {
             let elapsed = millis() - this.hurtStartTime;

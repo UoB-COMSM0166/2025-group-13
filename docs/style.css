@@ -35,22 +35,11 @@ body {
   border-radius: 5px;
 }
 
-/* Default: assume mobile-first layout */
-#page-header {
-  display: none;
-}
-
-/* For larger screens (tablets and desktops) */
-@media (min-height: 650px) {
-  #page-header {
-    display: block;
-  }
-}
-
 /* Game Header Styling */
 header {
   /* background: linear-gradient(to right, #ff4500, #ffcc00); */
   padding: 15px;
+  display: none;
   /* box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5); */
   /* text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); */
   /* border-bottom: 5px solid #ffcc00; */
@@ -86,42 +75,38 @@ h1 {
 } */
 
 #canvas-container {
-  max-width: 1200px;
-  max-height: 750px;
-  width: 98%; /* Allow the container to fill available width */
-  height: 98vh; /* Full viewport height */
+  display: block;
+  max-width: 850px;
+  max-height: 500px;
   margin: 0 auto; /* Center the container horizontally */
+  border-radius: 10px;
   padding: 0;
-  border-radius: 0px;
-  /* font-family: 'Press Start 2P', sans-serif; */
-  font-size: 32px;
-  text-align: center;
-  color: #fff;
-  /* text-transform: uppercase; */
-  /* image-rendering: pixelated; */
-  /* text-shadow: 3px 3px 0px black; */
-  /* border: 5px solid #ffcc00; */
-
-  /* background: radial-gradient(circle, rgba(255, 69, 0, 0.7) 20%, rgba(255, 255, 0, 0.3) 80%); */
-  /* padding: 20px; */
-  /* border-radius: 4px; */
-  /* box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5); */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
-canvas{
-  display: block; /*Removes extra spacing. */
+/* For mobile devices, you might want to adjust the canvas size */
+@media (max-width: 600px) or (max-height: 500px) and (orientation: landscape) {
+  #canvas-container {
+    width: 98vw; /* 98% Cover the entire viewport width in landscape */
+    height: 98vh; /* 98vh Cover the entire viewport height in landscape */
+  }
 }
 
 /* For larger screens, you might set a max-width for the canvas container */
-@media (min-height: 650px) {
+@media (min-width: 850px) and (min-height: 600px)  {
+  header {
+    display: block;
+  }
+
   #canvas-container {
-    margin: 25px auto;
+    width: 1200px;
+    height: 750px;
+    margin: 30px auto;
     border-radius: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -168,33 +153,7 @@ canvas{
 
 /* Position buttons absolutely within the container */
 .control-btn {
-  position: absolute;
-  z-index: 10; /* Ensure buttons are on top of the canvas */
-
-  /* Size and shape */
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; /* Makes the button round */
-
-  /* Background and transparency */
-  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-  border: none;
-
-  /* Text styling */
-  color: #fff;
-  font-size: 32px;
-  font-weight: bold;
-
-  /* Center text */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Transition for visual feedback */
-  transition: background-color 0.2s, transform 0.1s;
-
-  /* Remove default outline */
-  outline: none;
+  display: none; /* Hide by default */
 }
 
 #left-btn {
@@ -212,17 +171,53 @@ canvas{
   right: 20px;
 }
 
-/* Visual feedback when the button is pressed */
-.touch-btn:active {
-  background-color: rgba(0, 0, 0, 0.7);
-  transform: scale(0.95);
+/* If the device is touchable, make buttons visually apper */
+@media (hover: none) and (pointer: coarse) {
+  .control-btn {
+    display: block;
+    position: absolute;
+    z-index: 10; /* Ensure buttons are on top of the canvas */
+
+    /* Size and shape */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Makes the button round */
+
+    padding: 15px; /* Make buttons easier to tap */
+
+    /* Background and transparency */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    border: none;
+
+    /* Text styling */
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+
+    /* Center text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Transition for visual feedback */
+    transition: background-color 0.2s, transform 0.1s;
+
+    /* Remove default outline */
+    outline: none;
+  }
+
+  /* Visual feedback when the button is pressed */
+  .control-btn:active {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(0.95);
+  }
 }
 
-/* For mobile devices, you might want to increase the touch target */
-@media (max-width: 768px) {
+/* For small mobile devices, you might want to increase the touch target */
+@media (max-width: 600px) or (max-height: 500px) {
   .touch-btn {
     width: 70px;
     height: 70px;
-    font-size: 36px;
+    font-size: 36px; 
   }
 }
