@@ -25,16 +25,16 @@ let level1GroundDamage =
 // constructor(type = null, positionX, positionY, assetManager, speed = 1.2, maxDistance = 100, pauseTime = 6)
 let level1Enemy =
 [
-    //on ground(y = 445)
+    //on ground(y = 430)
     //default speed = 1.2, maxDistance = 100, pauseTime = 6
-    ["FIRE", 700, 445, 1, 50, 10], ["FIRE", 1300, 445, 2, 100, 5], ["FIRE", 2050, 445, 3, 150, 1]
+    ["FIRE", 700, 430, 1, 50, 10], ["FIRE", 1200, 430, 2, 100, 5], ["FIRE", 2050, 430, 3, 150, 1]
 ];
 
 let level1SkyFall =
 [
     //on ground(y = 445)
     //default constructor(type = null, positionX, startY, assetManager, fallSpeed = 5, groundY = 485, delayBeforeFall = 120)
-    ["FIRE", 700, -100, 5, 485, 60], ["FIRE", 1300, -120, 5, 485, 90], ["FIRE", 2050, -150, 5, 485, 120]
+    ["FIRE", 700, -100, 5, 485, 60], ["FIRE", 1250, -120, 5, 485, 90], ["FIRE", 2050, -150, 5, 485, 120]
 ];
 
 let level1Cave = [2200, 425];
@@ -72,9 +72,9 @@ let level2GroundDamage =
 
 let level2Enemy =
 [
-    //on ground(y = 445)
+    //on ground(y = 430)
     //default speed = 1.2, maxDistance = 100, pauseTime = 6
-    ["ICESPIKE", 870, 445, 1, 50, 10], ["ICESPIKE", 1850, 445, 2, 100, 5], ["ICESPIKE", 3520, 445, 3, 150, 1]
+    ["ICESPIKE", 570, 445, 1, 50, 10], ["ICESPIKE", 1110, 108, 2, 100, 5], ["ICESPIKE", 3820, 445, 3, 150, 1]
 ];
 
 let level2SkyFall =

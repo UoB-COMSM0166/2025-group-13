@@ -177,31 +177,36 @@ class Player {
     }
 
     checkCollisionsgroundDamage(groundDamageArray) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
+        // this method should be optimized to check only those foods which
+        // are visible inside the left half of the game window.
         let collisionDetected = false;
         for (let groundDamage of groundDamageArray) {
             let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
             let withinYRange = this.bottom > groundDamage.top && this.top < groundDamage.bottom;
             let collision = withinXRange && withinYRange;
-
+    
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
-                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                    this.hurtStartTime = millis();
                 }
-                this.isHurt = true;
+                collisionDetected = true;  // Collision detected
                 break; // Exit early to optimize performance
             }
         }
+    
         // The injured state lasts for 1 second before recovering
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-        // Set reduction rate based on collision detection with any of the fires
-        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
-        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
-    }
+    
+        // Increase reduction rate if player is hurt
+        if (this.isHurt) {
+            Health.reductionRate = 0.002;  // Increase reduction rate when hurt
+        } else {
+            Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
+        }
+    }    
 
     checkCollisionsEnemy(enemyArray) {
         // this method should be optimised to check only those foods which

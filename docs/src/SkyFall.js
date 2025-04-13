@@ -1,14 +1,6 @@
 class SkyFall {
-  constructor(
-    type = null,
-    positionX,
-    startY,
-    assetManager,
-    fallSpeed = 5,
-    groundY = 485,
-    delayBeforeFall = 120,
-    cooldownTime = 180
-  ) {
+  constructor(type = null, positionX, startY, assetManager, fallSpeed = 5,
+    groundY = 485, delayBeforeFall = 120, cooldownTime = 180) {
     this.assetManager = assetManager;
     this.skyFallType = type;
 
@@ -93,7 +85,11 @@ class SkyFall {
       translate(this.x, this.y);
       rotate(-this.angle);
       imageMode(CENTER);
-      image(this.assetManager.skyFallImg, 0, 0, this.width, this.height);
+      if (this.skyFallType === "FIRE") {
+        image(this.assetManager.skyFireImg, 0, 0, this.width, this.height);
+      } else if (this.skyFallType === "ICESPIKE") {
+        image(this.assetManager.skyIceImg, 0, 0, this.width, this.height);
+      }
       pop();
     }
   }

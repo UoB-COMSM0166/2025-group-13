@@ -71,7 +71,11 @@ class Enemy {
       // translate(-this.width/2, 0);
     }
 
-    image(this.assetManager.enemyImg, 0, -this.stableHeight, this.width, this.height);
+    if (this.enemyType === "FIRE") {
+      image(this.assetManager.enemyFireImg, 0, 0, this.width, this.height);
+    } else if (this.enemyType === "ICESPIKE") {
+      image(this.assetManager.enemyIceImg, 0, 0, this.width, this.height);
+    }
     pop();
 
     // Update collision box
