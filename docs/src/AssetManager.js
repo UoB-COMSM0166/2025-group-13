@@ -12,6 +12,10 @@ class AssetManager {
         this.gamePageBackground = loadImage('assets/background/bg_lv1.png');
         this.lavaImg = loadImage('assets/items/tile_lava.gif');
         this.iceLakeImg = loadImage('assets/items/tile_icelake.png');
+        this.enemyFireImg = loadImage('assets/items/enemyFire.png');
+        this.enemyIceImg = loadImage('assets/items/enemyIce.png');
+        this.skyFireImg = loadImage('assets/items/skyFire.png');
+        this.skyIceImg = loadImage('assets/items/skyIce.png');
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
         this.caveImg = loadImage('assets/items/item_cave.png');
         this.iceSpikeImg = loadImage('assets/items/ice_spike.png');

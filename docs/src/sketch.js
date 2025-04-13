@@ -1,6 +1,7 @@
 // Description: This file is the main entry point for the game. It creates the game object and the screen object.
 // It also handles the key events and the game loop.
 
+//#region: declaration of variables
 // Global variable to track the current state of the game.
 let gameState = "homePage"; // gameScreen, pausePage, lossScreen, levelCompleteScreen, etc.
 // Global variable to maintain the assetManager, screen, game and input handler objects
@@ -14,6 +15,7 @@ let maxLevels = 2;
 // Global variables to store the triggers of actions that changes screens
 let triggerJump = false;
 let triggerESC = false;
+//#endregion
 
 // Preload all assets using the assetManager
 function preload() {

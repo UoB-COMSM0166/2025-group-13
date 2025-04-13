@@ -116,14 +116,16 @@ class Player {
         noTint();
     }
 
-    update(platformArray, foodArray, groundDamangeArray, cave) {
+    update(platformArray, foodArray, groundDamageArray, enemyArray, skyFallArray, cave) {
         this.applyGravity();
         // this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
-        this.checkCollisionsGroundDamange(groundDamangeArray);
+        this.checkCollisionsgroundDamage(groundDamageArray);
+        this.checkCollisionsEnemy(enemyArray);
+        this.checkCollisionsSkyFall(skyFallArray);
         this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
@@ -148,6 +150,7 @@ class Player {
         this.ySpeed = constrain(this.ySpeed, -this.jumpStrength, 10);
     }
 
+    //#region: collision
     checkCollisions(platformArray) {
         this.isOnGround = false;
         // this method should be optimised to check only those platforms which
@@ -173,19 +176,78 @@ class Player {
         }
     }
 
-    checkCollisionsGroundDamange(groundDamangeArray) {
+    checkCollisionsgroundDamage(groundDamageArray) {
+        // this method should be optimized to check only those foods which
+        // are visible inside the left half of the game window.
+        let collisionDetected = false;
+        for (let groundDamage of groundDamageArray) {
+            let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
+            let withinYRange = this.bottom > groundDamage.top && this.top < groundDamage.bottom;
+            let collision = withinXRange && withinYRange;
+    
+            if (collision) {
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis();
+                }
+                collisionDetected = true;  // Collision detected
+                break; // Exit early to optimize performance
+            }
+        }
+    
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
+        }
+    
+        // Increase reduction rate if player is hurt
+        if (this.isHurt) {
+            Health.reductionRate = 0.002;  // Increase reduction rate when hurt
+        } else {
+            Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
+        }
+    }    
+
+    checkCollisionsEnemy(enemyArray) {
         // this method should be optimised to check only those foods which
         // are visible inside left half of the game window.
         let collisionDetected = false;
-        for (let groundDamange of groundDamangeArray) {
-            let withinXRange = this.right > groundDamange.left && this.left < groundDamange.right;
-            let withinYRange = this.bottom > groundDamange.top && this.top < groundDamange.bottom;
+        for (let enemy of enemyArray) {
+            let withinXRange = this.right > enemy.left && this.left < enemy.right;
+            let withinYRange = this.bottom > enemy.top && this.top < enemy.bottom;
             let collision = withinXRange && withinYRange;
 
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
                     this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                }
+                this.isHurt = true;
+                break; // Exit early to optimize performance
+            }
+        }
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
+        }
+        // Set reduction rate based on collision detection with any of the fires
+        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
+    }
+
+    checkCollisionsSkyFall(skyFallArray) {
+        // this method should be optimised to check only those foods which
+        // are visible inside left half of the game window.
+        let collisionDetected = false;
+        for (let skyFall of skyFallArray) {
+            let withinXRange = this.right > skyFall.left && this.left < skyFall.right;
+            let withinYRange = this.bottom > skyFall.top && this.top < skyFall.bottom;
+            let collision = withinXRange && withinYRange;
+
+            if (collision) {
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis();
                 }
                 this.isHurt = true;
                 break; // Exit early to optimize performance
@@ -274,6 +336,7 @@ class Player {
         }
         this.updateBounds();
     }
+    //#endregion
 
     keepWithinBounds() {
         this.x = constrain(this.x, this.width / 2, min(game.map.cave.x, width - this.width / 2));
