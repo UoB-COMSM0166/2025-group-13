@@ -5,11 +5,13 @@ class Map {
         this.foods = [];
         this.groundDamages = [];
         this.enemies = [];
+        this.skyFalls = [];
         this.cave;
         this.xSpeed = 4;
         this.food_height = 25;
         this.groundDamage_height = 70;
         this.enemy_height = 70;
+        this.skyFall_height = 70;
     }
 
     setup(layout) {
@@ -17,7 +19,8 @@ class Map {
         let foods = layout[1];
         let groundDamages = layout[2];
         let enemies = layout[3];
-        let cave = layout[4];
+        let skyFalls = layout[4];
+        let cave = layout[5];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
             this.platforms.push(new Platform(platform[0], platform[1], platform[2], platform[3], platform[4], this.assetManager));
@@ -38,6 +41,11 @@ class Map {
             this.enemies.push(new Enemy(enemy[0], enemy[1], enemy[2], this.assetManager, enemy[3], enemy[4], enemy[5]));
         }
 
+        for(let i = 0; i < skyFalls.length; i++){
+            let skyFall = skyFalls[i];
+            this.skyFalls.push(new SkyFall(skyFall[0], skyFall[1], skyFall[2], this.assetManager, skyFall[3], skyFall[4], skyFall[5]));
+        }
+
         this.cave = new Cave(cave[0], cave[1], this.assetManager);
     }
 
@@ -54,6 +62,9 @@ class Map {
         }
         for (let enemy of this.enemies) {
             enemy.updateEnemy();
+        }
+        for (let skyFall of this.skyFalls) {
+            skyFall.updateSkyFall();
         }
         this.cave.updateCave();
     }
@@ -72,6 +83,9 @@ class Map {
         }
         for (let enemy of this.enemies) {
             enemy.display();
+        }
+        for (let skyFall of this.skyFalls) {
+            skyFall.display();
         }
     }
 
@@ -93,6 +107,9 @@ class Map {
             }
             for (let enemy of this.enemies) {
                 enemy.x -= this.xSpeed;
+            }
+            for (let skyFall of this.skyFalls) {
+                skyFall.x -= this.xSpeed;
             }
             this.cave.x -= this.xSpeed;
         }

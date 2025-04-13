@@ -1,4 +1,4 @@
-// This file contains the layout of the game levels, including platforms, foods, ground damage, enemies and caves.
+// This file contains the layout of the game levels, including platforms, foods, ground damage, enemies, skyFalls and caves.
 //#region: Level1
 // constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager)
 let level1Platforms =
@@ -28,6 +28,13 @@ let level1Enemy =
     //on ground(y = 445)
     //default speed = 1.2, maxDistance = 100, pauseTime = 6
     ["FIRE", 700, 445, 1, 50, 10], ["FIRE", 1300, 445, 2, 100, 5], ["FIRE", 2050, 445, 3, 150, 1]
+];
+
+let level1SkyFall =
+[
+    //on ground(y = 445)
+    //default constructor(type = null, positionX, startY, assetManager, fallSpeed = 5, groundY = 485, delayBeforeFall = 120)
+    ["FIRE", 700, -100, 5, 485, 60], ["FIRE", 1300, -120, 5, 485, 90], ["FIRE", 2050, -150, 5, 485, 120]
 ];
 
 let level1Cave = [2200, 425];
@@ -70,11 +77,17 @@ let level2Enemy =
     ["ICESPIKE", 870, 445, 1, 50, 10], ["ICESPIKE", 1850, 445, 2, 100, 5], ["ICESPIKE", 3520, 445, 3, 150, 1]
 ];
 
+let level2SkyFall =
+[
+    //on ground(y = 445)
+    ["ICESPIKE", 870, -100, 5, 485, 60], ["ICESPIKE", 1850, -120, 5, 485, 90], ["ICESPIKE", 3520, -150, 5, 485, 120]
+];
+
 let level2Cave = [4070, 420];
 //#endregion
 
 let layouts =
     [
-        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1Cave],
-        [level2Platforms, level2Foods, level2GroundDamage, level2Enemy, level2Cave],
+        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],
+        [level2Platforms, level2Foods, level2GroundDamage, level2Enemy, level2SkyFall, level2Cave],
     ];

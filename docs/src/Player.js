@@ -116,7 +116,7 @@ class Player {
         noTint();
     }
 
-    update(platformArray, foodArray, groundDamageArray, enemyArray, cave) {
+    update(platformArray, foodArray, groundDamageArray, enemyArray, skyFallArray, cave) {
         this.applyGravity();
         // this.x += this.xSpeed;
         this.y += this.ySpeed;
@@ -125,6 +125,7 @@ class Player {
         this.checkCollisionsFood(foodArray);
         this.checkCollisionsgroundDamage(groundDamageArray);
         this.checkCollisionsEnemy(enemyArray);
+        this.checkCollisionsSkyFall(skyFallArray);
         this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
@@ -215,6 +216,33 @@ class Player {
                 if (!this.isHurt) {
                     this.isHurt = true;
                     this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                }
+                this.isHurt = true;
+                break; // Exit early to optimize performance
+            }
+        }
+        // The injured state lasts for 1 second before recovering
+        if (this.isHurt && millis() - this.hurtStartTime > 1000) {
+            this.isHurt = false;
+        }
+        // Set reduction rate based on collision detection with any of the fires
+        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
+    }
+
+    checkCollisionsSkyFall(skyFallArray) {
+        // this method should be optimised to check only those foods which
+        // are visible inside left half of the game window.
+        let collisionDetected = false;
+        for (let skyFall of skyFallArray) {
+            let withinXRange = this.right > skyFall.left && this.left < skyFall.right;
+            let withinYRange = this.bottom > skyFall.top && this.top < skyFall.bottom;
+            let collision = withinXRange && withinYRange;
+
+            if (collision) {
+                if (!this.isHurt) {
+                    this.isHurt = true;
+                    this.hurtStartTime = millis();
                 }
                 this.isHurt = true;
                 break; // Exit early to optimize performance

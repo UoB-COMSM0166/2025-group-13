@@ -37,7 +37,7 @@ class Game {
 
     update() {
         this.map.update(); // display map
-        this.player.update(this.map.platforms, this.map.foods, this.map.groundDamages, this.map.enemies, this.map.cave);
+        this.player.update(this.map.platforms, this.map.foods, this.map.groundDamages, this.map.enemies, this.map.skyFalls, this.map.cave);
         this.health.updateHealth();
     }
 
