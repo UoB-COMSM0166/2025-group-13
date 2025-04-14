@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class Cave {
     static caveHeight = 120;
 

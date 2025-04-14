@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class Health {
   static initialPercentage = 1;
   static reductionRate = 0.0004;
@@ -12,6 +13,20 @@ class Health {
 
     this.x = 50;
     this.y = 25;
+  }
+
+  updateHealth() {
+    if (this.percentage > 0) {
+      this.percentage = this.percentage - Health.reductionRate;
+    }
+  }
+
+  getHealth() {
+    return this.percentage;
+  }
+
+  setHealth(percentage) {
+    this.percentage = percentage;
   }
 
   display() {
@@ -43,19 +58,5 @@ class Health {
     rect(this.x, this.y, this.width, this.height, 2);
     fill('limegreen');
     rect(this.x, this.y, this.percentage * this.width, this.height);
-  }
-
-  updateHealth() {
-    if (this.percentage > 0) {
-      this.percentage = this.percentage - Health.reductionRate;
-    }
-  }
-
-  getHealth() {
-    return this.percentage;
-  }
-
-  setHealth(percentage) {
-    this.percentage = percentage;
   }
 }

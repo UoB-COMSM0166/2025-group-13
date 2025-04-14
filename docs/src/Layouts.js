@@ -80,7 +80,8 @@ let level2Enemy =
 let level2SkyFall =
 [
     //on ground(y = 445)
-    ["ICESPIKE", 870, -100, 5, 485, 60], ["ICESPIKE", 1850, -120, 5, 485, 90], ["ICESPIKE", 3520, -150, 5, 485, 120]
+    // type, positionX, startY, fallSpeed, groundY, delayBeforeFall
+    ["ICESPIKE", 870, -100, 5, 485, 60], ["ICESPIKE", 970, -100, 6, 485, 65], ["ICESPIKE", 1070, -100, 4, 485, 55], ["ICESPIKE", 1270, -100, 4, 485, 55], ["ICESPIKE", 1470, -100, 7, 485, 35], ["ICESPIKE", 1670, -100, 9, 485, 25], ["ICESPIKE", 1850, -120, 5, 485, 90], ["ICESPIKE", 3520, -150, 6, 485, 70], ["ICESPIKE", 3520, -150, 3, 485, 40], ["ICESPIKE", 3520, -150, 9, 485, 90]
 ];
 
 let level2Cave = [4070, 420];

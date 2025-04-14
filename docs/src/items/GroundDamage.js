@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class GroundDamage {
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;

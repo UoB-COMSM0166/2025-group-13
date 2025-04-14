@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class Platform {
   constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager) {
     this.assetManager = assetManager;

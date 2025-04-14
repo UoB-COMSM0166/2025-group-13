@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class SkyFall {
   constructor(type = null, positionX, startY, assetManager, fallSpeed = 5,
     groundY = 485, delayBeforeFall = 120, cooldownTime = 180) {
