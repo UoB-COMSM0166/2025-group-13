@@ -32,10 +32,16 @@ class SkyFall {
   }
 
   updateSkyFall() {
-    this.top = this.y - this.height / 2;
-    this.bottom = this.y + this.height / 2;
-    this.left = this.x - this.width / 2;
-    this.right = this.x + this.width / 2;
+    if (this.hasLanded) {
+      // Reset collision boundaries during cooldown
+      this.top = this.bottom = this.left = this.right = 0;
+    } else {
+      // Update collision boundaries normally
+      this.top = this.y - this.height / 2;
+      this.bottom = this.y + this.height / 2;
+      this.left = this.x - this.width / 2;
+      this.right = this.x + this.width / 2;
+    }
   }
 
   update() {
