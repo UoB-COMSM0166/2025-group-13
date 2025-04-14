@@ -1,7 +1,5 @@
+// Constructor, update, and display methods
 class Food {
-  //static food_height = 20;
-  //static food_width = 20;
-
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;
     this.width = 20;
@@ -11,9 +9,6 @@ class Food {
     this.y = positionY;
 
     this.foodType = type;
-
-    this.display();
-    this.updateFood();
   }
 
   updateFood() {

@@ -134,13 +134,14 @@ class InputHandler {
         }
     }
     
+    //#region Getters and Setters
     getAndResetJump() {
         if (this.jump) {
           this.jump = false;
           return true;
         }
         return false;
-      }
+    }
 
     getMoveLeft() {
         return this.moveLeft;
@@ -149,4 +150,5 @@ class InputHandler {
     getMoveRight() {
         return this.moveRight;
     }
+    //#endregion
 }
