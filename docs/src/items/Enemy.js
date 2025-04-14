@@ -23,7 +23,7 @@ class Enemy {
     this.flipped = false;  // Track if image has been flipped
     this.isFlipping = false;  // Track if we're in the process of flipping
 
-    this.updateEnemy();
+    // this.updateEnemy();
   }
 
   updateEnemy() {

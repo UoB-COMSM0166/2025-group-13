@@ -12,8 +12,8 @@ class Food {
 
     this.foodType = type;
 
-    this.display();
-    this.updateFood();
+    // this.display();
+    // this.updateFood();
   }
 
   updateFood() {

@@ -57,6 +57,7 @@ class GameScreen {
         this.scaleCanvas();
     }
 
+    //#region Draw Methods
     drawHomeScreen() {
         imageMode(CENTER);
         image(this.assetManager.homePageBackground, width / 2, height / 2, width, height);
@@ -90,7 +91,6 @@ class GameScreen {
             text("Press SPACE to Start", width / 2, boxY + boxHeight / 2);
         }
     }
-
 
     drawInstructions() {
         imageMode(CENTER); // Ensure the background image is centered
@@ -299,4 +299,5 @@ class GameScreen {
 
         }
     }
+    //#endregion Draw Methods
 }

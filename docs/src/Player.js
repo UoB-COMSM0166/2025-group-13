@@ -37,7 +37,7 @@ class Player {
 
         if (this.isHurt) {
             let elapsed = millis() - this.hurtStartTime;
-
+            Health.reductionRate = 0.002; // Increase reduction rate when hurt
 
             if (elapsed < 1000) {
                 let alpha = map(sin(elapsed * 0.02), -1, 1, 100, 255);
@@ -45,6 +45,7 @@ class Player {
             }
         } else {
             tint(255);
+            Health.reductionRate = 0.0004; // Normal reduction rate when not hurt
             // noTint();
         }
 
@@ -123,9 +124,11 @@ class Player {
         this.updateBounds();
         this.checkCollisions(platformArray);
         this.checkCollisionsFood(foodArray);
+        // Items increasing health reduction rate
         this.checkCollisionsgroundDamage(groundDamageArray);
         this.checkCollisionsEnemy(enemyArray);
         this.checkCollisionsSkyFall(skyFallArray);
+        // Items killing instantly
         this.checkCollisionsLava();
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
@@ -201,11 +204,11 @@ class Player {
         }
     
         // Increase reduction rate if player is hurt
-        if (this.isHurt) {
-            Health.reductionRate = 0.002;  // Increase reduction rate when hurt
-        } else {
-            Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
-        }
+        // if (this.isHurt) {
+        //     Health.reductionRate = 0.002;  // Increase reduction rate when hurt
+        // } else {
+        //     Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
+        // }
     }    
 
     checkCollisionsEnemy(enemyArray) {
@@ -231,7 +234,7 @@ class Player {
             this.isHurt = false;
         }
         // Set reduction rate based on collision detection with any of the fires
-        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        // Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
         //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 
@@ -258,7 +261,7 @@ class Player {
             this.isHurt = false;
         }
         // Set reduction rate based on collision detection with any of the fires
-        Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
+        // Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
         //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 

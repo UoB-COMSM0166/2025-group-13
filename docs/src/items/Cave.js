@@ -8,9 +8,6 @@ class Cave {
   
       this.x = positionX;
       this.y = positionY;
-  
-      //this.display();
-      //this.updateCave();
     }
   
     updateCave()

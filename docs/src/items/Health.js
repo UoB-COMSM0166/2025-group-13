@@ -8,6 +8,7 @@ class Health {
     this.percentage = Health.initialPercentage;
     this.width = 5 * Brick.width;
     this.height = Brick.height / 2;
+    // this.reductionRate = 0.0004;
 
     this.x = 50;
     this.y = 25;
@@ -16,12 +17,6 @@ class Health {
   display() {
     // Draw the rectangle with the top right corner point
     rectMode(CORNER);
-    // image(this.assetManager.img_heart, 20, 20, 25, 25);
-
-    // draw background rectangle for testing
-    // fill(200, 200, 255, 150);
-    // noStroke();
-    // rect(this.x, this.y, this.width, this.height);
 
     let sx, sy, sw, sh;
     let heartHeight = 30;
@@ -63,8 +58,4 @@ class Health {
   setHealth(percentage) {
     this.percentage = percentage;
   }
-
-  /*updateReductionRate(newRate) {
-    Health.reductionRate = newRate;
-  }*/
 }

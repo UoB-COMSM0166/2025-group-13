@@ -27,7 +27,7 @@ class SkyFall {
     this.fallSpeedX = this.fallSpeed * sin(this.angle);
     this.fallSpeedY = this.fallSpeed * cos(this.angle);
 
-    this.updateSkyFall();
+    // this.updateSkyFall();
   }
 
   updateSkyFall() {
