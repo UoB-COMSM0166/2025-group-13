@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class GroundDamage {
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;
@@ -11,8 +12,8 @@ class GroundDamage {
 
     this.stableHeight = 15; // Fire animation requirements: Fixed the height of the bottom of the flame
 
-    this.display();
-    this.updateGroundDamage();
+    // this.display();
+    // this.updateGroundDamage();
   }
 
   updateGroundDamage() {

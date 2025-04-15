@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class SkyFall {
   constructor(type = null, positionX, startY, assetManager, fallSpeed = 5,
     groundY = 485, delayBeforeFall = 120, cooldownTime = 180) {
@@ -27,14 +28,20 @@ class SkyFall {
     this.fallSpeedX = this.fallSpeed * sin(this.angle);
     this.fallSpeedY = this.fallSpeed * cos(this.angle);
 
-    this.updateSkyFall();
+    // this.updateSkyFall();
   }
 
   updateSkyFall() {
-    this.top = this.y - this.height / 2;
-    this.bottom = this.y + this.height / 2;
-    this.left = this.x - this.width / 2;
-    this.right = this.x + this.width / 2;
+    if (this.hasLanded) {
+      // Reset collision boundaries during cooldown
+      this.top = this.bottom = this.left = this.right = 0;
+    } else {
+      // Update collision boundaries normally
+      this.top = this.y - this.height / 2;
+      this.bottom = this.y + this.height / 2;
+      this.left = this.x - this.width / 2;
+      this.right = this.x + this.width / 2;
+    }
   }
 
   update() {

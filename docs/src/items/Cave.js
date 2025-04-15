@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class Cave {
     static caveHeight = 120;
 
@@ -8,9 +9,6 @@ class Cave {
   
       this.x = positionX;
       this.y = positionY;
-  
-      //this.display();
-      //this.updateCave();
     }
   
     updateCave()
