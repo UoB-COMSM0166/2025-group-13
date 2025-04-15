@@ -205,11 +205,11 @@ class Player {
         }
 
         // Increase reduction rate if player is hurt
-        if (this.isHurt) {
-            Health.reductionRate = 0.002;  // Increase reduction rate when hurt
-        } else {
-            Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
-        }
+        // if (this.isHurt) {
+        //     Health.reductionRate = 0.002;  // Increase reduction rate when hurt
+        // } else {
+        //     Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
+        // }
     }
 
     checkCollisionsEnemy(enemyArray) {
