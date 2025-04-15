@@ -39,7 +39,7 @@ class Player {
             let elapsed = millis() - this.hurtStartTime;
             Health.reductionRate = 0.001; // Increase reduction rate when hurt
 
-            if (elapsed < 500) {
+            if (elapsed < 1000) {
                 let alpha = map(sin(elapsed * 0.02), -1, 1, 100, 255);
                 tint(255, 0, 0, alpha);
             }
