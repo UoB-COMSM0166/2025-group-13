@@ -184,29 +184,33 @@ class Player {
             let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
             let withinYRange = this.bottom > groundDamage.top && this.top < groundDamage.bottom;
             let collision = withinXRange && withinYRange;
-    
+
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
                     this.hurtStartTime = millis();
+                    if (!this.assetManager.effect_damage_environment.isPlaying()) {
+                        this.assetManager.effect_damage_environment.setVolume(0.8);
+                        this.assetManager.effect_damage_environment.play();
+                    }
                 }
                 collisionDetected = true;  // Collision detected
                 break; // Exit early to optimize performance
             }
         }
-    
+
         // The injured state lasts for 1 second before recovering
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-    
+
         // Increase reduction rate if player is hurt
         if (this.isHurt) {
             Health.reductionRate = 0.002;  // Increase reduction rate when hurt
         } else {
             Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
         }
-    }    
+    }
 
     checkCollisionsEnemy(enemyArray) {
         // this method should be optimised to check only those foods which
@@ -220,7 +224,11 @@ class Player {
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
-                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                    this.hurtStartTime = millis();
+                    if (!this.assetManager.effect_damage_enemy.isPlaying()) {
+                        this.assetManager.effect_damage_enemy.setVolume(0.8);
+                        this.assetManager.effect_damage_enemy.play();
+                    }
                 }
                 this.isHurt = true;
                 break; // Exit early to optimize performance
@@ -285,6 +293,10 @@ class Player {
                     this.playerHealth.setHealth(1);
                 } else {
                     this.playerHealth.setHealth(actualHealth + 0.2);
+                }
+                if (!this.assetManager.effect_eat.isPlaying()) {
+                    this.assetManager.effect_eat.setVolume(0.8);
+                    this.assetManager.effect_eat.play();
                 }
                 foodArray.splice(i, 1); // Remove collided food
             }

@@ -14,25 +14,38 @@ class Game {
         this.groundTop = height - 50;
 
         this.maps = [];
-        for(let i = 0; i < layouts.length; i++){
+        for (let i = 0; i < layouts.length; i++) {
             this.maps.push(new Map(assetManager));
         }
 
         // Set the current map
-        this.currentMap = gameLevel -1;
+        this.currentMap = gameLevel - 1;
         this.map = this.maps[this.currentMap];
 
         // Create new health of the player
         this.health = new Health(assetManager);
         // Create new player
         //this.player = new Player(2, this.groundTop, this.health, assetManager);
-        this.player = new Player(0, height/2, this.health, assetManager);
+        this.player = new Player(0, height / 2, this.health, assetManager);
 
         this.stopMapMovement = false;
     }
 
     setup() {
         this.map.setup(layouts[this.currentMap]); //init map
+        // dino noisy - everytime start a level
+        this.assetManager.effect_dino.setVolume(1.0);
+        this.assetManager.effect_dino.play();
+
+        if (this.assetManager.bgm_relax.isPlaying()) {
+            this.assetManager.bgm_relax.stop();
+        }
+        if (this.assetManager.bgm_cave.isPlaying()) {
+            this.assetManager.bgm_cave.stop();
+        }
+        // exciting bgn play
+        this.assetManager.bgm_exciting.setVolume(0.4);
+        this.assetManager.bgm_exciting.loop();
     }
 
     update() {
@@ -43,13 +56,12 @@ class Game {
 
     draw() {
         if (this.assetManager.gamePageBackground) {
-            switch(this.currentMap)
-            {
+            switch (this.currentMap) {
                 case 0:
-                    image(this.assetManager.gamePageBackground, width/2, height/2, width, height);
+                    image(this.assetManager.gamePageBackground, width / 2, height / 2, width, height);
                     break;
                 case 1:
-                    image(this.assetManager.gamePageIceBackground, width/2, height/2, width, height);
+                    image(this.assetManager.gamePageIceBackground, width / 2, height / 2, width, height);
                     break;
             }
 
@@ -64,7 +76,7 @@ class Game {
                 // let dy = (this.windowBottom - this.lavaTileHeight / 2);
                 let dy = (height - this.lavaTileHeight / 2);
 
-                switch(this.currentMap){
+                switch (this.currentMap) {
                     case 0:
                         image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
@@ -82,8 +94,7 @@ class Game {
 
         // Display the actual level
         textSize(20);
-        switch(this.currentMap)
-        {
+        switch (this.currentMap) {
             case 0:
                 fill('orange');
                 stroke('red');
@@ -93,16 +104,16 @@ class Game {
                 stroke('blue');
                 break;
         }
-        text("Level " + (this.currentLevel), width-75, 25);
+        text("Level " + (this.currentLevel), width - 75, 25);
         textSize(30);
-        switch(game.currentMap){
+        switch (game.currentMap) {
             case 0:
-              text("Lava Rush", width/2, 25);
-              break;
+                text("Lava Rush", width / 2, 25);
+                break;
             case 1:
-              text("Icy Endgame", width/2, 25)
-              break;
-          }
+                text("Icy Endgame", width / 2, 25)
+                break;
+        }
 
         this.update();
     }
@@ -117,20 +128,30 @@ class Game {
     }
 
     isGameOver() {
-        if(this.health.getHealth() <= 0){
+        if (this.health.getHealth() <= 0) {
             return true;
         }
         else return false;
     }
 
-    nextLevel()
-    {
+    nextLevel() {
         this.currentMap = (this.currentMap + 1) % this.maps.length;
         this.map = this.maps[this.currentMap];
     }
 
     isLevelComplete() {
-        if(this.player.reachedCave){
+        if (this.player.reachedCave) {
+            if (this.assetManager.bgm_exciting.isPlaying()) {
+                this.assetManager.bgm_exciting.stop();
+            }
+            if (!this.assetManager.bgm_cave.isPlaying()) {
+                this.assetManager.bgm_cave.setVolume(0.5);
+                this.assetManager.bgm_cave.play();
+            }
+            if (!this.assetManager.bgm_relax.isPlaying()) {
+                this.assetManager.bgm_relax.setVolume(0.5);
+                this.assetManager.bgm_relax.play();
+            }
             //nextLevel();
             return true;
         }
