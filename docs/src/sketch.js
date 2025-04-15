@@ -27,9 +27,11 @@ function setup() {
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
   newGame();
-  imageMode(CENTER);//Haru: I am so sorry about that, such a pain in the ass now
+  imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
+  assetManager.bgm_exciting.setVolume(0.4); // adjust volume
+  assetManager.bgm_exciting.loop();         // play loop
 }
 
 function newGame() {
@@ -74,7 +76,7 @@ function draw() {
     screenGame.drawLevelComplete();
   }
   else screenGame.drawEndGame();
-  
+
   // Check if we need to change the screen
   changeScreen();
 }

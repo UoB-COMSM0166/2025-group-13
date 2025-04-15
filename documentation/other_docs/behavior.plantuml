@@ -1,0 +1,32 @@
+@startuml
+actor User
+
+User -> InputHandler : press keys (← → ↑)
+InputHandler -> Game : getMoveLeft(), getMoveRight(), getAndResetJump()
+Game -> Map : handleInput(moveRight)
+Game -> Player : handleInput(moveLeft, moveRight, jump)
+
+loop per frame update
+    Game -> Map : update()  // Update all map elements
+    Game -> Player : update(platforms, foods, enemies, traps, cave)
+
+    alt Collides with trap / enemy / falling object
+        Player -> Health : decreaseHP()
+    end
+
+    alt Collides with food item
+        Player -> Food : checkCollision()
+        Food -> Health : increaseHP()
+    end
+
+    Player -> Health : decreaseHPOverTime()
+
+    alt Health is zero
+        Game -> GameState : set to "gameOver"
+    end
+
+    alt Player reaches cave
+        Game -> GameState : set to "levelComplete" or "gameEnd"
+    end
+end
+@enduml

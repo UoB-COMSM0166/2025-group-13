@@ -37,7 +37,7 @@ class Player {
 
         if (this.isHurt) {
             let elapsed = millis() - this.hurtStartTime;
-            Health.reductionRate = 0.002; // Increase reduction rate when hurt
+            Health.reductionRate = 0.001; // Increase reduction rate when hurt
 
             if (elapsed < 1000) {
                 let alpha = map(sin(elapsed * 0.02), -1, 1, 100, 255);
@@ -45,7 +45,7 @@ class Player {
             }
         } else {
             tint(255);
-            Health.reductionRate = 0.0004; // Normal reduction rate when not hurt
+            Health.reductionRate = 0.0002; // Normal reduction rate when not hurt
             // noTint();
         }
 
@@ -187,29 +187,26 @@ class Player {
             let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
             let withinYRange = this.bottom > groundDamage.top && this.top < groundDamage.bottom;
             let collision = withinXRange && withinYRange;
-    
+
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
                     this.hurtStartTime = millis();
+                    if (!this.assetManager.effect_damage_environment.isPlaying()) {
+                        this.assetManager.effect_damage_environment.setVolume(0.8);
+                        this.assetManager.effect_damage_environment.play();
+                    }
                 }
                 collisionDetected = true;  // Collision detected
                 break; // Exit early to optimize performance
             }
         }
-    
+
         // The injured state lasts for 1 second before recovering
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-    
-        // Increase reduction rate if player is hurt
-        // if (this.isHurt) {
-        //     Health.reductionRate = 0.002;  // Increase reduction rate when hurt
-        // } else {
-        //     Health.reductionRate = 0.0004;  // Normal reduction rate when not hurt
-        // }
-    }    
+    }
 
     checkCollisionsEnemy(enemyArray) {
         // this method should be optimised to check only those foods which
@@ -223,7 +220,11 @@ class Player {
             if (collision) {
                 if (!this.isHurt) {
                     this.isHurt = true;
-                    this.hurtStartTime = millis(); // 只在第一次碰撞时更新
+                    this.hurtStartTime = millis();
+                    if (!this.assetManager.effect_damage_enemy.isPlaying()) {
+                        this.assetManager.effect_damage_enemy.setVolume(0.8);
+                        this.assetManager.effect_damage_enemy.play();
+                    }
                 }
                 this.isHurt = true;
                 break; // Exit early to optimize performance
@@ -233,9 +234,6 @@ class Player {
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-        // Set reduction rate based on collision detection with any of the fires
-        // Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
-        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 
     checkCollisionsSkyFall(skyFallArray) {
@@ -260,9 +258,6 @@ class Player {
         if (this.isHurt && millis() - this.hurtStartTime > 1000) {
             this.isHurt = false;
         }
-        // Set reduction rate based on collision detection with any of the fires
-        // Health.reductionRate = collisionDetected ? 0.002 : 0.0004;
-        //if(collisionDetected) this.playerHealth.updateReductionRate(0.002);
     }
 
     checkCollisionsLava() {
@@ -289,6 +284,10 @@ class Player {
                 } else {
                     this.playerHealth.setHealth(actualHealth + 0.2);
                 }
+                if (!this.assetManager.effect_eat.isPlaying()) {
+                    this.assetManager.effect_eat.setVolume(0.8);
+                    this.assetManager.effect_eat.play();
+                }
                 foodArray.splice(i, 1); // Remove collided food
             }
         }
@@ -303,8 +302,6 @@ class Player {
 
         if (collision) {
             this.reachedCave = true;
-            // Check if the player has reached the cave
-            //console.log("Player reached the cave");
         }
     }
 
