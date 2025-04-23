@@ -1,3 +1,4 @@
+// Constructor, update, and display methods
 class Health {
   static initialPercentage = 1;
   static reductionRate = 0.0004;
@@ -8,20 +9,29 @@ class Health {
     this.percentage = Health.initialPercentage;
     this.width = 5 * Brick.width;
     this.height = Brick.height / 2;
+    // this.reductionRate = 0.0004;
 
     this.x = 50;
     this.y = 25;
   }
 
+  updateHealth() {
+    if (this.percentage > 0) {
+      this.percentage = this.percentage - Health.reductionRate;
+    }
+  }
+
+  getHealth() {
+    return this.percentage;
+  }
+
+  setHealth(percentage) {
+    this.percentage = percentage;
+  }
+
   display() {
     // Draw the rectangle with the top right corner point
     rectMode(CORNER);
-    // image(this.assetManager.img_heart, 20, 20, 25, 25);
-
-    // draw background rectangle for testing
-    // fill(200, 200, 255, 150);
-    // noStroke();
-    // rect(this.x, this.y, this.width, this.height);
 
     let sx, sy, sw, sh;
     let heartHeight = 30;
@@ -49,22 +59,4 @@ class Health {
     fill('limegreen');
     rect(this.x, this.y, this.percentage * this.width, this.height);
   }
-
-  updateHealth() {
-    if (this.percentage > 0) {
-      this.percentage = this.percentage - Health.reductionRate;
-    }
-  }
-
-  getHealth() {
-    return this.percentage;
-  }
-
-  setHealth(percentage) {
-    this.percentage = percentage;
-  }
-
-  /*updateReductionRate(newRate) {
-    Health.reductionRate = newRate;
-  }*/
 }
