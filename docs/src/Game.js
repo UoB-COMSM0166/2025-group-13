@@ -36,16 +36,6 @@ class Game {
         // dino noisy - everytime start a level
         this.assetManager.effect_dino.setVolume(1.0);
         this.assetManager.effect_dino.play();
-
-        if (this.assetManager.bgm_relax.isPlaying()) {
-            this.assetManager.bgm_relax.stop();
-        }
-        if (this.assetManager.bgm_cave.isPlaying()) {
-            this.assetManager.bgm_cave.stop();
-        }
-        // exciting bgn play
-        this.assetManager.bgm_exciting.setVolume(0.4);
-        this.assetManager.bgm_exciting.loop();
     }
 
     update() {

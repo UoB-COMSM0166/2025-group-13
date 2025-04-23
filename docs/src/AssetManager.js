@@ -28,12 +28,17 @@ class AssetManager {
         this.bgm_exciting = loadSound('assets/sounds/bgm_exciting.mp3');
         this.bgm_relax = loadSound('assets/sounds/bgm_relax.mp3');
         this.bgm_cave = loadSound('assets/sounds/bgm_cave.mp3');
+        this.bgm_tragic = loadSound('assets/sounds/bgm_tragic.mp3');
 
         // music - effect
         this.effect_eat = loadSound('assets/sounds/effect_eat.mp3');
         this.effect_dino = loadSound('assets/sounds/effect_dinosaur_sound.mp3');
+        this.effect_dino_hurt = loadSound('assets/sounds/effect_dinosaur_hurt.mp3');
         this.effect_damage_environment = loadSound('assets/sounds/effect_damagedBy_environment.mp3');
         this.effect_damage_enemy = loadSound('assets/sounds/effect_damagedBy_enemy.mp3');
+        this.effect_ice_cracking = loadSound('assets/sounds/effect_ice_cracking.mp3');
+        this.effect_lava_loop = loadSound('assets/sounds/effect_lava_loop.mp3');
+        this.effect_snow_storm = loadSound('assets/sounds/effect_snow_storm.mp3');
     }
 
     constructor() {
