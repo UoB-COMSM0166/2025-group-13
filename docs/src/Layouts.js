@@ -1,4 +1,6 @@
-// This file contains the layout of the game levels, including platforms, foods, ground damage, enemies, skyFalls and caves.
+// This file contains the layout of the game levels. 
+// This includes platforms, foods, ground damage, enemies, skyFalls and caves.
+
 //#region: Level1
 // constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager)
 let level1Platforms =
