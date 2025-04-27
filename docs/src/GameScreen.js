@@ -45,9 +45,9 @@ class GameScreen {
     windowResized() {
         let canvasRect = canvasContainer.getBoundingClientRect();
         // Calculate canvas width and height: the minimum of your maximum size or the container's current width/height.
-        //this.screenWidth = Math.min(MAX_SCREEN_WIDTH, rect.width * dpr); // container.offsetWidth, windowWidth, 
+        //this.screenWidth = Math.min(MAX_SCREEN_WIDTH, rect.width * dpr); // container.offsetWidth, windowWidth,
         //this.screenHeight = Math.min(MAX_SCREEN_HEIGHT, rect.height * dpr); // container.offsetHeight, windowHeight
-        screenWidth = canvasRect.width; // rect.width * dp 
+        screenWidth = canvasRect.width; // rect.width * dp
         screenHeight = canvasRect.height; // rect.height * dpr
         console.log("Resized Screen Width: " + screenWidth);
         console.log("Resized Screen Height: " + screenHeight);
@@ -81,14 +81,9 @@ class GameScreen {
 
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
-            fill(0, 0, 0, 180);
-            noStroke();
-            rect(boxX - 20, boxY + 32, 90, 30, 0);
-
             textSize(18);
             fill(255);
-            text("Press SPACE to Start", width / 2, boxY + boxHeight / 2);
+            text("Press [ SPACE ] to Start", width / 2, boxY + boxHeight / 2);
         }
     }
 
@@ -101,8 +96,8 @@ class GameScreen {
         textAlign(CENTER, CENTER);
         textSize(40);
         fill(0);
-        stroke('white');
-        strokeWeight(2);
+        stroke("black");
+        strokeWeight(8);
         textSize(25);
 
         // Box dimensions and position
@@ -114,14 +109,9 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
-            fill(0, 0, 0, 180);
-            noStroke();
-            rect(boxX - 20, boxY + 38, 90, 30, 0);
-
             textSize(18);
             fill(255);
-            text("Press SPACE to Start", width / 2, boxY + boxHeight / 2);
+            text("Press [ SPACE ] to Start", width / 2, boxY + boxHeight / 2);
         }
     }
 
@@ -134,7 +124,7 @@ class GameScreen {
         textSize(50);
         fill('white');
         stroke('black');
-        strokeWeight(2);
+        strokeWeight(8);
         text("Game Paused", width / 2, height / 2 - 40);
 
         // Box dimensions and position
@@ -143,24 +133,9 @@ class GameScreen {
         let boxX = width / 2;
         let boxY = height - 130;
 
-        // fill(0, 0, 0, 180);
-        // noStroke();
-        // rect(boxX-72, boxY+18, 90, 30, 0);
-
         textSize(18);
         fill(255);
-        text("Press SPACE to resume", width / 2, boxY + boxHeight / 2);
-        // // **Let the text flash every 60 frames (about 1 second)**
-        // if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-        //     // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
-        //     fill(0, 0, 0, 180);
-        //     noStroke();
-        //     rect(boxX-70, boxY+18, 90, 30, 0);
-
-        //     textSize(18);
-        //     fill(255);
-        //     text("Press SPACE to resume", width / 2, boxY + boxHeight / 2);
-        // }
+        text("Press [ SPACE ] to resume", width / 2, boxY + boxHeight / 2);
     }
 
     drawGameOver() {
@@ -189,26 +164,15 @@ class GameScreen {
         let boxX = width / 2 - boxWidth / 2;
         let boxY = height - 60;
 
-        // Draw instruction text (centered inside the box)
-        // textSize(25);
-        // fill(255);
-        // text("Press SPACE to play again\n Press ESCAPE for home page", width / 2, height - 30);
-
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind KEY text
-            fill(0, 0, 0, 180);
-            noStroke();
-            rect(boxX + 96, boxY + 16, 150, 30, 0);
-            rect(boxX + 133, boxY - 22, 80, 30, 0);
-
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE to play again", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press [ SPACE ] to play again", width / 2, height - 70);
+            text("Press [ ESCAPE / Q ] for home page", width / 2, height - 30);
 
         }
     }
@@ -244,19 +208,14 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind KEY text
-            fill(0, 0, 0, 180);
-            noStroke();
-            rect(boxX + 168, boxY - 2, 80, 30, 0);
-            rect(boxX + 172, boxY + 38, 150, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE to start next level", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press [ SPACE ] to start next level", width / 2, height - 70);
+            text("Press [ ESCAPE / Q ] for home page", width / 2, height - 30);
 
         }
     }
@@ -285,17 +244,13 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind KEY text
-            fill(0, 0, 0, 180);
-            noStroke();
-            rect(boxX + 168, boxY - 2, 80, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE for home page", width / 2, height - 70);
+            text("Press [ SPACE ] for home page", width / 2, height - 70);
 
         }
     }
