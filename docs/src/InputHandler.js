@@ -1,9 +1,8 @@
-// Description: This file contains the InputHandler class that handles all the inputs from the user.
-// It checks for keyboard inputs and button clicks. It also checks for touch events on mobile devices.
+// InputHandler class handles all the possible inputs from the user.
+// It checks for keyboard inputs and button touches for responsive/mobile devices.
 
-// Global variable to know if the device is touch enabled or not
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-//let jumpReady = true;
+// Grab all buttons with the control-btn class
+const buttons = document.querySelectorAll('.control-btn');
 
 class InputHandler {
     constructor() {
@@ -15,51 +14,30 @@ class InputHandler {
     }
 
     setup() {
-        /*if(isTouchDevice) {
-            setupButtons();
-        }*/
-        this.setupButtons();
+        // If the device is touchable, show and setup the buttons
+        if(isTouchDevice) {
+            this.showButtons(true);
+            this.setupButtons();
+        }
+        else {
+            this.showButtons(false);
+        }
     }
 
-    setupButtons() {
-        // We will temporaly use mouse clicks to test
-        /*
-        // Left button
-        document.getElementById('left-btn').addEventListener('click', () => {
-            this.moveLeft = true;
-            //console.log("Left button clicked!");
-        });
-        document.getElementById('left-btn').addEventListener('mouseup', () => {
-            this.moveLeft = false;
-         });
-        //This was another approach using click events
-        //document.getElementById('left-btn').addEventListener('mousedown', (e) => {
-        //document.getElementById('jump-btn').addEventListener('clickend', (e) => {
-        // Right button
-       document.getElementById('right-btn').addEventListener('click', () => {
-            this.moveRight = true;
-            //console.log("Right button clicked!"); 
-        });
-        document.getElementById('right-btn').addEventListener('mouseup', () => {
-            this.moveRight = false;
-        });
-        // Jump button
-        document.getElementById('jump-btn').addEventListener('click', () => {
-            if(jumpReady) {
-                this.jump = true
-                jumpReady = false;
-                //console.log("Jump button clicked!");
+    // Show or hide buttons based on the device type
+    showButtons(visible) {
+        buttons.forEach((button) => {
+            if(visible) {
+                button.classList.remove('hidden');
             }
             else {
-                this.jump = false;
+                button.classList.add('hidden');
             }
         });
-        document.getElementById('jump-btn').addEventListener('mousedown', () => {
-            this.jump = false;
-            jumpReady = true;
-        });
-        */
-        // For actual mobile touch events:
+    }
+
+    // Add listeners for touch events for all buttons
+    setupButtons() {
         document.getElementById('left-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             this.moveLeft = true;
@@ -79,7 +57,6 @@ class InputHandler {
         document.getElementById('jump-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             if(this.jumpReady) {
-                //console.log("Jump button touched!");
                 this.jumpReady = false;
                 this.jump = true;
             }
@@ -89,7 +66,6 @@ class InputHandler {
         });  
         document.getElementById('jump-btn').addEventListener('pointerup', (e) => {
             e.preventDefault();
-            //console.log("Jump button touch end!");
             this.jumpReady = true;
             this.jump = false;
         });

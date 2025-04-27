@@ -1,4 +1,5 @@
-// Class Game handles the main game logic and delegate jobs through each independent objects
+// Game class handles the main game logic and delegate jobs through each independent objects
+
 class Game {
     constructor(gameLevel, assetManager) {
         this.currentLevel = gameLevel;
@@ -119,10 +120,6 @@ class Game {
     }
 
     handleInput(triggerJump, moveLeft, moveRight) {
-        /*if (keyIsDown) {
-            this.map.handleInput(true); // handle map input
-            this.player.handleInput(true); // handle player input
-        }*/
         this.map.handleInput(moveRight);
         this.player.handleInput(moveLeft, moveRight, triggerJump);
     }
@@ -152,7 +149,6 @@ class Game {
                 this.assetManager.bgm_relax.setVolume(0.5);
                 this.assetManager.bgm_relax.play();
             }
-            //nextLevel();
             return true;
         }
         else return false;

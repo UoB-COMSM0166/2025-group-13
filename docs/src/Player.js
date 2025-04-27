@@ -1,3 +1,7 @@
+// Player class is responsible for the player character in the game. 
+// It handles player movement, jumping, and collision detection.
+// Also manages the player's health and visual representation on the screen.
+
 class Player {
     constructor(positionX, positionY, playerHealth, assetManager) {
         this.assetManager = assetManager;
@@ -73,11 +77,6 @@ class Player {
         aspectRatio = sw / sh;
         scaledWidth = this.height * aspectRatio;
         scaledHeight = this.height;
-
-        // draw background rectangle for testing
-        // fill(200, 200, 255, 150);
-        // noStroke();
-        // rect(this.x, this.y, this.width, this.height);
 
         if (this.isMoving && this.isBackwards) {
             push();
@@ -379,24 +378,6 @@ class Player {
             this.isOnGround = false;
         }
     }
-
-    /*handleInput(isKeyDown) {
-        if (isKeyDown) {
-            if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-                this.move(-1);
-                this.isMoving = true;
-                this.isBackwards = true;
-            }
-            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                this.move(1);
-                this.isMoving = true;
-                this.isBackwards = false;
-            }
-            if (keyIsDown(UP_ARROW) || keyIsDown(87) || keyIsDown(32)) this.jump();
-        } else {
-            this.isMoving = false;
-        }
-    }*/
 
     handleInput(moveLeft, moveRight, triggerJump) {
         if(moveLeft || moveRight || triggerJump) {

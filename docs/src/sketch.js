@@ -1,4 +1,4 @@
-// Description: This file is the main entry point for the game. It creates the game object and the screen object.
+// This file is the main entry point for the game. It creates the main game and screen objects.
 // It also handles the key events and the game loop.
 
 //#region: declaration of variables
@@ -15,6 +15,8 @@ let maxLevels = 2;
 // Global variables to store the triggers of actions that changes screens
 let triggerJump = false;
 let triggerESC = false;
+// Global variable to store if the device is touch enabled or not
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 //#endregion
 
 // Preload all assets using the assetManager

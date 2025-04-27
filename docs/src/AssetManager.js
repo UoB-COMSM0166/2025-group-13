@@ -1,3 +1,5 @@
+// AssetManager class is responsible for loading and managing all the assets used in the game.
+
 class AssetManager {
     preload() {
         // cover image

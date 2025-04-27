@@ -1,3 +1,6 @@
+// Map class is responsible for managing the game map. 
+// This includes platforms, food, enemies, and static/moving obstacles.
+
 class Map {
     constructor(assetManager) {
         this.assetManager = assetManager;
@@ -115,31 +118,9 @@ class Map {
         }
     }
 
-    /*handleInput(isKeyDown) {
-        if (isKeyDown) {
-            if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-                this.moveEntities();
-            }
-        }
-    }*/
-
     handleInput(moveRight) {
         if(moveRight) {
                 this.moveEntities();
         }
     }
-
-    /*
-    draw() {
-        // draw the map
-        for (var row = 0; row < this.blocks.length; row++) {
-            for (var col = 0; col < this.blocks[row].length; col++) {
-
-                if (this.blocks[row][col] != 0) {
-                    this.blocks[row][col].draw(this.offset, this.yOffset);
-                }
-            }
-        }
-    }
-    */
 }
