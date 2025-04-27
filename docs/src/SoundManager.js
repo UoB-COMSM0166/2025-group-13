@@ -2,6 +2,8 @@ class SoundManager {
     constructor(assetManager) {
         this.assetManager = assetManager;
         this.isBGMStarted = false;
+        this.defaultVolume = 0.4;
+        this.defaultRate = 1.0;
     }
 
     startGameBGM() {
@@ -18,6 +20,7 @@ class SoundManager {
         this.assetManager.bgm_tragic.stop();
         this.assetManager.bgm_relax.stop();
         this.assetManager.bgm_cave.stop();
+
         this.assetManager.effect_lava_loop.stop();
         this.assetManager.effect_ice_cracking.stop();
         this.assetManager.effect_snow_storm.stop();
@@ -51,11 +54,10 @@ class SoundManager {
             this.assetManager.effect_snow_storm.loop();
         }
     }
-
     pauseBGM() {
         if (this.assetManager.bgm_exciting.isPlaying()) {
-            this.assetManager.bgm_exciting.rate(0.5);
-            this.assetManager.bgm_exciting.setVolume(0.1);
+            this.assetManager.bgm_exciting.rate(0.4);
+            this.assetManager.bgm_exciting.setVolume(0.2);
         }
     }
 
@@ -63,7 +65,10 @@ class SoundManager {
         if (!this.assetManager.bgm_exciting.isPlaying()) {
             this.assetManager.bgm_exciting.loop();
         }
-        this.assetManager.bgm_exciting.setVolume(0.4);
+        this.assetManager.bgm_exciting.rate(this.defaultRate);
+        this.assetManager.bgm_exciting.setVolume(this.defaultVolume);
         this.isBGMStarted = true;
     }
+
+
 }

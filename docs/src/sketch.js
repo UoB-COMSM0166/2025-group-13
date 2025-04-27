@@ -60,7 +60,7 @@ function draw() {
     screenGame.drawInstructions();
   }
   else if(gameState === "gameScreen") {
-    soundManager.startGameBGM();
+    // soundManager.startGameBGM();
     game.handleInput(triggerJump, moveLeft, moveRight);
     game.update();
     game.draw();
@@ -85,11 +85,9 @@ function draw() {
   }
   else if(gameState === "pausePage") {
     screenGame.drawPauseGame();
-    soundManager.pauseBGM();
   }
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     gameState = "gameScreen";
-    soundManager.resumeBGM();
   }
 
   else if(gameState === "gameOver") {
@@ -111,10 +109,12 @@ function changeScreen() {
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     // console.log("Resuming game...");
     gameState = "gameScreen";
+    soundManager.resumeBGM();
   }
   else if(gameState === "gameScreen" && inputHandler.escape) {
     // console.log("Game Paused");
     gameState = "pausePage";
+    soundManager.pauseBGM();
   }
   else if(gameState === "gameOver" && triggerJump) {
     // Restart from actual level
