@@ -6,7 +6,7 @@ html {
 
 @font-face {
   font-family: 'DinoEscapeMainPixelFont';
-  /* 你自定义的字体名称 */
+  /* Customised font */
   src: url('assets/fonts/PixelEmulator.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -37,12 +37,8 @@ body {
 
 /* Game Header Styling */
 header {
-  /* background: linear-gradient(to right, #ff4500, #ffcc00); */
   padding: 15px;
-  display: none;
-  /* box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5); */
-  /* text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); */
-  /* border-bottom: 5px solid #ffcc00; */
+  display: none; /* Hide by default */
 }
 
 h1 {
@@ -68,11 +64,14 @@ h1 {
   /* box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3); */
   /* transition: transform 0.3s ease-in-out; */
   border: 2px dashed #ffcc00;
-}
 
-/* #instructions:hover {
-  transform: scale(1.05);
-} */
+  /* Disable text selection and dragging */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+  -webkit-user-drag: none;
+}
 
 #canvas-container {
   display: block;
@@ -88,7 +87,7 @@ h1 {
   overflow: hidden;
 }
 
-/* For mobile devices, you might want to adjust the canvas size */
+/* For smaller devices, we want to adjust the canvas size */
 @media (max-width: 600px) or (max-height: 500px) and (orientation: landscape) {
   #canvas-container {
     width: 98vw; /* 98% Cover the entire viewport width in landscape */
@@ -96,12 +95,14 @@ h1 {
   }
 }
 
-/* For larger screens, you might set a max-width for the canvas container */
-@media (min-width: 850px) and (min-height: 600px)  {
+/* For large enough screens, show the header */
+@media (min-height: 620px) {
   header {
     display: block;
   }
-
+}
+/* And set a max-width for the canvas container */
+@media (min-width: 850px) and (min-height: 600px) {
   #canvas-container {
     width: 1200px;
     height: 750px;
@@ -151,60 +152,63 @@ h1 {
   text-shadow: 3px 3px 0px black;
 }
 
-/* Position buttons absolutely within the container */
-.control-btn {
-  display: none; /* Hide by default */
-}
-
+/* Buttons configuration */
 #left-btn {
-  bottom: 20px;
-  left: 20px;
+  bottom: 25px;
+  left: 25px;
 }
 
 #right-btn {
-  bottom: 20px;
-  left: 100px;
+  bottom: 25px;
+  left: 140px;
 }
 
 #jump-btn {
-  bottom: 20px;
-  right: 20px;
+  bottom: 25px;
+  right: 25px;
 }
 
-/* If the device is touchable, make buttons visually apper */
-@media (hover: none) and (pointer: coarse) {
-  .control-btn {
-    display: block;
-    position: absolute;
-    z-index: 10; /* Ensure buttons are on top of the canvas */
+.control-btn {
+  display: flex;
+  position: absolute;
+  z-index: 10; /* Ensure buttons are on top of the canvas */
 
-    /* Size and shape */
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* Makes the button round */
+  /* Size and shape */
+  width: 85px;
+  height: 85px;
+  border-radius: 50%; /* Makes the button round */
 
-    padding: 15px; /* Make buttons easier to tap */
+  padding: 15px; /* Make buttons easier to tap */
 
-    /* Background and transparency */
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-    border: none;
+  /* Background and transparency */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  border: none;
 
-    /* Text styling */
-    color: #fff;
-    font-size: 32px;
-    font-weight: bold;
+  /* Text styling */
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
 
-    /* Center text */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Center text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    /* Transition for visual feedback */
-    transition: background-color 0.2s, transform 0.1s;
+  /* Transition for visual feedback */
+  transition: background-color 0.2s, transform 0.1s;
 
-    /* Remove default outline */
-    outline: none;
-  }
+  /* Remove default outline */
+  outline: none;
+
+  /* Disable text selection and dragging */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+  -webkit-user-drag: none;
+
+  /* Improve touch responsiveness */
+  touch-action: manipulation;
 
   /* Visual feedback when the button is pressed */
   .control-btn:active {
@@ -213,11 +217,7 @@ h1 {
   }
 }
 
-/* For small mobile devices, you might want to increase the touch target */
-@media (max-width: 600px) or (max-height: 500px) {
-  .touch-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 36px; 
-  }
+/* Hidden Utility Class */
+.hidden {
+  display: none !important; /* Hide by default */
 }

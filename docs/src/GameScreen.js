@@ -1,7 +1,7 @@
-// Class Screen handles the general configuration of the screen and draws them.
-// Set the screen width and heigth
-//const MAX_SCREEN_WIDTH = 950;
-//const MAX_SCREEN_HEIGHT = 500;
+// GameScreen class handles the general configuration of the screen (contained in a canvas).
+// It also draws each game screen (home, instructions, pause, etc).
+
+// Set the base screen width and heigth
 let baseWidth = 850;
 let baseHeight = 500;
 let screenWidth;
@@ -30,8 +30,6 @@ class GameScreen {
     updateScaleFactors() {
         scaleFactorX = screenWidth / baseWidth;
         scaleFactorY = screenHeight / baseHeight;
-        console.log("Scale Factor X: " + scaleFactorX);
-        console.log("Scale Factor Y: " + scaleFactorY);
     }
 
     scaleCanvas() {
@@ -44,16 +42,12 @@ class GameScreen {
 
     windowResized() {
         let canvasRect = canvasContainer.getBoundingClientRect();
-        // Calculate canvas width and height: the minimum of your maximum size or the container's current width/height.
-        //this.screenWidth = Math.min(MAX_SCREEN_WIDTH, rect.width * dpr); // container.offsetWidth, windowWidth, 
-        //this.screenHeight = Math.min(MAX_SCREEN_HEIGHT, rect.height * dpr); // container.offsetHeight, windowHeight
+        // Get the width and height of the canvas container
         screenWidth = canvasRect.width; // rect.width * dp 
         screenHeight = canvasRect.height; // rect.height * dpr
-        console.log("Resized Screen Width: " + screenWidth);
-        console.log("Resized Screen Height: " + screenHeight);
-        //let dpr = window.devicePixelRatio || 1; // Default to 1 if DPR is not available
+        // Set the canvas size to match the container size
         resizeCanvas(canvasRect.width, canvasRect.height);
-        // Scale the canvas based on the scale factors
+        // Scale the canvas based on the new width and height
         this.scaleCanvas();
     }
 
@@ -84,7 +78,7 @@ class GameScreen {
             // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX - 20, boxY + 32, 90, 30, 0);
+            rect(boxX - 65, boxY + 17, 90, 30, 0);
 
             textSize(18);
             fill(255);
@@ -117,7 +111,7 @@ class GameScreen {
             // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX - 20, boxY + 38, 90, 30, 0);
+            rect(boxX - 65, boxY + 21, 90, 30, 0);
 
             textSize(18);
             fill(255);
