@@ -15,6 +15,9 @@ let maxLevels = 2;
 // Global variables to store the triggers of actions that changes screens
 let triggerJump = false;
 let triggerESC = false;
+// Manage sound
+let hasPlayedGameOverSound = false;
+let soundManager;
 // Global variable to store if the device is touch enabled or not
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 //#endregion
@@ -26,19 +29,23 @@ function preload() {
 }
 
 function setup() {
+  soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
   newGame();
   imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
-  assetManager.bgm_exciting.setVolume(0.4); // adjust volume
-  assetManager.bgm_exciting.loop();         // play loop
 }
 
 function newGame() {
+  soundManager.stopAllBGM();
+  hasPlayedGameOverSound = false;
   game = new Game(gameLevel, assetManager);
   game.setup();
+    // auto play Exciting BGM
+    soundManager.startGameBGM();
+
 }
 
 function draw() {
@@ -54,11 +61,20 @@ function draw() {
     screenGame.drawInstructions();
   }
   else if(gameState === "gameScreen") {
+    // soundManager.startGameBGM();
     game.handleInput(triggerJump, moveLeft, moveRight);
     game.update();
     game.draw();
-    if(game.isGameOver()) gameState = "gameOver";
+    if (game.isGameOver()) {
+      if (!hasPlayedGameOverSound) {
+        hasPlayedGameOverSound = true;
+        soundManager.playGameOverMusic(game.currentMap);
+      }
+      gameState = "gameOver";
+  }
+
     if(game.isLevelComplete()) {
+      soundManager.playLevelCompleteMusic();
       if(gameLevel < maxLevels) {
         gameLevel++;
         gameState = "levelComplete";
@@ -71,6 +87,10 @@ function draw() {
   else if(gameState === "pausePage") {
     screenGame.drawPauseGame();
   }
+  else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
+    gameState = "gameScreen";
+  }
+
   else if(gameState === "gameOver") {
     screenGame.drawGameOver();
   }
@@ -90,10 +110,12 @@ function changeScreen() {
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     // console.log("Resuming game...");
     gameState = "gameScreen";
+    soundManager.resumeBGM();
   }
   else if(gameState === "gameScreen" && inputHandler.escape) {
     // console.log("Game Paused");
     gameState = "pausePage";
+    soundManager.pauseBGM();
   }
   else if(gameState === "gameOver" && triggerJump) {
     // Restart from actual level
