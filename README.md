@@ -25,13 +25,13 @@ This is a repository for the group project of the unit **Software Engineering Di
 
 ### Introduction
 
-	ADD gif playing the game
+<img src="documentation/other_docs/playing1.gif" alt="Gameplay level 1" width="650">
 
 Dino Escape is an action-packed retro platformer inspired by classic Mario Bros gameplay, but with a prehistoric twist as well as a different gameplay experience. Step into the escape of the last T-Rex, racing against extinction through challenging levels and vibrant landscapes. 
 
 Though our game is inspired by classic platformer games, the health bar provides a slightly different experience. Firstly, users will need to pay attention to the environment and look for food, which will increase their health, and avoid dangerous elements, which will rapidly decrease it. Secondly, due to the harsh landscape that threatens the player, health will continuously run out. This adds a time element, pushing users to feel that constant threat of extinction. 
 
-	ADD something gif showing extinction theme
+<img src="documentation/other_docs/playing.gif" alt="Gameplay level 2" width="650">
 
 The extinction theme is present throughout the game: in the first part, a volcano has erupted and lava is everywhere – jump on the platforms to escape death. In the second part, your world has frozen over, and every moment you stay outside threatens your existence. While the first part is relatively easy and achievable for gamers of any skill level, the second part is far more challenging, and it has a way of keeping even experienced gamers engaged. 
 
@@ -43,13 +43,13 @@ The game makes use of classic keyboard controls to ease the learning curve, as w
 #### Ideation & early stage design
 The ideation process to choose and define our game began with every member researching and brainstorming. We then compiled an initial list of 13 proposals. We defined a few categories by which we could evaluate the complexity of each idea such as number of core mechanics or physics requirements. Then, we evaluated each option using the following criteria: Attractiveness, Complexity, Feasibility using P5.js, and User Friendliness.
 
-	ADD Ideation gif
+<img src="documentation/other_docs/ideation.gif" alt="Coming up with ideas" width="650">
 
 From there, we ranked our choices, discussed the ones that scored the best, and chose two very different games to validate through paper prototypes with potential users. Specifically, we chose ‘Dino Escape’ and ‘Train of Thought’.
 
 <img src="https://github.com/UoB-COMSM0166/2025-group-13/blob/main/documentation/meeting_notes/img/photo_meeting3-2.jpeg" alt="Choosing our game" width="650">
-	
-	ADD Gifs of our paper prototypes
+
+<img src="documentation/other_docs/paper.gif" alt="Paper prototype" width="300">
 
 Based on the feedback we received, we settled on ‘Dino Escape’. First, it was clearly more intriguing to potential users who got to see and try both prototypes. Second, many of our peers pointed out that it had much more potential for expansion: new levels, different enemies, and a more salient story. 
 
@@ -64,7 +64,7 @@ If we were to continue working on the game in the future, its impact will expand
 
 In “Stakeholders Without Tears: Understanding Project Sociology by Modeling Stakeholders”, Ian Alexander and Suzanne Robertson discuss the concept of a stakeholder, the way of identifying stakeholders, and the continuous process of maintaining relationships with stakeholders and ensuring their involvement. The section in this article about awareness of role changes helped us understand the impact of our own role changes within the group. For us, changing roles created a more balanced sense of shared ownership of our product. 
 
-	ADD Onion Model
+<img src="documentation/other_docs/onion.png" alt="Onion Model" width="650">
 
 #### Reflections
 During the first design stage, through user testing and feedback we were able to validate assumptions, collect new requirements, receive suggestions and broaden our understanding of the game. From this information we were able to adjust and complete the game design, based on a user-centred approach and continuous iteration.
@@ -75,7 +75,7 @@ We have reflect and learn that organizations use epics and user stories to clari
 	ADD Diagram with explanation
 
 #### Epics and User Stories
-	ADD Kanban gif
+<img src="documentation/other_docs/kanban.gif" alt="Our Kanban" width="400">
 
 Here are a few of the user stories that shaped our game development: 
  As a DevOps engineer, I want to configure branch protection rules for the main branch, so that I can prevent accidental force pushes, deletions and enforce pull requests before merging to maintain code integrity and stability.
@@ -144,16 +144,14 @@ After iterating over sprints and switching roles between the team, we realized t
 
 To evaluate our game, we conducted qualitative evaluations using Think Aloud, Heuristic, and user interviews, as well as quantitative evaluations using the System Usability Scale and NASA Task Load Index. We used the qualitative evaluations to guide our development of new features and fine-tuning of existing features. 
 
-On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and why we are collecting feedback and taking photos and videos. These documents can be found here.
+On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and why we are collecting feedback and taking photos and videos. 
 
-	ADD link to documents
+<img src="documentation/other_docs/testathon.jpg" alt="At the Testathon" width="650">
 
 #### Qualitative Evaluation
 At the testathon, we were able to receive feedback from a wide variety of players, including many who are experienced in game development. As such, we received rich and helpful qualitative feedback there. Though we did perform several Think Aloud and Heuristic evaluations, most of the feedback was given in the form of interviews with a few simple prompting questions. We prepared these questions ahead of time as a team with a focus on avoiding leading questions. Some examples of the questions are “What did you think about the visuals and graphic design?”, “What do you think the game is about?”, and “What do you imagine for the next level?”. 
 
-The responses were analysed as follows: first, statements were categorised based on whether they were highlighting an issue or something the tester liked. Then, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Then, we counted the number of times that type of issue was mentioned. The results were that the following issues were the most pressing: jumping mechanics (10 mentions), consistency in graphics (8 mentions), need for more levels (7 mentions), lack of sound or music (6 mentions), specific animation issues (6 mentions), and unclear health indicators (5 mentions). After the testathon, two members of our team dedicated several weeks to resolving these issues, and they were able to resolve all of them. A further analysis with the specific issues mentioned can be found here. 
-
-	ADD The full analysis links
+The responses were analysed as follows: first, statements were categorised based on whether they were highlighting an issue or something the tester liked. Then, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Then, we counted the number of times that type of issue was mentioned. The results were that the following issues were the most pressing: jumping mechanics (10 mentions), consistency in graphics (8 mentions), need for more levels (7 mentions), lack of sound or music (6 mentions), specific animation issues (6 mentions), and unclear health indicators (5 mentions). After the testathon, two members of our team dedicated several weeks to resolving these issues, and they were able to resolve all of them. 
 
 #### Quantitative Evaluation
 As for the quantitative evaluation, we developed a Google form for each of the two surveying methods we learned: the System Usability Scale (SUS) and NASA Task Load Index (TLX). We collected a large number of responses for both: 47 for the SUS and 32 for the TLX. The results we got for the SUS indicated that there was no significant difference between the levels in terms of usability. We scored above average for both levels, with an average of 82.6 for level one and 83.4 for level two. On the other hand, there was a definite difference for the two levels we tested in terms of task load. Based on the evaluations of eleven participants who completed the two levels in different orders, we had a W test statistic of 2, where less than 10 would indicate a statistically significant difference. On average, the task load scores were 41.4 and 59.8 percent for levels one and two respectively, indicating that level two was significantly more challenging than level one, which is in line with our aim for the two levels. 
@@ -165,7 +163,7 @@ As for the quantitative evaluation, we developed a Google form for each of the t
 #### Creating a team
 As a team, we met frequently and always in person. We made use of spaces with screens or whiteboards, which we used to express and discuss our ideas. For our first few meetings, we focused on getting to know each other better, to create an atmosphere where everyone felt comfortable and part of the team. For example, during one of our first meetings, everyone drew a picture of their country of origin, trying to locate their hometown, and told us about their culture and history. 
 
-	ADD photo from first meeting if exists
+<img src="documentation/meeting_notes/img/photo_meeting4-1.jpg" alt="Fun activity" width="650">
 
 Later, our meetings varied in content and focus, but overall we stuck to an Agile mindset and Scrum methodology and workflow. We had four sprints of one or two weeks each during which we tried to develop our game efficiently, focusing on a specific goal each time. Afterwards, we would meet to do a Sprint Review focused on what we had done, Sprint Retrospective focused on how we had worked together, and Sprint Plan for the next sprint. 
 
@@ -214,15 +212,17 @@ When we see smoke rise from a chimney, fumes escape from a car exhaust, or piles
 
 When we began developing our game, we decided on a feature branch approach. Practically, this meant that we ended up creating a new branch for every feature we wanted to develop, then created a pull request to merge that feature branch with main. Github will add a message when a pull request is merged stating that the feature branch can now safely get deleted, but we avoided any deletions to branches or within the code, assuming that something may become useful again in the future and naively believing that there was no harm in doing so. 
 
-	ADD Branches.gif
+<img src="documentation/other_docs/branches.gif" alt="Overview of our branches" width="650">
 
 After the sessions about Sustainability and looking over the Green Software Patterns, we realised that this pattern of working was really unsustainable. For the first time, we saw that each branch was a totally separate duplicate of all our code. We added a new issue to our workflow, which was to clean up our codebase. First, we would need to delete all inactive branches, or branches where no new work was being done. Second, we noticed that a lot of our classes included segments of code that were commented out, and therefore were just cluttering our codebase without doing anything. Also, we removed any unused CSS definitions and compiled many of our images into a composite image of multiple assets. 
 
-	ADD Composite image
+<img src="docs/assets/items/item_healthRelated.png" alt="Overview of our branches" width="650">
+
+<img src="docs/assets/items/tile_grandTreePlatform.png" alt="Overview of our branches" width="650">
 
 When we consider the environmental impact, we also think of the carbon footprint of running our game on any device. Though this is difficult to estimate, the carbon footprints of manufacturing and using laptops and desktop computers is well-researched. According to “Environmental impact of IT: desktops, laptops and screens”, which is an article by University of Oxford’s IT services, they estimated that the cost of producing and running their standard desktop computer and screen for six years was around “778kg CO2e” (University of Oxford, 2022). The article also highlights the greater impact laptops have because of more frequent replacement. 
 
-	ADD image from testathon of using multiple computers to test
+<img src="documentation/other_docs/technical.jpg" alt="Overview of our branches" width="650">
 
 Interestingly, the article clarifies that “around 85 per cent results from manufacture and shipping, and just 15 per cent from electricity consumption” (University of Oxford, 2022). However, since a significant proportion of our electricity is carbon-based, any unnecessary electricity consumption should be taken seriously. The article by the University of Oxford’s IT services highlights the impact of simply using our personal computers differently: using the default power-saving modes, shutting down at the end of the day, and avoiding unnecessary charging (University of Oxford, 2022). In future versions of our game, we could include reminders to take these simple, impactful steps, or find a creative way to weave these messages into our extinction theme. 
 
@@ -233,9 +233,22 @@ As for usability, the SusAF mentions how usable the product is for different use
 
 
 ### Conclusion
+Though teamwork can often be a challenging experience, working on this team was rewarding for all of us. From our initial brainstorming to the final tweaks, every stage of this project taught us valuable lessons in software engineering and teamwork. This project allowed us to apply the unit’s materials, leading to deeper knowledge of the ideas and a lived experience of their implementation.
 
-- 10% ~500 words
-- Reflect on project as a whole. Lessons learned. Reflect on challenges. Future work. 
+One thing we did very well was connect as a team. We had a great deal of trust between us, and our regular meetings helped to establish and maintain that strong team spirit. Integrating our branches and version control were significant challenges for our first few sprints. With time, we were able to improve our development process by adopting a set of code standards, like using name conventions, defining how to document code, and implementing a code review system.
+
+Realising the environmental impact of digital storage and energy use encouraged us to adopt more sustainable coding practices. We actively worked to refactor our code, making the game playable on mobile devices. This made the game accessible to mobile users while also making choices that are more sustainable technically and environmentally.
+
+Along the way, we often re-evaluated our roles to make sure work was distributed fairly, and Sprint Retrospectives were a great opportunity to do so. We learned the importance of putting the user at the center of the design process. Iteratively developing prototypes, gathering feedback, and refining our ideas helped us create a more fun and engaging experience for players.
+
+We have overcome our two big challenges, but given enough time we could do so much more. Enhancing accessibility by offering non-tactile ways to play or adding support for screen readers would help make the game more inclusive. We would also improve the user experience by creating a full-screen mode and optimizing the performance to run smoothly on any device. Expanding the game with more levels, a bigger range of enemies, and a more developed storyline would make the experience even more immersive. Additionally, we would revisit our original idea of having multiple playable dinosaurs with different powers that a user can switch between.
+
+<img src="documentation/other_docs/mapdesign.jpg" alt="Map sketch" width="650">
+
+As for our development process, future iterations could benefit from a stronger focus on Agile practices. Specifically, we would spend more time pair programming, implement test-driven development, and automate testing and deployment. We would also explore game engines and frameworks beyond p5.js to unlock more features and boost performance. Also, we would like to develop a full application with multiplayer mode, allowing users to play online together and create herds of dinosaurs that overcome extinction.
+
+All in all, we feel lucky to have been part of such a strong and supportive team. This project helped us grow—not just in terms of technical skills, but also in how we work with others and approach problems. 
+
 
 
 ### Contribution Statement
