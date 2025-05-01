@@ -49,7 +49,7 @@ class Map {
             this.skyFalls.push(new SkyFall(skyFall[0], skyFall[1], skyFall[2], this.assetManager, skyFall[3], skyFall[4], skyFall[5]));
         }
 
-        this.cave = new Cave(cave[0], cave[1], this.assetManager);
+        this.cave = new Cave(cave[0], cave[1], cave[2], this.assetManager);
     }
 
     update() {

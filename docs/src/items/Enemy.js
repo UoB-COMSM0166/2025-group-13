@@ -10,8 +10,8 @@ class Enemy {
     pauseTime = 6
   ) {
     this.assetManager = assetManager;
-    this.width = 40;
-    this.height = 48;
+    this.width = 50;
+    this.height = 40;
 
     this.x = positionX;
     this.y = positionY;
