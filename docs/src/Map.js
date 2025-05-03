@@ -100,6 +100,7 @@ class Map {
     {
         if(game.player.x >= width / 2 && game.stopMapMovement === false){
             for (let platform of this.platforms) {
+                platform.updatePreviousCoordinates();
                 platform.x -= this.xSpeed;
             }
             for (let food of this.foods) {

@@ -20,7 +20,10 @@ class Platform {
     this.top = 0;
     this.bottom = 0;
     this.left = 0;
-    this.right = 0; 
+    this.right = 0;
+
+    this.updateBounds();
+    this.updatePreviousCoordinates();
   }
 
   updateBounds() {
@@ -71,5 +74,12 @@ class Platform {
       fill("pink");
       rect(this.x, this.y, this.width, this.height);
     }
+  }
+
+  updatePreviousCoordinates()
+  {
+    this.prevX = this.x;
+    this.prevLeft = this.left;
+    this.prevRight = this.right;
   }
 }
