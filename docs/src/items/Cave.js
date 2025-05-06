@@ -1,10 +1,11 @@
 // Constructor, update, and display methods
 class Cave {
-    static caveHeight = 120;
+    static caveHeight = 100;
 
-    constructor(positionX, positionY, assetManager) {
+    constructor(type, positionX, positionY, assetManager) {
       this.assetManager = assetManager;
-      this.width = 120;
+      this.caveType = type;
+      this.width = 100;
       this.height = Cave.caveHeight;
   
       this.x = positionX;
@@ -25,6 +26,10 @@ class Cave {
   
     display() {
       rectMode(CENTER);  // Draw the rectangle with the center point
-      image(this.assetManager.caveImg, this.x, this.y, this.width, this.height);
+      if (this.caveType === "FIRE") {
+        image(this.assetManager.caveFire, this.x, this.y, this.width, this.height);
+      } else if (this.caveType === "ICE") {
+        image(this.assetManager.caveIce, this.x, this.y, this.width, this.height);
+      }
     }
 }

@@ -75,14 +75,14 @@ class GameScreen {
 
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
+            // Draw semi-transparent background behind "Press ⬆ to Start" the SPACE text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX - 65, boxY + 17, 90, 30, 0);
+            rect(boxX - 29, boxY + 17, 20, 30, 0);
 
             textSize(18);
             fill(255);
-            text("Press SPACE to Start", width / 2, boxY + boxHeight / 2);
+            text("Press ⬆ to Start", width / 2, boxY + boxHeight / 2);
         }
     }
 
@@ -108,20 +108,20 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-            // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
+            // Draw semi-transparent background behind "Press ⬆ to Start" the SPACE text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX - 65, boxY + 21, 90, 30, 0);
+            rect(boxX - 29, boxY + 21, 20, 30, 0);
 
             textSize(18);
             fill(255);
-            text("Press SPACE to Start", width / 2, boxY + boxHeight / 2);
+            text("Press ⬆ to Start", width / 2, boxY + boxHeight / 2);
         }
     }
 
     drawPauseGame() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
-        //Transparency 2 is very low (close to transparent), the old image of each frame is not completely covered, resulting in a visual **"Press SPACE to resume" flickering very slowly**, because the previous frame is still visible.
+        //Transparency 2 is very low (close to transparent), the old image of each frame is not completely covered, resulting in a visual **"Press ⬆ to resume" flickering very slowly**, because the previous frame is still visible.
         background(128, 128, 128, 2); // mid-tone grey very-transparent
         // background(128, 128, 128, 150);
         textAlign(CENTER, CENTER);
@@ -143,18 +143,18 @@ class GameScreen {
 
         textSize(18);
         fill(255);
-        text("Press SPACE to resume", width / 2, boxY + boxHeight / 2);
-        // // **Let the text flash every 60 frames (about 1 second)**
-        // if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
-        //     // Draw semi-transparent background behind "Press SPACE to Start" the SPACE text
-        //     fill(0, 0, 0, 180);
-        //     noStroke();
-        //     rect(boxX-70, boxY+18, 90, 30, 0);
+        text("Press ⬆ to resume", width / 2, boxY + boxHeight / 2);
+        // Text flash every 20 frames (about 2 second)
+        if (frameCount % 30 < 15) { // Display the first 15 frames per second, and hide the last 15 frames
+            // Draw semi-transparent background behind "Press ⬆ to Start" the SPACE text
+            fill(0, 0, 0, 180);
+            noStroke();
+            rect(boxX-36, boxY+18, 20, 30, 0);
 
-        //     textSize(18);
-        //     fill(255);
-        //     text("Press SPACE to resume", width / 2, boxY + boxHeight / 2);
-        // }
+            textSize(18);
+            fill(255);
+            text("Press ⬆ to resume", width / 2, boxY + boxHeight / 2);
+        }
     }
 
     drawGameOver() {
@@ -186,22 +186,22 @@ class GameScreen {
         // Draw instruction text (centered inside the box)
         // textSize(25);
         // fill(255);
-        // text("Press SPACE to play again\n Press ESCAPE for home page", width / 2, height - 30);
+        // text("Press ⬆ to play again\n Press ESCAPE for home page", width / 2, height - 30);
 
         // **Let the text flash every 60 frames (about 1 second)**
         if (frameCount % 60 < 30) { // Display the first 30 frames per second, and hide the last 30 frames
             // Draw semi-transparent background behind KEY text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX + 96, boxY + 16, 150, 30, 0);
-            rect(boxX + 133, boxY - 22, 80, 30, 0);
+            rect(boxX + 162, boxY - 22, 20, 30, 0);
+            rect(boxX + 91, boxY + 16, 155, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE to play again", width / 2, height - 70);
+            text("Press ⬆ to play again", width / 2, height - 70);
             text("Press ESCAPE / Q for home page", width / 2, height - 30);
 
         }
@@ -241,7 +241,7 @@ class GameScreen {
             // Draw semi-transparent background behind KEY text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX + 168, boxY - 2, 80, 30, 0);
+            rect(boxX + 200, boxY - 2, 20, 30, 0);
             rect(boxX + 172, boxY + 38, 150, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
@@ -249,7 +249,7 @@ class GameScreen {
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE to start next level", width / 2, height - 70);
+            text("Press ⬆ to start next level", width / 2, height - 70);
             text("Press ESCAPE / Q for home page", width / 2, height - 30);
 
         }
@@ -267,7 +267,8 @@ class GameScreen {
         stroke(255, 223, 0); // Golden glow
         strokeWeight(3);
         noFill(); // Transparent fill
-        text("Extinction Averted !!!", width / 2, 40);
+        text("Extinction", width / 2 +120, 40);
+        text("Averted !!", width / 2 +120, 100);
         strokeWeight(0);
 
         // Box dimensions and position
@@ -282,14 +283,14 @@ class GameScreen {
             // Draw semi-transparent background behind KEY text
             fill(0, 0, 0, 180);
             noStroke();
-            rect(boxX + 168, boxY - 2, 80, 30, 0);
+            rect(boxX + 236, boxY - 2, 20, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
             strokeWeight(3);
             textSize(18);
             fill(255);
-            text("Press SPACE for home page", width / 2, height - 70);
+            text("Press ⬆ for home page", width / 2, height - 70);
 
         }
     }

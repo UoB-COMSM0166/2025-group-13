@@ -1,7 +1,7 @@
 // Constructor, update, and display methods
 class Health {
   static initialPercentage = 1;
-  static reductionRate = 0.0004;
+  static reductionRate = 0.00032;
 
   constructor(assetManager) {
     this.assetManager = assetManager;
@@ -9,7 +9,6 @@ class Health {
     this.percentage = Health.initialPercentage;
     this.width = 5 * Brick.width;
     this.height = Brick.height / 2;
-    // this.reductionRate = 0.0004;
 
     this.x = 50;
     this.y = 25;
