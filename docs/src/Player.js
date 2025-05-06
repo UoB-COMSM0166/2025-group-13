@@ -33,6 +33,7 @@ class Player {
         this.hurtStartTime = 0;
 
         this.updateBounds();
+        this.updatePreviousCoordinates();
     }
 
     display() {
@@ -132,6 +133,8 @@ class Player {
         this.checkCollisionsCave(cave);
         this.keepWithinBounds();
         // this.display();
+        //Update previous coordinates
+        this.updatePreviousCoordinates();
     }
 
     updateBounds() {
@@ -162,6 +165,7 @@ class Player {
             let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
             let collision = withinXRange && withinYRange;
             if (collision) {
+                /*
                 let x_diff = Math.abs(Math.min(this.right, platform.right) - Math.max(this.left, platform.left));
                 let y_diff = Math.abs(Math.min(this.bottom, platform.bottom) - Math.max(this.top, platform.top));
                 if (x_diff > y_diff) {
@@ -171,6 +175,9 @@ class Player {
                     this.checkHorizontalCollisions(platform);
                     this.checkVerticalCollisions(platform);
                 }
+                */
+                this.checkVerticalCollisions(platform);
+                this.checkHorizontalCollisions(platform);
             }
             if ((this.bottom === platform.top && this.right > platform.left && this.left < platform.right)
                 || (this.bottom === height))
@@ -310,13 +317,27 @@ class Player {
 
     checkVerticalCollisions(platform) {
         let withinXRange = this.right > platform.left && this.left < platform.right;
+        /*
         let bottomCollision = this.bottom > platform.top && this.bottom < platform.bottom;
         let topCollision = this.top < platform.bottom && this.top > platform.top;
         if (withinXRange) {
-            if (bottomCollision /* && this.bottom - this.ySpeed <= platform.top*/) {
+            if (bottomCollision) {
                 this.y = platform.top - this.height / 2;
                 this.ySpeed = 0;
             } else if (topCollision) {
+                this.y = platform.bottom + this.height / 2;
+                this.ySpeed = 0;
+            }
+        }
+        */
+        if(withinXRange)
+        {
+            if (this.prevBottom <= platform.top) {
+                // bottom collision
+                this.y = platform.top - this.height / 2;
+                this.ySpeed = 0;
+            } else if (this.prevTop >= platform.bottom) {
+                // top collision
                 this.y = platform.bottom + this.height / 2;
                 this.ySpeed = 0;
             }
@@ -326,6 +347,7 @@ class Player {
 
     checkHorizontalCollisions(platform) {
         let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
+        /*
         let leftCollision = this.left < platform.right && this.left > platform.left;
         let rightCollision = this.right > platform.left && this.right < platform.right;
         if (withinYRange) {
@@ -333,6 +355,18 @@ class Player {
                 this.x = platform.left - this.width / 2;
                 this.xSpeed = 0;
             } else if (leftCollision) {
+                this.x = platform.right + this.height / 2;
+                this.xSpeed = 0;
+            }
+        }
+        */
+        if(withinYRange){
+            if (this.prevRight <= platform.left || platform.prevLeft >= this.right) {
+                // right collision
+                this.x = platform.left - this.width / 2;
+                this.xSpeed = 0;
+            } else if (this.prevLeft >= platform.right || platform.prevRight <= this.left) {
+                // left collision
                 this.x = platform.right + this.height / 2;
                 this.xSpeed = 0;
             }
@@ -399,5 +433,17 @@ class Player {
         } else {
             this.isMoving = false;
         }
+    }
+
+    updatePreviousCoordinates()
+    {
+        this.prevX = this.x;
+        this.prevY = this.y;
+
+        this.prevTop = this.top;
+        this.prevBottom = this.bottom;
+
+        this.prevLeft = this.left;
+        this.prevRight = this.right;
     }
 }
