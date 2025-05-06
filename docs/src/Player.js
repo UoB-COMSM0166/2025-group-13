@@ -22,8 +22,8 @@ class Player {
         this.ySpeed = 0; // yspeed is needed to keep track of the vertical velocity which changes due to gravity
         this.maxSpeed = 4;
 
-        this.gravity = 1;
-        this.jumpStrength = 10;
+        this.gravity = 0.5;
+        this.jumpStrength = 7;
         this.isOnGround = false;
 
         this.isMoving = false;
