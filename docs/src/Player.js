@@ -1,4 +1,4 @@
-// Player class is responsible for the player character in the game. 
+// Player class is responsible for the player character in the game.
 // It handles player movement, jumping, and collision detection.
 // Also manages the player's health and visual representation on the screen.
 
@@ -248,6 +248,10 @@ class Player {
                 if (!this.isHurt) {
                     this.isHurt = true;
                     this.hurtStartTime = millis();
+                    if (!this.assetManager.effect_damage_environment.isPlaying()) {
+                        this.assetManager.effect_damage_environment.setVolume(0.8);
+                        this.assetManager.effect_damage_environment.play();
+                    }
                 }
                 this.isHurt = true;
                 break; // Exit early to optimize performance

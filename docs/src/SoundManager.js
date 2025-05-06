@@ -54,6 +54,7 @@ class SoundManager {
             this.assetManager.effect_snow_storm.loop();
         }
     }
+
     pauseBGM() {
         if (this.assetManager.bgm_exciting.isPlaying()) {
             this.assetManager.bgm_exciting.rate(0.4);
@@ -69,6 +70,5 @@ class SoundManager {
         this.assetManager.bgm_exciting.setVolume(this.defaultVolume);
         this.isBGMStarted = true;
     }
-
 
 }
