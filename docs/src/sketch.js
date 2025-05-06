@@ -105,7 +105,9 @@ function draw() {
 
 function changeScreen() {
   if(gameState === "homePage" && triggerJump) {
+    userStartAudio();
     gameState = "gameInstructions";
+    soundManager.startGameBGM();
   }
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     // console.log("Resuming game...");
