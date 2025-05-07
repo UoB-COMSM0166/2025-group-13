@@ -11,6 +11,8 @@ class InputHandler {
         this.jump = false;
         this.escape = false;
         this.jumpReady = true;
+        this.requestFS = false;
+        this.fsReady = true;
     }
 
     setup() {
@@ -69,6 +71,21 @@ class InputHandler {
             this.jumpReady = true;
             this.jump = false;
         });
+        document.getElementById('fs-btn').addEventListener('pointerdown', (e) => {
+            e.preventDefault();
+            if(this.fsReady) {
+                this.fsReady = false;
+                this.requestFS = true;
+            }
+            else {
+                this.requestFS = false;
+            }
+        });
+        document.getElementById('fs-btn').addEventListener('pointerup', (e) => {
+            e.preventDefault();
+            this.fsReady = true;
+            this.requestFS = false;
+        });
     }
 
     keyPressed() {
@@ -112,7 +129,7 @@ class InputHandler {
     
     //#region Getters and Setters
     getAndResetJump() {
-        if (this.jump) {
+        if(this.jump) {
           this.jump = false;
           return true;
         }
@@ -125,6 +142,14 @@ class InputHandler {
 
     getMoveRight() {
         return this.moveRight;
+    }
+
+    getAndResetFullScreenRequest() {
+        if(this.requestFS) {
+            this.requestFS = false;
+            return true;
+        }
+        return false;
     }
     //#endregion
 }

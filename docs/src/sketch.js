@@ -45,7 +45,6 @@ function newGame() {
   game.setup();
     // auto play Exciting BGM
     soundManager.startGameBGM();
-
 }
 
 function draw() {
@@ -53,6 +52,7 @@ function draw() {
   triggerJump = inputHandler.getAndResetJump();
   moveRight = inputHandler.getMoveRight();
   moveLeft = inputHandler.getMoveLeft();
+  requestFullScreen = inputHandler.getAndResetFullScreenRequest();
   // Check the game state and draw the corresponding screen
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
@@ -98,7 +98,10 @@ function draw() {
     screenGame.drawLevelComplete();
   }
   else screenGame.drawEndGame();
-
+  // Check if the user wants to go or exit full screen
+  if(requestFullScreen) {
+    screenGame.handleFullScreenRequest();
+  }
   // Check if we need to change the screen
   changeScreen();
 }

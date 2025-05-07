@@ -12,6 +12,14 @@ let scaleFactorY;
 const canvasContainer = document.getElementById('canvas-container');
 let titleGlow = 0;
 let glowDirection = 1;
+// Get and set full screen states
+const requestFS = canvasContainer.requestFullscreen 
+                || canvasContainer.webkitRequestFullscreen
+                || canvasContainer.msRequestFullscreen;
+const exitFS    = document.exitFullscreen
+                || document.webkitExitFullscreen
+                || document.msExitFullscreen;
+let isFullScreen = false;
 
 class GameScreen {
     constructor(assetManager) {
@@ -49,6 +57,29 @@ class GameScreen {
         resizeCanvas(canvasRect.width, canvasRect.height);
         // Scale the canvas based on the new width and height
         this.scaleCanvas();
+    }
+
+    handleFullScreenRequest() {
+        if(!isFullScreen) {
+            this.goFullScreen();
+        }
+        else {
+            this.exitFullScreen();
+        }
+    }
+
+    goFullScreen() {
+        console.log("Full screen");
+        // Request full screen for the container element
+        requestFS.call(canvasContainer).catch(console.warn);
+        isFullScreen = true;
+    }
+
+    exitFullScreen() {
+        console.log("Exit full screen");
+        // Exit full screen
+        exitFS.call(document).catch(console.warn);
+        isFullScreen = false;
     }
 
     //#region Draw Methods

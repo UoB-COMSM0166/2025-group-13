@@ -168,6 +168,11 @@ h1 {
   right: 25px;
 }
 
+#fs-btn {
+  top: 25px;
+  right: 25px;
+}
+
 .control-btn {
   display: flex;
   position: absolute;
