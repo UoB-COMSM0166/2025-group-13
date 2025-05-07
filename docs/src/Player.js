@@ -3,6 +3,13 @@
 // Also manages the player's health and visual representation on the screen.
 
 class Player {
+    /**
+     * Initializes player
+     * @param positionX - Initial horizontal location of the player.
+     * @param positionY - Initial vertical location of the player in pixels.
+     * @param playerHealth - Initial health of the player at birth.
+     * @param assetManager - AssetManager has all the graphic resources.
+     */
     constructor(positionX, positionY, playerHealth, assetManager) {
         this.assetManager = assetManager;
         //
@@ -36,6 +43,10 @@ class Player {
         this.updatePreviousCoordinates();
     }
 
+    /**
+     * Displays the player(dino) on screen.
+     * Makes the player turn red and flicker if player is hurt after it touches fire, spikes, enemies or meteors.
+     */
     display() {
         fill(255, 0, 0);
         rectMode(CENTER);
@@ -117,6 +128,15 @@ class Player {
         noTint();
     }
 
+    /**
+     * Updates the player's coordinates, health, orientation and gameplay status.
+     * @param platformArray - List of platforms to detect player's collision with and update coordinates.
+     * @param foodArray - List of foods to detect player's collision with and increase the health.
+     * @param groundDamageArray - List of spikes to detect a player's collision with and reduce health.
+     * @param enemyArray - List of enemies to detect player's collision with then reduce health.
+     * @param skyFallArray - List of meteors to detect player's collision with and reduce health.
+     * @param cave - Cave object to keep track of the location in the game, the player need to reach to complete the level.
+     */
     update(platformArray, foodArray, groundDamageArray, enemyArray, skyFallArray, cave) {
         this.applyGravity();
         // this.x += this.xSpeed;
@@ -137,6 +157,9 @@ class Player {
         this.updatePreviousCoordinates();
     }
 
+    /**
+     * Updates the top, bottom, left and right attributes of the player based on current coordinates
+     */
     updateBounds() {
         this.bottom = this.y + this.height / 2;
         this.top = this.y - this.height / 2;
@@ -144,6 +167,10 @@ class Player {
         this.right = this.x + this.width / 2;
     }
 
+    /**
+     * Updates player's vertical coordinate based on gravity attribute.
+     * Simulates falling motion of the player.
+     */
     applyGravity() {
         if (!this.isOnGround) {
             if (this.ySpeed < 0) {
@@ -156,26 +183,18 @@ class Player {
     }
 
     //#region: collision
+    /**
+     * Checks if player is colliding with any platform and if it does then updates its
+     * coordinates accordingly.
+     * @param platformArray - Array of all the floating platforms and trees.
+     */
     checkCollisions(platformArray) {
         this.isOnGround = false;
-        // this method should be optimised to check only those platforms which
-        // are visible inside left half of the game window.
         for (let platform of platformArray) {
             let withinXRange = this.right > platform.left && this.left < platform.right;
             let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
             let collision = withinXRange && withinYRange;
             if (collision) {
-                /*
-                let x_diff = Math.abs(Math.min(this.right, platform.right) - Math.max(this.left, platform.left));
-                let y_diff = Math.abs(Math.min(this.bottom, platform.bottom) - Math.max(this.top, platform.top));
-                if (x_diff > y_diff) {
-                    this.checkVerticalCollisions(platform);
-                    this.checkHorizontalCollisions(platform);
-                } else {
-                    this.checkHorizontalCollisions(platform);
-                    this.checkVerticalCollisions(platform);
-                }
-                */
                 this.checkVerticalCollisions(platform);
                 this.checkHorizontalCollisions(platform);
             }
@@ -185,9 +204,12 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player is colliding with any of the fixed damaging objects(fire or spikes).
+     * If collision is detected mark the player as hurt so increased rate of health damage can take effect.
+     * @param groundDamageArray - List fixed damaging objects.
+     */
     checkCollisionsgroundDamage(groundDamageArray) {
-        // this method should be optimized to check only those foods which
-        // are visible inside the left half of the game window.
         let collisionDetected = false;
         for (let groundDamage of groundDamageArray) {
             let withinXRange = this.right > groundDamage.left && this.left < groundDamage.right;
@@ -214,9 +236,13 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player has collided with enemies present in the game.
+     * If collision is detected, the player is marked hurt so increased rate of health
+     * damage can take effect.
+     * @param enemyArray - List of enemies in the game.
+     */
     checkCollisionsEnemy(enemyArray) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
         let collisionDetected = false;
         for (let enemy of enemyArray) {
             let withinXRange = this.right > enemy.left && this.left < enemy.right;
@@ -242,9 +268,12 @@ class Player {
         }
     }
 
+    /**
+     * Checks the player has collided with meteors falling from the sky.If collision is
+     * detected, the player is marked hurt so increased rate of health damage can take effect.
+     * @param skyFallArray - List of meteors.
+     */
     checkCollisionsSkyFall(skyFallArray) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
         let collisionDetected = false;
         for (let skyFall of skyFallArray) {
             let withinXRange = this.right > skyFall.left && this.left < skyFall.right;
@@ -270,6 +299,9 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player is touching lava, and if it does then set the maximum health reduction rate.
+     */
     checkCollisionsLava() {
         let collision = this.bottom > (height - Brick.height / 2);
         if (collision) {
@@ -278,9 +310,12 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player has come in contact with food item.
+     * If it has, then increase the player's health
+     * @param foodArray - List of food in the game layout
+     */
     checkCollisionsFood(foodArray) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
         for (let i = foodArray.length - 1; i >= 0; i--) {
             let food = foodArray[i];
             let withinXRange = this.right > food.left && this.left < food.right;
@@ -303,9 +338,12 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player has reached the cave which marks the target to be achieved
+     * for successful completion of the level.
+     * @param cave - Cave marks the target for a level.
+     */
     checkCollisionsCave(cave) {
-        // this method should be optimised to check only those foods which
-        // are visible inside left half of the game window.
         let withinXRange = this.right > cave.left && this.left < cave.right;
         let withinYRange = this.bottom > cave.top && this.top < cave.bottom;
         let collision = withinXRange && withinYRange;
@@ -315,21 +353,13 @@ class Player {
         }
     }
 
+    /**
+     * Checks if the player is colliding with a floating platform or a tree above or below it.
+     * If it does then updates player's coordinates to avoid overlap.
+     * @param platform - List of platforms
+     */
     checkVerticalCollisions(platform) {
         let withinXRange = this.right > platform.left && this.left < platform.right;
-        /*
-        let bottomCollision = this.bottom > platform.top && this.bottom < platform.bottom;
-        let topCollision = this.top < platform.bottom && this.top > platform.top;
-        if (withinXRange) {
-            if (bottomCollision) {
-                this.y = platform.top - this.height / 2;
-                this.ySpeed = 0;
-            } else if (topCollision) {
-                this.y = platform.bottom + this.height / 2;
-                this.ySpeed = 0;
-            }
-        }
-        */
         if(withinXRange)
         {
             if (this.prevBottom <= platform.top) {
@@ -345,21 +375,13 @@ class Player {
         this.updateBounds();
     }
 
+    /**
+     * Checks if the player is colliding with a floating platform or a tree from the sides.
+     * If it does then updates player's coordinates to avoid overlap.
+     * @param platform - List of platforms
+     */
     checkHorizontalCollisions(platform) {
         let withinYRange = this.bottom > platform.top && this.top < platform.bottom;
-        /*
-        let leftCollision = this.left < platform.right && this.left > platform.left;
-        let rightCollision = this.right > platform.left && this.right < platform.right;
-        if (withinYRange) {
-            if (rightCollision) {
-                this.x = platform.left - this.width / 2;
-                this.xSpeed = 0;
-            } else if (leftCollision) {
-                this.x = platform.right + this.height / 2;
-                this.xSpeed = 0;
-            }
-        }
-        */
         if(withinYRange){
             if (this.prevRight <= platform.left || platform.prevLeft >= this.right) {
                 // right collision
@@ -375,6 +397,10 @@ class Player {
     }
     //#endregion
 
+    /**
+     * Keeps the player within the bounds of the visible game screen.
+     * Restricts player's motion beyond screen walls.
+     */
     keepWithinBounds() {
         this.x = constrain(this.x, this.width / 2, min(game.map.cave.x, width - this.width / 2));
         if (this.bottom > height) {
@@ -385,6 +411,10 @@ class Player {
         this.updateBounds();
     }
 
+    /**
+     * Moves the player horizontally based on user input.
+     * @param direction - direction to move the player in. (left = -1 and right = 1)
+     */
     move(direction) {
         if (direction === -1) {
             this.isBackwards = true;
@@ -404,12 +434,9 @@ class Player {
         }
     }
 
-    stopMovement() {
-        this.isMoving = false;
-        this.isBackwards = false;
-        this.xSpeed = 0;
-    }
-
+    /**
+     * Makes the player jump
+     */
     jump() {
         if (this.isOnGround) {
             this.ySpeed = -this.jumpStrength;
@@ -417,6 +444,12 @@ class Player {
         }
     }
 
+    /**
+     * Handles the user input to move the player left, right or make it jump.
+     * @param moveLeft - Input to move left.
+     * @param moveRight - Input to move right.
+     * @param triggerJump - Input to make the player jump.
+     */
     handleInput(moveLeft, moveRight, triggerJump) {
         if(moveLeft || moveRight || triggerJump) {
             if (moveLeft) {
@@ -435,6 +468,10 @@ class Player {
         }
     }
 
+    /**
+     * Stores the current location and dimension attributes of the player.
+     * This helps in collision detection
+     */
     updatePreviousCoordinates()
     {
         this.prevX = this.x;
