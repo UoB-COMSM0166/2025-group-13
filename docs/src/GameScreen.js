@@ -1,7 +1,9 @@
-// GameScreen class handles the general configuration of the screen (contained in a canvas).
-// It also draws each game screen (home, instructions, pause, etc).
+/**
+ * GameScreen class handles the general configuration of the screen (contained in a canvas).
+ * It also draws each game screen (home, instructions, pause, etc).
+*/
 
-// Set the base screen width and heigth
+// Sets the base screen width and heigth
 let baseWidth = 850;
 let baseHeight = 500;
 let screenWidth;
@@ -14,10 +16,17 @@ let titleGlow = 0;
 let glowDirection = 1;
 
 class GameScreen {
+    /**
+     * Constructor sets the assestManager attribute.
+     * @param assetManager - Input asset manager reference.
+     */
     constructor(assetManager) {
         this.assetManager = assetManager;
     }
 
+    /**
+     * Sets up the initial canvas dimensions and resizes the window
+     */
     setup() {
         // Create the canvas with the calculated width and height
         let canvas = createCanvas(baseWidth, baseHeight);
@@ -27,11 +36,17 @@ class GameScreen {
         this.windowResized();
     }
 
+    /**
+     * Updates the scale factors for width and height of the canvas
+     */
     updateScaleFactors() {
         scaleFactorX = screenWidth / baseWidth;
         scaleFactorY = screenHeight / baseHeight;
     }
 
+    /**
+     * Scales the canvas dimensions according to the scale factors
+     */
     scaleCanvas() {
         this.updateScaleFactors();
         // Scale the canvas based on the scale factors
@@ -40,6 +55,9 @@ class GameScreen {
         translate(-width / 2, -height / 2);
     }
 
+    /**
+     * Resizes the game window according to canvas dimensions
+     */
     windowResized() {
         let canvasRect = canvasContainer.getBoundingClientRect();
         // Get the width and height of the canvas container
@@ -52,6 +70,9 @@ class GameScreen {
     }
 
     //#region Draw Methods
+    /**
+     * Draws the home screen of the game with engaging graphics.
+     */
     drawHomeScreen() {
         imageMode(CENTER);
         image(this.assetManager.homePageBackground, width / 2, height / 2, width, height);
@@ -86,6 +107,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game instruction on the screen
+     */
     drawInstructions() {
         imageMode(CENTER); // Ensure the background image is centered
         //TODO: Update the
@@ -119,6 +143,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the paused game screen.
+     */
     drawPauseGame() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //Transparency 2 is very low (close to transparent), the old image of each frame is not completely covered, resulting in a visual **"Press ⬆ to resume" flickering very slowly**, because the previous frame is still visible.
@@ -157,6 +184,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game over screen shown when player loses.
+     */
     drawGameOver() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
@@ -207,6 +237,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the level complete screen shown after a level is completed.
+     */
     drawLevelComplete() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
@@ -255,6 +288,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game end screen which is shown when user completes all the levels successfully.
+     */
     drawEndGame() {
         image(this.assetManager.gameWon, width / 2, height / 2, width, height);
         textAlign(CENTER, CENTER);
