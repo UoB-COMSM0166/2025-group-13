@@ -31,6 +31,7 @@ class Player {
 
         this.isHurt = false;
         this.hurtStartTime = 0;
+        Health.reductionRate = 0.00032;
 
         this.updateBounds();
         this.updatePreviousCoordinates();
