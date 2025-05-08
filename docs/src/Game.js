@@ -1,14 +1,6 @@
-/**
- * Game class handles the main game logic and delegate jobs through each independent objects
- */
-
+// Game class handles the main game logic and delegate jobs through each independent objects
 
 class Game {
-    /**
-     * Constructor initializes the game object which remains in memory until user closes the window.
-     * @param gameLevel - index of level to be played at the start.
-     * @param assetManager - asset manager reference required to retrieve visual & audio data.
-     */
     constructor(gameLevel, assetManager) {
         this.currentLevel = gameLevel;
         this.assetManager = assetManager;
@@ -40,9 +32,6 @@ class Game {
         this.stopMapMovement = false;
     }
 
-    /**
-     * Sets up the game map layout with data for current level and audio effect .
-     */
     setup() {
         this.map.setup(layouts[this.currentMap]); //init map
         // dino noisy - everytime start a level
@@ -50,18 +39,12 @@ class Game {
         this.assetManager.effect_dino.play();
     }
 
-    /**
-     * Updates the game based on player interactions with the map objects.
-     */
     update() {
         this.map.update(); // display map
         this.player.update(this.map.platforms, this.map.foods, this.map.groundDamages, this.map.enemies, this.map.skyFalls, this.map.cave);
         this.health.updateHealth();
     }
 
-    /**
-     * Draws the game screen in its entirety i.e. the background, player, obstacles, NPCs and food items etc.
-     */
     draw() {
         if (this.assetManager.gamePageBackground) {
             switch (this.currentMap) {
@@ -126,30 +109,11 @@ class Game {
         this.update();
     }
 
-    /**
-     * Handles input proved by the user via touch screen buttons or keyboard
-     * @param triggerJump - True if jump key/button is provided.
-     * @param moveLeft - True if left key/button is pressed.
-     * @param moveRight - True if right key/button is pressed.
-     */
     handleInput(triggerJump, moveLeft, moveRight) {
         this.map.handleInput(moveRight);
         this.player.handleInput(moveLeft, moveRight, triggerJump);
     }
 
-    /**
-     * Changes the game level and load the new map.
-     * After last level the next level is the default first level.
-     */
-    nextLevel() {
-        this.currentMap = (this.currentMap + 1) % this.maps.length;
-        this.map = this.maps[this.currentMap];
-    }
-
-    /**
-     * Checks if the player has died while gameplay.
-     * @returns {boolean}
-     */
     isGameOver() {
         if (this.health.getHealth() <= 0) {
             return true;
@@ -157,11 +121,11 @@ class Game {
         else return false;
     }
 
-    /**
-     * Checks if a level has been completed by the player by reaching the cave.
-     * Sets the appropriate sound effect for level completion.
-     * @returns {boolean}
-     */
+    nextLevel() {
+        this.currentMap = (this.currentMap + 1) % this.maps.length;
+        this.map = this.maps[this.currentMap];
+    }
+
     isLevelComplete() {
         if (this.player.reachedCave) {
             if (this.assetManager.bgm_exciting.isPlaying()) {
