@@ -1,5 +1,18 @@
+/**
+ * Ground damage class models the static health damaging objects like fire and ice-spikes.
+ * Health reduction rate of the player increases while it remains in contact with Ground damage
+ * in the map.
+ */
+
 // Constructor, update, and display methods
 class GroundDamage {
+  /**
+   * Initializes the ground damage class
+   * @param type - Type of object, either - Fire or Ice-Spike.
+   * @param positionX - X coordinate.
+   * @param positionY - Y coordinate.
+   * @param assetManager - Reference to asset manager object useful in drawing the object based on its type.
+   */
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;
     this.width = 40;
@@ -9,13 +22,12 @@ class GroundDamage {
     this.y = positionY;
 
     this.groundDamageType = type;
-
     this.stableHeight = 15; // Fire animation requirements: Fixed the height of the bottom of the flame
-
-    // this.display();
-    // this.updateGroundDamage();
   }
 
+  /**
+   * Updates the span ground damage objects based on its coordinates.
+   */
   updateGroundDamage() {
     this.top = this.y - this.height / 2;
     this.bottom = this.y + this.height / 2;
@@ -23,14 +35,11 @@ class GroundDamage {
     this.right = this.x + this.width / 2;
   }
 
+  /**
+   * Retrieves the appropriate image from asset manager based on type of ground damage object and displays the objects.
+   */
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
-
-    // draw background rectangle for testing
-    // fill(200, 200, 255, 150);
-    // noStroke();
-    // rect(this.x, this.y, this.width, this.height);
-
     let sx, sy, sw, sh;
     let aspectRatio, scaledWidth, scaledHeight;
 
