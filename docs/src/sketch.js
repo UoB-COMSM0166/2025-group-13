@@ -48,7 +48,7 @@ function newGame() {
 }
 
 function draw() {
-  // Start by reseting all inputs to false (maybe this is not the best approach)
+  // Start by getting (and resetting) all inputs
   triggerJump = inputHandler.getAndResetJump();
   moveRight = inputHandler.getMoveRight();
   moveLeft = inputHandler.getMoveLeft();

@@ -33,6 +33,8 @@ class GameScreen {
         canvas.parent('canvas-container');
         // Resize screen and scale the canvas based on the scale factors
         this.windowResized();
+        // Add event listeners for full-screen changes
+        this.fullScreenChange();
     }
 
     updateScaleFactors() {
@@ -59,6 +61,19 @@ class GameScreen {
         this.scaleCanvas();
     }
 
+    fullScreenChange() {
+        // Listen for full-screen changes
+        document.addEventListener('fullscreenchange', () => {
+            isFullScreen = !!document.fullscreenElement; // true if now in full-screen
+            //if(isFullScreen) { console.log("Screen is full screen"); }
+            //else { console.log("Screen is not full screen"); }
+            // Toggle a helper class on your container
+            canvasContainer.classList.toggle('fullscreen', isFullScreen);
+            // Recalculate and resize the p5 canvas
+            this.windowResized();
+        });
+    }
+
     handleFullScreenRequest() {
         if(!isFullScreen) {
             this.goFullScreen();
@@ -69,17 +84,21 @@ class GameScreen {
     }
 
     goFullScreen() {
-        console.log("Full screen");
+        //console.log("Full screen");
         // Request full screen for the container element
         requestFS.call(canvasContainer).catch(console.warn);
-        isFullScreen = true;
+        //requestFS.call(canvasContainer).then(this.windowResized()).catch(console.warn);
+        //this.windowResized();
+        //isFullScreen = true;
     }
 
     exitFullScreen() {
-        console.log("Exit full screen");
+        //console.log("Exit full screen");
         // Exit full screen
         exitFS.call(document).catch(console.warn);
-        isFullScreen = false;
+        //exitFS.call(document).then(this.windowResized()).catch(console.warn);
+        //this.windowResized();
+        //isFullScreen = false;
     }
 
     //#region Draw Methods

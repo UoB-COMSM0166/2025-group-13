@@ -87,6 +87,14 @@ h1 {
   overflow: hidden;
 }
 
+/* When .fullscreen is added, let it fill 100% of viewport */
+#canvas-container.fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0;
+  padding: 0;
+}
+
 /* For smaller devices, we want to adjust the canvas size */
 @media (max-width: 600px) or (max-height: 500px) and (orientation: landscape) {
   #canvas-container {
