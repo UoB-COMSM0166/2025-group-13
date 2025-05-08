@@ -16,7 +16,7 @@ class AssetManager {
         //enviroment image
         this.gamePageBackground = loadImage('assets/background/bg_lv1.png');
         this.lavaImg = loadImage('assets/items/tile_lava.gif');
-        this.iceLakeImg = loadImage('assets/items/tile_icelake.png');
+        this.iceLakeImg = loadImage('assets/items/tile_icelake.gif');
         this.enemyFireImg = loadImage('assets/items/enemyFire.png');
         this.enemyIceImg = loadImage('assets/items/enemyIce.png');
         this.skyFireImg = loadImage('assets/items/skyFire.png');

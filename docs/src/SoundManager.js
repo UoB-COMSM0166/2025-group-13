@@ -37,8 +37,8 @@ class SoundManager {
         this.stopAllBGM();
         this.assetManager.bgm_relax.setVolume(0.5);
         this.assetManager.bgm_cave.setVolume(0.5);
-        this.assetManager.bgm_relax.play();
-        this.assetManager.bgm_cave.play();
+        this.assetManager.bgm_relax.loop();
+        this.assetManager.bgm_cave.loop();
     }
 
     playGameOverMusic(mapIndex) {

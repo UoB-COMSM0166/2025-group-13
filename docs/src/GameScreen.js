@@ -61,7 +61,7 @@ class GameScreen {
     windowResized() {
         let canvasRect = canvasContainer.getBoundingClientRect();
         // Get the width and height of the canvas container
-        screenWidth = canvasRect.width; // rect.width * dp 
+        screenWidth = canvasRect.width; // rect.width * dp
         screenHeight = canvasRect.height; // rect.height * dpr
         // Set the canvas size to match the container size
         resizeCanvas(canvasRect.width, canvasRect.height);
@@ -294,18 +294,6 @@ class GameScreen {
     drawEndGame() {
         image(this.assetManager.gameWon, width / 2, height / 2, width, height);
         textAlign(CENTER, CENTER);
-
-        // "Extinction Averted!" Styled Text at the Top
-        textSize(50);
-        textFont("DinoEscapeMainPixelFont");
-
-        // Glow Effect: Outer Stroke
-        stroke(255, 223, 0); // Golden glow
-        strokeWeight(3);
-        noFill(); // Transparent fill
-        text("Extinction", width / 2 +120, 40);
-        text("Averted !!", width / 2 +120, 100);
-        strokeWeight(0);
 
         // Box dimensions and position
         let boxWidth = 600;
