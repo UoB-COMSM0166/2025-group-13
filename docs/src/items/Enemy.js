@@ -1,5 +1,21 @@
+/**
+ * Enemy class models the NPCs in the game. When player comes in contact with an enemy
+ * the rate of reduction of health spikes while the player remains in contact. Enemies in the game
+ * have their base location but keep moving and changing directions periodically.
+ */
+
 // Constructor, update, and display methods
 class Enemy {
+  /**
+   * Constructor initializes location, dimensions and movement attributes of an enemy.
+   * @param type - Type of enemy.
+   * @param positionX - X coordinate.
+   * @param positionY - Y coordinate.
+   * @param assetManager - Reference to asset manager.
+   * @param speed - Horizontal speed.
+   * @param maxDistance - Maximum traversable distance from base location
+   * @param pauseTime - Time lapsed after player has reached maxDistance and before direction is changed
+   */
   constructor(
     type = null,
     positionX,
@@ -17,24 +33,23 @@ class Enemy {
     this.y = positionY;
 
     this.enemyType = type;
-
     this.stableHeight = 15;
 
     this.speed = speed;
     this.maxDistance = maxDistance;
     this.pauseTime = pauseTime; // Duration to pause before flipping
 
-    this.originX = positionX;
     this.direction = 1; // 1 = right, -1 = left
     this.distanceTravelled = 0;
 
     this.pauseCounter = 0; // Counter to track pause time
     this.flipped = false; // Track if image has been flipped
     this.isFlipping = false; // Track if we're in the process of flipping
-
-    // this.updateEnemy();
   }
 
+  /**
+   * Updates the span attributes of enemy based on its coordinates.
+   */
   updateEnemy() {
     this.top = this.y - this.height / 2;
     this.bottom = this.y + this.height / 2;
@@ -42,6 +57,9 @@ class Enemy {
     this.right = this.x + this.width / 2;
   }
 
+  /**
+   * Displays the enemy with appropriate visual effects
+   */
   display() {
     // If the enemy is pausing, count the time
     if (this.pauseCounter > 0) {
