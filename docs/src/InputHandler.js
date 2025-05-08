@@ -132,7 +132,6 @@ class InputHandler {
     /**
      * Resets the jump attribute to prevent multiple jumps unless
      * the user explicitly presses the jump button again.
-     * @returns {boolean} - True if jump was reset to false ele true.
      */
     getAndResetJump() {
         if (this.jump) {
@@ -144,7 +143,6 @@ class InputHandler {
 
     /**
      * Getter for moveLeft attribute
-     * @returns {boolean} - True if moveLeft is set else false.
      */
     getMoveLeft() {
         return this.moveLeft;
@@ -152,7 +150,6 @@ class InputHandler {
 
     /**
      * Getter for moveRight attribute
-     * @returns {boolean} - True if moveRight is set else false.
      */
     getMoveRight() {
         return this.moveRight;
