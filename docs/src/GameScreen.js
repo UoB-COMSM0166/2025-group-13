@@ -2,8 +2,8 @@
 // It also draws each game screen (home, instructions, pause, etc).
 
 // Set the base screen width and heigth
-let baseWidth = 850;
-let baseHeight = 500;
+const baseWidth = 850;
+const baseHeight = 500;
 let screenWidth;
 let screenHeight;
 let scaleFactorX;
@@ -28,7 +28,7 @@ class GameScreen {
 
     setup() {
         // Create the canvas with the calculated width and height
-        let canvas = createCanvas(baseWidth, baseHeight);
+        const canvas = createCanvas(baseWidth, baseHeight);
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
         // Resize screen and scale the canvas based on the scale factors
@@ -56,7 +56,7 @@ class GameScreen {
         screenWidth = canvasRect.width; // rect.width * dp 
         screenHeight = canvasRect.height; // rect.height * dpr
         // Set the canvas size to match the container size
-        resizeCanvas(canvasRect.width, canvasRect.height);
+        resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
         this.scaleCanvas();
     }
