@@ -127,15 +127,6 @@ class Game {
     }
 
     /**
-     * Changes the game level and load the new map.
-     * After last level the next level is the default first level.
-     */
-    nextLevel() {
-        this.currentMap = (this.currentMap + 1) % this.maps.length;
-        this.map = this.maps[this.currentMap];
-    }
-
-    /**
      * Handles input proved by the user via touch screen buttons or keyboard
      * @param triggerJump - True if jump key/button is provided.
      * @param moveLeft - True if left key/button is pressed.
@@ -144,6 +135,15 @@ class Game {
     handleInput(triggerJump, moveLeft, moveRight) {
         this.map.handleInput(moveRight);
         this.player.handleInput(moveLeft, moveRight, triggerJump);
+    }
+
+    /**
+     * Changes the game level and load the new map.
+     * After last level the next level is the default first level.
+     */
+    nextLevel() {
+        this.currentMap = (this.currentMap + 1) % this.maps.length;
+        this.map = this.maps[this.currentMap];
     }
 
     /**
