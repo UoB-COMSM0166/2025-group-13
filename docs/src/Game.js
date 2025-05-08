@@ -36,6 +36,8 @@ class Game {
         // Create new player
         //this.player = new Player(2, this.groundTop, this.health, assetManager);
         this.player = new Player(0, height / 2, this.health, assetManager);
+
+        this.stopMapMovement = false;
     }
 
     /**
@@ -122,6 +124,15 @@ class Game {
         }
 
         this.update();
+    }
+
+    /**
+     * Changes the game level and load the new map.
+     * After last level the next level is the default first level.
+     */
+    nextLevel() {
+        this.currentMap = (this.currentMap + 1) % this.maps.length;
+        this.map = this.maps[this.currentMap];
     }
 
     /**

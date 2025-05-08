@@ -435,6 +435,15 @@ class Player {
     }
 
     /**
+     * Stops the player's horizontal movement
+     */
+    stopMovement() {
+        this.isMoving = false;
+        this.isBackwards = false;
+        this.xSpeed = 0;
+    }
+
+    /**
      * Makes the player jump
      */
     jump() {

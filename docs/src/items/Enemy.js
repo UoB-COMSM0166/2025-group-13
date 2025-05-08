@@ -45,6 +45,8 @@ class Enemy {
     this.pauseCounter = 0; // Counter to track pause time
     this.flipped = false; // Track if image has been flipped
     this.isFlipping = false; // Track if we're in the process of flipping
+
+    this.originX = positionX;
   }
 
   /**

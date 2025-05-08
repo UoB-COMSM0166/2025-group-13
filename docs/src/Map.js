@@ -89,6 +89,13 @@ class Map {
     }
 
     /**
+     * Stops leftward movements of the map and all its obejcts.
+     */
+    stopMovement() {
+        this.xSpeed = 0;
+    }
+
+    /**
      * Displays all the objects of a map corresponding to a level
      */
     display() {
