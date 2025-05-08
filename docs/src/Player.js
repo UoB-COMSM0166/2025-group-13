@@ -1,6 +1,8 @@
-// Player class is responsible for the player character in the game.
-// It handles player movement, jumping, and collision detection.
-// Also manages the player's health and visual representation on the screen.
+/**
+ * Player class is responsible for the player character in the game.
+ * It handles player movement, jumping, and collision detection.
+ * Also manages the player's health and visual representation on the screen.
+ */
 
 class Player {
     /**

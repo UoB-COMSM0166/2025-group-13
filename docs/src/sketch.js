@@ -1,5 +1,7 @@
-// This file is the main entry point for the game. It creates the main game and screen objects.
-// It also handles the key events and the game loop.
+/**
+ * This file is the main entry point for the game. It creates the main game and screen objects.
+ * It also handles the key events and the game loop.
+ */
 
 //#region: declaration of variables
 // Global variable to track the current state of the game.

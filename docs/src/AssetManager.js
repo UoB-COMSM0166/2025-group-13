@@ -1,4 +1,7 @@
-// AssetManager class is responsible for loading and managing all the assets used in the game.
+/**
+ * AssetManager class is responsible for loading and managing all the assets used in the game.
+ * Assets are preloaded at the beginning of the game and can be accessed later.
+ */
 
 class AssetManager {
     preload() {

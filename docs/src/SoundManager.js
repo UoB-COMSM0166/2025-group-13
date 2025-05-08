@@ -1,3 +1,8 @@
+/**
+ * SoundManager class manages background music and sound effects of the game.
+ * It handles starting, stopping, and controlling the volume and playback rate of all sounds.
+ */
+
 class SoundManager {
     constructor(assetManager) {
         this.assetManager = assetManager;
