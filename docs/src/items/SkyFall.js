@@ -1,5 +1,22 @@
+/**
+ * SkyFall class models the objects falling from the sky. These objects reduce the player's health
+ * when they hit a player. SkyFall objects are generated randomly at regular intervals and fall
+ * from top of the screen and disappear when they reach bottom of the screen. SkyFall objects can pass
+ * through platforms.
+ */
 // Constructor, update, and display methods
 class SkyFall {
+  /**
+   * Constructor initializes position, dimension and movement attributes.
+   * @param type - Type of SkyFall objects.
+   * @param positionX - X coordinate.
+   * @param startY - Y coordinate.
+   * @param assetManager - Reference to asset manager for audio and visual resources.
+   * @param fallSpeed - Speed of falling.
+   * @param groundY - Y coordinate. When object falling from sky reaches ground it disappears.
+   * @param delayBeforeFall - Period before the first falling object appears.
+   * @param cooldownTime - Delay between consecutive falls.
+   */
   constructor(type = null, positionX, startY, assetManager, fallSpeed = 5,
     groundY = 485, delayBeforeFall = 120, cooldownTime = 180) {
     this.assetManager = assetManager;
@@ -27,10 +44,11 @@ class SkyFall {
     this.angle = random(-PI / 6, PI / 6);
     this.fallSpeedX = this.fallSpeed * sin(this.angle);
     this.fallSpeedY = this.fallSpeed * cos(this.angle);
-
-    // this.updateSkyFall();
   }
 
+  /**
+   * Updates the falling object based on its interaction with player
+   */
   updateSkyFall() {
     if (this.hasLanded) {
       // Reset collision boundaries during cooldown
@@ -44,6 +62,9 @@ class SkyFall {
     }
   }
 
+  /**
+   * Updates object's coordinates and calculates delay and pause times.
+   */
   update() {
     if (this.hasLanded) {
       this.cooldownTimer--;
@@ -71,6 +92,9 @@ class SkyFall {
     this.updateSkyFall();
   }
 
+  /**
+   * Resets the next falling object's location, speed and angle of approach.
+   */
   reset() {
     this.x = this.x - this.fallSpeedX * (this.delayBeforeFall / this.fallSpeedY); // Reset X near original
     this.y = this.startY;
@@ -84,6 +108,9 @@ class SkyFall {
     this.fallSpeedY = this.fallSpeed * cos(this.angle);
   }
 
+  /**
+   * Displays the falling objects based on their types with appropriate graphics
+   */
   display() {
     this.update();
 
