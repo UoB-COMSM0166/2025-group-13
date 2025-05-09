@@ -22,7 +22,6 @@ class AssetManager {
         this.skyFireImg = loadImage('assets/items/skyFire.png');
         this.skyIceImg = loadImage('assets/items/skyIce.png');
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
-        this.caveImg = loadImage('assets/items/item_cave.png');
         this.caveFire = loadImage('assets/items/caveFire.png');
         this.caveIce = loadImage('assets/items/caveIce.png');
         this.iceSpikeImg = loadImage('assets/items/ice_spike.png');
