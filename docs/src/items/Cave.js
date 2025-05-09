@@ -1,12 +1,12 @@
 // Constructor, update, and display methods
 class Cave {
-    static caveHeight = 100;
+    //static caveHeight = 100;
 
     constructor(type, positionX, positionY, assetManager) {
       this.assetManager = assetManager;
       this.caveType = type;
-      this.width = 100;
-      this.height = Cave.caveHeight;
+      this.width = scaleX * 100;
+      this.height = scaleY * 100;
   
       this.x = positionX;
       this.y = positionY;
