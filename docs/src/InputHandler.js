@@ -20,6 +20,8 @@ class InputHandler {
         this.jumpReady = true;
         this.requestFS = false;
         this.fsReady = true;
+        this.pause = false;
+        this.pauseReady = true;
     }
 
     /**
@@ -99,6 +101,21 @@ class InputHandler {
             this.fsReady = true;
             this.requestFS = false;
         });
+        document.getElementById('pause-btn').addEventListener('pointerdown', (e) => {
+            e.preventDefault();
+            if(this.pauseReady) {
+                this.pauseReady = false;
+                this.pause = true;
+            }
+            else {
+                this.pause = false;
+            }
+        });
+        document.getElementById('pause-btn').addEventListener('pointerup', (e) => {
+            e.preventDefault();
+            this.pauseReady = true;
+            this.pause = false;
+        });
     }
 
     /**
@@ -175,6 +192,14 @@ class InputHandler {
     getAndResetFullScreenRequest() {
         if(this.requestFS) {
             this.requestFS = false;
+            return true;
+        }
+        return false;
+    }
+
+    getAndResetPause() {
+        if(this.pause) {
+            this.pause = false;
             return true;
         }
         return false;

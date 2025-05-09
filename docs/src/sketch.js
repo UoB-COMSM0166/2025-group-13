@@ -70,6 +70,7 @@ function draw() {
   moveRight = inputHandler.getMoveRight();
   moveLeft = inputHandler.getMoveLeft();
   requestFullScreen = inputHandler.getAndResetFullScreenRequest();
+  resumePause = inputHandler.getAndResetPause();
   // Check the game state and draw the corresponding screen
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
@@ -107,14 +108,15 @@ function draw() {
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     gameState = "gameScreen";
   }
-
   else if(gameState === "gameOver") {
     screenGame.drawGameOver();
   }
   else if(gameState === "levelComplete") {
     screenGame.drawLevelComplete();
   }
-  else screenGame.drawEndGame();
+  else {
+    screenGame.drawEndGame();
+  }
   // Check if the user wants to go or exit full screen
   if(requestFullScreen) {
     screenGame.handleFullScreenRequest();
@@ -132,15 +134,16 @@ function changeScreen() {
     gameState = "gameInstructions";
     soundManager.startGameBGM();
   }
-  else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
-    // console.log("Resuming game...");
+  else if(gameState === "gameInstructions" && triggerJump) {
     gameState = "gameScreen";
-    soundManager.resumeBGM();
   }
-  else if(gameState === "gameScreen" && inputHandler.escape) {
-    // console.log("Game Paused");
+  else if(gameState === "gameScreen" && (inputHandler.escape || resumePause)) {
     gameState = "pausePage";
     soundManager.pauseBGM();
+  }
+  else if(gameState === "pausePage" && (triggerJump || resumePause)) {
+    gameState = "gameScreen";
+    soundManager.resumeBGM();
   }
   else if(gameState === "gameOver" && triggerJump) {
     // Restart from actual level
