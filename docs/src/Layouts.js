@@ -1,5 +1,9 @@
-// This file contains the layout of the game levels. 
-// This includes platforms, foods, ground damage, enemies, skyFalls and caves.
+/**
+ * This file contains the layout of the game levels. Each level has a map associated with it which has game objects
+ * which includes platforms, foods, ground damage, enemies, skyFalls and caves. Layout of all the levels is unique i.e.
+ * the relative position of all the game objects is different for different levels. These initial location coordinates and types of
+ * game objects are stored in this file which then be used by Map class to generate objects in memory for game play.
+ */
 
 //#region: Level1
 // constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager)
@@ -89,6 +93,10 @@ let level2SkyFall =
 let level2Cave = ["ICE",4070, 438];
 //#endregion
 
+/**
+ * List of all the layouts in the game.
+ * @type {(string|number)[][][][]} - List of lists of coordinates and types of game objects
+ */
 let layouts =
     [
         [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],

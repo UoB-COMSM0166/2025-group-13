@@ -1,5 +1,7 @@
-// GameScreen class handles the general configuration of the screen (contained in a canvas).
-// It also draws each game screen (home, instructions, pause, etc).
+/**
+ * GameScreen class handles the general configuration of the screen (contained in a canvas).
+ * It also draws each game screen (home, instructions, pause, etc).
+*/
 
 // Set the base screen width and heigth
 const baseWidth = 850;
@@ -22,13 +24,26 @@ const exitFS    = document.exitFullscreen
 let isFullScreen = false;
 
 class GameScreen {
+    /**
+     * Constructor sets the assestManager attribute.
+     * @param assetManager - Input asset manager reference.
+     */
     constructor(assetManager) {
         this.assetManager = assetManager;
     }
 
+    /**
+     * Sets up the initial canvas dimensions and resizes the window
+     */
     setup() {
         // Create the canvas with the calculated width and height
         const canvas = createCanvas(baseWidth, baseHeight);
+        // CanvasSettings object's will read frequently, the user agent may optimize the canvas for readback operations.
+        // Pull off the underlying <canvas> element
+        const elt = canvas.elt;
+        // Replace its drawingContext with a new one that has willReadFrequently
+        const ctx = elt.getContext('2d', { willReadFrequently: true });
+        canvas.drawingContext = ctx;
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
         // Resize screen and scale the canvas based on the scale factors
@@ -37,11 +52,17 @@ class GameScreen {
         this.fullScreenChange();
     }
 
+    /**
+     * Updates the scale factors for width and height of the canvas
+     */
     updateScaleFactors() {
         scaleFactorX = screenWidth / baseWidth;
         scaleFactorY = screenHeight / baseHeight;
     }
 
+    /**
+     * Scales the canvas dimensions according to the scale factors
+     */
     scaleCanvas() {
         this.updateScaleFactors();
         // Scale the canvas based on the scale factors
@@ -50,10 +71,13 @@ class GameScreen {
         translate(-width / 2, -height / 2);
     }
 
+    /**
+     * Resizes the game window according to canvas dimensions
+     */
     windowResized() {
         let canvasRect = canvasContainer.getBoundingClientRect();
         // Get the width and height of the canvas container
-        screenWidth = canvasRect.width; // rect.width * dp 
+        screenWidth = canvasRect.width; // rect.width * dp
         screenHeight = canvasRect.height; // rect.height * dpr
         // Set the canvas size to match the container size
         resizeCanvas(screenWidth, screenHeight);
@@ -102,6 +126,9 @@ class GameScreen {
     }
 
     //#region Draw Methods
+    /**
+     * Draws the home screen of the game with engaging graphics.
+     */
     drawHomeScreen() {
         imageMode(CENTER);
         image(this.assetManager.homePageBackground, width / 2, height / 2, width, height);
@@ -136,6 +163,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game instruction on the screen
+     */
     drawInstructions() {
         imageMode(CENTER); // Ensure the background image is centered
         //TODO: Update the
@@ -169,6 +199,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the paused game screen.
+     */
     drawPauseGame() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //Transparency 2 is very low (close to transparent), the old image of each frame is not completely covered, resulting in a visual **"Press ⬆ to resume" flickering very slowly**, because the previous frame is still visible.
@@ -207,6 +240,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game over screen shown when player loses.
+     */
     drawGameOver() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
@@ -257,6 +293,9 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the level complete screen shown after a level is completed.
+     */
     drawLevelComplete() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
@@ -305,21 +344,12 @@ class GameScreen {
         }
     }
 
+    /**
+     * Draws the game end screen which is shown when user completes all the levels successfully.
+     */
     drawEndGame() {
         image(this.assetManager.gameWon, width / 2, height / 2, width, height);
         textAlign(CENTER, CENTER);
-
-        // "Extinction Averted!" Styled Text at the Top
-        textSize(50);
-        textFont("DinoEscapeMainPixelFont");
-
-        // Glow Effect: Outer Stroke
-        stroke(255, 223, 0); // Golden glow
-        strokeWeight(3);
-        noFill(); // Transparent fill
-        text("Extinction", width / 2 +120, 40);
-        text("Averted !!", width / 2 +120, 100);
-        strokeWeight(0);
 
         // Box dimensions and position
         let boxWidth = 600;

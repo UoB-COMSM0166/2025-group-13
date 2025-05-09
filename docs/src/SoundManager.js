@@ -1,4 +1,13 @@
+/**
+ * SoundManager class manages background music and sound effects of the game.
+ * It handles starting, stopping, and controlling the volume and playback rate of all sounds.
+ */
+
 class SoundManager {
+    /**
+     * Constructor to set default attributes.
+     * @param assetManager - Asset manager reference.
+     */
     constructor(assetManager) {
         this.assetManager = assetManager;
         this.isBGMStarted = false;
@@ -6,6 +15,9 @@ class SoundManager {
         this.defaultRate = 1.0;
     }
 
+    /**
+     * Starts background music of the game.
+     */
     startGameBGM() {
         if (!this.isBGMStarted) {
             this.assetManager.bgm_exciting.setVolume(0.4);
@@ -15,6 +27,9 @@ class SoundManager {
         }
     }
 
+    /**
+     * Stops background music of the game
+     */
     stopAllBGM() {
         this.assetManager.bgm_exciting.stop();
         this.assetManager.bgm_tragic.stop();
@@ -28,14 +43,21 @@ class SoundManager {
         this.isBGMStarted = false;
     }
 
+    /**
+     * Plays harmonious music after level comlpetion
+     */
     playLevelCompleteMusic() {
         this.stopAllBGM();
         this.assetManager.bgm_relax.setVolume(0.5);
         this.assetManager.bgm_cave.setVolume(0.5);
-        this.assetManager.bgm_relax.play();
-        this.assetManager.bgm_cave.play();
+        this.assetManager.bgm_relax.loop();
+        this.assetManager.bgm_cave.loop();
     }
 
+    /**
+     * Plays ominous music after player player dies in the game.
+     * @param mapIndex - Current level/map index to play the appriate music based on the theme.
+     */
     playGameOverMusic(mapIndex) {
         this.stopAllBGM();
         this.assetManager.effect_dino_hurt.setVolume(1.0);
@@ -55,6 +77,9 @@ class SoundManager {
         }
     }
 
+    /**
+     * Plays music for pause game screen.
+     */
     pauseBGM() {
         if (this.assetManager.bgm_exciting.isPlaying()) {
             this.assetManager.bgm_exciting.rate(0.4);
@@ -62,6 +87,9 @@ class SoundManager {
         }
     }
 
+    /**
+     * Plays music for gameplay resumption.
+     */
     resumeBGM() {
         if (!this.assetManager.bgm_exciting.isPlaying()) {
             this.assetManager.bgm_exciting.loop();

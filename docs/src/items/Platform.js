@@ -1,5 +1,21 @@
+/**
+ * Platform class models the floating platforms, ground and trees in the game map.
+ * These objects don't affect players health. Instead, they serve as static obstacles which
+ * the player must navigate past to reach the destination(cave). Unlike other game objects,
+ * player cannot pass through platforms.
+ */
+
 // Constructor, update, and display methods
 class Platform {
+  /**
+   * Initializes platforms dimensions, location and type.
+   * @param type - Type of platform: floating, ground or tree.
+   * @param positionX - X coordinate.
+   * @param positionY - Y coordinate.
+   * @param widthOrBrickNumber - Number of brick/tiles to be drawn while displaying.
+   * @param height - Height of platform.
+   * @param assetManager - Asset manager reference.
+   */
   constructor(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager) {
     this.assetManager = assetManager;
     this.platformType = type;
@@ -16,7 +32,7 @@ class Platform {
 
     this.x = positionX;
     this.y = positionY;
-    //this.y = 750;
+
     this.top = 0;
     this.bottom = 0;
     this.left = 0;
@@ -26,6 +42,9 @@ class Platform {
     this.updatePreviousCoordinates();
   }
 
+  /**
+   * Updates the span attributes of platform based on its coordinates.
+   */
   updateBounds() {
     this.top = this.y - this.height / 2;
     this.bottom = this.y + this.height / 2;
@@ -33,6 +52,10 @@ class Platform {
     this.right = this.x + this.width / 2;
   }
 
+  /**
+   * Displays the platform by retrieving appropriate graphics retrieved from asset manager class
+   * based on its type.
+   */
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
 
@@ -76,6 +99,10 @@ class Platform {
     }
   }
 
+  /**
+   * Stores the current coordinates of the platforms for possible use in
+   * detection of collision with player in the next frame.
+   */
   updatePreviousCoordinates()
   {
     this.prevX = this.x;

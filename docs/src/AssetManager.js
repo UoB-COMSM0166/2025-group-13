@@ -1,4 +1,7 @@
-// AssetManager class is responsible for loading and managing all the assets used in the game.
+/**
+ * AssetManager class is responsible for loading and managing all the assets used in the game.
+ * Assets are preloaded at the beginning of the game and can be accessed later.
+ */
 
 class AssetManager {
     preload() {
@@ -13,13 +16,12 @@ class AssetManager {
         //enviroment image
         this.gamePageBackground = loadImage('assets/background/bg_lv1.png');
         this.lavaImg = loadImage('assets/items/tile_lava.gif');
-        this.iceLakeImg = loadImage('assets/items/tile_icelake.png');
+        this.iceLakeImg = loadImage('assets/items/tile_icelake.gif');
         this.enemyFireImg = loadImage('assets/items/enemyFire.png');
         this.enemyIceImg = loadImage('assets/items/enemyIce.png');
         this.skyFireImg = loadImage('assets/items/skyFire.png');
         this.skyIceImg = loadImage('assets/items/skyIce.png');
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
-        this.caveImg = loadImage('assets/items/item_cave.png');
         this.caveFire = loadImage('assets/items/caveFire.png');
         this.caveIce = loadImage('assets/items/caveIce.png');
         this.iceSpikeImg = loadImage('assets/items/ice_spike.png');

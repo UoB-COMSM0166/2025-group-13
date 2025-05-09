@@ -1,10 +1,17 @@
-// InputHandler class handles all the possible inputs from the user.
-// It checks for keyboard inputs and button touches for responsive/mobile devices.
+/**
+ * InputHandler class handles all the possible inputs from the user.
+ * It checks for keyboard inputs and button touches for responsive/mobile devices.
+ */
 
-// Grab all buttons with the control-btn class
+/**
+ * Retrieves all buttons with the control-btn class
+ */
 const buttons = document.querySelectorAll('.control-btn');
 
 class InputHandler {
+    /**
+     * Constructor initializes all the input attributes to false.
+     */
     constructor() {
         this.moveLeft = false;
         this.moveRight = false;
@@ -15,8 +22,10 @@ class InputHandler {
         this.fsReady = true;
     }
 
+    /**
+     * If the device is touchable, show and set up the buttons.
+     */
     setup() {
-        // If the device is touchable, show and setup the buttons
         if(isTouchDevice) {
             this.showButtons(true);
             this.setupButtons();
@@ -26,7 +35,9 @@ class InputHandler {
         }
     }
 
-    // Show or hide buttons based on the device type
+    /**
+     * Shows or hides buttons based on the device type
+     */
     showButtons(visible) {
         buttons.forEach((button) => {
             if(visible) {
@@ -38,7 +49,9 @@ class InputHandler {
         });
     }
 
-    // Add listeners for touch events for all buttons
+    /**
+     * Adds listeners for touch events for all buttons
+     */
     setupButtons() {
         document.getElementById('left-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
@@ -88,8 +101,10 @@ class InputHandler {
         });
     }
 
+    /**
+     * Sets up keyboard events for right and left arrow keys
+     */
     keyPressed() {
-        // Set up keyboard events for rigth and left arrow keys
         if(keyCode === RIGHT_ARROW || keyCode === 68) {
             this.moveRight = true;
         }
@@ -111,6 +126,9 @@ class InputHandler {
         }
     }
 
+    /**
+     * Unsets keyboard events for right and left arrow keys
+     */
     keyReleased() {
         if (keyCode === RIGHT_ARROW || keyCode === 68) {
             this.moveRight = false;
@@ -128,6 +146,10 @@ class InputHandler {
     }
     
     //#region Getters and Setters
+    /**
+     * Resets the jump attribute to prevent multiple jumps unless
+     * the user explicitly presses the jump button again.
+     */
     getAndResetJump() {
         if(this.jump) {
           this.jump = false;
@@ -136,10 +158,16 @@ class InputHandler {
         return false;
     }
 
+    /**
+     * Getter for moveLeft attribute
+     */
     getMoveLeft() {
         return this.moveLeft;
     }
 
+    /**
+     * Getter for moveRight attribute
+     */
     getMoveRight() {
         return this.moveRight;
     }

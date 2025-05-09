@@ -1,3 +1,8 @@
+/**
+ * Food class models the food objects present in game map. Consumption of food objects increases the
+ * player's health and helps player recover after its health deteriorates over time and also after encountering
+ * enemies and damaging objects in the game.
+ */
 // Constructor, update, and display methods
 class Food {
   constructor(type = null, positionX, positionY, assetManager) {
@@ -11,6 +16,9 @@ class Food {
     this.foodType = type;
   }
 
+  /**
+   * Updates food span attributes based on its coordinates
+   */
   updateFood() {
     this.top = this.y - this.height / 2;
     this.bottom = this.y + this.height / 2;
@@ -18,9 +26,11 @@ class Food {
     this.right = this.x + this.width / 2;
   }
 
+  /**
+   * Displays the food with appropriate visual effects based on its type
+   */
   display() {
     rectMode(CENTER);  // Draw the rectangle with the center point
-    // image(this.assetManager.foodImg, this.x, this.y, this.width, this.height);
     let sx, sy, sw, sh;
     let aspectRatio, scaledWidth, scaledHeight;
 
@@ -36,11 +46,6 @@ class Food {
     aspectRatio = sw / sh;
     scaledWidth = this.height * aspectRatio;
     scaledHeight = this.height;
-
-    // draw background rectangle for testing
-    // fill(200, 200, 255, 150);
-    // noStroke();
-    // rect(this.x, this.y, this.width, this.height);
 
     image(
       this.assetManager.healthRelatedItems,

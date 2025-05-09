@@ -177,8 +177,13 @@ h1 {
 }
 
 #fs-btn {
-  top: 25px;
-  right: 25px;
+  top: 40px;
+  right: 10px;
+}
+
+#pause-btn {
+  top: 40px;
+  right: 80px;
 }
 
 .control-btn {
@@ -228,6 +233,14 @@ h1 {
     background-color: rgba(0, 0, 0, 0.9);
     transform: scale(0.95);
   }
+}
+
+#fs-btn, #pause-btn {
+  /*color: #f16e0a; */
+  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  /*background-color: rgba(0, 0, 0, .30); */
 }
 
 /* Hidden Utility Class */

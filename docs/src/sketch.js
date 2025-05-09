@@ -1,5 +1,7 @@
-// This file is the main entry point for the game. It creates the main game and screen objects.
-// It also handles the key events and the game loop.
+/**
+ * This file is the main entry point for the game. It creates the main game and screen objects.
+ * It also handles the key events and the game loop.
+ */
 
 //#region: declaration of variables
 // Global variable to track the current state of the game.
@@ -22,12 +24,18 @@ let soundManager;
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 //#endregion
 
-// Preload all assets using the assetManager
+/**
+ * Preloads all graphic assets using the assetManager
+ */
 function preload() {
   assetManager = new AssetManager();
   assetManager.preload();
 }
 
+/**
+ * Setups the supporting features to make the game playable.
+ * Sets the game the by initialising SoundManger, GameScreen and InputHandler.
+ */
 function setup() {
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
@@ -38,6 +46,10 @@ function setup() {
   inputHandler.setup();
 }
 
+/**
+ * Starts a new game session in the beginning. The session remains active
+ * until the user has quit or closed the browser window of the game.
+ */
 function newGame() {
   soundManager.stopAllBGM();
   hasPlayedGameOverSound = false;
@@ -47,6 +59,11 @@ function newGame() {
     soundManager.startGameBGM();
 }
 
+/**
+ * Draws the game screen based on current game state. Game state can be either of :
+ * { homePage, gameInstructions, gameScreen, gameOver, levelComplete, gameEnd, pausePage, gameOver}.
+ * Game state changes based on user interaction.
+ */
 function draw() {
   // Start by getting (and resetting) all inputs
   triggerJump = inputHandler.getAndResetJump();
@@ -106,6 +123,9 @@ function draw() {
   changeScreen();
 }
 
+/**
+ * Changes the contents of the screen based on current game state and user input.
+ */
 function changeScreen() {
   if(gameState === "homePage" && triggerJump) {
     userStartAudio();
@@ -140,14 +160,23 @@ function changeScreen() {
   }
 }
 
+/**
+ * Redirects the key pressed callback to keyPressed method of InputHandler
+ */
 function keyPressed() {
   inputHandler.keyPressed();
 }
 
+/**
+ * Redirects the key released callback to keyReleased method of InputHandler
+ */
 function keyReleased() {
   inputHandler.keyReleased();
 }
 
+/**
+ * Redirects the windowResized callback to windowResized method of GameScreen
+ */
 function windowResized() {
   screenGame.windowResized();
 }

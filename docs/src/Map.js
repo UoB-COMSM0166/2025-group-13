@@ -1,7 +1,14 @@
-// Map class is responsible for managing the game map. 
-// This includes platforms, food, enemies, and static/moving obstacles.
+/**
+ * Map class is responsible for managing the game map.
+ * All the levels have a map associated with them which contains all the game objects and their current location.
+ * This includes platforms, food, enemies, and static/moving obstacles.
+ */
 
 class Map {
+    /**
+     * Initializes Map with NPCs and obstacles
+     * @param assetManager Asset manager object required to load graphic data for objects
+     */
     constructor(assetManager) {
         this.assetManager = assetManager;
         this.platforms = [];
@@ -17,6 +24,10 @@ class Map {
         this.skyFall_height = 70;
     }
 
+    /**
+     * Reads the data provided in Layouts.js for current level and creates the game objects in memory.
+     * @param layout - Layout object contains layout data for all the levels in the game.
+     */
     setup(layout) {
         let platforms = layout[0];
         let foods = layout[1];
@@ -52,6 +63,11 @@ class Map {
         this.cave = new Cave(cave[0], cave[1], cave[2], this.assetManager);
     }
 
+    /**
+     * Updates the in-memory map layout i.e. locations and availability of the objects in the game depending on
+     * the player's interaction and movement. Delegates the responsibility of updating the map to individual
+     * game objects.
+     */
     update() {
         // Update positions for all platforms
         for (let platform of this.platforms) {
@@ -72,6 +88,16 @@ class Map {
         this.cave.updateCave();
     }
 
+    /**
+     * Stops leftward movements of the map and all its obejcts.
+     */
+    stopMovement() {
+        this.xSpeed = 0;
+    }
+
+    /**
+     * Displays all the objects of a map corresponding to a level
+     */
     display() {
         // Display all platforms
         this.cave.display();
@@ -92,10 +118,11 @@ class Map {
         }
     }
 
-    stopMovement() {
-        this.xSpeed = 0;
-    }
-
+    /**
+     * Moves all the map entities/objects to the left when the player's motion is restricted.
+     * Note: When player reaches middle of the screen it is restricted from moving any further to the right.
+     * Instead, the map moves leftward to simulate relative motion.
+     */
     moveEntities()
     {
         if(game.player.x >= width / 2 && game.stopMapMovement === false){
@@ -119,6 +146,11 @@ class Map {
         }
     }
 
+    /**
+     * Handles input for map and call moveEntities().
+     * Note: The map moves left when player is restricted from moving to the right but not vice versa.
+     * @param moveRight - Boolean variable which is true if user input expects to see player moving to the right
+     */
     handleInput(moveRight) {
         if(moveRight) {
                 this.moveEntities();
