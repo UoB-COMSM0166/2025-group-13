@@ -37,8 +37,8 @@ body {
 
 /* Game Header Styling */
 header {
-  padding: 15px;
   display: none; /* Hide by default */
+  padding: 15px;
 }
 
 h1 {
@@ -77,6 +77,8 @@ h1 {
   display: block;
   max-width: 850px;
   max-height: 500px;
+  /*padding-top: calc(500 / 800 * 100%);  */ /* heigth is % of width */
+  aspect-ratio: 850 / 500 auto; /* baseWidth/baseHeight */
   margin: 0 auto; /* Center the container horizontally */
   border-radius: 10px;
   padding: 0;

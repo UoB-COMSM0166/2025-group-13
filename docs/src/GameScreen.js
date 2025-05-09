@@ -87,10 +87,15 @@ class GameScreen {
 
     fullScreenChange() {
         // Listen for full-screen changes
-        document.addEventListener('fullscreenchange', () => {
+        document.addEventListener('fullscreenchange', async () => {
             isFullScreen = !!document.fullscreenElement; // true if now in full-screen
-            //if(isFullScreen) { console.log("Screen is full screen"); }
-            //else { console.log("Screen is not full screen"); }
+            try {
+                // Lock to any landscape orientation
+                await screen.orientation.lock('landscape');  
+                console.log('Orientation locked to landscape!');
+            } catch (err) {
+                console.warn('Orientation lock failed:', err);
+            }
             // Toggle a helper class on your container
             canvasContainer.classList.toggle('fullscreen', isFullScreen);
             // Recalculate and resize the p5 canvas
