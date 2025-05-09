@@ -42,6 +42,15 @@ class Player {
         this.hurtStartTime = 0;
         Health.reductionRate = 0.00032;
 
+ // Load the static sprite (first frame of the sprite sheet)
+ this.dino_static = this.assetManager.imgDinoRed.get(0, 0, 221, 184);
+ // Load the walking sprites from the sprite sheet
+ this.dino_walk = [];
+ for (let i = 0; i < 4; i++) {
+     let x = i * 221;
+     this.dino_walk.push(this.assetManager.imgDinoRed.get(x, 0, 221, 184)); // take out each frame
+ }
+
         this.updateBounds();
         this.updatePreviousCoordinates();
     }
@@ -65,70 +74,54 @@ class Player {
         } else {
             tint(255);
             Health.reductionRate = 0.00032; // Normal reduction rate when not hurt
-            // noTint();
         }
 
-        let sx, sy, sw, sh;
-        let aspectRatio, scaledWidth, scaledHeight;
+        let scaledWidth = this.height * (this.dino_walk[0].width / this.dino_walk[0].height);
+        let scaledHeight = this.height;
 
-        if (!this.isMoving) {
-            if (!this.isBackwards) {
-                //static && forward
-                sx = 60; sy = 120; sw = 205; sh = 220;
+        if (!this.isOnGround) {
+            if (this.isBackwards) {
+                push();
+                translate(this.x, this.y);
+                scale(-1, 1); // flip
+                image(this.dino_walk[3], 0, 0, scaledWidth, scaledHeight);
+                pop();
             } else {
-                //static && backward
-                sx = 60; sy = 120; sw = 205; sh = 220;
+                image(this.dino_walk[3], this.x, this.y, scaledWidth, scaledHeight);
             }
         } else {
-            if (!this.isBackwards) {
-                //moving && forward
-                sx = 725; sy = 120; sw = 255; sh = 220;
+            if (this.isMoving) {
+                let index = floor(millis() / 200) % 4; // 4 frames
+                if (this.isBackwards) {
+                    push();
+                    translate(this.x, this.y);
+                    scale(-1, 1); // flip
+                    image(this.dino_walk[index], 0, 0, scaledWidth, scaledHeight);
+                    pop();
+                } else {
+                    image(this.dino_walk[index], this.x, this.y, scaledWidth, scaledHeight);
+                }
             } else {
-                //moving && backward
-                sx = 725; sy = 120; sw = 255; sh = 220;
+                // static
+                if (this.isBackwards) {
+                    push();
+                    translate(this.x, this.y);
+                    scale(-1, 1);
+                    image(this.dino_static, 0, 0, scaledWidth, scaledHeight);
+                    pop();
+                } else {
+                    image(this.dino_static, this.x, this.y, scaledWidth, scaledHeight);
+                }
             }
-        }
-
-        aspectRatio = sw / sh;
-        scaledWidth = this.height * aspectRatio;
-        scaledHeight = this.height;
-
-        if (this.isMoving && this.isBackwards) {
-            push();
-            translate(this.x, this.y);
-            scale(-1, 1);
-
-            image(
-                this.assetManager.imgDinoRed,
-                0, 0,
-                scaledWidth, scaledHeight,
-                sx, sy, sw, sh
-            );
-
-            pop();
-        } else if (!this.isMoving && this.isBackwards) {
-            push();
-            translate(this.x, this.y);
-            scale(-1, 1);
-
-            image(
-                this.assetManager.imgDinoRed,
-                0, 0,
-                scaledWidth, scaledHeight,
-                sx, sy, sw, sh
-            );
-
-            pop();
-        } else {
-            image(
-                this.assetManager.imgDinoRed,
-                this.x, this.y,
-                scaledWidth, scaledHeight,
-                sx, sy, sw, sh
-            );
         }
 
         noTint();
+    }
+
+    animate() {
+        if (this.isMoving) {
+            this.x += this.xSpeed;
+        }
     }
 
     /**
