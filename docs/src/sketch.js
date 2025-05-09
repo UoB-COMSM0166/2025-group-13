@@ -20,6 +20,9 @@ let hasPlayedGameOverSound = false;
 let soundManager;
 // Global variable to store if the device is touch enabled or not
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+//Scaling factors
+let scaleX = 1;
+let scaleY = 1;
 //#endregion
 
 // Preload all assets using the assetManager
@@ -36,6 +39,9 @@ function setup() {
   imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
+  scaleX = width/850;
+  scaleY = height/500;
+  Brick.setup();
 }
 
 function newGame() {
