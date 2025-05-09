@@ -10,7 +10,7 @@ class GroundDamage {
 
     this.groundDamageType = type;
 
-    this.stableHeight = 15; // Fire animation requirements: Fixed the height of the bottom of the flame
+    this.stableHeight = scaleY * 15; // Fire animation requirements: Fixed the height of the bottom of the flame
 
     // this.display();
     // this.updateGroundDamage();

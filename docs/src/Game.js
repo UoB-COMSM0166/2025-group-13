@@ -95,14 +95,14 @@ class Game {
                 stroke('blue');
                 break;
         }
-        text("Level " + (this.currentLevel), width - 75, 25);
+        text("Level " + (this.currentLevel), width - scaleX * 75, scaleY * 25);
         textSize(30);
         switch (game.currentMap) {
             case 0:
-                text("Lava Rush", width / 2, 25);
+                text("Lava Rush", width / 2, scaleY * 25);
                 break;
             case 1:
-                text("Icy Endgame", width / 2, 25)
+                text("Icy Endgame", width / 2, scaleY * 25);
                 break;
         }
 
