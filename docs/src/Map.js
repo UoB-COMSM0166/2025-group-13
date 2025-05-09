@@ -26,30 +26,30 @@ class Map {
         let cave = layout[5];
         for(let i = 0; i < platforms.length; i++) {
             let platform = platforms[i];
-            this.platforms.push(new Platform(platform[0], (width/850) * platform[1], (height/500) * platform[2], platform[3], platform[4], this.assetManager));
+            this.platforms.push(new Platform(platform[0], scaleX * platform[1], scaleY * platform[2], platform[3], platform[4], this.assetManager));
         }
 
         for(let i = 0; i < foods.length; i++){
             let food = foods[i];
-            this.foods.push(new Food(food[0], (width/850) * food[1], (height/500) *  food[2], this.assetManager));
+            this.foods.push(new Food(food[0], scaleX * food[1], scaleY *  food[2], this.assetManager));
         }
 
         for(let i = 0; i < groundDamages.length; i++){
             let groundDamage = groundDamages[i];
-            this.groundDamages.push(new GroundDamage(groundDamage[0], (width/850) * groundDamage[1], (height/500) * groundDamage[2], this.assetManager));
+            this.groundDamages.push(new GroundDamage(groundDamage[0], scaleX * groundDamage[1], scaleY * groundDamage[2], this.assetManager));
         }
 
         for(let i = 0; i < enemies.length; i++){
             let enemy = enemies[i];
-            this.enemies.push(new Enemy(enemy[0], (width/850) *  enemy[1], (height/500) *  enemy[2], this.assetManager, enemy[3], enemy[4], enemy[5]));
+            this.enemies.push(new Enemy(enemy[0], scaleX *  enemy[1], scaleY *  enemy[2], this.assetManager, enemy[3], enemy[4], enemy[5]));
         }
 
         for(let i = 0; i < skyFalls.length; i++){
             let skyFall = skyFalls[i];
-            this.skyFalls.push(new SkyFall(skyFall[0], (width/850) * skyFall[1], (height/500) * skyFall[2], this.assetManager, skyFall[3], skyFall[4], skyFall[5]));
+            this.skyFalls.push(new SkyFall(skyFall[0], scaleX * skyFall[1], scaleY * skyFall[2], this.assetManager, skyFall[3], skyFall[4], skyFall[5]));
         }
 
-        this.cave = new Cave(cave[0], cave[1], cave[2], this.assetManager);
+        this.cave = new Cave(cave[0], scaleX * cave[1], scaleY * cave[2], this.assetManager);
     }
 
     update() {

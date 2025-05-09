@@ -35,12 +35,11 @@ function setup() {
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
+  updateScalingFactors();
   newGame();
   imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
-  scaleX = width/850;
-  scaleY = height/500;
   Brick.setup();
 }
 
@@ -156,4 +155,9 @@ function keyReleased() {
 
 function windowResized() {
   screenGame.windowResized();
+}
+
+function updateScalingFactors(){
+  scaleX = width/850;
+  scaleY = height/500;
 }
