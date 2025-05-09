@@ -1,6 +1,6 @@
-# Dino Platformer Adventure
+# Dino Escape: An Extinction Adventure Game - Codebase
  
-A browser-based, side-scrolling platformer built with p5.js. You guide a dinosaur avatar across dynamic levels, avoiding hazards, collecting health pickups, and reaching the cave at each stage’s end. This README explains the game’s internal architecture, flow of control, and class responsibilities in detail, making it easier to explore, maintain, or extend the codebase.
+This file explains the game’s internal architecture, flow of control, and class responsibilities in detail, making it easier to explore, maintain, or extend the codebase.
  
 ---
  
