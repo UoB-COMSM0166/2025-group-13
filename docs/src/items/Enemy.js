@@ -10,15 +10,15 @@ class Enemy {
     pauseTime = 6
   ) {
     this.assetManager = assetManager;
-    this.width = 50;
-    this.height = 40;
+    this.width = scaleX * 50;
+    this.height = scaleY * 40;
 
     this.x = positionX;
     this.y = positionY;
 
     this.enemyType = type;
 
-    this.stableHeight = 15;
+    this.stableHeight = scaleY * 15;
 
     this.speed = speed;
     this.maxDistance = maxDistance;
