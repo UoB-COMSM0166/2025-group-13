@@ -119,14 +119,12 @@ Based on the feedback we received, we settled on ‘Dino Escape’, which was mo
  <i><strong>Figure 7</strong>: Paper prototype of the game</i>
 </p>
 
-We did some feasibility studies to get us started on programming in this new language, to get more feedback about the game mechanics, and  to make sure we were still excited about ‘Dino Escape’. We developed our first digital prototype: 
+We did some feasibility studies to get us started on programming in this new language, to get more feedback about the game mechanics, and  to make sure we were still excited about ‘Dino Escape’. We developed our initial digital prototype with basic graphics and core game mechanics:
 
-<div align="center", style="display: flex;">
- <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
- <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
- <i align="left"><strong>Figure 8</strong>: 1st digital prototype of the game</i>
- <i align="right"><strong>Figure 9</strong>: 2nd digital prototype of the game</i>
-</div>
+<p align="center">
+ <img src="documentation/other_docs/Basic_game_version.gif" alt="Initial phase digital prototype" width="500"><br>
+ <i><strong>Figure 8</strong>: Initial phase digital prototype</i>
+</p>
 
 ## Stakeholders
 
@@ -142,8 +140,7 @@ The article “Stakeholders Without Tears: Understanding Project Sociology by Mo
 ## Use Cases
 
 <p align="center">
- <img src="documentation/other_docs/use_case.png" alt="Use case diagram" width="650"><br>![Uploading use case diagram.jpg…]()
-
+ <img src="documentation/other_docs/use_case.jpg" alt="Use case diagram" width="650"><br>
  <i><strong>Figure 11</strong>: Use Case Diagram</i>
 </p>
 
@@ -346,6 +343,13 @@ Development began with a minimum viable product (MVP) that laid the foundation f
   
 This prototype served as the sandbox where we validated our control system and logic before layering in additional mechanics.
 
+<div align="center", style="display: flex;">
+ <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
+ <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
+ <i align="left"><strong>Figure 8</strong>: 1st digital prototype of the game</i>
+ <i align="right"><strong>Figure 9</strong>: 2nd digital prototype of the game</i>
+</div>
+
 ## Challenge 1: Game Mechanics and Collision Detection
 To evolve the experience from a static environment into a true platformer, we introduced two key features: **gravity simulation** and **collision detection**.
 
@@ -408,6 +412,11 @@ The original game used **keyboard input** (arrow keys, spacebar). To support mob
 
 Our original layout was optimized for desktops. We faced challenges in **extracting device characteristics** and adapting visuals accordingly. We applied a combination of HTML, CSS, and p5.js to detect screen size and dynamically adjust canvas and UI elements, ensuring optimal display on any device.
 
+<p align="center">
+ <img src="documentation/other_docs/Challenge_2.gif" alt="Mobile screen gameplay" width="500"><br>
+ <i><strong>Figure 17</strong>: Mobile screen gameplay</i>
+</p>
+
 **Testing Across Devices:**
 
 Finally, as mentioned in the Testing section, we conducted continuous testing using browser developer tools and real devices, discovering bugs, solving issues and ensuring compatibility.
@@ -432,7 +441,12 @@ On February 25th and March 4th, our classmates evaluated our game during the lab
 
 ## Qualitative Evaluation
 
-At the testathon, we were able to receive feedback from a wide variety of players, including many who are experienced in game development. As such, we received rich and helpful qualitative feedback there. Though we did perform several Think Aloud and Heuristic evaluations, most of the feedback was given in the form of interviews with a few simple prompting questions. We prepared these questions ahead of time as a team with a focus on avoiding leading questions. Some examples of the questions are “What did you think about the visuals and graphic design?”, “What do you think the game is about?”, and “What do you imagine for the next level?”. 
+At the testathon, we were able to receive feedback from a wide variety of players, including many who are experienced in game development. As such, we received rich and helpful qualitative feedback there. Though we did perform several Think Aloud and Heuristic evaluations, most of the feedback was given in the form of interviews with a few simple prompting questions. We prepared these questions ahead of time as a team with a focus on avoiding leading questions. Some examples of the questions are “What did you think about the visuals and graphic design?”, “What do you think the game is about?”, and “What do you imagine for the next level?”.
+
+<p align="center">
+ <img src="documentation/other_docs/User_Testing.gif" alt="c" width="500"><br>
+ <i><strong>Figure 18</strong>: User testing</i>
+</p>
 
 The responses were analysed as follows: first, statements were categorised based on whether they were highlighting an issue or something the tester liked. Then, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Then, we counted the number of times that type of issue was mentioned. The results are included in the following figure:
 
@@ -557,11 +571,6 @@ In the future, we can work towards [defer offscreen images](https://patterns.gre
  <i><strong>Figure 25</strong>: Composite images of multiples game assets</i>
 </p>
 
-<p align="center">
- <img src="documentation/other_docs/technical.jpg" alt="Group of users playing our game" width="650"><br>
- <i><strong>Figure 26</strong>: Group of users playing our game</i>
-</p>
-
 ## Technical Sustainability
 
 According to the Sustainability Assessment Framework (SusAF), Technical Sustainability comprises five aspects: 
@@ -583,6 +592,11 @@ As for Individual Sustainability, it is made up of the following:
 - Health: we noticed that some users were displaying addictive behaviours, like repeating the second level many times consecutively because they kept losing. Accordingly, we decreased the health depletion rate slightly to make it possible to complete for a larger proportion of players. This increased the sense of achievement and decreased feelings of frustration and high mental and temporal demand. 
 
 - Lifelong learning: the first level has some challenges but is easier to complete, encouraging amateur gamers to try and learn how to play. The second level is significantly more difficult but still doable, and encouragement to try again is built-in. If a player loses during a certain level, the game will restart from that level, encouraging gamers of any ability to try again. 
+
+<p align="center">
+ <img src="documentation/other_docs/technical.jpg" alt="Group of users playing our game" width="650"><br>
+ <i><strong>Figure 26</strong>: Group of users playing our game</i>
+</p>
 
 - Privacy: since the game collects no information about its players, not even a name, users can trust that their privacy is respected and preserved. 
 
