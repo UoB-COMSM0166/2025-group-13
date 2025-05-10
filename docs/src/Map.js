@@ -10,7 +10,7 @@ class Map {
         this.enemies = [];
         this.skyFalls = [];
         this.cave;
-        this.xSpeed = 4;
+        this.xSpeed = scaleX * 4;
         this.food_height = scaleY * 25;
         this.groundDamage_height = scaleY * 70;
         this.enemy_height = scaleY * 70;
