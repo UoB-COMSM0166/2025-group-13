@@ -73,6 +73,9 @@ class GameScreen {
     windowResized() {
         this.updateScreenSize();
 
+        let canvasWidth = baseWidth;
+        let canvasHeight = baseHeight;
+
         if(this.isTouchScreenPortrait()){
             canvasWidth = screenWidth;
             canvasHeight = screenWidth / 1.7;
@@ -82,7 +85,7 @@ class GameScreen {
         }
 
         // Set the canvas size to match the container size
-        resizeCanvas(screenWidth, screenHeight);
+        resizeCanvas(canvasWidth, canvasHeight);
         // Scale the canvas based on the new width and height
         //this.scaleCanvas();
     }
