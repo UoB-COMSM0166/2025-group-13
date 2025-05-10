@@ -139,7 +139,7 @@ We did some feasibility studies to get us started on programming in this new lan
 
 As we filled in the Onion diagram, we realised that this game will have an impact beyond the deadline for the report. Just as we looked to previous students’ work for inspiration, future students will look to ours. In the future, our game’s impact could expand to new stakeholders, including product owners, financial advisors, and marketing and SEO experts in the inner circle alone. 
 
-The article “Stakeholders Without Tears: Understanding Project Sociology by Modeling Stakeholders” by Ian Alexander and Suzanne Robertson helped us understand the impact of our own role changes within the group. For us, changing roles created a more balanced sense of shared ownership of our product. 
+The article “Stakeholders Without Tears: Understanding Project Sociology by Modeling Stakeholders” by Ian Alexander and Suzanne Robertson[^1] helped us understand the impact of our own role changes within the group. For us, changing roles created a more balanced sense of shared ownership of our product. 
 
 ## Use Case Diagram and Specifications
 
@@ -222,7 +222,7 @@ Here are a few of the user stories that shaped our game development:
 
 12. As a **Scrum Master**, I want the developers to delete unused code, so that the system has a minimal environmental footprint.
 
-According to “The Use and Effectiveness of User Stories in Practice” by Garm Lucassen and others, their study of user stories found that the “why” in a user story is necessary (Lucassen et al., 2016). We found that searching for that reason leads us to prioritise that user story, instead of seeing it as just another task to complete. 
+According to “The Use and Effectiveness of User Stories in Practice” by Garm Lucassen and others[^2], their study of user stories found that the “why” in a user story is necessary (Lucassen et al., 2016). We found that searching for that reason leads us to prioritise that user story, instead of seeing it as just another task to complete. 
 
 # Design
 
@@ -369,7 +369,7 @@ While designing, we didn't just focus on visuals — we also cared about perform
 These design choices helped us achieve a more sustainable game, with faster load times and lower performance demands on players' devices.
 
 ### Sound
-Sound in video games is not just an addition but an essential element that actively shapes player interaction (Collins, 2013). We designed sound effects for every stage of the game and for different player states. This combination of sound and visuals provides instant feedback to players and enhances their sense of immersion.
+Sound in video games is not just an addition but an essential element that actively shapes player interaction (Collins, 2013[^3]). We designed sound effects for every stage of the game and for different player states. This combination of sound and visuals provides instant feedback to players and enhances their sense of immersion.
 
 **Overall**, the system is designed to be modular and well-encapsulated. The `Game` class ties everything together, while assets, input, and gameplay logic are handled by their own parts. This makes the code easier to expand, test, and maintain in the future.
 
@@ -518,11 +518,13 @@ The task load scores for levels one and two indicate that level two was signific
 
 <p align="center">
  <img src="documentation/other_docs/tlx.png" alt="NASA TLX Average Scores" width="500"><br>
- <img src="documentation/other_docs/tlx_demand.png" alt="NASA TLX Scores by Demand Category" width="500"><br>
  <i align="left"><strong>Figure 24</strong>: NASA TLX Average Scores</i>
- <i align="right"><strong>Figure 25</strong>: NASA TLX Scores by Demand Category</i>
 </p>
 
+<p align="center">
+ <img src="documentation/other_docs/tlx_demand.png" alt="NASA TLX Scores by Demand Category" width="500"><br>
+ <i align="right"><strong>Figure 25</strong>: NASA TLX Scores by Demand Category</i>
+</p>
 
 ## Testing
 For our p5.js game, we manually tested feature branches by playing in the browser to ensure new features worked and didn't break existing ones. Playtesting focused on gameplay, user experience, and performance. We documented feedback in GitHub milestones and issues for each pull request. We experimented with automated testing using GitHub Actions, but the overhead seemed disproportionate for our lightweight project, making manual testing more efficient. Our approach was primarily black-box, focusing on the player experience, though we occasionally used white-box principles for debugging. This combination of playtesting and documented feedback in GitHub facilitated iterative improvements before merging.
@@ -588,7 +590,7 @@ Regarding the implementation of Agile and Scrum, our first sprint was one week l
 
 After that sprint, we met for our first Sprint Review and Retrospective, and it was clear that a week-long sprint was too short and that the stand-ups were not working for us. We decided that all future sprints would last two weeks, and that we would have longer meetings twice a week. Later, we added Microsoft Teams to create a second space for communication, which created a clearer boundary between work and personal life, and we all committed to checking Teams regularly.
  
-According to Martin Fowler, the essence of Agile is to be “adaptive” and “people-oriented” (Fowler, 2019). By adopting new tools when needed and choosing and changing roles for each other’s benefit, we were able to implement the core principles of Agile during this project. 
+According to Martin Fowler, the essence of Agile is to be “adaptive” and “people-oriented” (Fowler, 2019[^4]). By adopting new tools when needed and choosing and changing roles for each other’s benefit, we were able to implement the core principles of Agile during this project. 
 
 <a name="sustainability-accessibility-ethics"></a>
 # Sustainability, Accessibility, and Ethics
@@ -613,9 +615,11 @@ In the future, we can work towards [defer offscreen images](https://patterns.gre
 
 ## Sustainability Calculation Indicator (SCI)
 
-We had a guest lecture by Joseph Cook, Head of R&D at the Green Software Foundation[^1], on developing software with sustainability in mind. Using those concepts, we calculated an initial SCI to better understand the carbon impact of our development automation.
+We had a guest lecture by Joseph Cook, Head of R&D at the Green Software Foundation[^5], on developing software with sustainability in mind. Using those concepts, we calculated an initial SCI to better understand the carbon impact of our development automation.
 
-**SCI = (O + M) / R**
+<p align="center">
+ SCI = (O + M) / R
+</p>
 
 **Stepwise Calculations:**
 
@@ -631,7 +635,7 @@ From the start of our project this year until May 10th, 2025, the GitHub Actions
 * Power usage (assumed): 0.1 kW
 * Energy used (E): 5.28 hours × 0.1 kW = 0.528 kWh
 * Carbon intensity (I): 0.4 kg CO2eq/kWh
-* **O = (E × I) = 0.528 kWh × 0.4 kg CO2eq/kWh = 0.2112 kg CO2eq**
+* **O = (E × I)** = 0.528 kWh × 0.4 kg CO2eq/kWh = 0.2112 kg CO2eq
 
 **Find M (Embodied emissions):**
 
@@ -639,7 +643,7 @@ From the start of our project this year until May 10th, 2025, the GitHub Actions
 
 **Evaluate SCI:**
 
-* **SCI = O / R = (0.2112 kg CO2eq + 0) / 315 job runs = 0.00067 kg CO2eq/job run**
+* **SCI = O / R** = (0.2112 kg CO2eq + 0) / 315 job runs = 0.00067 kg CO2eq/job run
 
 This initial SCI (0.67 g/job run) gives us a helpful starting point to understand the carbon impact of our development automation. It also provides a baseline we can use to track improvements as we make our workflows more sustainable in the future.
 
@@ -730,9 +734,9 @@ All in all, we feel lucky to have been part of such a strong and supportive team
 
 
 # References
-1. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
-2. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
-3. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
-[^4]: Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
-5. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
-6. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
+[^1]. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
+[^2]. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
+[^3]. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
+[^4]. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
+[^5]. Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
+[^6]. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
