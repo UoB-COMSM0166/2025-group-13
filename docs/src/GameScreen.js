@@ -13,12 +13,12 @@ const canvasContainer = document.getElementById('canvas-container');
 let titleGlow = 0;
 let glowDirection = 1;
 // Get and set full screen states
-const requestFS = canvasContainer.requestFullscreen 
-                || canvasContainer.webkitRequestFullscreen
-                || canvasContainer.msRequestFullscreen;
+const requestFS = canvasContainer.requestFullscreen
+    || canvasContainer.webkitRequestFullscreen
+    || canvasContainer.msRequestFullscreen;
 const exitFS    = document.exitFullscreen
-                || document.webkitExitFullscreen
-                || document.msExitFullscreen;
+    || document.webkitExitFullscreen
+    || document.msExitFullscreen;
 let isFullScreen = false;
 
 class GameScreen {
@@ -26,9 +26,29 @@ class GameScreen {
         this.assetManager = assetManager;
     }
 
+    isTouchScreenPortrait() {
+        return window.matchMedia("(pointer: coarse)").matches && window.matchMedia("(orientation: portrait)").matches;
+    }
+
+    isTouchScreenLandscape() {
+        return window.matchMedia("(pointer: coarse)").matches && window.matchMedia("(orientation: landscape)").matches;
+    }
+
+    isMouseBased() {
+        return window.matchMedia("(pointer: fine)").matches;
+    }
+
+    updateScreenSize(){
+        let canvasRect = canvasContainer.getBoundingClientRect();
+        screenWidth = canvasRect.width; // rect.width * dp
+        screenHeight = canvasRect.height; // rect.height * dpr
+        updateScalingFactors();
+    }
+
     setup() {
+        this.updateScreenSize();
         // Create the canvas with the calculated width and height
-        const canvas = createCanvas(baseWidth, baseHeight);
+        const canvas = createCanvas(screenWidth, screenHeight);
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
         // Resize screen and scale the canvas based on the scale factors
@@ -51,14 +71,20 @@ class GameScreen {
     }
 
     windowResized() {
-        let canvasRect = canvasContainer.getBoundingClientRect();
-        // Get the width and height of the canvas container
-        screenWidth = canvasRect.width; // rect.width * dp 
-        screenHeight = canvasRect.height; // rect.height * dpr
+        this.updateScreenSize();
+
+        if(this.isTouchScreenPortrait()){
+            canvasWidth = screenWidth;
+            canvasHeight = screenWidth / 1.7;
+        } else if(this.isTouchScreenLandscape()){
+            canvasHeight = screenHeight;
+            canvasWidth = screenHeight * 1.7;
+        }
+
         // Set the canvas size to match the container size
         resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
-        this.scaleCanvas();
+        //this.scaleCanvas();
     }
 
     fullScreenChange() {
