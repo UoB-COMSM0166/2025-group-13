@@ -571,6 +571,38 @@ In the future, we can work towards [defer offscreen images](https://patterns.gre
  <i><strong>Figure 25</strong>: Composite images of multiples game assets</i>
 </p>
 
+## Sustainability Calculation Indicator (SCI)
+
+We had a guest lecture by Joseph Cook, Head of R&D at the Green Software Foundation[^1], on developing software with sustainability in mind. Using those concepts, we calculated an initial SCI to better understand the carbon impact of our development automation.
+
+**SCI = (O + M) / R**
+
+**Stepwise Calculations:**
+
+From the start of our project this year until May 10th, 2025, the GitHub Actions workflows for our project recorded a total of 317 runtime minutes (5.28 hours) and 315 job runs (R i.e. Resource unit).
+
+<p align="center">
+ <img src="documentation/other_docs/GitHub_Actions_Usage_Matrix.png" alt="GitHub Actions Usage Matrix" width="650"><br>
+ <i><strong>Figure 24</strong>: GitHub Actions Usage Matrix</i>
+</p>
+
+**Find O (Operational carbon emissions):**
+
+* Power usage (assumed): 0.1 kW
+* Energy used (E): 5.28 hours × 0.1 kW = 0.528 kWh
+* Carbon intensity (I): 0.4 kg CO2eq/kWh
+* **O = (E × I) = 0.528 kWh × 0.4 kg CO2eq/kWh = 0.2112 kg CO2eq**
+
+**Find M (Embodied emissions):**
+
+* **M = 0** (excluded from this initial estimate due to the difficulty in attributing the embodied carbon of the shared GitHub infrastructure to our specific usage).
+
+**Evaluate SCI:**
+
+* **SCI = O / R = (0.2112 kg CO2eq + 0) / 315 job runs = 0.00067 kg CO2eq/job run**
+
+This initial SCI (0.67 g/job run) gives us a helpful starting point to understand the carbon impact of our development automation. It also provides a baseline we can use to track improvements as we make our workflows more sustainable in the future.
+
 ## Technical Sustainability
 
 According to the Sustainability Assessment Framework (SusAF), Technical Sustainability comprises five aspects: 
@@ -661,5 +693,6 @@ All in all, we feel lucky to have been part of such a strong and supportive team
 1. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
 2. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
 3. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
-4. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
-5. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
+[^4]: Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
+5. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
+6. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
