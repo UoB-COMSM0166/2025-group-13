@@ -8,7 +8,7 @@
   
 ## ★ [Check the code](/docs)
 
-## ★ [Watch our video](https://github.com/UoB-COMSM0166/2025-group-13/blob/main/documentation/paper_prototype/dino_adventure_run.mp4) (Paper prototype video for now)
+## ★ [Watch demo video](https://youtu.be/gaBLE-WW40c?feature=shared)
 
 
 # Table of Contents
@@ -19,14 +19,14 @@
 5. [Implementation](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#implementation)
 6. [Evaluation](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#evaluation)
 7. [Process](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#process)
-8. [Sustainability, Accessibility, and Ethics](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#sustainability,-accessibility,-and-ethics)
+8. [Sustainability, Accessibility, and Ethics](#sustainability-accessibility-ethics)
 9. [Conclusion](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#conclusion)
 
 
 # Team
 <p align="center">
  <img src="https://github.com/user-attachments/assets/7ed7a239-6743-405e-ad80-5778d417fd5a" alt="Group 13 photo" width="400"><br>
- <i><strong>Figure 1</strong>: Team photo during the first Sprint Planning session.</i>
+ <i><strong>Figure 1</strong>: First Sprint Planning session</i>
 </p>
 
 <table align="center", style="border-collapse: collapse; text-align: center;">
@@ -70,13 +70,13 @@
     <td>Software Developer</td>
    </tr>
 </table>
-<p align="center"><strong>Figure 2</strong>: Table with team information.</p>
+<p align="center"><strong>Figure 2</strong>: Team information</p>
 
 
 # Introduction
 <p align="center"> 
- <img src="documentation/other_docs/playing1.gif" alt="Gameplay level 1" width="650"><br>
- <i><strong>Figure 3</strong>: Gif showing level 1.</i>
+ <img src="documentation/other_docs/playing1.gif" alt="Gameplay - level 1" width="650"><br>
+ <i><strong>Figure 3</strong>: Level 1 gameplay</i>
 </p>
 
 Dino Escape is an action-packed retro platformer inspired by classic Mario Bros gameplay, but with a prehistoric twist as well as a different gameplay experience. Step into the escape of the last T-Rex, racing against extinction through challenging levels and vibrant landscapes. 
@@ -84,8 +84,8 @@ Dino Escape is an action-packed retro platformer inspired by classic Mario Bros 
 Though our game is inspired by classic platformer games, the health bar provides a slightly different experience. Firstly, users will need to pay attention to the environment and look for food, which will increase their health, and avoid dangerous elements, which will rapidly decrease it. Secondly, due to the harsh landscape that threatens the player, health will continuously run out. This adds a time element, pushing users to feel that constant threat of extinction. 
 
 <p align="center"> 
- <img src="documentation/other_docs/playing.gif" alt="Gameplay level 2" width="650"><br>
- <i><strong>Figure 4</strong>: Gif showing level 2.</i>
+ <img src="documentation/other_docs/playing.gif" alt="Gameplay - level 2" width="650"><br>
+ <i><strong>Figure 4</strong>: Level 2 gameplay</i>
 </p>
 
 The extinction theme is present throughout the game: in the first part, a volcano has erupted and lava is everywhere – jump on the platforms to escape death. In the second part, your world has frozen over, and every moment you stay outside threatens your existence. While the first part is relatively easy and achievable for gamers of any skill level, the second part is far more challenging, and it has a way of keeping even experienced gamers engaged. 
@@ -98,25 +98,25 @@ The game makes use of classic keyboard controls to ease the learning curve, as w
 This section will cover a few of the key considerations in the early stages of our game development’s life cycle: ideation, feasibility, stakeholders, use cases, epics, and user stories. 
 
 ## Ideation & early stage design
-The ideation process for our game began with research and brainstorming. We then compiled an initial list of 13 proposals. We evaluated each option using the following criteria: Attractiveness, Complexity, Feasibility using P5.js, and User-Friendliness.
+The ideation process for our game began with research and brainstorming. We then compiled an initial list of 13 proposals. We evaluated each option using the following criteria: Attractiveness, Complexity, Feasibility using p5.js, and User-Friendliness.
 
 <p align="center">
  <img src="documentation/other_docs/ideas.png" alt="Coming up with ideas" width="900"><br>
- <i><strong>Figure 5</strong>: Table with intial game ideas.</i>
+ <i><strong>Figure 5</strong>: Initial game ideas</i>
 </p>
 
 From there, we ranked our choices, discussed the ones that scored the best, and chose two very different games to validate through paper prototypes: ‘Dino Escape’ and ‘Train of Thought’.
 
 <p align="center">
  <img src="documentation/other_docs/board_32.jpeg" alt="Choosing our game" width="650"><br>
- <i><strong>Figure 6</strong>: Image of the board with game ideas ranking.</i>
+ <i><strong>Figure 6</strong>: Game ideas ranking</i>
 </p>
 
 Based on the feedback we received, we settled on ‘Dino Escape’, which was more intriguing to users and had much more potential for expansion.
 
 <p align="center">
  <img src="documentation/other_docs/paper.gif" alt="Paper prototype" width="500"><br>
- <i><strong>Figure 7</strong>: Gif showing a paper prototype of the game.</i>
+ <i><strong>Figure 7</strong>: Paper prototype of the game</i>
 </p>
 
 We did some feasibility studies to get us started on programming in this new language, to get more feedback about the game mechanics, and  to make sure we were still excited about ‘Dino Escape’. We developed our first digital prototype: 
@@ -124,15 +124,15 @@ We did some feasibility studies to get us started on programming in this new lan
 <div align="center", style="display: flex;">
  <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
  <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
- <i align="left"><strong>Figure 8</strong>: Gif showing the 1st digital prototype of the game.</i>
- <i align="right"><strong>Figure 9</strong>: Gif showing the 2nd digital prototype of the game.</i>
+ <i align="left"><strong>Figure 8</strong>: 1st digital prototype of the game</i>
+ <i align="right"><strong>Figure 9</strong>: 2nd digital prototype of the game</i>
 </div>
 
 ## Stakeholders
 
 <p align="center">
  <img src="documentation/other_docs/onion.png" alt="Onion Model" width="500"><br>
- <i><strong>Figure 10</strong>: Image showing the stakeholders using the Onion Model.</i>
+ <i><strong>Figure 10</strong>: Onion Diagram segregating Stakeholders</i>
 </p>
 
 As we filled in the Onion diagram, we realised that this game will have an impact beyond the deadline for the report. Just as we looked to previous students’ work for inspiration, future students will look to ours. In the future, our game’s impact could expand to new stakeholders, including product owners, financial advisors, and marketing and SEO experts in the inner circle alone. 
@@ -142,8 +142,9 @@ The article “Stakeholders Without Tears: Understanding Project Sociology by Mo
 ## Use Cases
 
 <p align="center">
- <img src="documentation/other_docs/use_case.png" alt="Use case diagram" width="650"><br>
- <i><strong>Figure 11</strong>: Image showing the Use Case Diagram.</i>
+ <img src="documentation/other_docs/use_case.png" alt="Use case diagram" width="650"><br>![Uploading use case diagram.jpg…]()
+
+ <i><strong>Figure 11</strong>: Use Case Diagram</i>
 </p>
 
 **- Use Case Name:** Play </li>
@@ -173,7 +174,7 @@ The article “Stakeholders Without Tears: Understanding Project Sociology by Mo
 ## Epics and User Stories
 <p align="center">
  <img src="documentation/other_docs/kanban.gif" alt="Our Kanban" width="400"><br>
- <i><strong>Figure 12</strong>: Image showing our Kanban Board.</i>
+ <i><strong>Figure 12</strong>: Kanban Board</i>
 </p>
 
 Here are a few of the user stories that shaped our game development: 
@@ -254,7 +255,7 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
   </table>
 </div>
 <p align="center">
- <i><strong>Figure 13</strong>: Table showing the game objects.</i>
+ <i><strong>Figure 13</strong>: Game objects</i>
 </p>
 
 The **Game** is at the core of the program. It keeps track of the current level, updates the game each frame, draws everything on screen, and handles communication between classes. 
@@ -277,7 +278,7 @@ The **GameScreen** takes care of what is outside the main gameplay, like the hom
 
 <p align="center">
  <img src="documentation/other_docs/class_diagram.png" alt="Class diagram" width="900"><br>
- <i><strong>Figure 14</strong>: Image showing the Class Diagram.</i>
+ <i><strong>Figure 14</strong>: Class Diagram</i>
 </p>
 
 The figure above shows the interaction of all the classes with each other. 
@@ -303,7 +304,7 @@ The figure above shows the interaction of all the classes with each other.
 
 <p align="center">
  <img src="documentation/other_docs/BehaviourDiagram.png" alt="Behavioural diagram" width="900"><br>
- <i><strong>Figure 15</strong>: Image showing the Behavioural Diagram.</i>
+ <i><strong>Figure 15</strong>: Behavioural Diagram</i>
 </p>
 
 The core game logic in Dino Escape is driven by an update loop managed by the Game class, which processes player inputs, updates all game objects, and manages game states. 
@@ -383,7 +384,7 @@ We adopted **one-way camera constraints** inspired by *Super Mario Bros*.. Playe
 
 <p align="center">
  <img src="documentation/other_docs/new_mapdesign.jpg" alt="Map sketch" width="650"><br>
- <i><strong>Figure 16</strong>: Image showing the design of game levels hand drawn.</i>
+ <i><strong>Figure 16</strong>: Hand-Drawn Level Maps</i>
 </p>
 
 Initially, platform and NPC positions were hardcoded into the Map class, making the code brittle and unscalable. To overcome this, we introduced a Layout class, which:
@@ -424,7 +425,7 @@ To evaluate our game, we conducted qualitative evaluations using Think Aloud, He
 
 <p align="center">
  <img src="documentation/other_docs/testathon_grouppic.jpg" alt="At the Testathon" width="650"><br>
- <i><strong>Figure 17</strong>: Image of the team in the Testathon.</i>
+ <i><strong>Figure 17</strong>: Team at the Testathon Event</i>
 </p>
 
 On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and why we are collecting feedback and taking photos and videos. 
@@ -483,7 +484,7 @@ As a team, we met frequently and always in person. We made use of spaces with sc
 
 <p align="center">
  <img src="documentation/meeting_notes/img/photo_meeting4-1.jpg" alt="Fun activity" width="650"><br>
- <i><strong>Figure 22</strong>: Image of team integration activity.</i>
+ <i><strong>Figure 22</strong>: Team's Icebreaker Activity</i>
 </p>
 
 Later, our meetings varied in content and focus, but overall we stuck to an Agile mindset and Scrum methodology and workflow. We had four sprints of one or two weeks each during which we tried to develop our game efficiently, focusing on a specific goal each time. Afterwards, we would meet to do a Sprint Review focused on what we had done, Sprint Retrospective focused on how we had worked together, and Sprint Plan for the next sprint. 
@@ -494,14 +495,14 @@ One of our first meetings after getting comfortable with each other was a team p
 
 <p align="center">
  <img src="documentation/other_docs/board_42.jpg" alt="Team profiling activity" width="650"><br>
- <i><strong>Figure 23</strong>: Image of team profiling activity.</i>
+ <i><strong>Figure 23</strong>: Team profiling activity</i>
 </p>
 
 We defined the necessary roles for our project, differentiating between critical roles, which would be needed throughout the project, and complementary roles, which would be needed for a specific period of time. 
 
 <p align="center">
  <img src="documentation/other_docs/board_43.jpg" alt="Team profiling activity" width="650"><br>
- <i><strong>Figure 24</strong>: Image of team profiling activity.</i>
+ <i><strong>Figure 24</strong>: Role Assignment and Rotation</i>
 </p>
 
 We had a lengthy discussion about whether we should each work in the role we are most skilled at, or whether to explore our interests, and even discussed this with our professors. We decided it would be best to balance both, giving each other opportunities to explore new things by shuffling the roles after the second sprint. This gave each person the ability to experience something new, as well as work in a role they had experience in. At one point, someone felt that they wanted to change roles, and several team members shifted roles to make that happen. In the end, we each did some game development as well as at least one other role. 
@@ -535,6 +536,7 @@ After that sprint, we met for our first Sprint Review and Retrospective, and it 
  
 According to Martin Fowler, the essence of Agile is to be “adaptive” and “people-oriented” (Fowler, 2019). By adopting new tools when needed and choosing and changing roles for each other’s benefit, we were able to implement the core principles of Agile during this project. 
 
+<a name="sustainability-accessibility-ethics"></a>
 # Sustainability, Accessibility, and Ethics
 This section outlines the key sustainability aspects we addressed in the development of our game, focusing on environmental, technical, and individual impacts.
 
@@ -550,27 +552,27 @@ Based on the Green Software Patterns, we implemented several improvements to red
 In the future, we can work towards [defer offscreen images](https://patterns.greensoftware.foundation/catalog/web/defer-offscreen-images) and [deprecate GIFs](https://patterns.greensoftware.foundation/catalog/web/deprecate-gifs/) for animated content patterns.
 
 <p align="center">
- <img src="docs/assets/items/item_healthRelated.png" alt="Overview of our branches" width="650">
- <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Overview of our branches" width="650"><br>
- <i><strong>Figure 25</strong>: Composite images of multiples game assets.</i>
+ <img src="docs/assets/items/item_healthRelated.png" alt="Composite of game entity images" width="650">
+ <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Composite of tile images" width="650"><br>
+ <i><strong>Figure 25</strong>: Composite images of multiples game assets</i>
 </p>
 
 <p align="center">
- <img src="documentation/other_docs/technical.jpg" alt="Overview of our branches" width="650"><br>
- <i><strong>Figure 26</strong>: Image showing a group of users playing our game.</i>
+ <img src="documentation/other_docs/technical.jpg" alt="Group of users playing our game" width="650"><br>
+ <i><strong>Figure 26</strong>: Group of users playing our game</i>
 </p>
 
 ## Technical Sustainability
 
 According to the Sustainability Assessment Framework (SusAF), Technical Sustainability comprises five aspects: 
 
-- Maintainability: our game is currently hosted by Github Pages, and we have mostly tested it in mainstream browsers. If these platforms were updated, we would need to test and update our game. Continuous testing and maintenance are crucial to our game’s operation.
+- Maintainability: our game is currently hosted by GitHub Pages, and we have mostly tested it in mainstream browsers. If these platforms were updated, we would need to test and update our game. Continuous testing and maintenance are crucial to our game’s operation.
 
 - Usability: our game has simple controls and clear instructions. We increased the graphics’ contrast for easier detection of objects and made the dinosaur flash red when injured. The adaptability to different devices makes it usable to a wider range of abilities. 
 
 - Adaptability: the game can be used on a PC or touch-screen device and is continuously being tested on more devices.
 
-- Security: the game does not collect or store any information, and so is not desirable for hackers. Also, all our code is available to the public through Github, so that is not a reason to attack either. 
+- Security: the game does not collect or store any information, and so is not desirable for hackers. Also, all our code is available to the public through GitHub, so that is not a reason to attack either. 
 
 - Scalability: our game can currently be played on multiple devices at once, but we have not tested this on a large-enough scale that we know if there are limits to this capacity. 
 
@@ -638,7 +640,7 @@ All in all, we feel lucky to have been part of such a strong and supportive team
     <td>20</td>
    </tr>
 </table>
-<p align="center"><strong>Figure 27</strong>: Table of team contribution statement.</p>
+<p align="center"><strong>Figure 27</strong>: Team contribution statement</p>
 
 
 # References
