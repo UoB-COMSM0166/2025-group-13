@@ -73,8 +73,8 @@ class GameScreen {
     windowResized() {
         this.updateScreenSize();
 
-        let canvasWidth = baseWidth;
-        let canvasHeight = baseHeight;
+        let canvasWidth = screenWidth;
+        let canvasHeight = screenHeight;
 
         if(this.isTouchScreenPortrait()){
             canvasWidth = screenWidth;

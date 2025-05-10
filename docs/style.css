@@ -115,11 +115,11 @@ h1 {
 /* Styles for mouse-based devices */
 @media (pointer: fine) {
   #canvas-container{
-    width: 850px;
-    height: 500px;
+    height: 100vh;
+    width: calc(100vh * 1.7);
   }
   h1, header, #instructions {
-    display: block;
+    display: none;
   }
 }
 
