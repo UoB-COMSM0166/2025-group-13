@@ -8,11 +8,11 @@ class Game {
         this.windowLeft = 0;
 
         //this.lavaTileHeight = 25;
-        this.lavaTileHeight = 25;
-        this.lavaTileWidth = 50;
+        this.lavaTileHeight = scaleY * 25;
+        this.lavaTileWidth = scaleX * 50;
 
         //this.groundTop = height - this.lavaTileHeight;
-        this.groundTop = height - 50;
+        this.groundTop = height - (scaleY * 50);
 
         this.maps = [];
         for (let i = 0; i < layouts.length; i++) {
