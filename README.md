@@ -1,5 +1,7 @@
 <p align="left">
- <img src="https://github.com/user-attachments/assets/5844371a-4d04-4f6f-8502-90d913b1c079" alt="Game Banner"> 
+  <a href="https://uob-comsm0166.github.io/2025-group-13/">
+    <img src="https://github.com/user-attachments/assets/5844371a-4d04-4f6f-8502-90d913b1c079" alt="Game Banner">
+  </a>
 </p>
 
 # Dino Escape: An Extinction Adventure Game
@@ -8,25 +10,27 @@
   
 ## ★ [Check the code](/docs)
 
-## ★ [Watch our video](https://github.com/UoB-COMSM0166/2025-group-13/blob/main/documentation/paper_prototype/dino_adventure_run.mp4) (Paper prototype video for now)
+## ★ [Watch demo video](https://youtu.be/gaBLE-WW40c?feature=shared)
 
 
 # Table of Contents
-1. [Team](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#team)
-2. [Introduction](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#introduction)
-3. [Requirements](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#requirements)
-4. [Design](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#design)
-5. [Implementation](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#implementation)
-6. [Evaluation](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#evaluation)
-7. [Process](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#process)
-8. [Sustainability, Accessibility, and Ethics](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#sustainability,-accessibility,-and-ethics)
-9. [Conclusion](https://github.com/UoB-COMSM0166/2025-group-13?tab=readme-ov-file#conclusion)
+1. [Team](#team)
+2. [Introduction](#introduction)
+3. [Requirements](#requirements)
+4. [Design](#design)
+5. [Implementation](#implementation)
+6. [Evaluation](#evaluation)
+7. [Process](#process)
+8. [Sustainability, Accessibility, and Ethics](#sustainability-accessibility-ethics)
+9. [Conclusion](#conclusion)
+10. [Contribution Statement](#contribution-statement)
+11. [References](#references)
 
 
 # Team
 <p align="center">
  <img src="https://github.com/user-attachments/assets/7ed7a239-6743-405e-ad80-5778d417fd5a" alt="Group 13 photo" width="400"><br>
- <i><strong>Figure 1</strong>: Team photo during the first Sprint Planning session.</i>
+ <i><strong>Figure 1</strong>: First Sprint Planning session</i>
 </p>
 
 <table align="center", style="border-collapse: collapse; text-align: center;">
@@ -70,13 +74,13 @@
     <td>Software Developer</td>
    </tr>
 </table>
-<p align="center"><strong>Figure 2</strong>: Table with team information.</p>
+<p align="center"><strong>Figure 2</strong>: Team information</p>
 
 
 # Introduction
 <p align="center"> 
- <img src="documentation/other_docs/playing1.gif" alt="Gameplay level 1" width="650"><br>
- <i><strong>Figure 3</strong>: Gif showing level 1.</i>
+ <img src="documentation/other_docs/playing1.gif" alt="Gameplay - level 1" width="650"><br>
+ <i><strong>Figure 3</strong>: Level 1 gameplay</i>
 </p>
 
 Dino Escape is an action-packed retro platformer inspired by classic Mario Bros gameplay, but with a prehistoric twist as well as a different gameplay experience. Step into the escape of the last T-Rex, racing against extinction through challenging levels and vibrant landscapes. 
@@ -84,8 +88,8 @@ Dino Escape is an action-packed retro platformer inspired by classic Mario Bros 
 Though our game is inspired by classic platformer games, the health bar provides a slightly different experience. Firstly, users will need to pay attention to the environment and look for food, which will increase their health, and avoid dangerous elements, which will rapidly decrease it. Secondly, due to the harsh landscape that threatens the player, health will continuously run out. This adds a time element, pushing users to feel that constant threat of extinction. 
 
 <p align="center"> 
- <img src="documentation/other_docs/playing.gif" alt="Gameplay level 2" width="650"><br>
- <i><strong>Figure 4</strong>: Gif showing level 2.</i>
+ <img src="documentation/other_docs/playing.gif" alt="Gameplay - level 2" width="650"><br>
+ <i><strong>Figure 4</strong>: Level 2 gameplay</i>
 </p>
 
 The extinction theme is present throughout the game: in the first part, a volcano has erupted and lava is everywhere – jump on the platforms to escape death. In the second part, your world has frozen over, and every moment you stay outside threatens your existence. While the first part is relatively easy and achievable for gamers of any skill level, the second part is far more challenging, and it has a way of keeping even experienced gamers engaged. 
@@ -98,82 +102,99 @@ The game makes use of classic keyboard controls to ease the learning curve, as w
 This section will cover a few of the key considerations in the early stages of our game development’s life cycle: ideation, feasibility, stakeholders, use cases, epics, and user stories. 
 
 ## Ideation & early stage design
-The ideation process for our game began with research and brainstorming. We then compiled an initial list of 13 proposals. We evaluated each option using the following criteria: Attractiveness, Complexity, Feasibility using P5.js, and User-Friendliness.
+The ideation process for our game began with research and brainstorming. We then compiled an initial list of 13 proposals. We evaluated each option using the following criteria: Attractiveness, Complexity, Feasibility using p5.js, and User-Friendliness.
 
 <p align="center">
  <img src="documentation/other_docs/ideas.png" alt="Coming up with ideas" width="900"><br>
- <i><strong>Figure 5</strong>: Table with intial game ideas.</i>
+ <i><strong>Figure 5</strong>: Initial game ideas</i>
 </p>
 
 From there, we ranked our choices, discussed the ones that scored the best, and chose two very different games to validate through paper prototypes: ‘Dino Escape’ and ‘Train of Thought’.
 
 <p align="center">
  <img src="documentation/other_docs/board_32.jpeg" alt="Choosing our game" width="650"><br>
- <i><strong>Figure 6</strong>: Image of the board with game ideas ranking.</i>
+ <i><strong>Figure 6</strong>: Game ideas ranking</i>
 </p>
 
 Based on the feedback we received, we settled on ‘Dino Escape’, which was more intriguing to users and had much more potential for expansion.
 
 <p align="center">
  <img src="documentation/other_docs/paper.gif" alt="Paper prototype" width="500"><br>
- <i><strong>Figure 7</strong>: Gif showing a paper prototype of the game.</i>
+ <i><strong>Figure 7</strong>: Paper prototype of the game</i>
 </p>
 
-We did some feasibility studies to get us started on programming in this new language, to get more feedback about the game mechanics, and  to make sure we were still excited about ‘Dino Escape’. We developed our first digital prototype: 
+We did some feasibility studies to get us started on programming in this new language, to get more feedback about the game mechanics, and  to make sure we were still excited about ‘Dino Escape’. We developed our initial digital prototype with basic graphics and core game mechanics:
 
-<div align="center", style="display: flex;">
- <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
- <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
- <i align="left"><strong>Figure 8</strong>: Gif showing the 1st digital prototype of the game.</i>
- <i align="right"><strong>Figure 9</strong>: Gif showing the 2nd digital prototype of the game.</i>
-</div>
+<p align="center">
+ <img src="documentation/other_docs/Basic_game_version.gif" alt="Initial phase digital prototype" width="500"><br>
+ <i><strong>Figure 8</strong>: Initial phase digital prototype</i>
+</p>
 
 ## Stakeholders
 
 <p align="center">
  <img src="documentation/other_docs/onion.png" alt="Onion Model" width="500"><br>
- <i><strong>Figure 10</strong>: Image showing the stakeholders using the Onion Model.</i>
+ <i><strong>Figure 9</strong>: Onion Diagram segregating Stakeholders</i>
 </p>
 
 As we filled in the Onion diagram, we realised that this game will have an impact beyond the deadline for the report. Just as we looked to previous students’ work for inspiration, future students will look to ours. In the future, our game’s impact could expand to new stakeholders, including product owners, financial advisors, and marketing and SEO experts in the inner circle alone. 
 
-The article “Stakeholders Without Tears: Understanding Project Sociology by Modeling Stakeholders” by Ian Alexander and Suzanne Robertson helped us understand the impact of our own role changes within the group. For us, changing roles created a more balanced sense of shared ownership of our product. 
+The article “Stakeholders Without Tears: Understanding Project Sociology by Modeling Stakeholders” by Ian Alexander and Suzanne Robertson[^1] helped us understand the impact of our own role changes within the group. For us, changing roles created a more balanced sense of shared ownership of our product. 
 
-## Use Cases
+## Use Case Diagram and Specifications
 
 <p align="center">
- <img src="documentation/other_docs/use_case.png" alt="Use case diagram" width="650"><br>
- <i><strong>Figure 11</strong>: Image showing the Use Case Diagram.</i>
+ <img src="documentation/other_docs/use_case.jpg" alt="Use case diagram" width="650"><br>
+ <i><strong>Figure 10</strong>: Use Case Diagram</i>
 </p>
 
-**- Use Case Name:** Play </li>
+<table>
+  <thead>
+    <tr>
+      <th colspan="2" align="left"><b>Use Case Name:</b> Play</th>
+    </tr>
+    <tr>
+      <td colspan="2"><b>Description:</b> The player utilizes controls to navigate and tries to win the game.</td>
+    </tr>
+    <tr>
+      <th><b>Basic Flow</b></th>
+      <th><b>Alternative Flow</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1. The Player uses input devices (Computer or Mobile or Tablet) to start the game.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2. Player reads Instructions and presses the jump key to play the game.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3. The Player moves their character within the Jurassic environment.</td>
+      <td rowspan="2">1. Game pauses after pressing the Escape key. After pressing the jump key, the game resumes.</td>
+    </tr>
+    <tr>
+      <td>4. The health of the player gets increased/decreased based on the interaction between player and other entities in the game.</td>
+    </tr>
+    <tr>
+      <td>5. After reaching the cave at the end of the level, level gets completed.</td>
+      <td rowspan="2">2. After reaching zero health, the player dies. The Game Over screen gets displayed with options to go back to home and to retry the level again.</td>
+    </tr>
+    <tr>
+      <td>6. After completing all the levels, player wins.</td>
+    </tr>
+  </tbody>
+</table>
 
-**- Description:** The player utilizes controls to navigate and tries to win the game.
-
-**- Basic Flow:**
-
-1. The Player uses input devices (Computer or Mobile or Tablet) to start the game.
-
-2. Player reads Instructions and presses the jump key to play the game.
-
-3. The Player moves their character within the Jurassic environment.
-
-4. The health of the player gets increased/decreased based on the interaction between player and other entities in the game.
-
-5. After reaching the cave at the end of the level, level gets completed.
-
-6. After completing all the levels, player wins.
-
-**- Alternative Flows:**
-
-1. Game pauses after pressing the Escape key. After pressing the jump key, the game resumes.
-
-2. After reaching zero health, the player dies. The Game Over screen gets displayed with options to go back to home and to retry the level again.
+<p align="center">
+ <i><strong>Figure 11</strong>: Use Case Specifications</i>
+</p>
 
 ## Epics and User Stories
 <p align="center">
  <img src="documentation/other_docs/kanban.gif" alt="Our Kanban" width="400"><br>
- <i><strong>Figure 12</strong>: Image showing our Kanban Board.</i>
+ <i><strong>Figure 12</strong>: Kanban Board</i>
 </p>
 
 Here are a few of the user stories that shaped our game development: 
@@ -201,116 +222,137 @@ Here are a few of the user stories that shaped our game development:
 
 12. As a **Scrum Master**, I want the developers to delete unused code, so that the system has a minimal environmental footprint.
 
-According to “The Use and Effectiveness of User Stories in Practice” by Garm Lucassen and others, their study of user stories found that the “why” in a user story is necessary (Lucassen et al., 2016). We found that searching for that reason leads us to prioritise that user story, instead of seeing it as just another task to complete. 
+According to “The Use and Effectiveness of User Stories in Practice” by Garm Lucassen and others[^2], their study of user stories found that the “why” in a user story is necessary (Lucassen et al., 2016). We found that searching for that reason leads us to prioritise that user story, instead of seeing it as just another task to complete. 
 
 # Design
 
 ## System Architecture and Class Design
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <table style="border-collapse: collapse; text-align: center; width: 60%; margin: 0 auto;">
-    <tr>
-      <th>Category</th>
-      <th>Image</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>Dino</td>
-      <td><img src="" alt="Dino" style="height: 100px;"></td>
-      <td>The main and only playable character, a red dinosaur.</td>
-    </tr>
-    <tr>
-      <td>Platform</td>
-      <td><img src="" alt="Platforms" style="height: 100px;"></td>
-      <td>Simple brick tiles are combined to create ground and platforms.</td>
-    </tr>
-    <tr>
-      <td>Cave</td>
-      <td><img src="" alt="Cave" style="height: 100px;"></td>
-      <td>It symbolises safety and is the victory condition for each level.</td>
-    </tr>
-    <tr>
-      <td>Trap</td>
-      <td><img src="" alt="Trap" style="height: 100px;"></td>
-      <td>Deadly danger if the player falls into these cracks in the ground.</td>
-    </tr>
-       <tr>
-      <td>Enemy</td>
-      <td><img src="" alt="Enemy" style="height: 100px;"></td>
-      <td>Enemies move on platforms and damage the player.</td>
-    </tr>
-    </tr>
-       <tr>
-      <td>Falling item</td>
-      <td><img src="" alt="Falling item" style="height: 100px;"></td>
-      <td>Randomly dropped damage from the air.</td>
-    </tr>
-    </tr>
-       <tr>
-      <td>Health Item</td>
-      <td><img src="" alt="Health Item" style="height: 100px;"></td>
-      <td>Including foods and ground obstacles that have an effect on player health</td>
-    </tr>
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <table style="width: 100%; max-width: 600px; border-collapse: collapse; font-family: sans-serif;">
+    <thead>
+      <tr>
+        <th style="text-align: left; padding: 8px;">Category</th>
+        <th style="text-align: center; padding: 8px;">Image</th>
+        <th style="text-align: left; padding: 8px;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 8px;">Dino</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/player/item_dino_red.png" alt="Dino" style="height: 120px;">
+        </td>
+        <td style="padding: 8px;">The main and only playable character, a red dinosaur.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Platform</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 75px;">
+        </td>
+        <td style="padding: 8px;">Simple brick tiles are combined to create ground and platforms.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Cave</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/caveFire.png" alt="Level 1 Cave" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/caveIce.png" alt="Level 2 Cave" style="height: 75px;">
+        </td>
+        <td style="padding: 8px;">It symbolises safety and is the victory condition for each level.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Trap</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/tile_lava.gif" alt="Lava Trap" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/tile_icelake.gif" alt="Ice Trap" style="height: 75px;">
+        </td>
+        <td style="padding: 8px;">Deadly danger if the player falls into these cracks in the ground.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Enemy</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/enemyFire.png" alt="Level 1 Enemy" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/enemyIce.png" alt="Level 2 Enemy" style="height: 75px;">
+        </td>
+        <td style="padding: 8px;">Enemies move on platforms and damage the player.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Meteorite</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/skyFire.png" alt="Level 1 Meteorite" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/skyIce.png" alt="Level 2 Meteorite" style="height: 75px;">
+        </td>
+        <td style="padding: 8px;">Randomly dropped damage from the air.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Health-Impacting Items</td>
+        <td style="padding: 8px; text-align: center;">
+          <img src="docs/assets/items/item_healthRelated.png" alt="Health-Impacting Items" style="height: 60px;">
+        </td>
+        <td style="padding: 8px;">Including foods and ground obstacles that have an effect on player health</td>
+      </tr>
+    </tbody>
   </table>
 </div>
+
 <p align="center">
- <i><strong>Figure 13</strong>: Table showing the game objects.</i>
+ <i><strong>Figure 13</strong>: Game objects</i>
 </p>
 
-The **Game** is at the core of the program. It keeps track of the current level, updates the game each frame, draws everything on screen, and handles communication between classes. 
+The `Game` is at the core of the program. It keeps track of the current level, updates the `Game` each frame, draws everything on screen, and handles communication between classes. 
 
-The **AssetManager** is in charge of loading all images and sounds, so everything stays efficient and centralized. 
+The `AssetManager` is in charge of loading all images and sounds, so everything stays efficient and centralized. 
 
-The **Brick** defines constants like tile size to keep things consistent, especially for platforms and UI elements.
+The `Brick` defines constants like tile size to keep things consistent, especially for platforms and UI elements.
 
-The **InputHandler** turns key or screen-touches into high-level commands like moving, jumping, or pausing, and passes them to the Game class. This encapsulates user input instead of having it detected and handled by every class, which is what we had at first. 
+The `InputHandler` turns key or screen-touches into high-level commands like moving, jumping, or pausing, and passes them to the `Game` class. This encapsulates user input instead of having it detected and handled by every class, which is what we had at first. 
 
-The **Map** includes all the objects for the current level from the following classes: Platform, Enemy, Food, GroundDamage (fire or ice), Skyfall, and Cave. The Map creates and updates these objects, draws them to the screen, and manages any movement they have.
+The `Map` includes all the objects for the current level from the following classes: `Platform`, `Enemy`, `Food`, `GroundDamage` (fire or ice), `Skyfall`, and `Cave`. The `Map` creates and updates these objects, draws them to the screen, and manages any movement they have.
 
-The **Player** represents the character controlled by the user. It tracks things like position, speed, and size, and responds to gravity, movement, and collisions. 
+The `Player` represents the character controlled by the user. It tracks things like position, speed, and size, and responds to gravity, movement, and collisions. 
 
-The **Health** manages a player’s health, which drops when hitting enemies or hazards but can be refilled with food. The Health class keeps track of the health percentage and displays it as a bar. 
+The `Health` manages a Player’s health, which drops when hitting enemies or hazards but can be refilled with food. The `Health` class keeps track of the health percentage and displays it as a bar. 
 
-The **GameScreen** takes care of what is outside the main gameplay, like the home screen, pause menu, or game over screen. 
+The `GameScreen` takes care of what is outside the main gameplay, like the home screen, pause menu, or "game over" screen. 
 
 ## Class Diagram
 
 <p align="center">
  <img src="documentation/other_docs/class_diagram.png" alt="Class diagram" width="900"><br>
- <i><strong>Figure 14</strong>: Image showing the Class Diagram.</i>
+ <i><strong>Figure 14</strong>: Class Diagram</i>
 </p>
 
 The figure above shows the interaction of all the classes with each other. 
 
-- sketch.js is provided as a starting point by p5.js. The draw() method in sketch.js gets called in loop by p5.js. This method changes game state based on user interaction and calls static game methods handleInput(), update() and draw(). sketch.js also initializes the InputHandler, GameScreen, and Game objects. 
+- `sketch.js` is provided as a starting point by p5.js. The draw() method in `sketch.js` gets called in loop by p5.js. This method changes game state based on user interaction and calls static game methods handleInput(), update() and draw(). sketch.js also initializes the `InputHandler`, `GameScreen`, and `Game` objects. 
 
-- InputHandler samples and stores user input. 
+- `InputHandler` samples and stores user input. 
 
-- GameScreen draws the different screens according to the game state. Game draws the screen when the user is actually playing the game, all other screens are drawn by GameScreen. 
+- `GameScreen` draws the different screens according to the game state. `Game` draws the screen when the user is actually playing the game, all other screens are drawn by `GameScreen`. 
 
-- Game contains everything visible to the user during gameplay. Game owns the Player, its Health and Map. 
+- `Game` contains everything visible to the user during gameplay. `Game` is composed of the `Player`, its `Health` and `Map`. 
 
-- Player is composed of Health and navigates through all the other game entities. 
+- `Player` is composed of `Health` and navigates through all the other game entities. 
 
-- Map is composed of other game elements like Enemies, Foods, Cave, GroundDamage and SkyFall objects, and Platforms. 
+- `Map` is composed of other game elements like `Enemy`, `Food`, `Cave`, `GroundDamage` and `SkyFall` objects, and `Platform`. 
 
-- AssetManager is used by all classes except InputHandler for graphic and audio resources. 
+- `AssetManager` is used by all classes except `InputHandler` for graphic and audio resources. 
 
-- Brick gives the Health and Platform classes their dimensions.
+- `Brick` gives the `Health` and `Platform` classes their dimensions.
 
 
 ## Sequence and Behaviour
 
 <p align="center">
  <img src="documentation/other_docs/BehaviourDiagram.png" alt="Behavioural diagram" width="900"><br>
- <i><strong>Figure 15</strong>: Image showing the Behavioural Diagram.</i>
+ <i><strong>Figure 15</strong>: Behavioural Diagram</i>
 </p>
 
-The core game logic in Dino Escape is driven by an update loop managed by the Game class, which processes player inputs, updates all game objects, and manages game states. 
+The core game logic in Dino Escape is driven by an update loop managed by the `Game` class, which processes player inputs, updates all game objects, and manages game states. 
 
-Player actions (movements) are detected by the InputHandler, which translates these inputs into commands passed to the Game. The Game then updates the player, enemies, platforms, and other elements within the Map, checking for collisions with enemies, food, or traps. 
+Player actions (movements) are detected by the `InputHandler`, which translates these inputs into commands passed to the `Game`. The `Game` then updates the player, enemies, platforms, and other elements within the `Map`, checking for collisions with enemies, food, or traps. 
 
-The Health is adjusted accordingly, with decreases upon hitting obstacles and increases from collecting food. 
+The `Health` is adjusted accordingly, with decreases upon hitting obstacles and increases from collecting food. 
 
 If the player’s health drops to zero, the game transitions to a “game over” state, while reaching the cave triggers a “level complete” state.
 
@@ -327,9 +369,9 @@ While designing, we didn't just focus on visuals — we also cared about perform
 These design choices helped us achieve a more sustainable game, with faster load times and lower performance demands on players' devices.
 
 ### Sound
-Sound in video games is not just an addition but an essential element that actively shapes player interaction (Collins, 2013). We designed sound effects for every stage of the game and for different player states. This combination of sound and visuals provides instant feedback to players and enhances their sense of immersion.
+Sound in video games is not just an addition but an essential element that actively shapes player interaction (Collins, 2013[^3]). We designed sound effects for every stage of the game and for different player states. This combination of sound and visuals provides instant feedback to players and enhances their sense of immersion.
 
-**Overall**, the system is designed to be modular and well-encapsulated. The Game class ties everything together, while assets, input, and gameplay logic are handled by their own parts. This makes the code easier to expand, test, and maintain in the future.
+**Overall**, the system is designed to be modular and well-encapsulated. The `Game` class ties everything together, while assets, input, and gameplay logic are handled by their own parts. This makes the code easier to expand, test, and maintain in the future.
 
 
 # Implementation
@@ -344,6 +386,13 @@ Development began with a minimum viable product (MVP) that laid the foundation f
 - **Player Movement via Arrow Keys:** The player could move a rectangle using the keyboard’s arrow keys. Movement was linear and unaffected by gravity or momentum, offering a static, grid-like layout.
   
 This prototype served as the sandbox where we validated our control system and logic before layering in additional mechanics.
+
+<div align="center", style="display: flex;">
+ <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
+ <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
+ <i align="left"><strong>Figure 16</strong>: 1st digital prototype of the game</i>
+ <i align="right"><strong>Figure 17</strong>: 2nd digital prototype of the game</i>
+</div>
 
 ## Challenge 1: Game Mechanics and Collision Detection
 To evolve the experience from a static environment into a true platformer, we introduced two key features: **gravity simulation** and **collision detection**.
@@ -383,14 +432,14 @@ We adopted **one-way camera constraints** inspired by *Super Mario Bros*.. Playe
 
 <p align="center">
  <img src="documentation/other_docs/new_mapdesign.jpg" alt="Map sketch" width="650"><br>
- <i><strong>Figure 16</strong>: Image showing the design of game levels hand drawn.</i>
+ <i><strong>Figure 18</strong>: Hand-Drawn Level Maps</i>
 </p>
 
-Initially, platform and NPC positions were hardcoded into the Map class, making the code brittle and unscalable. To overcome this, we introduced a Layout class, which:
+Initially, platform and NPC positions were hardcoded into the `Map` class, making the code brittle and unscalable. To overcome this, we introduced a `Layout` class, which:
 
 1. Encapsulated position data for all entities across all levels.
 
-2. Loaded layout data into the Map class at runtime, especially during level transitions.
+2. Loaded layout data into the `Map` class at runtime, especially during level transitions.
 
 3. Allowed new levels to be added without modifying core logic or duplicating code.
 
@@ -406,6 +455,11 @@ The original game used **keyboard input** (arrow keys, spacebar). To support mob
 **Responsive Design and Layout:**
 
 Our original layout was optimized for desktops. We faced challenges in **extracting device characteristics** and adapting visuals accordingly. We applied a combination of HTML, CSS, and p5.js to detect screen size and dynamically adjust canvas and UI elements, ensuring optimal display on any device.
+
+<p align="center">
+ <img src="documentation/other_docs/Challenge_2.gif" alt="Mobile screen gameplay" width="500"><br>
+ <i><strong>Figure 19</strong>: Mobile screen gameplay</i>
+</p>
 
 **Testing Across Devices:**
 
@@ -424,21 +478,26 @@ To evaluate our game, we conducted qualitative evaluations using Think Aloud, He
 
 <p align="center">
  <img src="documentation/other_docs/testathon_grouppic.jpg" alt="At the Testathon" width="650"><br>
- <i><strong>Figure 17</strong>: Image of the team in the Testathon.</i>
+ <i><strong>Figure 20</strong>: Team at the Testathon Event</i>
 </p>
 
 On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and why we are collecting feedback and taking photos and videos. 
 
 ## Qualitative Evaluation
 
-At the testathon, we were able to receive feedback from a wide variety of players, including many who are experienced in game development. As such, we received rich and helpful qualitative feedback there. Though we did perform several Think Aloud and Heuristic evaluations, most of the feedback was given in the form of interviews with a few simple prompting questions. We prepared these questions ahead of time as a team with a focus on avoiding leading questions. Some examples of the questions are “What did you think about the visuals and graphic design?”, “What do you think the game is about?”, and “What do you imagine for the next level?”. 
+At the testathon, we were able to receive feedback from a wide variety of players, including many who are experienced in game development. As such, we received rich and helpful qualitative feedback there. Though we did perform several Think Aloud and Heuristic evaluations, most of the feedback was given in the form of interviews with a few simple prompting questions. We prepared these questions ahead of time as a team with a focus on avoiding leading questions. Some examples of the questions are “What did you think about the visuals and graphic design?”, “What do you think the game is about?”, and “What do you imagine for the next level?”.
+
+<p align="center">
+ <img src="documentation/other_docs/User_Testing.gif" alt="c" width="500"><br>
+ <i><strong>Figure 21</strong>: User testing</i>
+</p>
 
 The responses were analysed as follows: first, statements were categorised based on whether they were highlighting an issue or something the tester liked. Then, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Then, we counted the number of times that type of issue was mentioned. The results are included in the following figure:
 
 
 <p align="center">
  <img src="documentation/other_docs/qualitative.png" alt="Qualitative Evaluation" width="650"><br>
- <i><strong>Figure 18</strong>: Qualitative Evaluation</i>
+ <i><strong>Figure 22</strong>: Qualitative Evaluation</i>
 </p>
 
 After the testathon, two members of our team dedicated several weeks to resolving these issues, and they were able to resolve all of the issues, though they decided to postpone creating more levels. 
@@ -448,8 +507,8 @@ As for the quantitative evaluation, we developed a Google form for each of the t
 
 
 <p align="center">
- <img src="documentation/other_docs/sus.png" alt="SUS Results" width="650"><br>
- <i><strong>Figure 19</strong>: SUS Results</i>
+ <img src="documentation/other_docs/sus.png" alt="SUS Results" width="500"><br>
+ <i><strong>Figure 23</strong>: SUS Results</i>
 </p>
 
 On the other hand, there was a definite difference for the two levels we tested in terms of task load. Based on the evaluations of eleven participants who completed the two levels in different orders, we had a W test statistic of 2, where less than 10 would indicate a statistically significant difference. 
@@ -458,16 +517,14 @@ The task load scores for levels one and two indicate that level two was signific
 
 
 <p align="center">
- <img src="documentation/other_docs/tlx.png" alt="NASA TLX Average Scores" width="650"><br>
- <i><strong>Figure 20</strong>: NASA TLX Average Scores</i>
+ <img src="documentation/other_docs/tlx.png" alt="NASA TLX Average Scores" width="500"><br>
+ <i align="left"><strong>Figure 24</strong>: NASA TLX Average Scores</i>
 </p>
-
 
 <p align="center">
- <img src="documentation/other_docs/tlx_demand.png" alt="NASA TLX Scores by Demand Category" width="650"><br>
- <i><strong>Figure 21</strong>: NASA TLX Scores by Demand Category</i>
+ <img src="documentation/other_docs/tlx_demand.png" alt="NASA TLX Scores by Demand Category" width="500"><br>
+ <i align="right"><strong>Figure 25</strong>: NASA TLX Scores by Demand Category</i>
 </p>
-
 
 ## Testing
 For our p5.js game, we manually tested feature branches by playing in the browser to ensure new features worked and didn't break existing ones. Playtesting focused on gameplay, user experience, and performance. We documented feedback in GitHub milestones and issues for each pull request. We experimented with automated testing using GitHub Actions, but the overhead seemed disproportionate for our lightweight project, making manual testing more efficient. Our approach was primarily black-box, focusing on the player experience, though we occasionally used white-box principles for debugging. This combination of playtesting and documented feedback in GitHub facilitated iterative improvements before merging.
@@ -483,7 +540,7 @@ As a team, we met frequently and always in person. We made use of spaces with sc
 
 <p align="center">
  <img src="documentation/meeting_notes/img/photo_meeting4-1.jpg" alt="Fun activity" width="650"><br>
- <i><strong>Figure 22</strong>: Image of team integration activity.</i>
+ <i><strong>Figure 26</strong>: Team's Icebreaker Activity</i>
 </p>
 
 Later, our meetings varied in content and focus, but overall we stuck to an Agile mindset and Scrum methodology and workflow. We had four sprints of one or two weeks each during which we tried to develop our game efficiently, focusing on a specific goal each time. Afterwards, we would meet to do a Sprint Review focused on what we had done, Sprint Retrospective focused on how we had worked together, and Sprint Plan for the next sprint. 
@@ -494,14 +551,14 @@ One of our first meetings after getting comfortable with each other was a team p
 
 <p align="center">
  <img src="documentation/other_docs/board_42.jpg" alt="Team profiling activity" width="650"><br>
- <i><strong>Figure 23</strong>: Image of team profiling activity.</i>
+ <i><strong>Figure 27</strong>: Team profiling activity</i>
 </p>
 
 We defined the necessary roles for our project, differentiating between critical roles, which would be needed throughout the project, and complementary roles, which would be needed for a specific period of time. 
 
 <p align="center">
  <img src="documentation/other_docs/board_43.jpg" alt="Team profiling activity" width="650"><br>
- <i><strong>Figure 24</strong>: Image of team profiling activity.</i>
+ <i><strong>Figure 28</strong>: Role Assignment and Rotation</i>
 </p>
 
 We had a lengthy discussion about whether we should each work in the role we are most skilled at, or whether to explore our interests, and even discussed this with our professors. We decided it would be best to balance both, giving each other opportunities to explore new things by shuffling the roles after the second sprint. This gave each person the ability to experience something new, as well as work in a role they had experience in. At one point, someone felt that they wanted to change roles, and several team members shifted roles to make that happen. In the end, we each did some game development as well as at least one other role. 
@@ -533,8 +590,9 @@ Regarding the implementation of Agile and Scrum, our first sprint was one week l
 
 After that sprint, we met for our first Sprint Review and Retrospective, and it was clear that a week-long sprint was too short and that the stand-ups were not working for us. We decided that all future sprints would last two weeks, and that we would have longer meetings twice a week. Later, we added Microsoft Teams to create a second space for communication, which created a clearer boundary between work and personal life, and we all committed to checking Teams regularly.
  
-According to Martin Fowler, the essence of Agile is to be “adaptive” and “people-oriented” (Fowler, 2019). By adopting new tools when needed and choosing and changing roles for each other’s benefit, we were able to implement the core principles of Agile during this project. 
+According to Martin Fowler, the essence of Agile is to be “adaptive” and “people-oriented” (Fowler, 2019[^4]). By adopting new tools when needed and choosing and changing roles for each other’s benefit, we were able to implement the core principles of Agile during this project. 
 
+<a name="sustainability-accessibility-ethics"></a>
 # Sustainability, Accessibility, and Ethics
 This section outlines the key sustainability aspects we addressed in the development of our game, focusing on environmental, technical, and individual impacts.
 
@@ -550,27 +608,56 @@ Based on the Green Software Patterns, we implemented several improvements to red
 In the future, we can work towards [defer offscreen images](https://patterns.greensoftware.foundation/catalog/web/defer-offscreen-images) and [deprecate GIFs](https://patterns.greensoftware.foundation/catalog/web/deprecate-gifs/) for animated content patterns.
 
 <p align="center">
- <img src="docs/assets/items/item_healthRelated.png" alt="Overview of our branches" width="650">
- <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Overview of our branches" width="650"><br>
- <i><strong>Figure 25</strong>: Composite images of multiples game assets.</i>
+ <img src="docs/assets/items/item_healthRelated.png" alt="Composite of game entity images" width="400">
+ <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Composite of tile images" width="250"><br>
+ <i><strong>Figure 29</strong>: Composite images of multiples game assets</i>
 </p>
 
+## Sustainability Calculation Indicator (SCI)
+
+We had a guest lecture by Joseph Cook, Head of R&D at the Green Software Foundation[^5], on developing software with sustainability in mind. Using those concepts, we calculated an initial SCI to better understand the carbon impact of our development automation.
+
 <p align="center">
- <img src="documentation/other_docs/technical.jpg" alt="Overview of our branches" width="650"><br>
- <i><strong>Figure 26</strong>: Image showing a group of users playing our game.</i>
+ SCI = (O + M) / R
 </p>
+
+**Stepwise Calculations:**
+
+From the start of our project this year until May 10th, 2025, the GitHub Actions workflows for our project recorded a total of 317 runtime minutes (5.28 hours) and 315 job runs (R i.e. Resource unit).
+
+<p align="center">
+ <img src="documentation/other_docs/GitHub_Actions_Usage_Matrix.png" alt="GitHub Actions Usage Matrix" width="650"><br>
+ <i><strong>Figure 30</strong>: GitHub Actions Usage Matrix</i>
+</p>
+
+**Find O (Operational carbon emissions):**
+
+* Power usage (assumed): 0.1 kW
+* Energy used (E): 5.28 hours × 0.1 kW = 0.528 kWh
+* Carbon intensity (I): 0.4 kg CO2eq/kWh
+* **O = (E × I)** = 0.528 kWh × 0.4 kg CO2eq/kWh = 0.2112 kg CO2eq
+
+**Find M (Embodied emissions):**
+
+* **M = 0** (excluded from this initial estimate due to the difficulty in attributing the embodied carbon of the shared GitHub infrastructure to our specific usage).
+
+**Evaluate SCI:**
+
+* **SCI = O / R** = (0.2112 kg CO2eq + 0) / 315 job runs = 0.00067 kg CO2eq/job run
+
+This initial SCI (0.67 g/job run) gives us a helpful starting point to understand the carbon impact of our development automation. It also provides a baseline we can use to track improvements as we make our workflows more sustainable in the future.
 
 ## Technical Sustainability
 
 According to the Sustainability Assessment Framework (SusAF), Technical Sustainability comprises five aspects: 
 
-- Maintainability: our game is currently hosted by Github Pages, and we have mostly tested it in mainstream browsers. If these platforms were updated, we would need to test and update our game. Continuous testing and maintenance are crucial to our game’s operation.
+- Maintainability: our game is currently hosted by GitHub Pages, and we have mostly tested it in mainstream browsers. If these platforms were updated, we would need to test and update our game. Continuous testing and maintenance are crucial to our game’s operation.
 
 - Usability: our game has simple controls and clear instructions. We increased the graphics’ contrast for easier detection of objects and made the dinosaur flash red when injured. The adaptability to different devices makes it usable to a wider range of abilities. 
 
 - Adaptability: the game can be used on a PC or touch-screen device and is continuously being tested on more devices.
 
-- Security: the game does not collect or store any information, and so is not desirable for hackers. Also, all our code is available to the public through Github, so that is not a reason to attack either. 
+- Security: the game does not collect or store any information, and so is not desirable for hackers. Also, all our code is available to the public through GitHub, so that is not a reason to attack either. 
 
 - Scalability: our game can currently be played on multiple devices at once, but we have not tested this on a large-enough scale that we know if there are limits to this capacity. 
 
@@ -581,6 +668,11 @@ As for Individual Sustainability, it is made up of the following:
 - Health: we noticed that some users were displaying addictive behaviours, like repeating the second level many times consecutively because they kept losing. Accordingly, we decreased the health depletion rate slightly to make it possible to complete for a larger proportion of players. This increased the sense of achievement and decreased feelings of frustration and high mental and temporal demand. 
 
 - Lifelong learning: the first level has some challenges but is easier to complete, encouraging amateur gamers to try and learn how to play. The second level is significantly more difficult but still doable, and encouragement to try again is built-in. If a player loses during a certain level, the game will restart from that level, encouraging gamers of any ability to try again. 
+
+<p align="center">
+ <img src="documentation/other_docs/technical.jpg" alt="Group of users playing our game" width="650"><br>
+ <i><strong>Figure 31</strong>: Group of users playing our game</i>
+</p>
 
 - Privacy: since the game collects no information about its players, not even a name, users can trust that their privacy is respected and preserved. 
 
@@ -638,12 +730,13 @@ All in all, we feel lucky to have been part of such a strong and supportive team
     <td>20</td>
    </tr>
 </table>
-<p align="center"><strong>Figure 27</strong>: Table of team contribution statement.</p>
+<p align="center"><strong>Figure 32</strong>: Team contribution statement</p>
 
 
 # References
-1. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
-2. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
-3. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
-4. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
-5. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
+[^1]. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
+[^2]. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
+[^3]. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
+[^4]. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
+[^5]. Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
+[^6]. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
