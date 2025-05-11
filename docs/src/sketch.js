@@ -40,6 +40,8 @@ function preload() {
  * Sets the game the by initialising SoundManger, GameScreen and InputHandler.
  */
 function setup() {
+  // Set the pixel density to 1 to avoid scaling issues
+  pixelDensity(1);
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
@@ -186,6 +188,7 @@ function keyReleased() {
  * Redirects the windowResized callback to windowResized method of GameScreen
  */
 function windowResized() {
+  console.log("Window resized -> calling from sketch.js");
   screenGame.windowResized();
 }
 

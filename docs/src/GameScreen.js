@@ -92,7 +92,8 @@ class GameScreen {
         // Listen for all variants of fullscreen change
         ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange']
         .forEach(evt => document.addEventListener(evt, () => {
-            isFullScreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            isFullScreen = !!(document.fullscreenElement || document.webkitFullscreenElement
+                        || document.mozFullScreenElement || document.msFullscreenElement); // true if now in full-screen
             if(canLock) {
                 try {
                     // Lock to any landscape orientation
