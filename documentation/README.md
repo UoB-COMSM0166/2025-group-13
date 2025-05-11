@@ -1,6 +1,6 @@
-# Team16 Project
+# Team 13 Project
 
-This repository contains the [project files for Team16](https://github.com/smurielv/Table16.git). Below is the folder structure and links to important documents:
+This repository contains the [project files for Team 13](https://github.com/smurielv/Table16.git). Below is the folder structure and links to important documents:
 
 ## Documentation
 - [Meeting Notes](./docs/meeting_notes/)
