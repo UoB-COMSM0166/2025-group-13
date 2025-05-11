@@ -24,8 +24,6 @@
 8. [Sustainability, Accessibility, and Ethics](#sustainability-accessibility-ethics)
 9. [Conclusion](#conclusion)
 10. [Contribution Statement](#contribution-statement)
-11. [References](#references)
-
 
 # Team
 <p align="center">
