@@ -364,7 +364,7 @@ At first, we found a set of beautiful dinosaur GIFs and designed our game’s vi
 After some discussion, we decided to switch to a pixel art style. This made it easier to maintain a consistent look and design new levels and characters. We received a lot of positive feedback about this style during the Testathon, with many describing it as “retro” and “nostalgic”.
 
 ### Performance
-While designing, we didn't just focus on visuals — we also cared about performance and sustainability. We avoided large GIFs and switched to smaller images or creating animations directly in p5.js. We also used a Texture Atlas, which combines many small images into one composite image. We used Sprite Sheet Animation for the dinosaur’s movement, which saved space and kept the animations smooth.
+While designing, we didn't just focus on visuals - we also cared about performance and sustainability. We avoided large GIFs and switched to smaller images or creating animations directly in p5.js. We also used a Texture Atlas, which combines many small images into one composite image. We used Sprite Sheet Animation for the dinosaur’s movement, which saved space and kept the animations smooth.
 
 These design choices helped us achieve a more sustainable game, with faster load times and lower performance demands on players' devices.
 
@@ -381,7 +381,7 @@ This section will describe a few key stages in the development of our game, incl
 ## Early Development
 Development began with a minimum viable product (MVP) that laid the foundation for our 2D platformer. The MVP introduced two core functionalities essential to future iterations:
 
-- **Persistent Rectangular Entities:** Rectangles represented key game elements—like the player and enemies—whose positions remained consistent across frames. This provided a stable interaction model.
+- **Persistent Rectangular Entities:** Rectangles represented key game elements-like the player and enemies-whose positions remained consistent across frames. This provided a stable interaction model.
 
 - **Player Movement via Arrow Keys:** The player could move a rectangle using the keyboard’s arrow keys. Movement was linear and unaffected by gravity or momentum, offering a static, grid-like layout.
   
@@ -443,14 +443,14 @@ Initially, platform and NPC positions were hardcoded into the `Map` class, makin
 
 3. Allowed new levels to be added without modifying core logic or duplicating code.
 
-This modular approach supported **persistent game states**. Platforms and NPCs could be reloaded on pause or reset, ensuring continuity. Layouts were loaded only when needed, so performance remained unaffected—even as the number of levels grew significantly.
+This modular approach supported **persistent game states**. Platforms and NPCs could be reloaded on pause or reset, ensuring continuity. Layouts were loaded only when needed, so performance remained unaffected-even as the number of levels grew significantly.
 
 ## Challenge 2: Enabling a Mobile Version
 After the **Testathon**, we focused on making the game playable on mobile devices. This required addressing three major issues:
 
 **Input Method Changes:**
 
-The original game used **keyboard input** (arrow keys, spacebar). To support mobile, we built a **centralized controller class** capable of processing input from multiple sources—keyboard, mouse, and touch. We also added on-screen **touchable buttons**, activated only when touch capabilities were detected.
+The original game used **keyboard input** (arrow keys, spacebar). To support mobile, we built a **centralized controller class** capable of processing input from multiple sources-keyboard, mouse, and touch. We also added on-screen **touchable buttons**, activated only when touch capabilities were detected.
 
 **Responsive Design and Layout:**
 
@@ -599,7 +599,7 @@ This section outlines the key sustainability aspects we addressed in the develop
 ## Environmental Sustainability
 Based on the Green Software Patterns, we implemented several improvements to reduce energy consumption and enhance efficiency:
 
-- [Keep request counts low](https://patterns.greensoftware.foundation/catalog/web/keep-request-counts-low/) and [minimize main thread work](https://patterns.greensoftware.foundation/catalog/web/minimize-main-thread-work/): During the development of the central input handler, we identified redundant function calls across multiple classes. By consolidating these into a single controller running once per frame, we significantly reduced JavaScript request frequency and workload on the main thread—contributing to a more energy-efficient runtime.
+- [Keep request counts low](https://patterns.greensoftware.foundation/catalog/web/keep-request-counts-low/) and [minimize main thread work](https://patterns.greensoftware.foundation/catalog/web/minimize-main-thread-work/): During the development of the central input handler, we identified redundant function calls across multiple classes. By consolidating these into a single controller running once per frame, we significantly reduced JavaScript request frequency and workload on the main thread-contributing to a more energy-efficient runtime.
   
 - [Minify web assets](https://patterns.greensoftware.foundation/catalog/web/minify-web-assets/) and [optimize image size:](https://patterns.greensoftware.foundation/catalog/web/properly-sized-images/) We have applied several optimizations like combined multiple images into sprites to reduce HTTP requests, compressed large image files, replaced heavy GIFs (3MB) with lightweight sprite animations (300KB) and produced smaller audio assets (MP4) that loop efficiently.
   
@@ -682,7 +682,7 @@ As for Individual Sustainability, it is made up of the following:
 
 While our current focus has been on environmental, technical and individual sustainability, we recognize the importance of economic and social issues as well. In future iterations, we aim to explore ways to reduce long-term hosting costs, foster a more inclusive community around the game, and continue to minimize the environmental impact. These aspects are just as vital and will guide our next steps toward a more holistic sustainable approach.
 
-We’ve taken some first steps to make our game more sustainable, ethical, and accessible—like optimizing energy use, simplifying controls and supporting different devices. Still, there’s plenty of room to grow. For the future of the game, we would like to keep improving in these areas, because we believe they’re essential to creating thoughtful and responsible software.
+We’ve taken some first steps to make our game more sustainable, ethical, and accessible-like optimizing energy use, simplifying controls and supporting different devices. Still, there’s plenty of room to grow. For the future of the game, we would like to keep improving in these areas, because we believe they’re essential to creating thoughtful and responsible software.
 
 
 # Conclusion
@@ -698,7 +698,7 @@ We have overcome our two big challenges, but given enough time we could do so mu
 
 As for our development process, future iterations could benefit from a stronger focus on Agile practices. Specifically, we would spend more time pair programming, implement test-driven development, and automate testing and deployment. We would also explore game engines and frameworks beyond p5.js to unlock more features and boost performance. Also, we would like to develop a full application with multiplayer mode, allowing users to play online together and create herds of dinosaurs that overcome extinction.
 
-All in all, we feel lucky to have been part of such a strong and supportive team. This project helped us grow—not just in terms of technical skills, but also in how we work with others and approach problems. 
+All in all, we feel lucky to have been part of such a strong and supportive team. This project helped us grow - not just in terms of technical skills, but also in how we work with others and approach problems. 
 
 # Contribution Statement
 <table align="center", style="border-collapse: collapse; text-align: center;">
@@ -732,11 +732,9 @@ All in all, we feel lucky to have been part of such a strong and supportive team
 </table>
 <p align="center"><strong>Figure 32</strong>: Team contribution statement</p>
 
-
-# References
-[^1]. Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
-[^2]. Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
-[^3]. Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
-[^4]. Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
-[^5]. Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
-[^6]. University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
+[^1]: Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
+[^2]: Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
+[^3]: Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
+[^4]: Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
+[^5]: Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
+[^6]: University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
