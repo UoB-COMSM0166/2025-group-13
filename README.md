@@ -12,7 +12,11 @@
 
 ## ★ [Watch demo video](https://youtu.be/gaBLE-WW40c?feature=shared)
 
-[![Watch the video](documentation/other_docs/opening.gif)](https://www.youtube.com/watch?v=gaBLE-WW40c)
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=gaBLE-WW40c">
+    <img src="documentation/other_docs/opening.gif" alt="Watch the video">
+  </a>
+</div>
 
 # Table of Contents
 1. [Team](#team)
@@ -25,6 +29,7 @@
 8. [Sustainability, Accessibility, and Ethics](#sustainability-accessibility-ethics)
 9. [Conclusion](#conclusion)
 10. [Contribution Statement](#contribution-statement)
+11. [References](#References)
 
 # Team
 <p align="center">
@@ -736,6 +741,7 @@ All in all, we feel lucky to have been part of such a strong and supportive team
 </table>
 <p align="center"><strong>Figure 32</strong>: Team contribution statement</p>
 
+<a name="References"></a>
 [^1]: Alexander, I. and Robertson, S. (no date) Stakeholders without Tears: Understanding Project Sociology by Modeling Stakeholders. Available at: https://www.scenarioplus.org.uk/papers/stakeholders_without_tears/stakeholders_without_tears.htm (Accessed: 15 April 2025).
 [^2]: Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
 [^3]: Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
