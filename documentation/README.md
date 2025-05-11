@@ -1,7 +1,9 @@
 # Team 13 Project
 
-This repository contains the project files for Team 13. Below is the folder structure and links to important documents:
+This repository contains the project files for Team 13. </br>
+Below is the folder structure and links to important documents:
 
 ## Documentation
-- [Meeting Notes](./docs/meeting_notes/)
-- [Task and Deadlines Overview](./docs/task_and_deadlines.md)
+- [Meeting Notes](./meeting_notes/)
+- [Report Figure](./other_docs)
+- [Paper Prototype](./paper_prototype)
