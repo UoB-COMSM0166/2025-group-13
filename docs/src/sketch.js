@@ -37,6 +37,8 @@ function preload() {
  * Sets the game the by initialising SoundManger, GameScreen and InputHandler.
  */
 function setup() {
+  // Set the pixel density to 1.
+  pixelDensity(1);
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
