@@ -5,5 +5,5 @@ Below is the folder structure and links to important documents:
 
 ## Documentation
 - [Meeting Notes](./meeting_notes/)
-- [Report Figure](./other_docs)
+- [Report Figures](./other_docs)
 - [Paper Prototype](./paper_prototype)
