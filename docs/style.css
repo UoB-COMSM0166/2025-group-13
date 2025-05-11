@@ -194,8 +194,10 @@ h1 {
   z-index: 10; /* Ensure buttons are on top of the canvas */
 
   /* Size and shape */
-  width: 85px;
-  height: 85px;
+  aspect-ratio: 1 / 1;
+  width: clamp(70px, 17vmin, 85px);
+  /*width: 85px;
+  height: 85px;*/
   border-radius: 50%; /* Makes the button round */
 
   padding: 15px; /* Make buttons easier to tap */
@@ -206,7 +208,8 @@ h1 {
 
   /* Text styling */
   color: #fff;
-  font-size: 36px;
+  /*font-size: 36px;*/
+  font-size: clamp(30px, 7vmin, 36px);
   font-weight: bold;
 
   /* Center text */
@@ -221,6 +224,9 @@ h1 {
   outline: none;
 
   /* Disable text selection and dragging */
+  cursor: pointer; /* forces Mobile Safari to dispatch click immediately rather than delaying */
+  touch-action: none;       /* Prevents default scrolling/zoom gesture on the button */
+  -webkit-tap-highlight-color: transparent; /* Removes touch highlight */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -239,9 +245,11 @@ h1 {
 
 #fs-btn, #pause-btn {
   /*color: #f16e0a; */
-  font-size: 28px;
-  width: 60px;
-  height: 60px;
+  /*width: 60px;
+  font-size: 28px;*/
+  aspect-ratio: 1 / 1;
+  width: clamp(45px, 12vmin, 60px);
+  font-size: clamp(22px, 5vmin, 28px);
   /*background-color: rgba(0, 0, 0, .30); */
 }
 

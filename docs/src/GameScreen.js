@@ -16,12 +16,15 @@ let titleGlow = 0;
 let glowDirection = 1;
 // Get and set full screen states
 const requestFS = canvasContainer.requestFullscreen 
-                || canvasContainer.webkitRequestFullscreen
-                || canvasContainer.msRequestFullscreen;
-const exitFS    = document.exitFullscreen
-                || document.webkitExitFullscreen
-                || document.msExitFullscreen;
+                || canvasContainer.webkitRequestFullscreen    /* Safari/iOS */
+                || canvasContainer.msRequestFullscreen        /* IE11 */ 
+                || canvasContainer.mozRequestFullScreen;      /* Firefox */
+const exitFS = document.exitFullscreen
+            || document.webkitExitFullscreen
+            || document.msExitFullscreen
+            || document.mozCancelFullScreen;
 let isFullScreen = false;
+const canLock = 'orientation' in screen && typeof screen.orientation.lock === 'function';
 
 class GameScreen {
     /**
@@ -86,7 +89,22 @@ class GameScreen {
     }
 
     fullScreenChange() {
-        // Listen for full-screen changes
+        // Listen for all variants of fullscreen change
+        ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange']
+        .forEach(evt => document.addEventListener(evt, () => {
+            isFullScreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            if(canLock) {
+                try {
+                    // Lock to any landscape orientation
+                    screen.orientation.lock('landscape'); 
+                    //console.log('Orientation locked to landscape!');
+                } catch (err) {
+                    //console.warn('Orientation lock failed:', err);
+                }
+            }
+            canvasContainer.classList.toggle('fullscreen', isFullScreen);
+        }));
+        /*
         document.addEventListener('fullscreenchange', async () => {
             isFullScreen = !!document.fullscreenElement; // true if now in full-screen
             try {
@@ -101,33 +119,34 @@ class GameScreen {
             // Recalculate and resize the p5 canvas
             this.windowResized();
         });
+        */
     }
 
     handleFullScreenRequest() {
         if(!isFullScreen) {
-            this.goFullScreen();
+            this.goFullScreen().then(() => {this.windowResized();}).catch(console.warn);
         }
         else {
-            this.exitFullScreen();
+            this.exitFullScreen().then(() => {this.windowResized();}).catch(console.warn);
         }
     }
 
-    goFullScreen() {
+    async goFullScreen() {
         //console.log("Full screen");
         // Request full screen for the container element
-        requestFS.call(canvasContainer).catch(console.warn);
-        //requestFS.call(canvasContainer).then(this.windowResized()).catch(console.warn);
-        //this.windowResized();
-        //isFullScreen = true;
+        //if (requestFS) requestFS.call(canvasContainer).catch(console.warn);
+        if (!requestFS) return Promise.reject('Fullscreen not supported');
+        // Note: requestFullscreen() returns a promise in modern browsers :contentReference[oaicite:0]{index=0}
+        return requestFS.call(canvasContainer);
     }
 
-    exitFullScreen() {
+    async exitFullScreen() {
         //console.log("Exit full screen");
         // Exit full screen
-        exitFS.call(document).catch(console.warn);
-        //exitFS.call(document).then(this.windowResized()).catch(console.warn);
-        //this.windowResized();
-        //isFullScreen = false;
+        //if (exitFS) exitFS.call(document).catch(console.warn);
+        if (!exitFS) return Promise.reject('Fullscreen not supported');
+        // Note: requestFullscreen() returns a promise in modern browsers :contentReference[oaicite:0]{index=0}
+        return exitFS.call(document);
     }
 
     //#region Draw Methods
