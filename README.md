@@ -79,22 +79,22 @@
 
 # Introduction
 <p align="center"> 
- <img src="documentation/other_docs/playing1.gif" alt="Gameplay - level 1" width="650"><br>
+ <img src="documentation/other_docs/level1.gif" alt="Gameplay - level 1" width="650"><br>
  <i><strong>Figure 3</strong>: Level 1 gameplay</i>
 </p>
 
-Dino Escape is an action-packed retro platformer inspired by classic Mario Bros gameplay, but with a prehistoric twist as well as a different gameplay experience. Step into the escape of the last T-Rex, racing against extinction through challenging levels and vibrant landscapes. 
+Dino Escape is an action-packed retro platformer inspired by the classic Super Mario games, but with a prehistoric twist as well as a unique gameplay experience. Step into the escape of the last T-Rex of its kind, racing against extinction through challenging levels and vibrant landscapes. 
 
-Though our game is inspired by classic platformer games, the health bar provides a slightly different experience. Firstly, users will need to pay attention to the environment and look for food, which will increase their health, and avoid dangerous elements, which will rapidly decrease it. Secondly, due to the harsh landscape that threatens the player, health will continuously run out. This adds a time element, pushing users to feel that constant threat of extinction. 
+Though our game is inspired by classic platformer games, the health bar provides a slightly different experience. Firstly, users will need to pay attention to the environment and look for food, which will increase their health, and avoid dangerous elements, which will rapidly decrease it. Secondly, due to the harsh environment that threatens the player, health will continuously run out. This adds a time element, pushing users to feel that constant threat of extinction. 
 
 <p align="center"> 
- <img src="documentation/other_docs/playing.gif" alt="Gameplay - level 2" width="650"><br>
+ <img src="documentation/other_docs/level2.gif" alt="Gameplay - level 2" width="650"><br>
  <i><strong>Figure 4</strong>: Level 2 gameplay</i>
 </p>
 
 The extinction theme is present throughout the game: in the first part, a volcano has erupted and lava is everywhere – jump on the platforms to escape death. In the second part, your world has frozen over, and every moment you stay outside threatens your existence. While the first part is relatively easy and achievable for gamers of any skill level, the second part is far more challenging, and it has a way of keeping even experienced gamers engaged. 
 
-The game makes use of classic keyboard controls to ease the learning curve, as well as introducing responsive development through the novelty of a mobile version. Developed primarily using p5.js, with additional flair from HTML and CSS, Dino Escape merges nostalgic gaming experience and style with modern web technologies to deliver a uniquely engaging adventure. 
+The game makes use of classic keyboard controls to ease the learning curve and introduces responsive development through the novelty of a mobile version. Developed primarily using p5.js, with additional flair from HTML and CSS, Dino Escape merges nostalgic gaming experience and style with modern web technologies to deliver a uniquely engaging adventure. 
 
 
 # Requirements 
@@ -226,6 +226,8 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
 
 # Design
 
+This section covers our design of the system, specifically the classes, behaviours, visual style, and sound. 
+
 ## System Architecture and Class Design
 
 <div style="display: flex; justify-content: center; padding: 20px;">
@@ -248,7 +250,9 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
       <tr>
         <td style="padding: 8px;">Platform</td>
         <td style="padding: 8px; text-align: center;">
-          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 75px;">
+          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/groundDesert.png" alt="Desert Ground" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/floatDesert.png" alt="Desert Platform" style="height: 75px;">
         </td>
         <td style="padding: 8px;">Simple brick tiles are combined to create ground and platforms.</td>
       </tr>
@@ -256,7 +260,8 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
         <td style="padding: 8px;">Cave</td>
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/caveFire.png" alt="Level 1 Cave" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/caveIce.png" alt="Level 2 Cave" style="height: 75px;">
+          <img src="docs/assets/items/caveIce.png" alt="Level 2 Cave" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/caveDesert.png" alt="Level 3 Cave" style="height: 75px;">
         </td>
         <td style="padding: 8px;">It symbolises safety and is the victory condition for each level.</td>
       </tr>
@@ -264,7 +269,8 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
         <td style="padding: 8px;">Trap</td>
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/tile_lava.gif" alt="Lava Trap" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/tile_icelake.gif" alt="Ice Trap" style="height: 75px;">
+          <img src="docs/assets/items/tile_icelake.gif" alt="Ice Trap" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/tile_desert.png" alt="Desert Quicksand Trap" style="height: 75px;">
         </td>
         <td style="padding: 8px;">Deadly danger if the player falls into these cracks in the ground.</td>
       </tr>
@@ -272,7 +278,8 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
         <td style="padding: 8px;">Enemy</td>
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/enemyFire.png" alt="Level 1 Enemy" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/enemyIce.png" alt="Level 2 Enemy" style="height: 75px;">
+          <img src="docs/assets/items/enemyIce.png" alt="Level 2 Enemy" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/enemyDesert.png" alt="Level 3 Enemy" style="height: 75px;">
         </td>
         <td style="padding: 8px;">Enemies move on platforms and damage the player.</td>
       </tr>
@@ -280,7 +287,8 @@ According to “The Use and Effectiveness of User Stories in Practice” by Garm
         <td style="padding: 8px;">Meteorite</td>
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/skyFire.png" alt="Level 1 Meteorite" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/skyIce.png" alt="Level 2 Meteorite" style="height: 75px;">
+          <img src="docs/assets/items/skyIce.png" alt="Level 2 Meteorite" style="height: 75px; margin-right: 5px;">
+          <img src="docs/assets/items/skyDesert.png" alt="Level 3 Meteorite" style="height: 75px;">
         </td>
         <td style="padding: 8px;">Randomly dropped damage from the air.</td>
       </tr>
@@ -387,13 +395,6 @@ Development began with a minimum viable product (MVP) that laid the foundation f
   
 This prototype served as the sandbox where we validated our control system and logic before layering in additional mechanics.
 
-<div align="center", style="display: flex;">
- <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
- <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
- <i align="left"><strong>Figure 16</strong>: 1st digital prototype of the game</i>
- <i align="right"><strong>Figure 17</strong>: 2nd digital prototype of the game</i>
-</div>
-
 ## Challenge 1: Game Mechanics and Collision Detection
 To evolve the experience from a static environment into a true platformer, we introduced two key features: **gravity simulation** and **collision detection**.
 
@@ -401,32 +402,35 @@ We simulated gravity by incrementally increasing the player’s vertical velocit
 
 Gravity introduced the need for a **robust collision detection system**. We began with **bounding box collision**, defining a collision when the horizontal and vertical spans of two rectangles intersected. This covered two critical cases:
 
-- **Standing on Platforms:** When landing, the player’s bottom edge had to align with the top of a platform. We reset vertical velocity and adjusted the player’s Y-position to simulate standing still.
+- **Vertical Collisions (Ground & Platforms):** When landing, the player’s bottom edge had to align with the top of a platform. We reset vertical velocity and adjusted the player’s Y-position to simulate standing still.
 
 - **Horizontal Collisions (Walls):** For collisions with vertical surfaces, we corrected vertical positioning first, followed by horizontal adjustment to prevent wall penetration.
 
-However, these basic rules weren’t enough. Players sometimes reset to unnatural positions after collisions. We needed a generalised solution. Our refined approach analysed the overlap area in a collision. Later we changed the collision detection logic to depend on the player's direction of motion instead. This significantly improved consistency, and overall smoothness of the motion.
 
-## Overcoming Challenge 1
+<div align="center", style="display: flex;">
+ <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
+ <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
+ <i align="left"><strong>Figure 16</strong>: 1st digital prototype of the game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+ <i align="right">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <strong>Figure 17</strong>: 2nd digital prototype of the game</i>
+</div>
+
+However, these basic rules weren’t enough. Players sometimes reset to unnatural positions after collisions. We needed a generalised solution. Our refined approach was to calculate the overlap area in a collision. Later we changed the collision detection logic to depend on the player's direction of motion instead. This significantly improved consistency, and overall smoothness of the motion.
+
+## Extending Core Mechanics
+
+After overcoming our first challenge, we had a functional game, but we wanted a more immersive gameplay experience. We needed to enhance the game's visuals, create a dynamic background, and build a more sustainable level design. 
+
 **Visual Representation and Platform Interaction:**
 
-With collision mechanics stabilized, we enhanced the game's visuals. Basic rectangles were replaced with **sprites and textures**, transforming the abstract forms into recognizable elements:
-
-- Platforms were changed to stone blocks or grassy terrain.
-
-- The player took on a humanoid or animated character form.
-
-These visual improvements didn’t change mechanics but significantly improved user perception and game immersion.
+With collision mechanics stabilized, we enhanced the game's visuals. Basic rectangles were replaced with **sprites and textures**, transforming the abstract forms into recognizable elements. Platforms were changed to stone blocks or grassy terrain, and the player took on an animated form. Though these visual adjustments didn’t change mechanics, they significantly enhanced user perception and game immersion.
 
 **Camera Motion and Dynamic Environment:**
 
-As our levels grew larger than a single screen, we implemented a **camera system** to simulate world traversal: 
+As our map layout expanded beyond the width of the visible screen, we implemented a **camera system** to simulate world traversal. The camera stayed static until the player crossed a horizontal threshold. After that, the world scrolled in the opposite direction of the player’s movement, creating the illusion of exploration.
 
-- The camera stayed static until the player crossed a horizontal threshold.
-
-- After that, the world scrolled in the opposite direction of the player’s movement, creating the illusion of exploration.
-
-We adopted **one-way camera constraints** inspired by *Super Mario Bros*.. Players could not backtrack past the starting point. The camera began scrolling once the player passed the midpoint of the screen. If the destination was already visible, full movement was permitted across the screen.
+We adopted **one-way camera constraints** inspired by *Super Mario game series*. Specifically, players could not backtrack past the starting point. The camera began scrolling once the player passed the midpoint of the screen. If the final destination (cave) was already visible, full movement was permitted across the screen.
 
 **Scalable Level Design and Layout Management:**
 
@@ -443,14 +447,14 @@ Initially, platform and NPC positions were hardcoded into the `Map` class, makin
 
 3. Allowed new levels to be added without modifying core logic or duplicating code.
 
-This modular approach supported **persistent game states**. Platforms and NPCs could be reloaded on pause or reset, ensuring continuity. Layouts were loaded only when needed, so performance remained unaffected-even as the number of levels grew significantly.
+This modular approach supported **persistent game states**. Platforms and NPCs could be reloaded on pause or reset, ensuring continuity. Layouts were loaded only when needed, so performance remained unaffected regardless of the number of levels.
 
 ## Challenge 2: Enabling a Mobile Version
 After the **Testathon**, we focused on making the game playable on mobile devices. This required addressing three major issues:
 
 **Input Method Changes:**
 
-The original game used **keyboard input** (arrow keys, spacebar). To support mobile, we built a **centralized controller class** capable of processing input from multiple sources-keyboard, mouse, and touch. We also added on-screen **touchable buttons**, activated only when touch capabilities were detected.
+The original game used **keyboard input** (arrow keys, spacebar). To support mobile, we built a **centralized controller class** capable of processing input from multiple sources-keyboard, mouse, and touch-screen. We also added on-screen **touchable buttons**, activated only when touch capabilities were detected for the given device.
 
 **Responsive Design and Layout:**
 
@@ -463,9 +467,9 @@ Our original layout was optimized for desktops. We faced challenges in **extract
 
 **Testing Across Devices:**
 
-Finally, as mentioned in the Testing section, we conducted continuous testing using browser developer tools and real devices, discovering bugs, solving issues and ensuring compatibility.
+Finally, as mentioned in the Testing section, we conducted continuous testing using browser developer tools and real devices. This allowed us to discover bugs, solve issues and ensure compatibility.
 
-Overall, through iterative development, careful modularization, and responsive design, we successfully transformed a basic prototype into a scalable, cross-platform 2D platformer.
+Overall, through iterative development, careful modularization, and responsive design, we successfully transformed a basic prototype into a scalable, cross-platform game.
 
 
 # Evaluation
@@ -474,14 +478,14 @@ This section is about how we evaluated and tested our game at different stages i
 
 ## Testathon and Lab Evaluations
 
-To evaluate our game, we conducted qualitative evaluations using Think Aloud, Heuristic, and user interviews, as well as quantitative evaluations using the System Usability Scale and NASA Task Load Index. We used the qualitative evaluations to guide our development of new features and fine-tuning of existing features. 
+To evaluate our game, we conducted qualitative evaluations using Think Aloud, Heuristic, and user interviews, as well as quantitative evaluations using the System Usability Scale and NASA Task Load Index. Subsequently, we used the results to guide our development of new features and fine-tune existing ones. 
 
 <p align="center">
  <img src="documentation/other_docs/testathon_grouppic.jpg" alt="At the Testathon" width="650"><br>
  <i><strong>Figure 20</strong>: Team at the Testathon Event</i>
 </p>
 
-On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and why we are collecting feedback and taking photos and videos. 
+On February 25th and March 4th, our classmates evaluated our game during the lab. However, we wanted more feedback and a larger sample, so we also attended the testathon on March 5th. In preparation, we created a consent form that participants could fill, containing options such as consent to be photographed or recorded while playing or giving feedback. We also had a participant information sheet that explains our game and the reason we are collecting feedback. 
 
 ## Qualitative Evaluation
 
@@ -492,12 +496,13 @@ At the testathon, we were able to receive feedback from a wide variety of player
  <i><strong>Figure 21</strong>: User testing</i>
 </p>
 
-The responses were analysed as follows: first, statements were categorised based on whether they were highlighting an issue or something the tester liked. Then, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Then, we counted the number of times that type of issue was mentioned. The results are included in the following figure:
+The responses were analysed as follows: 
+First, statements were categorised based on whether they were highlighting an issue or something the tester liked. Second, focusing on the issues, these were categorised further depending on which aspect of the game was concerned. Finally, we counted the number of times that type of issue was mentioned. The results are included in the following figure:
 
 
 <p align="center">
  <img src="documentation/other_docs/qualitative.png" alt="Qualitative Evaluation" width="650"><br>
- <i><strong>Figure 22</strong>: Qualitative Evaluation</i>
+ <i><strong>Figure 22</strong>: Qualitative Evaluation Analysis</i>
 </p>
 
 After the testathon, two members of our team dedicated several weeks to resolving these issues, and they were able to resolve all of the issues, though they decided to postpone creating more levels. 
@@ -564,7 +569,7 @@ We defined the necessary roles for our project, differentiating between critical
 We had a lengthy discussion about whether we should each work in the role we are most skilled at, or whether to explore our interests, and even discussed this with our professors. We decided it would be best to balance both, giving each other opportunities to explore new things by shuffling the roles after the second sprint. This gave each person the ability to experience something new, as well as work in a role they had experience in. At one point, someone felt that they wanted to change roles, and several team members shifted roles to make that happen. In the end, we each did some game development as well as at least one other role. 
 
 ## Choosing our tools
-Though we had great communication in person and found it easy to work together, it was harder to continue working when we were apart. We needed well-defined, simple ways to communicate. We used both Microsoft Teams and Whatsapp for communication, depending on the type of message. For coding, we used Visual Studio Code as our IDE and GitHub for collaboration and version control. Google Drive helped us organise and share our documents and Powerpoint was useful for creating simple diagrams and visual aids. 
+Though we had great communication in person and found it easy to work together, it was harder to continue working when we were apart. We needed well-defined, simple ways to communicate. Here is what worked for us:
 
 **For communication:**
 
@@ -577,7 +582,7 @@ Though we had great communication in person and found it easy to work together, 
  - Google Drive: to write and edit the report, collect pictures and videos, and manage all our documentation and notes (weekly tasks, documents, spreadsheets, pdfs, etc.).
  - GitHub: to host the central repository of the project, including all the game code, but also to achieve other interesting things.
    * GitHub Projects: to manage the Kanban board.
-   * GitHub Actions: to automate the deployment of our code.
+   * GitHub Issues: to track and assign tasks.
    * GitHub Pages: to host and allow to play our game online.
 
 **For designing and editing graphics and visual aids:**
@@ -669,12 +674,12 @@ As for Individual Sustainability, it is made up of the following:
 
 - Lifelong learning: the first level has some challenges but is easier to complete, encouraging amateur gamers to try and learn how to play. The second level is significantly more difficult but still doable, and encouragement to try again is built-in. If a player loses during a certain level, the game will restart from that level, encouraging gamers of any ability to try again. 
 
+- Privacy: since the game collects no information about its players, not even a name, users can trust that their privacy is respected and preserved.
+
 <p align="center">
  <img src="documentation/other_docs/technical.jpg" alt="Group of users playing our game" width="650"><br>
  <i><strong>Figure 31</strong>: Group of users playing our game</i>
 </p>
-
-- Privacy: since the game collects no information about its players, not even a name, users can trust that their privacy is respected and preserved. 
 
 - Safety: because we are not collecting any personal information, users can feel safe and know that this game does not expose them to any danger or risk. 
 
@@ -694,7 +699,7 @@ Realising the environmental impact of digital storage and energy use encouraged 
 
 Along the way, we often re-evaluated our roles to make sure work was distributed fairly, and Sprint Retrospectives were a great opportunity to do so. We learned the importance of putting the user at the center of the design process. Iteratively developing prototypes, gathering feedback, and refining our ideas helped us create a more fun and engaging experience for players.
 
-We have overcome our two big challenges, but given enough time we could do so much more. Enhancing accessibility by offering non-tactile ways to play or adding support for screen readers would help make the game more inclusive. We would also improve the user experience by creating a full-screen mode and optimizing the performance to run smoothly on any device. Expanding the game with more levels, a bigger range of enemies, and a more developed storyline would make the experience even more immersive. Additionally, we would revisit our original idea of having multiple playable dinosaurs with different powers that a user can switch between.
+We have overcome our two big challenges, but given enough time we could do so much more. Enhancing accessibility by offering non-tactile ways to play or adding support for screen readers would help make the game more inclusive. We would also improve the user experience by creating a full-screen mode and optimizing the performance to run smoothly on any device. Expanding the game with more levels, a bigger range of enemies, and a more developed storyline would make the experience even more immersive. Additionally, we would revisit our original idea of having multiple playable dinosaurs with unique abilities that a user can switch between.
 
 As for our development process, future iterations could benefit from a stronger focus on Agile practices. Specifically, we would spend more time pair programming, implement test-driven development, and automate testing and deployment. We would also explore game engines and frameworks beyond p5.js to unlock more features and boost performance. Also, we would like to develop a full application with multiplayer mode, allowing users to play online together and create herds of dinosaurs that overcome extinction.
 
@@ -736,5 +741,5 @@ All in all, we feel lucky to have been part of such a strong and supportive team
 [^2]: Lucassen, G. et al. (2016) ‘The use and effectiveness of user stories in practice’, Lecture Notes in Computer Science, pp. 205–222. doi:10.1007/978-3-319-30282-9_14.
 [^3]: Collins, K. (2013) Playing with Sound: A Theory of Interacting with Sound and Music in Video Games. Cambridge, MA: MIT Press.
 [^4]: Fowler, M. (2019). Agile software guide. [online] martinfowler.com. Available at: https://martinfowler.com/agile.html.
-[^5]: Green Software Foundation (no date). [Software Carbon Intensity (SCI) Specification](https://sci.greensoftware.foundation/).
-[^6]: University of Oxford (2022). Environmental impact of IT: desktops, laptops and screens. [online] University of Oxford. Available at: https://www.it.ox.ac.uk/article/environment-and-it.
+[^5]: Green Software Foundation, no date. Software Carbon Intensity (SCI) Specification. [online] Available at: https://sci.greensoftware.foundation/
+[^6]: Rogga, M., Mikulcic, H. and Duić, N., 2020. Sustainability Awareness Framework (SusAF) Workbook – V5 – English – Baseline. [pdf] Zenodo. Available at: https://doi.org/10.5281/zenodo.3676514.
