@@ -47,7 +47,7 @@ class SkyFall {
   }
 
   /**
-   * Updates the falling object based on its interaction with player
+   * Updates the falling object based on whether it has landed or not.
    */
   updateSkyFall() {
     if (this.hasLanded) {

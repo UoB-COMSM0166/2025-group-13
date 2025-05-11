@@ -227,7 +227,7 @@ class GameScreen {
             fill(0, 0, 0, 180);
             noStroke();
             rect(boxX + 162, boxY - 22, 20, 30, 0);
-            rect(boxX + 91, boxY + 16, 155, 30, 0);
+            rect(boxX + 125, boxY + 16, 100, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
@@ -235,7 +235,7 @@ class GameScreen {
             textSize(18);
             fill(255);
             text("Press ⬆ to play again", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press ESCAPE for home page", width / 2, height - 30);
 
         }
     }
@@ -259,7 +259,7 @@ class GameScreen {
                 textSize(30);
                 fill(255, 50, 50); // Bright red
                 stroke(0);
-                text("🔥 Volcano Era Survived!", width / 2 - 100, 50);
+                text("Volcano Era Survived!", width / 2 - 100, 50);
                 break;
             case 1:
                 image(this.assetManager.level2CompleteBackground, width / 2, height / 2, width, height);
@@ -301,7 +301,7 @@ class GameScreen {
             fill(0, 0, 0, 180);
             noStroke();
             rect(boxX + 200, boxY - 2, 20, 30, 0);
-            rect(boxX + 172, boxY + 38, 150, 30, 0);
+            rect(boxX + 195, boxY + 38, 100, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
@@ -309,7 +309,7 @@ class GameScreen {
             textSize(18);
             fill(255);
             text("Press ⬆ to start next level", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press ESCAPE for home page", width / 2, height - 30);
 
         }
     }

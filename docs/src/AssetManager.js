@@ -17,7 +17,7 @@ class AssetManager {
         this.gameOverByDesert = loadImage('assets/background/screen_lv3Dead.jpeg');
 
         this.level1CompleteBackground = loadImage('assets/background/screen_lv1ToLv2.png');
-        this.level2CompleteBackground = loadImage('assets/background/screen_lv1ToLv2.png');
+        this.level2CompleteBackground = loadImage('assets/background/screen_lv2ToLv3.png');
         this.gameWon = loadImage('assets/background/screen_Win.png');
         this.instructionsPage = loadImage('assets/background/instructions.png');
         
