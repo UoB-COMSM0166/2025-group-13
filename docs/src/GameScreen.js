@@ -79,6 +79,14 @@ class GameScreen {
         // Get the width and height of the canvas container
         screenWidth = canvasRect.width; // rect.width * dp
         screenHeight = canvasRect.height; // rect.height * dpr
+
+        if(window.matchMedia("(pointer: coarse)").matches
+            && window.matchMedia("(orientation: portrait)").matches) {
+            screenHeight = screenWidth / 1.7;
+        } else if(window.matchMedia("(pointer: coarse)").matches
+            && window.matchMedia("(orientation: landscape)").matches) {
+            screenWidth = screenHeight * 1.7;
+        }
         // Set the canvas size to match the container size
         resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
