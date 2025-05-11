@@ -273,12 +273,11 @@ class GameScreen {
             case 0:
                 fill(100, 200, 255); // Light blue
                 stroke(255);
-                strokeWeight(5);
                 text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
                 break;
             case 1:
-                fill('#DB7A34');
-                stroke('#C25C2A');
+                fill('#4A2A19');
+                stroke('#401E24');
                 strokeWeight(5);
                 text("Now run or die hungry!", width / 2 + 100, 100);
                 break;
