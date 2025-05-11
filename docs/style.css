@@ -89,11 +89,36 @@ h1 {
   overflow: hidden;
 }
 
+/* Styles for touch screens */
+/*Portrait mode*/
+@media (pointer: coarse) and (orientation: portrait) {
+  #canvas-container{
+    width: 100vw;
+    height: calc(100vw / 1.7);
+    margin: 0 auto;
+  }
+  h1, header, #instructions{
+    display: block;
+  }
+}
+/*Landscape mode*/
+@media (pointer: coarse) and (orientation: landscape) {
+  #canvas-container{
+    height: 100vh;
+    width: calc(100vh * 1.7);
+    margin: 0 auto;
+  }
+
+  h1, header, #instructions {
+    display: none;
+  }
+}
+
 /* When .fullscreen is added, let it fill 100% of viewport */
 #canvas-container.fullscreen {
-  width: 100vw !important;
   height: 100vh !important;
-  margin: 0;
+  width: calc(100vh * 1.7) !important;
+  margin: 0 auto;
   padding: 0;
 }
 
