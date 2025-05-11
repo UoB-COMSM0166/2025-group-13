@@ -22,8 +22,8 @@ class SkyFall {
     this.assetManager = assetManager;
     this.skyFallType = type;
 
-    this.width = 30;
-    this.height = 60;
+    this.width = scaleX * 30;
+    this.height = scaleY * 60;
 
     this.x = positionX;
     this.startY = startY;

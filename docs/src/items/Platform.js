@@ -30,6 +30,9 @@ class Platform {
       this.height = height;
     }
 
+    this.width *= scaleX;
+    this.height *= scaleY;
+
     this.x = positionX;
     this.y = positionY;
 

@@ -22,6 +22,9 @@ let hasPlayedGameOverSound = false;
 let soundManager;
 // Global variable to store if the device is touch enabled or not
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+//Scaling factors
+let scaleX = 1;
+let scaleY = 1;
 //#endregion
 
 /**
@@ -40,10 +43,12 @@ function setup() {
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
+  updateScalingFactors();
   newGame();
   imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
+  Brick.setup();
 }
 
 /**
@@ -182,4 +187,9 @@ function keyReleased() {
  */
 function windowResized() {
   screenGame.windowResized();
+}
+
+function updateScalingFactors(){
+  scaleX = width/850;
+  scaleY = height/500;
 }
