@@ -340,8 +340,8 @@ class Player {
      * @param cave - Cave marks the target for a level.
      */
     checkCollisionsCave(cave) {
-        let withinXRange = this.right > cave.left && this.left < cave.right;
-        let withinYRange = this.bottom > cave.top && this.top < cave.bottom;
+        let withinXRange = this.right > (cave.left + cave.right)/2 && this.left < cave.right;
+        let withinYRange = this.bottom > (cave.top + cave.bottom)/2 && this.top < cave.bottom;
         let collision = withinXRange && withinYRange;
 
         if (collision) {
