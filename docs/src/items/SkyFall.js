@@ -123,6 +123,8 @@ class SkyFall {
         image(this.assetManager.skyFireImg, 0, 0, this.width, this.height);
       } else if (this.skyFallType === "ICESPIKE") {
         image(this.assetManager.skyIceImg, 0, 0, this.width, this.height);
+      } else if (this.skyFallType === "DESERT") {
+        image(this.assetManager.skyDesertImg, 0, 0, this.width, this.height);
       }
       pop();
     }

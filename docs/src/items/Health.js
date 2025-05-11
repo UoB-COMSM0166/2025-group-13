@@ -73,11 +73,14 @@ class Health {
 
     // A CSS named color.
     switch (game.currentMap) {
-      case 0:
+      case 2:
         fill('rgba(255, 165, 0, 0.2)'); // Orange with 80% transparency
         break;
       case 1:
         fill('rgba(0, 0, 255, 0.2)'); // Blue with 80% transparency
+        break;
+      case 0:
+        fill('rgba(51, 72, 0, 0.2)'); // Red with 80% transparency
         break;
     }
     stroke('red');

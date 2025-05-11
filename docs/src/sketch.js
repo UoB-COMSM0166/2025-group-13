@@ -13,7 +13,7 @@ let game;
 let inputHandler;
 // Global variable to store the level of the game
 let gameLevel = 1;
-let maxLevels = 2;
+let maxLevels = 3;
 // Global variables to store the triggers of actions that changes screens
 let triggerJump = false;
 let triggerESC = false;

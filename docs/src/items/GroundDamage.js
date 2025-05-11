@@ -47,6 +47,8 @@ class GroundDamage {
       sx = (520 * 3) + 120; sy = 0; sw = 400; sh = 500;
     } else if (this.groundDamageType === "ICESPIKE") {
       sx = (520 * 4) + 120; sy = 0; sw = 400; sh = 500;
+    } else if (this.groundDamageType === "DESERT") {
+      sx = (520 * 6.3) + 230; sy = 0; sw = 510; sh = 650;
     }
 
     push();

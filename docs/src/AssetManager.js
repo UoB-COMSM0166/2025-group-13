@@ -7,24 +7,38 @@ class AssetManager {
     preload() {
         // cover image
         this.homePageBackground = loadImage('assets/background/screen_cover.png');
+
+        this.gamePageBackground = loadImage('assets/background/bg_lv1.png');
         this.gamePageIceBackground = loadImage('assets/background/bg_lv2.png');
+        this.gamePageDesertBackground = loadImage('assets/background/bg_lv3.gif');
+
         this.gameOverBackground = loadImage('assets/background/screen_lv1Dead.png');
         this.gameOverByIce = loadImage('assets/background/screen_lv2Dead.png');
+        this.gameOverByDesert = loadImage('assets/background/screen_lv3Dead.jpeg');
+
         this.levelCompleteBackground = loadImage('assets/background/screen_lv1ToLv2.png');
         this.gameWon = loadImage('assets/background/screen_Win.png');
         this.instructionsPage = loadImage('assets/background/instructions.png');
+        
         //enviroment image
-        this.gamePageBackground = loadImage('assets/background/bg_lv1.png');
         this.lavaImg = loadImage('assets/items/tile_lava.gif');
         this.iceLakeImg = loadImage('assets/items/tile_icelake.gif');
+        this.desertImg = loadImage('assets/items/tile_desert.png');
+
         this.enemyFireImg = loadImage('assets/items/enemyFire.png');
         this.enemyIceImg = loadImage('assets/items/enemyIce.png');
+        this.enemyDesertImg = loadImage('assets/items/enemyDesert.png');
+
         this.skyFireImg = loadImage('assets/items/skyFire.png');
         this.skyIceImg = loadImage('assets/items/skyIce.png');
+        this.skyDesertImg = loadImage('assets/items/skyDesert.png');
+
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
+        
         this.caveFire = loadImage('assets/items/caveFire.png');
         this.caveIce = loadImage('assets/items/caveIce.png');
-        this.iceSpikeImg = loadImage('assets/items/ice_spike.png');
+        this.caveDesert = loadImage('assets/items/caveDesert.png');
+
         //player image
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         ////items image
