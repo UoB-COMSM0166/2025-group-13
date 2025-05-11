@@ -66,13 +66,13 @@ class Game {
     draw() {
         if (this.assetManager.gamePageBackground) {
             switch (this.currentMap) {
-                case 2:
+                case 0:
                     image(this.assetManager.gamePageBackground, width / 2, height / 2, width, height);
                     break;
                 case 1:
                     image(this.assetManager.gamePageIceBackground, width / 2, height / 2, width, height);
                     break;
-                case 0:
+                case 2:
                     image(this.assetManager.gamePageDesertBackground, width / 2, height / 2, width, height);
                     break;
             }
@@ -89,13 +89,13 @@ class Game {
                 let dy = (height - this.lavaTileHeight / 2);
 
                 switch (this.currentMap) {
-                    case 2:
+                    case 0:
                         image(this.assetManager.lavaImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
                     case 1:
                         image(this.assetManager.iceLakeImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
-                    case 0:
+                    case 2:
                         image(this.assetManager.desertImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
                 }
@@ -110,7 +110,7 @@ class Game {
         // Display the actual level
         textSize(20);
         switch (this.currentMap) {
-            case 2:
+            case 0:
                 fill('orange');
                 stroke('red');
                 break;
@@ -118,7 +118,7 @@ class Game {
                 fill(255);
                 stroke('blue');
                 break;
-            case 0:
+            case 2:
                 fill('#DB7A34');
                 stroke('#C25C2A');
                 break;
@@ -126,13 +126,13 @@ class Game {
         text("Level " + (this.currentLevel), width - 75, 25);
         textSize(30);
         switch (game.currentMap) {
-            case 2:
+            case 0:
                 text("Lava Rush", width / 2, 25);
                 break;
             case 1:
                 text("Icy Endgame", width / 2, 25)
                 break;
-            case 0:
+            case 2:
                 text("Nocturnal Sand", width / 2, 25)
                 break;
         }

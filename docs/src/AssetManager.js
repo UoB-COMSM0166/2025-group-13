@@ -34,6 +34,8 @@ class AssetManager {
         this.skyDesertImg = loadImage('assets/items/skyDesert.png');
 
         this.tilesetImg = loadImage('assets/items/tile_grandTreePlatform.png');
+        this.floatLava = loadImage('assets/items/floatLava.png');
+        this.floatDesert = loadImage('assets/items/floatDesert.png');
         this.groundIce = loadImage('assets/items/groundIce.png');
         this.groundDesert = loadImage('assets/items/groundDesert.png');
         

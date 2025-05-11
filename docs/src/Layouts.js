@@ -146,9 +146,7 @@ let level3Cave = ["DESERT",4070, 438];
  */
 let layouts =
     [
-        [level3Platforms, level3Foods, level3GroundDamage, level3Enemy, level3SkyFall, level3Cave],
-        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],
+        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],   
         [level2Platforms, level2Foods, level2GroundDamage, level2Enemy, level2SkyFall, level2Cave],
-        
-        
+        [level3Platforms, level3Foods, level3GroundDamage, level3Enemy, level3SkyFall, level3Cave],
     ];
