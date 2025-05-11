@@ -246,21 +246,44 @@ class GameScreen {
     drawLevelComplete() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
-        image(this.assetManager.levelCompleteBackground, width / 2, height / 2, width, height);
+        // image(this.assetManager.levelCompleteBackground, width / 2, height / 2, width, height);
         textAlign(CENTER, CENTER);
 
-        // Volcano Era Survived (Left, Red with Black Stroke)
-        textSize(30);
-        fill(255, 50, 50); // Bright red
-        stroke(0);
-        strokeWeight(5);
-        text("🔥 Volcano Era Survived!", width / 2 - 100, 50);
 
-        // Now, time for Ice Age (Right, Light Blue with White Stroke)
-        fill(100, 200, 255); // Light blue
-        stroke(255);
-        strokeWeight(5);
-        text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
+        // Volcano Era Survived (Left, Red with Black Stroke)
+        textSize(28);
+        strokeWeight(2);
+        switch (game.currentMap) {
+            case 0:
+                image(this.assetManager.level1CompleteBackground, width / 2, height / 2, width, height);
+                textSize(30);
+                fill(255, 50, 50); // Bright red
+                stroke(0);
+                text("🔥 Volcano Era Survived!", width / 2 - 100, 50);
+                break;
+            case 1:
+                image(this.assetManager.level2CompleteBackground, width / 2, height / 2, width, height);
+                fill(100, 200, 255); // Light blue
+                stroke(255);
+                text("❄️ Ice Age Survived!", width / 2 - 100, 50);
+                break;
+        }
+
+        switch (game.currentMap) {
+            case 0:
+                fill(100, 200, 255); // Light blue
+                stroke(255);
+                strokeWeight(5);
+                text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
+                break;
+            case 1:
+                fill('#DB7A34');
+                stroke('#C25C2A');
+                strokeWeight(5);
+                text("Now run or die hungry!", width / 2 + 100, 100);
+                break;
+        }
+        // text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
 
         // Reset stroke
         strokeWeight(0);

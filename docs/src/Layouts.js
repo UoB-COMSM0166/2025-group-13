@@ -106,21 +106,19 @@ let level3Platforms =
         ["FLOAT", 3170, 350, 150, 30], ["FLOAT", 3524, 250, 150, 30], ["FLOAT", 3800, 300, 150, 30],
 
         ["TREE", 786, 400, 30, 150],
-        ["TREE", 1760, 380, 30, 180], ["TREE", 2695, 380, 30, 180], ["TREE", 3367, 400, 30, 150],
+        ["TREE", 1760, 380, 30, 180], ["TREE", 2695, 380, 30, 180], ["TREE", 3357, 400, 30, 150],
     ];
 let level3Foods =
     [
         //(type = null, positionX, positionY, assetManager)
         //on ground(y = 460)
-        ["MEAT", 520, 460], ["MEAT", 910, 27], ["MEAT", 2023, 95], ["MEAT", 2120, 460],
-        //appleY = ?
-        ["APPLE", 786, 315], ["APPLE", 1760, 280], ["APPLE", 2695, 280], ["APPLE", 3367, 315],
+        ["MEAT", 975, 30],
     ];
 
 let level3GroundDamage =
     [
         //on ground(y = 455)
-        ["DESERT", 670, 455], ["DESERT", 1650, 455], ["DESERT", 3320, 455]
+        ["DESERT", 670, 455], ["DESERT", 1650, 455], ["DESERT", 2200, 455], ["DESERT", 2600, 455], ["DESERT", 3400, 455], ["DESERT", 3310, 455]
     ];
 
 let level3Enemy =
@@ -148,5 +146,5 @@ let layouts =
     [
         [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],   
         [level2Platforms, level2Foods, level2GroundDamage, level2Enemy, level2SkyFall, level2Cave],
-        [level3Platforms, level3Foods, level3GroundDamage, level3Enemy, level3SkyFall, level3Cave],
+        [level3Platforms, level3Foods, level3GroundDamage, level3Enemy, level3SkyFall, level3Cave]        
     ];
