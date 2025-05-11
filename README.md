@@ -12,6 +12,7 @@
 
 ## ★ [Watch demo video](https://youtu.be/gaBLE-WW40c?feature=shared)
 
+[![Watch the video](documentation/other_docs/opening.gif)](https://www.youtube.com/watch?v=gaBLE-WW40c)
 
 # Table of Contents
 1. [Team](#team)
@@ -241,16 +242,16 @@ This section covers our design of the system, specifically the classes, behaviou
       <tr>
         <td style="padding: 8px;">Dino</td>
         <td style="padding: 8px; text-align: center;">
-          <img src="docs/assets/player/item_dino_red.png" alt="Dino" style="height: 120px;">
+          <img src="docs/assets/player/item_dino_red.png" alt="Dino" style="height: 100px;">
         </td>
         <td style="padding: 8px;">The main and only playable character, a red dinosaur.</td>
       </tr>
       <tr>
         <td style="padding: 8px;">Platform</td>
         <td style="padding: 8px; text-align: center;">
-          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/groundDesert.png" alt="Desert Ground" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/floatDesert.png" alt="Desert Platform" style="height: 75px;">
+          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 50px; margin-right: 5px;">
+          <img src="docs/assets/items/groundDesert.png" alt="Desert Ground" style="height: 50px; margin-right: 5px;">
+          <img src="docs/assets/items/floatDesert.png" alt="Desert Platform" style="height: 50px;">
         </td>
         <td style="padding: 8px;">Simple brick tiles are combined to create ground and platforms.</td>
       </tr>
@@ -259,7 +260,7 @@ This section covers our design of the system, specifically the classes, behaviou
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/caveFire.png" alt="Level 1 Cave" style="height: 75px; margin-right: 5px;">
           <img src="docs/assets/items/caveIce.png" alt="Level 2 Cave" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/caveDesert.png" alt="Level 3 Cave" style="height: 75px;">
+          <img src="docs/assets/items/caveDesert.png" alt="Level 3 Cave" style="height: 40px;">
         </td>
         <td style="padding: 8px;">It symbolises safety and is the victory condition for each level.</td>
       </tr>
@@ -404,15 +405,15 @@ Gravity introduced the need for a **robust collision detection system**. We bega
 
 - **Horizontal Collisions (Walls):** For collisions with vertical surfaces, we corrected vertical positioning first, followed by horizontal adjustment to prevent wall penetration.
 
+<p align="center">
+ <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500"><br>
+ <i><strong>Figure 16</strong>: 1st digital prototype of the game</i>
+</p>
 
-<div align="center", style="display: flex;">
- <img src="documentation/other_docs/first_version.gif" alt="First prototype" width="500">
+<p align="center">
  <img src="documentation/other_docs/second_version.gif" alt="Second prototype" width="500"><br>
- <i align="left"><strong>Figure 16</strong>: 1st digital prototype of the game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
- <i align="right">
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <strong>Figure 17</strong>: 2nd digital prototype of the game</i>
-</div>
+ <i><strong>Figure 17</strong>: 2nd digital prototype of the game</i>
+</p>
 
 However, these basic rules weren’t enough. Players sometimes reset to unnatural positions after collisions. We needed a generalised solution. Our refined approach was to calculate the overlap area in a collision. Later we changed the collision detection logic to depend on the player's direction of motion instead. This significantly improved consistency, and overall smoothness of the motion.
 
