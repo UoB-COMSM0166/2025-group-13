@@ -104,6 +104,8 @@ class Enemy {
       image(this.assetManager.enemyFireImg, 0, 0, this.width, this.height);
     } else if (this.enemyType === "ICESPIKE") {
       image(this.assetManager.enemyIceImg, 0, 0, this.width, this.height);
+    } else if (this.enemyType === "DESERT") {
+      image(this.assetManager.enemyDesertImg, 0, 0, this.width, this.height);
     }
     pop();
 

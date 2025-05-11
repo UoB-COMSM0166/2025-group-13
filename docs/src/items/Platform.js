@@ -72,7 +72,18 @@ class Platform {
         let dy = this.y;
         //let dy = height - Brick.height / 2; 
 
-        image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+        switch (game.currentMap) {
+          case 0:
+              image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+              break;
+          case 1:
+              image(this.assetManager.groundIce, dx, dy, scaledTileWidth, Brick.height);
+              break;
+          case 2:
+              image(this.assetManager.groundDesert, dx, dy, scaledTileWidth, Brick.height);
+              break;
+        }
+        // image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
       }
     } else if (this.platformType === "FLOAT") {
       let sx = 1450, sy = 0, sw = 730, sh = 800;
@@ -81,7 +92,18 @@ class Platform {
         let dx = this.left + i * scaledTileWidth + Brick.width / 2;
         let dy = this.y;
 
-        image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+        switch (game.currentMap) {
+          case 0:
+              image(this.assetManager.floatLava, dx, dy, scaledTileWidth, Brick.height);
+              break;
+          case 1:
+              image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
+              break;
+          case 2:
+              image(this.assetManager.floatDesert, dx, dy, scaledTileWidth, Brick.height);
+              break;
+        }
+        // image(this.assetManager.tilesetImg, dx, dy, scaledTileWidth, Brick.height, sx, sy, sw, sh);
       }
     }else if (this.platformType === "TREE") {
       let sx = 770, sy = 0, sw = 700, sh = 810;

@@ -197,6 +197,9 @@ class GameScreen {
             case 1:
                 image(this.assetManager.gameOverByIce, width / 2, height / 2, width, height);
                 break;
+            case 2:
+                image(this.assetManager.gameOverByDesert, width / 2, height / 2, width, height);
+                break;
         }
 
         textAlign(CENTER, CENTER);
@@ -224,7 +227,7 @@ class GameScreen {
             fill(0, 0, 0, 180);
             noStroke();
             rect(boxX + 162, boxY - 22, 20, 30, 0);
-            rect(boxX + 91, boxY + 16, 155, 30, 0);
+            rect(boxX + 125, boxY + 16, 100, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
@@ -232,7 +235,7 @@ class GameScreen {
             textSize(18);
             fill(255);
             text("Press ⬆ to play again", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press ESCAPE for home page", width / 2, height - 30);
 
         }
     }
@@ -243,21 +246,43 @@ class GameScreen {
     drawLevelComplete() {
         // 0.01 opacity -> 0.01 * 255 ≈ 2
         //background(128, 128, 128, 200); // mid-tone grey semi-transparent
-        image(this.assetManager.levelCompleteBackground, width / 2, height / 2, width, height);
+        // image(this.assetManager.levelCompleteBackground, width / 2, height / 2, width, height);
         textAlign(CENTER, CENTER);
 
-        // Volcano Era Survived (Left, Red with Black Stroke)
-        textSize(30);
-        fill(255, 50, 50); // Bright red
-        stroke(0);
-        strokeWeight(5);
-        text("🔥 Volcano Era Survived!", width / 2 - 100, 50);
 
-        // Now, time for Ice Age (Right, Light Blue with White Stroke)
-        fill(100, 200, 255); // Light blue
-        stroke(255);
-        strokeWeight(5);
-        text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
+        // Volcano Era Survived (Left, Red with Black Stroke)
+        textSize(28);
+        strokeWeight(2);
+        switch (game.currentMap) {
+            case 0:
+                image(this.assetManager.level1CompleteBackground, width / 2, height / 2, width, height);
+                textSize(30);
+                fill(255, 50, 50); // Bright red
+                stroke(0);
+                text("Volcano Era Survived!", width / 2 - 100, 50);
+                break;
+            case 1:
+                image(this.assetManager.level2CompleteBackground, width / 2, height / 2, width, height);
+                fill(100, 200, 255); // Light blue
+                stroke(255);
+                text("❄️ Ice Age Survived!", width / 2 - 100, 50);
+                break;
+        }
+
+        switch (game.currentMap) {
+            case 0:
+                fill(100, 200, 255); // Light blue
+                stroke(255);
+                text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
+                break;
+            case 1:
+                fill('#4A2A19');
+                stroke('#401E24');
+                strokeWeight(5);
+                text("Now run or die hungry!", width / 2 + 100, 100);
+                break;
+        }
+        // text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
 
         // Reset stroke
         strokeWeight(0);
@@ -275,7 +300,7 @@ class GameScreen {
             fill(0, 0, 0, 180);
             noStroke();
             rect(boxX + 200, boxY - 2, 20, 30, 0);
-            rect(boxX + 172, boxY + 38, 150, 30, 0);
+            rect(boxX + 195, boxY + 38, 100, 30, 0);
 
             textFont('DinoEscapeMainPixelFont');
             stroke("black");
@@ -283,7 +308,7 @@ class GameScreen {
             textSize(18);
             fill(255);
             text("Press ⬆ to start next level", width / 2, height - 70);
-            text("Press ESCAPE / Q for home page", width / 2, height - 30);
+            text("Press ESCAPE for home page", width / 2, height - 30);
 
         }
     }
