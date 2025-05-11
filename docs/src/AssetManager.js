@@ -43,6 +43,7 @@ class AssetManager {
         this.imgDinoRed = loadImage('assets/player/item_dino_red.png');
         ////items image
         this.healthRelatedItems = loadImage('assets/items/item_healthRelated.png');
+        this.damageDesert = loadImage('assets/items/damageDesert.png');
 
         // music - general background
         this.bgm_exciting = loadSound('assets/sounds/bgm_exciting.mp3');
