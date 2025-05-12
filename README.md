@@ -20,6 +20,7 @@
     <a href="https://www.youtube.com/watch?v=gaBLE-WW40c">
     ★ WATCH OUR VIDEO ★
   </h1>
+    <a href="https://www.youtube.com/watch?v=gaBLE-WW40c">
     <img src="documentation/other_docs/opening.gif" alt="Watch the video">
   </a>
 </div> 
