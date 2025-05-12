@@ -35,12 +35,20 @@ class GameScreen {
         this.assetManager = assetManager;
     }
 
+    updateScreenSize(){
+        let canvasRect = canvasContainer.getBoundingClientRect();
+        screenWidth = canvasRect.width; // rect.width * dp
+        screenHeight = canvasRect.height; // rect.height * dpr
+        updateScalingFactors();
+    }
+
     /**
      * Sets up the initial canvas dimensions and resizes the window
      */
     setup() {
+        this.updateScreenSize();
         // Create the canvas with the calculated width and height
-        const canvas = createCanvas(baseWidth, baseHeight);
+        const canvas = createCanvas(screenWidth, screenHeight);
         // CanvasSettings object's will read frequently, the user agent may optimize the canvas for readback operations.
         // Pull off the underlying <canvas> element
         const elt = canvas.elt;
@@ -78,10 +86,12 @@ class GameScreen {
      * Resizes the game window according to canvas dimensions
      */
     windowResized() {
-        let canvasRect = canvasContainer.getBoundingClientRect();
-        // Get the width and height of the canvas container
-        screenWidth = canvasRect.width; // rect.width * dp
-        screenHeight = canvasRect.height; // rect.height * dpr
+        this.updateScreenSize();
+        if(window.matchMedia("(orientation: portrait)").matches){
+            screenHeight = screenWidth / 1.7;
+        } else if(window.matchMedia("(orientation: landscape)").matches){
+            screenWidth = screenHeight * 1.7;
+        }
         // Set the canvas size to match the container size
         resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
@@ -98,29 +108,15 @@ class GameScreen {
                 try {
                     // Lock to any landscape orientation
                     screen.orientation.lock('landscape'); 
-                    //console.log('Orientation locked to landscape!');
                 } catch (err) {
-                    //console.warn('Orientation lock failed:', err);
                 }
             }
             canvasContainer.classList.toggle('fullscreen', isFullScreen);
-        }));
-        /*
-        document.addEventListener('fullscreenchange', async () => {
-            isFullScreen = !!document.fullscreenElement; // true if now in full-screen
-            try {
-                // Lock to any landscape orientation
-                await screen.orientation.lock('landscape');  
-                console.log('Orientation locked to landscape!');
-            } catch (err) {
-                console.warn('Orientation lock failed:', err);
-            }
-            // Toggle a helper class on your container
-            canvasContainer.classList.toggle('fullscreen', isFullScreen);
             // Recalculate and resize the p5 canvas
             this.windowResized();
-        });
-        */
+            //Call sketch.js setup to reset the game
+            setup();
+        }));
     }
 
     handleFullScreenRequest() {
@@ -133,20 +129,15 @@ class GameScreen {
     }
 
     async goFullScreen() {
-        //console.log("Full screen");
         // Request full screen for the container element
-        //if (requestFS) requestFS.call(canvasContainer).catch(console.warn);
         if (!requestFS) return Promise.reject('Fullscreen not supported');
         // Note: requestFullscreen() returns a promise in modern browsers :contentReference[oaicite:0]{index=0}
         return requestFS.call(canvasContainer);
     }
 
     async exitFullScreen() {
-        //console.log("Exit full screen");
         // Exit full screen
-        //if (exitFS) exitFS.call(document).catch(console.warn);
         if (!exitFS) return Promise.reject('Fullscreen not supported');
-        // Note: requestFullscreen() returns a promise in modern browsers :contentReference[oaicite:0]{index=0}
         return exitFS.call(document);
     }
 
