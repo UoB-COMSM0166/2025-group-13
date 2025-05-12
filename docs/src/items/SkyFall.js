@@ -30,7 +30,7 @@ class SkyFall {
     this.y = startY;
 
     this.fallSpeed = fallSpeed;
-    this.groundY = groundY;
+    this.groundY = scaleY * groundY;
     this.delayBeforeFall = delayBeforeFall;
     this.cooldownTime = cooldownTime;
 
