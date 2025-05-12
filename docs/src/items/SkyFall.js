@@ -19,7 +19,6 @@ class SkyFall {
    */
   constructor(type = null, positionX, startY, assetManager, fallSpeed = 5,
     groundY = 485, delayBeforeFall = 120, cooldownTime = 180) {
-    this.groundY = scaleY * 485;
     this.assetManager = assetManager;
     this.skyFallType = type;
 
@@ -31,7 +30,7 @@ class SkyFall {
     this.y = startY;
 
     this.fallSpeed = fallSpeed;
-    this.groundY = groundY;
+    this.groundY = scaleY * groundY;
     this.delayBeforeFall = delayBeforeFall;
     this.cooldownTime = cooldownTime;
 
