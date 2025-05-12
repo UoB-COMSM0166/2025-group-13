@@ -26,17 +26,18 @@ class Enemy {
     pauseTime = 6
   ) {
     this.assetManager = assetManager;
-    this.width = 50;
-    this.height = 40;
+    this.width = scaleX * 50;
+    this.height = scaleY * 40;
 
     this.x = positionX;
     this.y = positionY;
 
     this.enemyType = type;
-    this.stableHeight = 15;
 
-    this.speed = speed;
-    this.maxDistance = maxDistance;
+    this.stableHeight = scaleY * 15;
+
+    this.speed = scaleX * speed;
+    this.maxDistance = scaleX * maxDistance;
     this.pauseTime = pauseTime; // Duration to pause before flipping
 
     this.direction = 1; // 1 = right, -1 = left

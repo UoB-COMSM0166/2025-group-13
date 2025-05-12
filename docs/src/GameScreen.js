@@ -3,9 +3,9 @@
  * It also draws each game screen (home, instructions, pause, etc).
 */
 
-// Sets the base screen width and heigth
-let baseWidth = 850;
-let baseHeight = 500;
+// Set the base screen width and heigth
+const baseWidth = 850;
+const baseHeight = 500;
 let screenWidth;
 let screenHeight;
 let scaleFactorX;
@@ -14,6 +14,17 @@ let scaleFactorY;
 const canvasContainer = document.getElementById('canvas-container');
 let titleGlow = 0;
 let glowDirection = 1;
+// Get and set full screen states
+const requestFS = canvasContainer.requestFullscreen 
+                || canvasContainer.webkitRequestFullscreen    /* Safari/iOS */
+                || canvasContainer.msRequestFullscreen        /* IE11 */ 
+                || canvasContainer.mozRequestFullScreen;      /* Firefox */
+const exitFS = document.exitFullscreen
+            || document.webkitExitFullscreen
+            || document.msExitFullscreen
+            || document.mozCancelFullScreen;
+let isFullScreen = false;
+const canLock = 'orientation' in screen && typeof screen.orientation.lock === 'function';
 
 class GameScreen {
     /**
@@ -24,16 +35,32 @@ class GameScreen {
         this.assetManager = assetManager;
     }
 
+    updateScreenSize(){
+        let canvasRect = canvasContainer.getBoundingClientRect();
+        screenWidth = canvasRect.width; // rect.width * dp
+        screenHeight = canvasRect.height; // rect.height * dpr
+        updateScalingFactors();
+    }
+
     /**
      * Sets up the initial canvas dimensions and resizes the window
      */
     setup() {
+        this.updateScreenSize();
         // Create the canvas with the calculated width and height
-        let canvas = createCanvas(baseWidth, baseHeight);
+        const canvas = createCanvas(screenWidth, screenHeight);
+        // CanvasSettings object's will read frequently, the user agent may optimize the canvas for readback operations.
+        // Pull off the underlying <canvas> element
+        const elt = canvas.elt;
+        // Replace its drawingContext with a new one that has willReadFrequently
+        const ctx = elt.getContext('2d', { willReadFrequently: true });
+        canvas.drawingContext = ctx;
         // Attach the canvas to the "canvas-container" div
         canvas.parent('canvas-container');
         // Resize screen and scale the canvas based on the scale factors
         this.windowResized();
+        // Add event listeners for full-screen changes
+        this.fullScreenChange();
     }
 
     /**
@@ -59,14 +86,59 @@ class GameScreen {
      * Resizes the game window according to canvas dimensions
      */
     windowResized() {
-        let canvasRect = canvasContainer.getBoundingClientRect();
-        // Get the width and height of the canvas container
-        screenWidth = canvasRect.width; // rect.width * dp
-        screenHeight = canvasRect.height; // rect.height * dpr
+        this.updateScreenSize();
+        if(window.matchMedia("(orientation: portrait)").matches){
+            screenHeight = screenWidth / 1.7;
+        } else if(window.matchMedia("(orientation: landscape)").matches){
+            screenWidth = screenHeight * 1.7;
+        }
         // Set the canvas size to match the container size
-        resizeCanvas(canvasRect.width, canvasRect.height);
+        resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
         this.scaleCanvas();
+    }
+
+    fullScreenChange() {
+        // Listen for all variants of fullscreen change
+        ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange']
+        .forEach(evt => document.addEventListener(evt, () => {
+            isFullScreen = !!(document.fullscreenElement || document.webkitFullscreenElement
+                        || document.mozFullScreenElement || document.msFullscreenElement); // true if now in full-screen
+            if(canLock) {
+                try {
+                    // Lock to any landscape orientation
+                    screen.orientation.lock('landscape'); 
+                } catch (err) {
+                }
+            }
+            canvasContainer.classList.toggle('fullscreen', isFullScreen);
+            // Recalculate and resize the p5 canvas
+            this.windowResized();
+            //Call sketch.js setup to reset the game
+            setup();
+        }));
+    }
+
+    handleFullScreenRequest() {
+        if(!isFullScreen) {
+            this.goFullScreen().then(() => {this.windowResized();}).catch(console.warn);
+        }
+        else {
+            this.exitFullScreen().then(() => {this.windowResized();}).catch(console.warn);
+        }
+    }
+
+    async goFullScreen() {
+        // Request full screen for the container element
+        if (!requestFS) return Promise.reject('Fullscreen not supported');
+        // Note: requestFullscreen() returns a promise in modern browsers :contentReference[oaicite:0]{index=0}
+        return requestFS.call(canvasContainer);
+    }
+
+    async exitFullScreen() {
+        // Exit full screen
+        if (!exitFS) return Promise.reject('Fullscreen not supported');
+        return exitFS.call(document);
     }
 
     //#region Draw Methods

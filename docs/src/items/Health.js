@@ -23,8 +23,8 @@ class Health {
     this.width = 5 * Brick.width;
     this.height = Brick.height / 2;
 
-    this.x = 50;
-    this.y = 25;
+    this.x = scaleX * 50;
+    this.y = scaleY * 25;
   }
 
   /**

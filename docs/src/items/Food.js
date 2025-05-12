@@ -7,8 +7,8 @@
 class Food {
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;
-    this.width = 20;
-    this.height = 20;
+    this.width = scaleX * 20;
+    this.height = scaleY * 20;
 
     this.x = positionX;
     this.y = positionY;

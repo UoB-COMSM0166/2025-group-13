@@ -15,14 +15,14 @@ class GroundDamage {
    */
   constructor(type = null, positionX, positionY, assetManager) {
     this.assetManager = assetManager;
-    this.width = 40;
-    this.height = 48;
+    this.width = scaleX * 40;
+    this.height = scaleY * 48;
 
     this.x = positionX;
     this.y = positionY;
 
     this.groundDamageType = type;
-    this.stableHeight = 15; // Fire animation requirements: Fixed the height of the bottom of the flame
+    this.stableHeight = scaleY * 15; // Fire animation requirements: Fixed the height of the bottom of the flame
   }
 
   /**

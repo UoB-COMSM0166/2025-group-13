@@ -18,6 +18,10 @@ class InputHandler {
         this.jump = false;
         this.escape = false;
         this.jumpReady = true;
+        this.requestFS = false;
+        this.fsReady = true;
+        this.pause = false;
+        this.pauseReady = true;
     }
 
     /**
@@ -40,6 +44,12 @@ class InputHandler {
         buttons.forEach((button) => {
             if(visible) {
                 button.classList.remove('hidden');
+                if(!this.isFullSceenEnabled()) {
+                    const fsBtn = document.getElementById('fs-btn');
+                    fsBtn.classList.add('hidden');
+                    const pauseBtn = document.getElementById('pause-btn');
+                    pauseBtn.style.right = '10px';
+                }
             }
             else {
                 button.classList.add('hidden');
@@ -47,10 +57,42 @@ class InputHandler {
         });
     }
 
+    isFullSceenEnabled() {
+        const fsEnabled = document.fullscreenEnabled || document.webkitFullscreenEnabled 
+                    || document.mozFullScreenEnabled || document.msFullscreenEnabled;
+        const canvasContainer = document.getElementById('canvas-container');
+        const fsRequestExists = 
+            typeof canvasContainer.requestFullscreen === 'function' ||
+            typeof canvasContainer.webkitRequestFullscreen === 'function' ||
+            typeof canvasContainer.mozRequestFullScreen === 'function' ||
+            typeof canvasContainer.msRequestFullscreen === 'function';
+            
+        if(fsEnabled && fsRequestExists) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     /**
      * Adds listeners for touch events for all buttons
      */
     setupButtons() {
+        const leftBtn = document.getElementById('left-btn');
+        ['pointerdown','mousedown','touchstart'].forEach(evt =>
+            leftBtn.addEventListener(evt, e => { 
+                e.preventDefault();
+                this.moveLeft = true;
+            })
+        );
+        ['pointerup','pointerleave','mouseup','touchend','touchcancel'].forEach(evt =>
+            leftBtn.addEventListener(evt, e => { 
+                e.preventDefault();
+                this.moveLeft = false;
+            })
+        );
+        /*
         document.getElementById('left-btn').addEventListener('pointerdown', (e) => {
             e.preventDefault();
             this.moveLeft = true;
@@ -59,29 +101,107 @@ class InputHandler {
             e.preventDefault();
             this.moveLeft = false;
         });
-        document.getElementById('right-btn').addEventListener('pointerdown', (e) => {
-            e.preventDefault();
-            this.moveRight = true;
-        });
-        document.getElementById('right-btn').addEventListener('pointerup', (e) => {
-            e.preventDefault();
-            this.moveRight = false;
-        });
-        document.getElementById('jump-btn').addEventListener('pointerdown', (e) => {
-            e.preventDefault();
-            if(this.jumpReady) {
-                this.jumpReady = false;
+        */
+        const rightBtn = document.getElementById('right-btn');
+        ['pointerdown','mousedown','touchstart'].forEach(evt =>
+            rightBtn.addEventListener(evt, e => {
+                e.preventDefault();
+                this.moveRight = true;
+            })
+        );
+        ['pointerup','pointerleave','mouseup','touchend','touchcancel'].forEach(evt =>
+            rightBtn.addEventListener(evt, e => {
+                e.preventDefault();
+                this.moveRight = false;
+            })
+        );
+        const jumpBtn = document.getElementById('jump-btn');
+        ['pointerdown','mousedown','touchstart'].forEach(evt =>
+            jumpBtn.addEventListener(evt, e => {
+                e.preventDefault();
                 this.jump = true;
-            }
-            else {
+                /*
+                //console.log('jumpBtn pressed');
+                //console.log('is jump ready?'+this.jumpReady);
+                if(this.jumpReady) {
+                    //console.log('executing jump');
+                    this.jumpReady = false;
+                    this.jump = true;
+                }
+                else {
+                    this.jump = false;
+                }
+                */
+            })
+        );
+        ['pointerup','pointerleave','mouseup','touchend','touchcancel'].forEach(evt =>
+            jumpBtn.addEventListener(evt, e => { 
+                e.preventDefault();
                 this.jump = false;
-            }
-        });  
-        document.getElementById('jump-btn').addEventListener('pointerup', (e) => {
-            e.preventDefault();
-            this.jumpReady = true;
-            this.jump = false;
-        });
+                /*
+                //console.log('jumpBtn released');
+                this.jumpReady = true;
+                //console.log('is jump ready?'+this.jumpReady);
+                this.jump = false;
+                */
+            })
+        );
+        if(this.isFullSceenEnabled()) {
+            const fsBtn = document.getElementById('fs-btn');
+            ['pointerdown','mousedown','touchstart'].forEach(evt =>
+                fsBtn.addEventListener(evt, e => { 
+                    e.preventDefault();
+                    this.requestFS = true;
+                    /*
+                    //console.log('full screen pressed');
+                    if(this.fsReady) {
+                        this.fsReady = false;
+                        this.requestFS = true;
+                    }
+                    else {
+                        this.requestFS = false;
+                    }
+                    */
+                })
+            );
+            ['pointerup','pointerleave','mouseup','touchend','touchcancel'].forEach(evt =>
+                fsBtn.addEventListener(evt, e => {
+                    e.preventDefault();
+                    this.requestFS = false;
+                    /*
+                    this.fsReady = true;
+                    this.requestFS = false;
+                    */
+                })
+            );
+        }
+        const pauseBtn = document.getElementById('pause-btn');
+        ['pointerdown','mousedown','touchstart'].forEach(evt =>
+            pauseBtn.addEventListener(evt, e => { 
+                e.preventDefault();
+                this.pause = true;
+                /*
+                console.log('pause pressed');
+                if(this.pauseReady) {
+                    this.pauseReady = false;
+                    this.pause = true;
+                }
+                else {
+                    this.pause = false;
+                }
+                */
+            })
+        );
+        ['pointerup','pointerleave','mouseup','touchend','touchcancel'].forEach(evt =>
+            pauseBtn.addEventListener(evt, e => { 
+                e.preventDefault();
+                this.pause = false;
+                /*
+                this.pauseReady = true;
+                this.pause = false;
+                */
+            })
+        );
     }
 
     /**
@@ -134,7 +254,7 @@ class InputHandler {
      * the user explicitly presses the jump button again.
      */
     getAndResetJump() {
-        if (this.jump) {
+        if(this.jump) {
           this.jump = false;
           return true;
         }
@@ -153,6 +273,22 @@ class InputHandler {
      */
     getMoveRight() {
         return this.moveRight;
+    }
+
+    getAndResetFullScreenRequest() {
+        if(this.requestFS) {
+            this.requestFS = false;
+            return true;
+        }
+        return false;
+    }
+
+    getAndResetPause() {
+        if(this.pause) {
+            this.pause = false;
+            return true;
+        }
+        return false;
     }
     //#endregion
 }

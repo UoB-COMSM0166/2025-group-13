@@ -22,6 +22,9 @@ let hasPlayedGameOverSound = false;
 let soundManager;
 // Global variable to store if the device is touch enabled or not
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+//Scaling factors
+let scaleX = 1;
+let scaleY = 1;
 //#endregion
 
 /**
@@ -37,13 +40,17 @@ function preload() {
  * Sets the game the by initialising SoundManger, GameScreen and InputHandler.
  */
 function setup() {
+  // Set the pixel density to 1 to avoid scaling issues
+  pixelDensity(1);
   soundManager = new SoundManager(assetManager);
   screenGame = new GameScreen(assetManager);
   screenGame.setup();
+  updateScalingFactors();
   newGame();
   imageMode(CENTER);
   inputHandler = new InputHandler();
   inputHandler.setup();
+  Brick.setup();
 }
 
 /**
@@ -57,7 +64,6 @@ function newGame() {
   game.setup();
     // auto play Exciting BGM
     soundManager.startGameBGM();
-
 }
 
 /**
@@ -66,10 +72,12 @@ function newGame() {
  * Game state changes based on user interaction.
  */
 function draw() {
-  // Starts by resetting all inputs to false (maybe this is not the best approach)
+  // Start by getting (and resetting) all inputs
   triggerJump = inputHandler.getAndResetJump();
   moveRight = inputHandler.getMoveRight();
   moveLeft = inputHandler.getMoveLeft();
+  requestFullScreen = inputHandler.getAndResetFullScreenRequest();
+  resumePause = inputHandler.getAndResetPause();
   // Check the game state and draw the corresponding screen
   if (gameState === "homePage") {
     screenGame.drawHomeScreen();
@@ -107,15 +115,19 @@ function draw() {
   else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
     gameState = "gameScreen";
   }
-
   else if(gameState === "gameOver") {
     screenGame.drawGameOver();
   }
   else if(gameState === "levelComplete") {
     screenGame.drawLevelComplete();
   }
-  else screenGame.drawEndGame();
-
+  else {
+    screenGame.drawEndGame();
+  }
+  // Check if the user wants to go or exit full screen
+  if(requestFullScreen) {
+    screenGame.handleFullScreenRequest();
+  }
   // Check if we need to change the screen
   changeScreen();
 }
@@ -129,15 +141,16 @@ function changeScreen() {
     gameState = "gameInstructions";
     soundManager.startGameBGM();
   }
-  else if((gameState === "gameInstructions" || gameState === "pausePage") && triggerJump) {
-    // console.log("Resuming game...");
+  else if(gameState === "gameInstructions" && triggerJump) {
     gameState = "gameScreen";
-    soundManager.resumeBGM();
   }
-  else if(gameState === "gameScreen" && inputHandler.escape) {
-    // console.log("Game Paused");
+  else if(gameState === "gameScreen" && (inputHandler.escape || resumePause)) {
     gameState = "pausePage";
     soundManager.pauseBGM();
+  }
+  else if(gameState === "pausePage" && (triggerJump || resumePause)) {
+    gameState = "gameScreen";
+    soundManager.resumeBGM();
   }
   else if(gameState === "gameOver" && triggerJump) {
     // Restart from actual level
@@ -175,5 +188,11 @@ function keyReleased() {
  * Redirects the windowResized callback to windowResized method of GameScreen
  */
 function windowResized() {
+  console.log("Window resized -> calling from sketch.js");
   screenGame.windowResized();
+}
+
+function updateScalingFactors(){
+  scaleX = width/850;
+  scaleY = height/500;
 }
