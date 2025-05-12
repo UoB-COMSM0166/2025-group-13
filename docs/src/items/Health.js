@@ -79,6 +79,9 @@ class Health {
       case 1:
         fill('rgba(0, 0, 255, 0.2)'); // Blue with 80% transparency
         break;
+      case 2:
+        fill('rgba(51, 72, 0, 0.2)'); // Dark Green Black 80% transparency
+        break;
     }
     stroke('red');
     strokeWeight(2);

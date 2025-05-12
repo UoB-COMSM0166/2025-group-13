@@ -72,6 +72,9 @@ class Game {
                 case 1:
                     image(this.assetManager.gamePageIceBackground, width / 2, height / 2, width, height);
                     break;
+                case 2:
+                    image(this.assetManager.gamePageDesertBackground, width / 2, height / 2, width, height);
+                    break;
             }
 
         } else {
@@ -91,6 +94,9 @@ class Game {
                         break;
                     case 1:
                         image(this.assetManager.iceLakeImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
+                        break;
+                    case 2:
+                        image(this.assetManager.desertImg, dx, dy, this.lavaTileWidth, this.lavaTileHeight);
                         break;
                 }
 
@@ -112,6 +118,10 @@ class Game {
                 fill(255);
                 stroke('blue');
                 break;
+            case 2:
+                fill('#DB7A34');
+                stroke('#C25C2A');
+                break;
         }
         text("Level " + (this.currentLevel), width - scaleX * 75, scaleY * 25);
         textSize(30);
@@ -121,6 +131,9 @@ class Game {
                 break;
             case 1:
                 text("Icy Endgame", width / 2, scaleY * 25);
+                break;
+            case 2:
+                text("Nocturnal Sand", width / 2, 25)
                 break;
         }
 

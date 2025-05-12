@@ -48,6 +48,8 @@ class Cave {
         image(this.assetManager.caveFire, this.x, this.y, this.width, this.height);
       } else if (this.caveType === "ICE") {
         image(this.assetManager.caveIce, this.x, this.y, this.width, this.height);
+      } else if (this.caveType === "DESERT") {
+        image(this.assetManager.caveDesert, this.x, this.y, this.width, this.height);
       }
     }
 }

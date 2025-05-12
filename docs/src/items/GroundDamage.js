@@ -69,12 +69,20 @@ class GroundDamage {
     scaledWidth = this.height * aspectRatio;
     scaledHeight = this.height;
 
-    image(
-      this.assetManager.healthRelatedItems,
-      0, -this.stableHeight,
-      scaledWidth, scaledHeight,
-      sx, sy, sw, sh
-    );
+    if (this.groundDamageType === "DESERT") {
+      image(
+        this.assetManager.damageDesert,
+        0, -this.stableHeight,
+        50, 55,
+      );
+    } else {
+      image(
+        this.assetManager.healthRelatedItems,
+        0, -this.stableHeight,
+        scaledWidth, scaledHeight,
+        sx, sy, sw, sh
+      );
+    }
 
     noTint();
     pop();

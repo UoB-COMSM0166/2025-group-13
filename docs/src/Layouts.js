@@ -93,12 +93,58 @@ let level2SkyFall =
 let level2Cave = ["ICE",4070, 438];
 //#endregion
 
+//#region: Level3
+let level3Platforms =
+    [
+        ["GROUND", 100, 485, 200, 30], ["GROUND", 670, 485, 350, 30], ["GROUND", 1700, 485, 500, 30], ["GROUND", 2180, 485, 150, 30],
+        ["GROUND", 2650, 485, 165, 30], ["GROUND", 3330, 485, 190, 30], ["GROUND", 3900, 485, 480, 30],
+        //(type = null, positionX, positionY, widthOrBrickNumber, height = null, assetManager)
+        ["FLOAT", 290, 380, 150, 30], ["FLOAT", 470, 315, 150, 30], ["FLOAT", 975, 50, 150, 30], ["FLOAT", 975, 382, 150, 30],
+        ["FLOAT", 1150, 320, 150, 30], ["FLOAT", 1150, 150, 150, 30], ["FLOAT", 1330, 250, 150, 30], ["FLOAT", 1550, 320, 150, 30],
+        ["FLOAT", 1863, 218, 150, 30], ["FLOAT", 2020, 120, 150, 30], ["FLOAT", 2240, 190, 150, 30], ["FLOAT", 2318, 350, 150, 30],
+        ["FLOAT", 2490, 270, 150, 30], ["FLOAT", 2880, 350, 150, 30], ["FLOAT", 2990, 220, 150, 30], ["FLOAT", 3170, 150, 150, 30],
+        ["FLOAT", 3170, 350, 150, 30], ["FLOAT", 3524, 250, 150, 30], ["FLOAT", 3800, 300, 150, 30],
+
+        ["TREE", 786, 400, 30, 150],
+        ["TREE", 1760, 380, 30, 180], ["TREE", 2695, 380, 30, 180], ["TREE", 3357, 400, 30, 150],
+    ];
+let level3Foods =
+    [
+        //(type = null, positionX, positionY, assetManager)
+        //on ground(y = 460)
+        ["MEAT", 975, 30],
+    ];
+
+let level3GroundDamage =
+    [
+        //on ground(y = 455)
+        ["DESERT", 670, 455], ["DESERT", 1650, 455], ["DESERT", 2200, 455], ["DESERT", 2600, 455], ["DESERT", 3400, 455], ["DESERT", 3310, 455]
+    ];
+
+let level3Enemy =
+[
+    //on ground(y = 435)
+    //default speed = 1.2, maxDistance = 100, pauseTime = 6
+    ["DESERT", 570, 435, 1, 50, 10], ["DESERT", 1110, 100, 1.5, 100, 5], ["DESERT", 3820, 435, 0.7, 150, 1]
+];
+
+let level3SkyFall =
+[
+    //on ground(y = 445)
+    // type, positionX, startY, fallSpeed, groundY, delayBeforeFall
+    ["DESERT", 870, -100, 5, 485, 60], ["DESERT", 970, -100, 6, 485, 65], ["DESERT", 1070, -100, 4, 485, 55], ["DESERT", 1270, -100, 4, 485, 55], ["DESERT", 1470, -100, 7, 485, 35], ["DESERT", 1670, -100, 9, 485, 25], ["DESERT", 1850, -120, 5, 485, 90], ["DESERT", 3520, -150, 6, 485, 70], ["DESERT", 3520, -150, 3, 485, 40], ["DESERT", 3520, -150, 9, 485, 90]
+];
+
+let level3Cave = ["DESERT",4070, 438];
+//#endregion
+
 /**
  * List of all the layouts in the game.
  * @type {(string|number)[][][][]} - List of lists of coordinates and types of game objects
  */
 let layouts =
     [
-        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],
+        [level1Platforms, level1Foods, level1GroundDamage, level1Enemy, level1SkyFall, level1Cave],   
         [level2Platforms, level2Foods, level2GroundDamage, level2Enemy, level2SkyFall, level2Cave],
+        [level3Platforms, level3Foods, level3GroundDamage, level3Enemy, level3SkyFall, level3Cave]        
     ];
