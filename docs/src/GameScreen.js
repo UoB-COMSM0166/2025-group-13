@@ -157,7 +157,6 @@ class GameScreen {
         stroke("black");
         strokeWeight(8);
         fill(255, 215, 0);
-        text("Outrun the Apocalypse!", width / 4, 60);
 
         // Box dimensions and position
         let boxWidth = 350;
@@ -348,10 +347,10 @@ class GameScreen {
                 text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
                 break;
             case 1:
-                fill('#4A2A19');
+                fill('#A35E37');
                 stroke('#401E24');
                 strokeWeight(5);
-                text("Now run or die hungry!", width / 2 + 100, 100);
+                text("Now run, run, run!", width / 2 + 100, 100);
                 break;
         }
         // text("❄️ Now, time for the Ice Age!", width / 2 + 100, 100);
