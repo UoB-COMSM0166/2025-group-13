@@ -73,21 +73,16 @@ class GameScreen {
     windowResized() {
         this.updateScreenSize();
 
-        let canvasWidth = screenWidth;
-        let canvasHeight = screenHeight;
-
-        if(this.isTouchScreenPortrait()){
-            canvasWidth = screenWidth;
-            canvasHeight = screenWidth / 1.7;
-        } else if(this.isTouchScreenLandscape()){
-            canvasHeight = screenHeight;
-            canvasWidth = screenHeight * 1.7;
+        if(window.matchMedia("(orientation: portrait)").matches){
+            screenHeight = screenWidth / 1.7;
+        } else if(window.matchMedia("(orientation: landscape)").matches){
+            screenWidth = screenHeight * 1.7;
         }
 
         // Set the canvas size to match the container size
-        resizeCanvas(canvasWidth, canvasHeight);
+        resizeCanvas(screenWidth, screenHeight);
         // Scale the canvas based on the new width and height
-        //this.scaleCanvas();
+        this.scaleCanvas();
     }
 
     fullScreenChange() {
@@ -100,6 +95,8 @@ class GameScreen {
             canvasContainer.classList.toggle('fullscreen', isFullScreen);
             // Recalculate and resize the p5 canvas
             this.windowResized();
+            //Call sketch.js setup to reset the game
+            setup();
         });
     }
 

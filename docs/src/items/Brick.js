@@ -3,7 +3,7 @@ class Brick {
     static height = 30;
 
     static setup(){
-    Brick.width *= scaleX;
-    Brick.height *= scaleY;
+    Brick.width = scaleX * 30;
+    Brick.height = scaleY * 30;
     }
 }
