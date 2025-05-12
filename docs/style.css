@@ -233,7 +233,7 @@ h1 {
 
   /* Size and shape */
   aspect-ratio: 1 / 1;
-  width: clamp(85px, 18vmin, 100px);
+  width: clamp(85px, 18vmin, 95px);
   /*width: 85px;
   height: 85px;*/
   border-radius: 50%; /* Makes the button round */
@@ -247,7 +247,7 @@ h1 {
   /* Text styling */
   color: #fff;
   /*font-size: 36px;*/
-  font-size: clamp(36px, 8vmin, 42px);
+  font-size: clamp(36px, 8vmin, 40px);
   font-weight: bold;
 
   /* Center text */
@@ -286,7 +286,7 @@ h1 {
   /*width: 60px;
   font-size: 28px;*/
   aspect-ratio: 1 / 1;
-  width: clamp(60px, 13vmin, 75px);
+  width: clamp(60px, 13vmin, 70px);
   font-size: clamp(28px, 6vmin, 32px);
   /*background-color: rgba(0, 0, 0, .30); */
 }
