@@ -126,39 +126,6 @@ h1 {
   }
 }
 
-/* And set a max-width for the canvas container
-@media (pointer: fine) and (min-width: 850px) and (min-height: 600px) {
-  #canvas-container {
-    width: 1200px;
-    height: 750px;
-    margin: 30px auto;
-    border-radius: 30px;
-  }
-
-  h1, header, #instructions {
-    display: block;
-  }
-}
-*/
-
-/* When .fullscreen is added, let it fill 100% of viewport
-#canvas-container.fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0;
-  padding: 0;
-}
-*/
-
-/* For large enough screens, show the header
-@media (min-height: 620px) {
-  header {
-    display: block;
-  }
-}
-*/
-
-
 .keycap {
   font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", monospace;
   color: #333;
