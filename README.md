@@ -1,22 +1,28 @@
 <p align="left">
   <a href="https://uob-comsm0166.github.io/2025-group-13/">
-    <img src="https://github.com/user-attachments/assets/5844371a-4d04-4f6f-8502-90d913b1c079" alt="Game Banner">
+    <img src="documentation/other_docs/banner.gif" alt="Game Banner">
   </a>
 </p>
 
-# Dino Escape: An Extinction Adventure Game
-
-## ★ [Try the game](https://uob-comsm0166.github.io/2025-group-13/)
-  
-## ★ [Check the code](/docs)
-
-## ★ [Watch demo video](https://youtu.be/gaBLE-WW40c?feature=shared)
-
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=gaBLE-WW40c">
+  <h1>
+    Dino Escape: An Extinction Adventure Game
+  </h1>
+  <h1>
+    <a href="https://uob-comsm0166.github.io/2025-group-13/">
+    ★ TRY OUR GAME ★
+  </h1>
+  <h1>
+    <a href="/docs">
+    ★ CHECK OUR CODE ★
+  </h1>
+  <h1>
+    <a href="https://www.youtube.com/watch?v=gaBLE-WW40c">
+    ★ WATCH OUR VIDEO ★
+  </h1>
     <img src="documentation/other_docs/opening.gif" alt="Watch the video">
   </a>
-</div>
+</div> 
 
 # Table of Contents
 1. [Team](#team)
@@ -254,8 +260,8 @@ This section covers our design of the system, specifically the classes, behaviou
       <tr>
         <td style="padding: 8px;">Platform</td>
         <td style="padding: 8px; text-align: center;">
-          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 50px; margin-right: 5px;">
-          <img src="docs/assets/items/groundDesert.png" alt="Desert Ground" style="height: 50px; margin-right: 5px;">
+          <img src="docs/assets/items/tile_grandTreePlatform.png" alt="Platforms" style="height: 50px;">
+          <img src="docs/assets/items/groundDesert.png" alt="Desert Ground" style="height: 50px;">
           <img src="docs/assets/items/floatDesert.png" alt="Desert Platform" style="height: 50px;">
         </td>
         <td style="padding: 8px;">Simple brick tiles are combined to create ground and platforms.</td>
@@ -265,7 +271,7 @@ This section covers our design of the system, specifically the classes, behaviou
         <td style="padding: 8px; text-align: center;">
           <img src="docs/assets/items/caveFire.png" alt="Level 1 Cave" style="height: 75px; margin-right: 5px;">
           <img src="docs/assets/items/caveIce.png" alt="Level 2 Cave" style="height: 75px; margin-right: 5px;">
-          <img src="docs/assets/items/caveDesert.png" alt="Level 3 Cave" style="height: 40px;">
+          <img src="docs/assets/items/caveDesert.png" alt="Level 3 Cave" style="height: 60px;">
         </td>
         <td style="padding: 8px;">It symbolises safety and is the victory condition for each level.</td>
       </tr>
