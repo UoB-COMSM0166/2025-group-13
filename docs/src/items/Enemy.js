@@ -20,8 +20,8 @@ class Enemy {
 
     this.stableHeight = scaleY * 15;
 
-    this.speed = speed;
-    this.maxDistance = maxDistance;
+    this.speed = scaleX * speed;
+    this.maxDistance = scaleX * maxDistance;
     this.pauseTime = pauseTime; // Duration to pause before flipping
 
     this.originX = positionX;
